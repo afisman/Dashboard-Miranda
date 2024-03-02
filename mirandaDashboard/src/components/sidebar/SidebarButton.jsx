@@ -4,21 +4,27 @@ import styled from 'styled-components';
 
 export const NavLinks = styled(NavLink)`
 position: relative;
-color: #fff;
+text-align: left;
+font-family: Poppins, sans-serif;
+letter-spacing: 0px;
+opacity: 1;
 padding: 15px 20px;
 text-decoration: none;
 display: flex;
 align-items: center;
 justify-content: left;
 margin: 2px 10px;
-border-radius: 10px;
+color: #799283;
+
 &:hover{
     background: #ffffff24;
 }
 &.active {
     background: #fff;
-    color: #4297ff;
+    color: #E23428;
     transition: all 0.4s ease;
+    border-left: 4px solid #E23428;
+    font-weight: 600;
 }
 `;
 

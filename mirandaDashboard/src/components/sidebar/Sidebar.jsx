@@ -8,7 +8,7 @@ const SidebarWrapper = styled.div`
 position: fixed;
 top:0;
 left:0;
-width:250px;
+width:345px;
 height: 100vh;
 display:block;
 z-index:2;
@@ -16,7 +16,6 @@ transition: transform 0.3s ease-in-out;
 `;
 
 const SidebarBody = styled.div`
-background: linear-gradient(0deg, #3358f4, #1d8cf8);
 height: 100vh;
 overflow: hidden;
 `;
@@ -36,32 +35,27 @@ const makeButtons = [
         title: 'Dashboard'
     },
     {
-        to: '/dashboard/profile',
+        to: '/dashboard/room',
         icon: <i className='fa-solid fa-id-card'></i>,
-        title: 'Profile',
+        title: 'Room',
         subBtn: ["Passwords", "Mail", "Accounts"]
     },
     {
-        to: '/dashboard/features',
+        to: '/dashboard/bookings',
         icon: <i className='fa-solid fa-bag-shopping'></i>,
-        title: 'Features',
-        subBtn: ["Pages", "Elements", "Portfolio"]
+        title: 'Bookings',
     },
     {
-        to: '/dashboard/revenue',
+        to: '/dashboard/guest',
         icon: <i className='fa-solid fa-poll-vertical'></i>,
-        title: 'Dashboard'
+        title: 'Guest'
     },
     {
-        to: '/dashboard/analytics',
+        to: '/dashboard/concierge',
         icon: <i className='fa-solid fa-chart-pie'></i>,
-        title: 'Analytics'
+        title: 'Concierge'
     },
-    {
-        to: '/dashboard/calendar',
-        icon: <i className='fa-solid fa-calendar-days'></i>,
-        title: 'Calendar'
-    },
+
 
 ]
 
