@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const LogoWrapper = styled.div`
 width: 100%;
-padding: 15px 20px;
+padding: 0 20px;
 display: flex;
 align-items: center;
 > a {
@@ -15,23 +15,19 @@ align-items: center;
     display: flex;
     align-items: center;
     > div {
-        position: relative;
-        width: 50px;
-        height: 50px;
-        border-radius: 10px;
-        overflow: hidden;
-        margin: 10px 5px 10px 0;
-        cursor: pointer;
-        background: #000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50px;
-        > i {
-            font-size: 30px;
-            color: #1d8bfa;
-            margin-left: 2px;
-        }
+       
+       > h4 {
+           color: #000;
+           margin-bottom: 0;
+       }
+       >h5 {
+           text-align: left;
+           font: normal normal 300 12px/18px Poppins;
+           letter-spacing: 0px;
+           color: #5D5449;
+           opacity: 1;
+           margin: 0;
+       }
     }
 }
 `;
@@ -41,9 +37,9 @@ const Logo = () => {
         <LogoWrapper>
             <Link to="dashboard/home">
                 <div>
-                    {/* <i className='fa-brands fa-react'></i> */}
+                    <h4>Travl</h4>
+                    <h5>Hotel Admin Dashboard</h5>
                 </div>
-                <h4>Dashboard</h4>
             </Link>
         </LogoWrapper>
     )

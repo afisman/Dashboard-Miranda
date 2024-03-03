@@ -1,19 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
+import { CardWrapper } from './SidebarStyles';
+import userImg from "../../assets/Img/selfie.jpg";
 
-const CardWrapper = styled.div`
-    width: 233px;
-    height: 221px;
-    margin: 0 auto;
-    padding: 10px;
 
-    /* >img */
-`;
 
 const UserCard = () => {
     return (
-        <div>UserCard</div>
-    )
+        <CardWrapper>
+            <div>
+                <img src={userImg} alt="" />
+                <h4>Alef Tau</h4>
+                <p>alephtau42@gmail.com</p>
+                <button>Contact Us</button>
+            </div>
+        </CardWrapper>)
 }
 
 export default UserCard
