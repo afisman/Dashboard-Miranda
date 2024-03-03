@@ -7,14 +7,19 @@ export const StyledButton = styled.button`
     ${(props) =>
         props.name === "login" &&
         `
-            width:25%;
+            border-radius: 8px;
+            background: #EBF1EF 0% 0% no-repeat padding-box;
+            opacity: 1;
+            font-family: "Poppins", sans-serif;
+            font-size: 1rem;
+            line-height: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0;
+            color: #135846;
+            border: none;
+            padding: 1rem 2rem;
+            cursor: pointer;
             margin: 0 auto;
-            font-size: 1.25rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            background: #135846;
-            border-radius: 5px;
-            box-shadow: 2px 0 6px 2px #135846;
     `
     }
 `;

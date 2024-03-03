@@ -6,6 +6,8 @@ export const StyledFormWrapper = styled.div`
     width: 28em;
     text-align: center;
     box-shadow: 0px 20px 30px #00000014;
+    transform: translateY(100%);
+    padding: 2em;
 `;
 
 export const StyledFormContainer = styled.form`

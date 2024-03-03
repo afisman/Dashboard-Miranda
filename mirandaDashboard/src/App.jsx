@@ -1,15 +1,22 @@
+import { Routes } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/navbar/Navbar';
-import Sidebar from './components/sidebar/Sidebar';
-import Login from './pages/Login/Login';
+
+import LoginPage from './pages/Login/LoginPage';
 
 function App() {
 
   return (
     <>
-      <Login />
-      {/* <Sidebar />
-      <Navbar /> */}
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        {localStorage.getItem("isLoggedIn") === "true" ? (
+          <Route element={<Layout />}>
+            <Route path="home" element={<DashboardPage />} />
+          </Route>
+        ) : (
+          <Route path="*" element={<LoginPage />} />
+        )}
+      </Routes>
     </>
   )
 }

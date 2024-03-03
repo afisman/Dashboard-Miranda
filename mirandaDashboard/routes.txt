@@ -1,0 +1,24 @@
+Bookings:
+Users:
+Rooms:
+Contac:
+
+| HTTP Method 	| URI path      	| Description                                    	| 
+|-------------	|---------------	|------------------------------------------------	|
+| GET         	| `/bookings` 	| displays bookings list 	| |
+| POST         	| `/bookings/create` 	| Creates booking 	| |
+| GET         	| `/bookings/:id` 	| Shows booking details	| |
+| PUT         	| `/bookings/:id/` 	| Edit booking 	| |
+| DELETE        | `/bookings/:id/` 	| Deletes booking 	| |
+| GET         	| `/rooms` 	| displays rooms list 	| |
+| POST         	| `/rooms/create` 	| Creates rooms 	| |
+| GET         	| `/rooms/:id` 	| Shows rooms details	| |
+| PUT         	| `/rooms/:id/` 	| Edit rooms 	| |
+| DELETE        | `/rooms/:id/` 	| Deletes rooms 	| |
+| GET         	| `/users` 	| displays users list 	| |
+| POST         	| `/users/create` 	| Creates users 	| |
+| GET         	| `/users/:id` 	| Shows users details	| |
+| PUT         	| `/users/:id/` 	| Edit users 	| |
+| DELETE        | `/users/:id/` 	| Deletes users 	| |
+| POST         	| `/contact` 	| Sends contact message	| |
+
