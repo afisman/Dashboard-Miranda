@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
+
 
 import styled from 'styled-components';
 import SidebarButton from './SidebarButton';
 import Logo from './Logo';
+import { StyledBookingIcon, StyledContactIcon, StyledDashboardIcon, StyledRoomsIcon, StyledUsersIcon } from '../reusable/StyledIcons';
 
 const SidebarWrapper = styled.div`
 position: fixed;
@@ -31,28 +33,27 @@ const UnorderList = styled.ul`
 const makeButtons = [
     {
         to: '/dashboard/home',
-        icon: <i className='fa-solid fa-house'></i>,
+        icon: <StyledDashboardIcon />,
         title: 'Dashboard'
     },
     {
         to: '/dashboard/room',
-        icon: <i className='fa-solid fa-id-card'></i>,
+        icon: <StyledRoomsIcon />,
         title: 'Room',
-        subBtn: ["Passwords", "Mail", "Accounts"]
     },
     {
         to: '/dashboard/bookings',
-        icon: <i className='fa-solid fa-bag-shopping'></i>,
+        icon: <StyledBookingIcon />,
         title: 'Bookings',
     },
     {
         to: '/dashboard/guest',
-        icon: <i className='fa-solid fa-poll-vertical'></i>,
+        icon: <StyledContactIcon />,
         title: 'Guest'
     },
     {
         to: '/dashboard/concierge',
-        icon: <i className='fa-solid fa-chart-pie'></i>,
+        icon: <StyledUsersIcon />,
         title: 'Concierge'
     },
 

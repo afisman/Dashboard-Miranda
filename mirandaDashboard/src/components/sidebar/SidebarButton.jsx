@@ -25,6 +25,11 @@ color: #799283;
     transition: all 0.4s ease;
     border-left: 4px solid #E23428;
     font-weight: 600;
+
+    > div > svg {
+            color: #E23428;
+
+    }
 }
 `;
 
