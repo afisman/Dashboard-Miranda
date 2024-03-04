@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyledFormContainer, StyledFormInput, StyledFormWrapper } from '../../components/reusable/StyledForm';
 import { StyledButton } from '../../components/reusable/StyledButton';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const LoginPage = () => {
 
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('second')
+    const [password, setPassword] = useState('second');
+    const navigate = useNavigate();
+
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
@@ -28,8 +31,10 @@ const LoginPage = () => {
                 email: email,
                 password: password,
             });
+            console.log('correct')
 
-            localStorage.setItem('isLoggedIn', 'true')
+            localStorage.setItem('isLoggedIn', 'true');
+            navigate('/dashboard')
         }
     }
 

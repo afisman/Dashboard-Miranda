@@ -2,7 +2,7 @@ import React from 'react';
 
 import SidebarButton from './SidebarButton';
 import Logo from './Logo';
-import { StyledBookingIcon, StyledContactIcon, StyledDashboardIcon, StyledRoomsIcon, StyledUsersIcon } from '../reusable/StyledIcons';
+import { StyledBookingIcon, StyledContactIcon, StyledDashboardIcon, StyledRoomsIcon, StyledUsersIcon } from '../../reusable/StyledIcons';
 import { SidebarBody, SidebarWrapper, UnorderList } from './SidebarStyles';
 import UserCard from './UserCard';
 

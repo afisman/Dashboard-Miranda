@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { LuLayoutDashboard, LuCalendarCheck2 } from "react-icons/lu";
 import { BiKey } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa6";
-import { HiOutlinePuzzle } from "react-icons/hi";
+import { HiOutlinePuzzle, HiOutlineMenuAlt2 } from "react-icons/hi";
 import { SlLogin } from "react-icons/sl";
 
 const styleIconsColor1 = `
@@ -70,7 +70,12 @@ export const StyledUsersIcon = styled(HiOutlinePuzzle)`
   ${styleIconsSize}
 `;
 
-export const StyledPhone = styled(MdOutlineLocalPhone)`
+export const StyledPhoneIcon = styled(MdOutlineLocalPhone)`
   ${styleIconsSize}
   margin-right: 1em
+`;
+
+export const StyledMenuIcon = styled(HiOutlineMenuAlt2)`
+  ${styleIconsSize}
+  color: #262626;
 `;

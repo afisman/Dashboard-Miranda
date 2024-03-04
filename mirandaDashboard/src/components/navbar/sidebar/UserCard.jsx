@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardWrapper } from './SidebarStyles';
-import userImg from "../../assets/Img/selfie.jpg";
+import userImg from "../../../assets/Img/selfie.jpg";
 
 
 
