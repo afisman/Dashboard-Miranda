@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const StyledTable = styled.table`
     background-color:#fff;
-    width: 100%;
+    width: 95%;
     height: auto;
-    margin-left: 2rem;
+    margin: 0 auto;
+    border-radius: 5px;
 
 `;
 
@@ -18,7 +19,7 @@ export const StyledTableHeader = styled.th`
     font-weight: 600;
     text-align: left;
     border-bottom: 1px solid #f8f8f8;
-    padding: 1em 0;
+    padding: 1em 0.5em;
 `;
 
 export const StyledTableCell = styled.td`
@@ -33,8 +34,8 @@ export const StyledTableCell = styled.td`
 `;
 
 export const StyledTableCellText = styled.p`
-padding-left: 0.5rem;
-  ${(props) =>
+    padding-left: 0.5rem;
+    ${(props) =>
         props.letterstyle === "title" &&
         `
         font-weight: 500;
@@ -42,7 +43,7 @@ padding-left: 0.5rem;
         margin: 0;
         `}
 
-  ${(props) =>
+    ${(props) =>
         props.letterstyle === "titleSemiBold" &&
         `
         font-weight: 600;
@@ -54,15 +55,16 @@ padding-left: 0.5rem;
     ${(props) =>
         props.letterstyle === "id" &&
         `
-        font-size: 0.875rem;
+        font-size: 0.8rem;
         color: #799283;
         margin: 0;`}
 
     ${(props) =>
         props.letterstyle === "subtitle" &&
         `
-        font-size: 0.875rem;
+        font-size: 0.8rem;
         color: #393939;
         margin: 0;`}
 `;
+
 

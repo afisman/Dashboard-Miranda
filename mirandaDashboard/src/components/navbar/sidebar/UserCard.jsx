@@ -13,7 +13,8 @@ const UserCard = () => {
                 <p>alephtau42@gmail.com</p>
                 <button>Edit</button>
             </div>
-        </CardWrapper>)
+        </CardWrapper>
+    )
 }
 
 export default UserCard

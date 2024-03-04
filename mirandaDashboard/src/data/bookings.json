@@ -11,7 +11,7 @@
         "room": {
             "id": 3
         },
-        "status": "Check In"
+        "status": "booked"
     },
     {
         "id": 2,
@@ -25,7 +25,7 @@
         "room": {
             "id": 1
         },
-        "status": "Check In"
+        "status": "pending"
     },
     {
         "id": 3,
@@ -39,7 +39,7 @@
         "room": {
             "id": 4
         },
-        "status": "Check In"
+        "status": "refund"
     },
     {
         "id": 4,
@@ -53,7 +53,7 @@
         "room": {
             "id": 12
         },
-        "status": "Check In"
+        "status": "booked"
     },
     {
         "id": 5,
@@ -67,7 +67,7 @@
         "room": {
             "id": 7
         },
-        "status": "Check In"
+        "status": "pending"
     },
     {
         "id": 6,
@@ -81,6 +81,6 @@
         "room": {
             "id": 6
         },
-        "status": "Check In"
+        "status": "cancelled"
     }
 ]

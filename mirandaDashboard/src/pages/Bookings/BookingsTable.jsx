@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyledTableCell, StyledTableRow, StyledTableCellText } from '../../components/reusable/StyledTable'
+import { StyledButton } from '../../components/reusable/StyledButton'
 
 const BookingsTable = ({ data, pageNumber }) => {
     console.log(data)
@@ -36,9 +37,9 @@ const BookingsTable = ({ data, pageNumber }) => {
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledTableCellText typeStyle="title">
-                            {el.special_request.slice(0, 10)}
-                        </StyledTableCellText>
+                        <StyledButton name="view_notes">
+                            View notes
+                        </StyledButton>
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText typeStyle="title">
@@ -46,9 +47,9 @@ const BookingsTable = ({ data, pageNumber }) => {
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledTableCellText typeStyle="title">
+                        <StyledButton name={`${el.status}`}>
                             {el.status}
-                        </StyledTableCellText>
+                        </StyledButton>
                     </StyledTableCell>
                 </StyledTableRow>
 
