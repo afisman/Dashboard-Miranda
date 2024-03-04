@@ -12,6 +12,7 @@ height: 100vh;
 display:block;
 z-index:2;
 transition: transform 0.3s ease-in-out;
+background-color: #fff;
 `;
 
 export const SidebarBody = styled.div`

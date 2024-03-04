@@ -7,6 +7,8 @@ export const StyledNavbarWrapper = styled.div`
     align-items: center;
     /* justify-content: space-between; */
     background-color: #fff;
+    padding-left: 3rem;
+    margin-top: 0;
 
     ${(props) =>
         props.isopen === 'true' && `

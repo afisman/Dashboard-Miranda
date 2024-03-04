@@ -19,6 +19,7 @@ const styleIconsColor2 = `
 const styleIconsSize = `
     width: 1.5em;
     height: 1.5em;
+    cursor: pointer;
 `;
 
 export const StyledSearchIcon = styled(IoIosSearch)`
