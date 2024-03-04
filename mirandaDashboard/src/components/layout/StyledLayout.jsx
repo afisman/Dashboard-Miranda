@@ -9,3 +9,7 @@ export const StyledLayout = styled.div`
     }
     margin-top: 3rem;
 `;
+
+export const StyledContainer = styled.div`
+  display: flex;
+`;
