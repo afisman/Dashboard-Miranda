@@ -7,7 +7,7 @@ export const SidebarWrapper = styled.div`
 position: fixed;
 top:0;
 left:0;
-width:250px;
+width:17%;
 height: 100vh;
 display:block;
 z-index:2;
@@ -65,7 +65,7 @@ font-size: 20px;
 `;
 
 export const CardWrapper = styled.div`
-    width: 183px;
+    width: 170px;
     height: 221px;
     margin: 0 auto;
     padding: 10px;

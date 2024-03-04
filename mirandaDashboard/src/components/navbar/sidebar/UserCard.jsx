@@ -11,7 +11,7 @@ const UserCard = () => {
                 <img src={userImg} alt="" />
                 <h4>Alef Tau</h4>
                 <p>alephtau42@gmail.com</p>
-                <button>Contact Us</button>
+                <button>Edit</button>
             </div>
         </CardWrapper>)
 }

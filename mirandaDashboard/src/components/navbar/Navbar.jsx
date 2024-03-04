@@ -21,7 +21,6 @@ const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
                         setOpen(!open)
                         setSidebarOpen(!sidebarOpen)
                     }}>
-
                 </StyledMenuIcon>
                 <StyledHeartIcon></StyledHeartIcon>
                 <StyledEmailIcon></StyledEmailIcon>
