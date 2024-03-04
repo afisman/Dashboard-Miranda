@@ -1,10 +1,10 @@
 import React from 'react';
-import Navbar from '../../components/navbar/Navbar';
+import KPIs from '../../components/KPI/KPIs';
 
 const DashboardPage = () => {
     return (
         <>
-            <h1>Dashboard</h1>
+            <KPIs />
         </>
     )
 }

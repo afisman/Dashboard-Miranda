@@ -8,27 +8,27 @@ import UserCard from './UserCard';
 
 const makeButtons = [
     {
-        to: '/dashboard/home',
+        to: '/dashboard',
         icon: <StyledDashboardIcon />,
         title: 'Dashboard'
     },
     {
-        to: '/dashboard/room',
+        to: '/rooms',
         icon: <StyledRoomsIcon />,
         title: 'Room',
     },
     {
-        to: '/dashboard/bookings',
+        to: '/bookings',
         icon: <StyledBookingIcon />,
         title: 'Bookings',
     },
     {
-        to: '/dashboard/guest',
+        to: '/users',
         icon: <StyledContactIcon />,
         title: 'Guest'
     },
     {
-        to: '/dashboard/concierge',
+        to: '/profile',
         icon: <StyledUsersIcon />,
         title: 'Concierge'
     },

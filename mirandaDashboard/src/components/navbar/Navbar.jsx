@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from './sidebar/Sidebar';
 import { StyledNavbarWrapper } from './StyledNavbar';
-import { StyledMenuIcon } from '../reusable/StyledIcons';
+import { StyledBelIcon, StyledEmailIcon, StyledHeartIcon, StyledMenuIcon } from '../reusable/StyledIcons';
 
 
 
 const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
-    // const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
     return (
         <div>
             {sidebarOpen === true ? (
@@ -18,11 +18,14 @@ const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
             <StyledNavbarWrapper isopen={sidebarOpen.toString()}>
                 <StyledMenuIcon
                     onClick={() => {
-                        // setOpen(!open)
+                        setOpen(!open)
                         setSidebarOpen(!sidebarOpen)
                     }}>
 
                 </StyledMenuIcon>
+                <StyledHeartIcon></StyledHeartIcon>
+                <StyledEmailIcon></StyledEmailIcon>
+                <StyledBelIcon></StyledBelIcon>
             </StyledNavbarWrapper>
         </div>
     )

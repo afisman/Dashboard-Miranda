@@ -35,7 +35,7 @@ align-items: center;
 const Logo = () => {
     return (
         <LogoWrapper>
-            <Link to="dashboard/home">
+            <Link to="dashboard">
                 <div>
                     <h4>Travl</h4>
                     <h5>Hotel Admin Dashboard</h5>
