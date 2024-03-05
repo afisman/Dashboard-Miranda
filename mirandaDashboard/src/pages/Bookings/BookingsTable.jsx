@@ -42,7 +42,7 @@ const BookingsTable = ({ data, pageNumber }) => {
                         </StyledButton>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledTableCellText typeStyle="title">
+                        <StyledTableCellText letterstyle="title">
                             {el.room.id}
                         </StyledTableCellText>
                     </StyledTableCell>

@@ -5,7 +5,7 @@ export const StyledTable = styled.table`
     width: 95%;
     height: auto;
     margin: 0 auto;
-    border-radius: 5px;
+    border-radius: 8px;
 
 `;
 
@@ -40,15 +40,6 @@ export const StyledTableCellText = styled.p`
         `
         font-weight: 500;
         color: #393939;
-        margin: 0;
-        `}
-
-    ${(props) =>
-        props.letterstyle === "titleSemiBold" &&
-        `
-        font-weight: 600;
-        color: #393939;
-        padding-right: 0.25em;
         margin: 0;
         `}
 

@@ -18,14 +18,16 @@ const BookingsPage = () => {
         <>
             <StyledTable>
                 <thead>
-                    <StyledTableHeader>Guest</StyledTableHeader>
-                    <StyledTableHeader>Order Date</StyledTableHeader>
-                    <StyledTableHeader>Check In</StyledTableHeader>
-                    <StyledTableHeader>Check Out</StyledTableHeader>
-                    <StyledTableHeader>Special Request</StyledTableHeader>
-                    <StyledTableHeader>Room Type</StyledTableHeader>
-                    <StyledTableHeader>Status</StyledTableHeader>
-                    <StyledTableHeader></StyledTableHeader>
+                    <tr>
+                        <StyledTableHeader>Guest</StyledTableHeader>
+                        <StyledTableHeader>Order Date</StyledTableHeader>
+                        <StyledTableHeader>Check In</StyledTableHeader>
+                        <StyledTableHeader>Check Out</StyledTableHeader>
+                        <StyledTableHeader>Special Request</StyledTableHeader>
+                        <StyledTableHeader>Room Type</StyledTableHeader>
+                        <StyledTableHeader>Status</StyledTableHeader>
+                        <StyledTableHeader></StyledTableHeader>
+                    </tr>
                 </thead>
                 <tbody>
                     <BookingsTable

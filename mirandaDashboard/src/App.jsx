@@ -9,8 +9,13 @@ import RoomsPage from './pages/Rooms/RoomsPage'
 import ProfilePage from './pages/Profile/ProfilePage';
 import UsersPage from './pages/Users/UsersPage';
 import { useState } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, darkTheme, lightTheme } from './themes';
+import { AuthProvider } from './context/auth.context';
+import RequireAuth from './context/RequireAuth';
+
+
+
 
 
 
@@ -25,27 +30,25 @@ function App() {
   }
 
   return (
-    <><ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <GlobalStyles />
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        {localStorage.getItem("isLoggedIn") === "true" ? (
-          <>
-            <Route path='/' element={<Layout />}>
-              <Route path="dashboard" element={<DashboardPage />} />
-              <Route path="bookings" element={<BookingsPage />} />
-              <Route path="rooms" element={<RoomsPage />} />
-              <Route path="profile" element={<ProfilePage />} />
-              <Route path="users" element={<UsersPage />} />
-            </Route>
-            <Route path="/*" Navigate element={<LoginPage />} />
-          </>
-
-        ) : (
-          <Route path="/*" element={<LoginPage />} />
-        )}
-      </Routes>
-    </ThemeProvider>
+    <>
+      <AuthProvider>
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+          <GlobalStyles />
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <>
+              <Route path='/' element={<RequireAuth><Layout /></RequireAuth>}>
+                <Route path="dashboard" element={<DashboardPage />} />
+                <Route path="bookings" element={<BookingsPage />} />
+                <Route path="rooms" element={<RoomsPage />} />
+                <Route path="profile" element={<ProfilePage />} />
+                <Route path="users" element={<UsersPage />} />
+              </Route>
+              <Route path="/*" Navigate element={<LoginPage />} />
+            </>
+          </Routes>
+        </ThemeProvider>
+      </AuthProvider>
     </>
   )
 }
