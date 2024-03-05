@@ -3,7 +3,6 @@ import { StyledTableCell, StyledTableCellText, StyledTableRow } from '../../comp
 import { StyledButton } from '../../components/reusable/StyledButton'
 
 const RoomsPageTable = ({ data }) => {
-    console.log(data)
     return (
         <>
             {data.map((el) => (
@@ -26,7 +25,7 @@ const RoomsPageTable = ({ data }) => {
                             {el.room_floor}
                         </StyledTableCellText>
                     </StyledTableCell>
-                    <StyledTableCell>
+                    <StyledTableCell name='facilities'>
                         <StyledTableCellText letterstyle='title'>
                             {el.amenities.join(', ')}
                         </StyledTableCellText>

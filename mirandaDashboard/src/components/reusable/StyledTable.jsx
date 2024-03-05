@@ -30,6 +30,19 @@ export const StyledTableCell = styled.td`
     border-bottom: 1px solid #f8f8f8f8;
     height: 3.5em;
 
+    ${(props) =>
+        props.name === 'facilities' &&
+        `
+        width:30%;
+        `
+    }
+    ${(props) =>
+        props.name === 'rate' &&
+        `
+        display: flex;
+        align-items: center;
+        `
+    }
 `;
 
 export const StyledTableCellText = styled.p`

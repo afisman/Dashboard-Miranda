@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyledTable, StyledTableHeader, StyledTableRow } from '../../components/reusable/StyledTable';
 import data from '../../data/rooms.json';
 import RoomsPageTable from './RoomsPageTable';
+import { StyledMenu, StyledMenuText } from '../../components/reusable/StyledMenu';
 
 const RoomsPage = () => {
     const [roomsList, setRoomsList] = useState(data)
@@ -10,6 +11,17 @@ const RoomsPage = () => {
 
     return (
         <>
+            <StyledMenu>
+                <StyledMenuText>
+                    All Rooms
+                </StyledMenuText>
+                <StyledMenuText>
+                    Active Employee
+                </StyledMenuText>
+                <StyledMenuText>
+                    Inactive Employee
+                </StyledMenuText>
+            </StyledMenu>
             <StyledTable>
                 <thead>
                     <StyledTableRow>
