@@ -36,6 +36,7 @@ export const StyledTableCell = styled.td`
     margin: 0 auto;
     border-bottom: 1px solid #f8f8f8f8;
     height: 3.5em;
+    padding-left: 0.5em;
 
     ${(props) =>
         props.name === 'facilities' &&
@@ -45,6 +46,13 @@ export const StyledTableCell = styled.td`
     }
     ${(props) =>
         props.name === 'rate' &&
+        `
+        display: flex;
+        align-items: center;
+        `
+    }
+      ${(props) =>
+        props.name === 'imageCell' &&
         `
         display: flex;
         align-items: center;
@@ -84,6 +92,37 @@ export const StyledTableCellText = styled.p`
         font-size: 0.8rem;
         color: #393939;
         margin: 0;`}
+`;
+
+export const StyledTableCellImg = styled.div`
+        border-radius: 5px;
+
+        >img {
+            object-fit: cover;
+            width: 100%;
+            border-radius: 5px;
+
+        }
+
+        ${(props) =>
+        props.imgtype === "guest" &&
+        `
+        width: 45px;
+        height: 45px;
+        `}
+         ${(props) =>
+        props.imgtype === "concierge" &&
+        `
+        width: 88px;
+        height: 88px;
+        `}
+
+         ${(props) =>
+        props.imgtype === "room" &&
+        `
+        width: 80px;
+        height: 37px;
+        `}
 `;
 
 

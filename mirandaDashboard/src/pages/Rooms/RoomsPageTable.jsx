@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledTableCell, StyledTableCellText, StyledTableRow } from '../../components/reusable/StyledTable'
+import { StyledTableCell, StyledTableCellImg, StyledTableCellText, StyledTableRow } from '../../components/reusable/StyledTable'
 import { StyledButton } from '../../components/reusable/StyledButton'
 
 const RoomsPageTable = ({ data }) => {
@@ -7,13 +7,18 @@ const RoomsPageTable = ({ data }) => {
         <>
             {data.map((el) => (
                 <StyledTableRow key={el.id}>
-                    <StyledTableCell>
-                        <StyledTableCellText letterstyle='id'>
-                            #{el.id}
-                        </StyledTableCellText>
-                        <StyledTableCellText letterstyle='title'>
-                            {el.room_number}
-                        </StyledTableCellText>
+                    <StyledTableCell name='imageCell'>
+                        <StyledTableCellImg imgtype='room'>
+                            <img src={el.photos[0]} alt="room" />
+                        </StyledTableCellImg>
+                        <div>
+                            <StyledTableCellText letterstyle='id'>
+                                #{el.id}
+                            </StyledTableCellText>
+                            <StyledTableCellText letterstyle='title'>
+                                {el.room_number}
+                            </StyledTableCellText>
+                        </div>
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText letterstyle='title'>
