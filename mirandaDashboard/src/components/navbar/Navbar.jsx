@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Sidebar from './sidebar/Sidebar';
 import { StyledNavbarWrapper } from './StyledNavbar';
-import { StyledBelIcon, StyledEmailIcon, StyledHeartIcon, StyledMenuIcon } from '../reusable/StyledIcons';
+import { StyledBelIcon, StyledEmailIcon, StyledMenuIcon } from '../reusable/StyledIcons';
 
 
 
@@ -22,9 +21,10 @@ const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
                         setSidebarOpen(!sidebarOpen)
                     }}>
                 </StyledMenuIcon>
-                <StyledHeartIcon></StyledHeartIcon>
-                <StyledEmailIcon></StyledEmailIcon>
-                <StyledBelIcon></StyledBelIcon>
+                <div >
+                    <StyledEmailIcon></StyledEmailIcon>
+                    <StyledBelIcon></StyledBelIcon>
+                </div>
             </StyledNavbarWrapper>
         </div>
     )

@@ -26,11 +26,6 @@ export const StyledSearchIcon = styled(IoIosSearch)`
     ${styleIconsSize}
 `;
 
-export const StyledHeartIcon = styled(IoMdHeartEmpty)`
-    ${styleIconsSize};
-    ${styleIconsColor2};
-`;
-
 export const StyledEmailIcon = styled(MdOutlineMail)`
     ${styleIconsSize};
     ${styleIconsColor2};
@@ -67,11 +62,6 @@ export const StyledContactIcon = styled(FaRegUser)`
 export const StyledUsersIcon = styled(HiOutlinePuzzle)`
   ${styleIconsColor1}
   ${styleIconsSize}
-`;
-
-export const StyledPhoneIcon = styled(MdOutlineLocalPhone)`
-  ${styleIconsSize}
-  margin-right: 1em
 `;
 
 export const StyledMenuIcon = styled(HiOutlineMenuAlt2)`

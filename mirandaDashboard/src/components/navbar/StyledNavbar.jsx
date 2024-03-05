@@ -5,10 +5,17 @@ export const StyledNavbarWrapper = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     background-color: #fff;
-    padding-left: 3rem;
+    padding: 0 10rem 0 3rem;
     margin-top: 0;
+
+    >div {
+        display: flex;
+        width: 20%;
+        margin-right: 10%;
+        justify-content: space-around;
+    }
 
     ${(props) =>
         props.isopen === 'true' && `

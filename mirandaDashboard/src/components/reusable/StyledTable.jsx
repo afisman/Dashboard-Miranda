@@ -6,7 +6,6 @@ export const StyledTable = styled.table`
     height: auto;
     margin: 0 auto;
     border-radius: 8px;
-
 `;
 
 export const StyledTableBody = styled.tbody``;
