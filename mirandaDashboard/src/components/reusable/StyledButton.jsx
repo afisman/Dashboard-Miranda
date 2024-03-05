@@ -116,4 +116,44 @@ export const StyledButton = styled.button`
             width: 109px;
     `
     }
+
+       ${(props) =>
+        props.name === "Booked" &&
+        `
+            border-radius: 12px;
+            background: #E23428 0% 0% no-repeat padding-box;
+            opacity: 1;
+            font-family: "Poppins", sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.25rem;
+            font-weight: 500;
+            letter-spacing: 0;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            margin: 0 auto;
+            width: 109px;
+    `
+    }
+
+      ${(props) =>
+        props.name === "Available" &&
+        `
+            border-radius: 12px;
+            background: #5AD07A 0% 0% no-repeat padding-box;
+            opacity: 1;
+            font-family: "Poppins", sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.25rem;
+            font-weight: 500;
+            letter-spacing: 0;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            margin: 0 auto;
+            width: 109px;
+    `
+    }
 `;

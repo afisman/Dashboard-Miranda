@@ -1,48 +1,42 @@
 import React from 'react'
-import { StyledTableCell, StyledTableRow, StyledTableCellText } from '../../components/reusable/StyledTable'
+import { StyledTableCell, StyledTableCellText, StyledTableRow } from '../../components/reusable/StyledTable'
 import { StyledButton } from '../../components/reusable/StyledButton'
 
-const BookingsTable = ({ data, pageNumber }) => {
-
+const RoomsPageTable = ({ data }) => {
+    console.log(data)
     return (
         <>
             {data.map((el) => (
                 <StyledTableRow key={el.id}>
                     <StyledTableCell>
-                        <StyledTableCellText letterstyle='title'>
-                            {el.name}
-                        </StyledTableCellText>
                         <StyledTableCellText letterstyle='id'>
                             #{el.id}
                         </StyledTableCellText>
-                    </StyledTableCell>
-                    <StyledTableCell>
-                        {el.order_date}
-                    </StyledTableCell>
-                    <StyledTableCell>
                         <StyledTableCellText letterstyle='title'>
-                            {el.check_in}
-                        </StyledTableCellText>
-                        <StyledTableCellText letterstyle='subtitle'>
-                            {el.hour_check_in}
+                            {el.room_number}
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText letterstyle='title'>
-                            {el.check_out}
-                        </StyledTableCellText>
-                        <StyledTableCellText letterstyle='subtitle'>
-                            {el.hour_check_out}
+                            {el.room_type}
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledButton name="view_notes">
-                            View notes
-                        </StyledButton>
+                        <StyledTableCellText letterstyle='title'>
+                            {el.room_floor}
+                        </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledTableCellText letterstyle="title">
-                            {el.room.id}
+                        <StyledTableCellText letterstyle='title'>
+                            {el.amenities.join(', ')}
+                        </StyledTableCellText>
+                    </StyledTableCell>
+                    <StyledTableCell style={{ display: 'flex', alignItems: 'center' }}>
+                        <StyledTableCellText letterstyle='semiBold'>
+                            ${el.rate}
+                        </StyledTableCellText>
+                        <StyledTableCellText letterstyle='id'>
+                            /night
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
@@ -51,10 +45,9 @@ const BookingsTable = ({ data, pageNumber }) => {
                         </StyledButton>
                     </StyledTableCell>
                 </StyledTableRow>
-
             ))}
         </>
     )
 }
 
-export default BookingsTable
+export default RoomsPageTable

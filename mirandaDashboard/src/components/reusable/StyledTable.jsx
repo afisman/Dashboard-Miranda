@@ -44,6 +44,15 @@ export const StyledTableCellText = styled.p`
         `}
 
     ${(props) =>
+        props.letterstyle === "semiBold" &&
+        `
+        font-weight: 600;
+        color: #393939;
+        padding-right: 0.25em;
+        margin: 0;
+        `}
+
+    ${(props) =>
         props.letterstyle === "id" &&
         `
         font-size: 0.8rem;

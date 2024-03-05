@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyledTable, StyledTableHeader } from '../../components/reusable/StyledTable';
+import { StyledTable, StyledTableHeader, StyledTableRow } from '../../components/reusable/StyledTable';
 import data from '../../data/bookings.json';
 import { StyledContainer } from '../../components/layout/StyledLayout';
 import BookingsTable from './BookingsTable';
@@ -18,7 +18,7 @@ const BookingsPage = () => {
         <>
             <StyledTable>
                 <thead>
-                    <tr>
+                    <StyledTableRow>
                         <StyledTableHeader>Guest</StyledTableHeader>
                         <StyledTableHeader>Order Date</StyledTableHeader>
                         <StyledTableHeader>Check In</StyledTableHeader>
@@ -27,7 +27,7 @@ const BookingsPage = () => {
                         <StyledTableHeader>Room Type</StyledTableHeader>
                         <StyledTableHeader>Status</StyledTableHeader>
                         <StyledTableHeader></StyledTableHeader>
-                    </tr>
+                    </StyledTableRow>
                 </thead>
                 <tbody>
                     <BookingsTable
