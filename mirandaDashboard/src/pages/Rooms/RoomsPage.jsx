@@ -6,25 +6,39 @@ import { StyledMenu, StyledMenuText } from '../../components/reusable/StyledMenu
 
 const RoomsPage = () => {
     const [roomsList, setRoomsList] = useState(data)
-    const [pageNumber, setPageNumber] = useState(0);
-    const [currentPage, setCurrentPage] = useState(1);
+
+    const [selection, setSelection] = useState('all')
+
+    const handleMenuClick = (option) => {
+        console.log(option)
+        setSelection(option);
+    }
 
     return (
         <>
             <StyledMenu>
-                <StyledMenuText>
+                <StyledMenuText
+                    onClick={() => handleMenuClick('all')}
+                    selected={selection === 'all'}
+                >
                     All Rooms
                 </StyledMenuText>
-                <StyledMenuText>
+                <StyledMenuText
+                    onClick={() => handleMenuClick('active')}
+                    selected={selection === 'active'}
+                >
                     Active Employee
                 </StyledMenuText>
-                <StyledMenuText>
+                <StyledMenuText
+                    onClick={() => handleMenuClick('inactive')}
+                    selected={selection === 'inactive'}
+                >
                     Inactive Employee
                 </StyledMenuText>
             </StyledMenu>
             <StyledTable>
                 <thead>
-                    <StyledTableRow>
+                    <tr>
                         <StyledTableHeader>Room Name</StyledTableHeader>
                         <StyledTableHeader>Bed Type</StyledTableHeader>
                         <StyledTableHeader>Room Floor</StyledTableHeader>
@@ -32,12 +46,11 @@ const RoomsPage = () => {
                         <StyledTableHeader>Rate</StyledTableHeader>
                         <StyledTableHeader>Status</StyledTableHeader>
                         <StyledTableHeader></StyledTableHeader>
-                    </StyledTableRow>
+                    </tr>
                 </thead>
                 <tbody>
                     <RoomsPageTable
                         data={roomsList}
-                        pageNumber={pageNumber}
                     />
                 </tbody>
             </StyledTable>

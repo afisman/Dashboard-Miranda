@@ -10,7 +10,14 @@ export const StyledTable = styled.table`
 
 export const StyledTableBody = styled.tbody``;
 
-export const StyledTableRow = styled.tr``;
+export const StyledTableRow = styled.tr`
+    border: 0.1px solid #d1d1d1;
+    &:hover {
+        box-shadow: 0px 1px 2px 1px #575757;
+        cursor: pointer;
+        border-radius: 1px;
+    }
+`;
 
 export const StyledTableHeader = styled.th`
     font-size: 1rem;

@@ -5,11 +5,6 @@ export const StyledMenu = styled.div`
     min-width: 34em;
     width: 30%;
     margin:0 2em 2em 2em;
-    border-bottom: 1px solid #c8c8c8;
-
-    &.active {
-
-    }
 `;
 
 export const StyledMenuText = styled.p`
@@ -21,5 +16,15 @@ export const StyledMenuText = styled.p`
     text-align: center;
     padding-bottom: 1em;
     cursor: pointer;
+        border-bottom: 1px solid #c8c8c8;
+
+
+    ${(props) =>
+        props.selected &&
+        `
+        color: #135846;
+        border-bottom: 2px solid #135846;
+        `
+    }
 `;
 
