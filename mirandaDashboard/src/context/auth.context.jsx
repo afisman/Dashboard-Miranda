@@ -1,17 +1,15 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 
 
 const AuthContext = createContext(null)
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null)
 
     const login = (userName, password) => {
 
         return new Promise((resolve, reject) => {
 
             if (userName === 'alejandro@admin.com' && password === 'alejandro1') {
-                setUser({ name: userName })
                 localStorage.setItem('isLoggedIn', 'true');
                 resolve('success')
             } else {
@@ -22,13 +20,12 @@ export const AuthProvider = ({ children }) => {
     }
 
     const logout = () => {
-        setUser(null)
         localStorage.clear()
     }
 
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ login, logout }}>
             {children}
         </AuthContext.Provider>
     )

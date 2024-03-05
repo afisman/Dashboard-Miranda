@@ -35,7 +35,7 @@ export const StyledTableCell = styled.td`
     color: #393939;
     margin: 0 auto;
     border-bottom: 1px solid #f8f8f8f8;
-    height: 3.5em;
+    min-height: 3.5em;
     padding-left: 0.5em;
 
     ${(props) =>
@@ -92,6 +92,18 @@ export const StyledTableCellText = styled.p`
         font-size: 0.8rem;
         color: #393939;
         margin: 0;`}
+         ${(props) =>
+        props.letterstyle === "Active" &&
+        `
+        font: normal normal 600 14px/21px Poppins;
+        color: #5AD07A;
+        margin: 0;`}
+         ${(props) =>
+        props.letterstyle === "Inactive" &&
+        `
+        font: normal normal 600 14px/21px Poppins;
+        color: #E23428;
+        margin: 0;`}
 `;
 
 export const StyledTableCellImg = styled.div`
@@ -101,7 +113,7 @@ export const StyledTableCellImg = styled.div`
             object-fit: cover;
             width: 100%;
             border-radius: 5px;
-
+            height: 100%;
         }
 
         ${(props) =>
@@ -113,8 +125,8 @@ export const StyledTableCellImg = styled.div`
          ${(props) =>
         props.imgtype === "concierge" &&
         `
-        width: 88px;
-        height: 88px;
+        width: 44px;
+        height: 44px;
         `}
 
          ${(props) =>

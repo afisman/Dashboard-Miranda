@@ -1,20 +1,23 @@
-import React from 'react'
-import { StyledTableCell, StyledTableRow, StyledTableCellText } from '../../components/reusable/StyledTable'
-import { StyledButton } from '../../components/reusable/StyledButton'
+import React from 'react';
+import { StyledTableCell, StyledTableRow, StyledTableCellText } from '../../components/reusable/StyledTable';
+import { StyledButton } from '../../components/reusable/StyledButton';
 
-const BookingsTable = ({ data, pageNumber }) => {
+const BookingsTable = ({ data }) => {
 
     return (
         <>
             {data.map((el) => (
                 <StyledTableRow key={el.id}>
-                    <StyledTableCell>
-                        <StyledTableCellText letterstyle='title'>
-                            {el.name}
-                        </StyledTableCellText>
-                        <StyledTableCellText letterstyle='id'>
-                            #{el.id}
-                        </StyledTableCellText>
+                    <StyledTableCell name='imageCell'>
+                        <input type='checkbox' />
+                        <div>
+                            <StyledTableCellText letterstyle='title'>
+                                {el.name}
+                            </StyledTableCellText>
+                            <StyledTableCellText letterstyle='id'>
+                                #{el.id}
+                            </StyledTableCellText>
+                        </div>
                     </StyledTableCell>
                     <StyledTableCell>
                         {el.order_date}
