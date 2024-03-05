@@ -1,5 +1,5 @@
 import { IoIosSearch, IoMdHeartEmpty, IoMdMore } from "react-icons/io";
-import { FiAlignLeft, FiBell } from "react-icons/fi";
+import { FiBell } from "react-icons/fi";
 import { MdOutlineMail, MdOutlineLocalPhone } from "react-icons/md";
 import styled from "styled-components";
 import { LuLayoutDashboard, LuCalendarCheck2 } from "react-icons/lu";

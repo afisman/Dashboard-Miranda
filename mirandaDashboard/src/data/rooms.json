@@ -1,0 +1,63 @@
+[
+    {
+        "id": 1,
+        "photos": [
+            "https://plus.unsplash.com/premium_photo-1678240508014-d1ab7345bfe6?q=80&w=1942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://plus.unsplash.com/premium_photo-1661964225206-fd5d445a6edd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "roomType": "Double",
+        "roomNumber": "Double Deluxe - 107",
+        "description": "Double room with queen-size bed, with views towards the beautiful countryside.",
+        "offer": "No",
+        "rate": 130,
+        "amenities": [
+            "Luxury bathroom",
+            "Queen-size bed",
+            "Terrace overlooking countryside",
+            "Built-in closet"
+        ],
+        "status": "Booked"
+    },
+    {
+        "id": 2,
+        "photos": [
+            "https://media.istockphoto.com/id/1194125655/es/foto/habitaci%C3%B3n-moderna-con-escritorio-y-ropa-de-cama.jpg?s=2048x2048&w=is&k=20&c=pD_iq_7rqRRKdMefzxcI5DRo0UQXo3x_kyVRn_LxTCg=",
+            "https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1444201983204-c43cbd584d93?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "roomType": "Sibgle room",
+        "roomNumber": "Single Deluxe - 105",
+        "description": "Single room with Double-size bed, Luxury bathroom and built-in closet.",
+        "offer": "No",
+        "rate": 180,
+        "amenities": [
+            "Luxury bathroom",
+            "Double-size bed",
+            "Built-in closet"
+        ],
+        "status": "Booked"
+    },
+    {
+        "id": 3,
+        "photos": [
+            "https://media.istockphoto.com/id/1482326437/es/foto/dormitorio-cl%C3%A1sico-estilo-moderno-escandinavo-dise%C3%B1o-interior-minimalista-fondo-vista-superior.jpg?s=2048x2048&w=is&k=20&c=5yDqDPkfTyfa25SDTDGt3-HnEAxLX2hLrTEVKQ9b5Ng=",
+            "https://images.unsplash.com/photo-1445991842772-097fea258e7b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "roomType": "Luxury suite",
+        "roomNumber": "Deluxe suite - 203",
+        "description": "Luxury suite room with two rooms, one with a king-sized bed, another with two doubles, with views towards the beautiful countryside.",
+        "offer": "No",
+        "rate": 250,
+        "amenities": [
+            "Luxury bathroom",
+            "King-size bed",
+            "Private balcony",
+            "Built-in closet",
+            "Separate rooms",
+            "Three beds"
+        ],
+        "status": "Booked"
+    }
+]
