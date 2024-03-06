@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 export const StyledSwiper = styled(Swiper)`
     width: 90%;
-    margin: 20em auto 2em auto;
+    margin: 0 auto;
     padding: 2em;
 
     & .swiper-button-prev, .swiper-button-next {

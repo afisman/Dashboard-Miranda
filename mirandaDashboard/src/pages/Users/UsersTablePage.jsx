@@ -7,7 +7,7 @@ const UsersTablePage = ({ data }) => {
         <>
             {data.map((el) => (
                 <StyledTableRow key={el.id}>
-                    <StyledTableCell $name='imageCell'>
+                    <StyledTableCell $name='flexCell'>
                         <StyledTableCellImg $imgtype='concierge'>
                             <img src={el.photo} alt="user" />
                         </StyledTableCellImg>
@@ -39,7 +39,7 @@ const UsersTablePage = ({ data }) => {
                             {el.contact}
                         </StyledTableCellText>
                     </StyledTableCell>
-                    <StyledTableCell style={{ display: 'flex', alignItems: 'center' }}>
+                    <StyledTableCell $name='flexCell'>
                         <StyledTableCellText $letterstyle={`${el.status}`}>
                             {el.status}
                         </StyledTableCellText>

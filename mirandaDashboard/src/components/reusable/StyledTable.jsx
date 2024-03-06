@@ -44,15 +44,8 @@ export const StyledTableCell = styled.td`
         width:30%;
         `
     }
-    ${(props) =>
-        props.$name === 'rate' &&
-        `
-        display: flex;
-        align-items: center;
-        `
-    }
       ${(props) =>
-        props.$name === 'imageCell' &&
+        props.$name === 'flexCell' &&
         `
         display: flex;
         align-items: center;

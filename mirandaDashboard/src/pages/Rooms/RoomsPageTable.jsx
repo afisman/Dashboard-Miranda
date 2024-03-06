@@ -7,7 +7,7 @@ const RoomsPageTable = ({ data }) => {
         <>
             {data.map((el) => (
                 <StyledTableRow key={el.id}>
-                    <StyledTableCell $name='imageCell'>
+                    <StyledTableCell $name='flexCell'>
                         <StyledTableCellImg $imgtype='room'>
                             <img src={el.photos[0]} alt="room" />
                         </StyledTableCellImg>
@@ -35,7 +35,7 @@ const RoomsPageTable = ({ data }) => {
                             {el.amenities.join(', ')}
                         </StyledTableCellText>
                     </StyledTableCell>
-                    <StyledTableCell style={{ display: 'flex', alignItems: 'center' }}>
+                    <StyledTableCell $name='flexCell'>
                         <StyledTableCellText $letterstyle='semiBold'>
                             ${el.rate}
                         </StyledTableCellText>

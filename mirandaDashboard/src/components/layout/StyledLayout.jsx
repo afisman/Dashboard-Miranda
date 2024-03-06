@@ -7,7 +7,6 @@ export const StyledLayout = styled.div`
             margin-left: 17%;
         `
     }
-    margin-top: 3rem;
 `;
 
 export const StyledContainer = styled.div`

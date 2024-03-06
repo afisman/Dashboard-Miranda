@@ -16,7 +16,6 @@ const ContactSwiper = () => {
         return Math.floor(((Date.now() - new Date(date).getTime()) / 1000 / 60 / 60) % 60)
     }
 
-    console.log(formatDate(contacts[0].date))
     return (
         <>
             <StyledSwiper

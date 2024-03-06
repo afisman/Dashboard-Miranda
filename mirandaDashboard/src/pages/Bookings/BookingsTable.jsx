@@ -8,7 +8,7 @@ const BookingsTable = ({ data }) => {
         <>
             {data.map((el) => (
                 <StyledTableRow key={el.id}>
-                    <StyledTableCell $name='imageCell'>
+                    <StyledTableCell $name='flexCell'>
                         <div>
                             <StyledTableCellText $letterstyle='title'>
                                 {el.name}
