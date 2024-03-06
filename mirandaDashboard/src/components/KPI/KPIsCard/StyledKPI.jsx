@@ -8,7 +8,7 @@ export const StyledKPIWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     background-color: transparent;
-    padding: 0 2rem;    
+    /* padding: 0 2rem;     */
     margin: 0 1rem;
     
 `;
@@ -17,9 +17,9 @@ export const StyledKPIcard = styled.div`
     display: flex;
     padding: 0.5em ;
     border-radius: 0.75em;
-    /* width: 23%; */
+    width: 22%;
     background-color: #fff;
-    >.active {
+    > .active {
         box-shadow: 0px 16px 30px #00000014;  
   }
 `;

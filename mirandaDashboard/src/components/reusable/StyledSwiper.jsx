@@ -33,12 +33,19 @@ export const StyledSwiperSlide = styled(SwiperSlide)`
     >div {
         display: flex;
         align-items: center;
-        gap: 1em;
-        > img {
+        justify-content: space-between;
+        
+
+        & .swiperIcons {
+            display: flex;
+            gap: 1em;
+
+            > img {
             width:3.5em;
             height: 3.5em;
             border-radius: 0.5em;
             object-fit: cover;
+        }
         }
     }
 
@@ -48,18 +55,19 @@ export const StyledSwiperSlide = styled(SwiperSlide)`
     
 `;
 
-export const StyledSwiperSlideText = styled.p`
+export const StyledSwiperSliderText = styled.p`
 
-    font-size: 1rem;
+    font-size: .8rem;
     line-height: 1.5rem;
+    margin: 0;
 
     ${(props) =>
-        props.$name === "paragraph" &&
+        props.$name === "comment" &&
         `
         color: #4E4E4E;
         `}
         ${(props) =>
-        props.$name === "name" &&
+        props.$name === "bold" &&
         `
         font-weight: 600;
         color: #262626;

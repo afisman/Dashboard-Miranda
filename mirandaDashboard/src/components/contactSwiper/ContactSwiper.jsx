@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { StyledSwiper, StyledSwiperSlide } from '../reusable/StyledSwiper';
+import { StyledSwiper, StyledSwiperSlide, StyledSwiperSliderText } from '../reusable/StyledSwiper';
 import { Navigation, Keyboard } from 'swiper/modules';
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import data from '../../data/contact.json';
+import { StyledCheckIcon, StyledCrossIcon } from '../reusable/StyledIcons';
 
 
 const ContactSwiper = () => {
@@ -33,12 +34,18 @@ const ContactSwiper = () => {
                         <StyledSwiperSlide
                             key={el.id}
                         >
-                            <p>{el.message}</p>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <img src={el.image} alt={el.full_name} />
-                                <div>
-                                    <p>{el.full_name}</p>
-                                    <p>{formatDate(el.date)} min ago</p>
+                            <StyledSwiperSliderText $name='comment'>{el.message}</StyledSwiperSliderText>
+                            <div>
+                                <div className="swiperIcons">
+                                    <img src={el.image} alt={el.full_name} />
+                                    <div>
+                                        <StyledSwiperSliderText $name='bold'>{el.full_name}</StyledSwiperSliderText>
+                                        <StyledSwiperSliderText $name='date'>{formatDate(el.date)} min ago</StyledSwiperSliderText>
+                                    </div>
+                                </div>
+                                <div className='swiperIcons'>
+                                    <StyledCheckIcon />
+                                    <StyledCrossIcon />
                                 </div>
                             </div>
                         </StyledSwiperSlide>

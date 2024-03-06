@@ -1,10 +1,12 @@
 import { IoIosSearch, IoMdHeartEmpty, IoMdMore } from "react-icons/io";
 import { FiBell } from "react-icons/fi";
 import { MdOutlineMail, MdOutlineLocalPhone } from "react-icons/md";
+import { RxCrossCircled } from "react-icons/rx";
 import styled from "styled-components";
 import { LuLayoutDashboard, LuCalendarCheck2 } from "react-icons/lu";
 import { BiKey } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa6";
+import { FaRegCheckCircle } from "react-icons/fa";
 import { HiOutlinePuzzle, HiOutlineMenuAlt2 } from "react-icons/hi";
 import { SlLogin } from "react-icons/sl";
 
@@ -68,4 +70,14 @@ export const StyledMenuIcon = styled(HiOutlineMenuAlt2)`
   ${styleIconsSize}
   color: #262626;
   margin-left: 1rem;
+`;
+
+export const StyledCheckIcon = styled(FaRegCheckCircle)`
+  ${styleIconsSize}
+  color: #5AD07A;
+`;
+
+export const StyledCrossIcon = styled(RxCrossCircled)`
+  ${styleIconsSize}
+  color: #E23428 ;
 `;
