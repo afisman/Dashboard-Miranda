@@ -37,7 +37,6 @@ function App() {
                 <Route path="profile" element={<ProfilePage />} />
                 <Route path="users" element={<UsersPage />} />
               </Route>
-              <Route path="/*" Navigate element={<LoginPage />} />
             </>
           </Routes>
         </ThemeProvider>

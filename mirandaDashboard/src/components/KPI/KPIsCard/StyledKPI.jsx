@@ -8,8 +8,8 @@ export const StyledKPIWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     background-color: transparent;
-    /* padding: 0 2rem;     */
-    margin: 0 1em 20em 1em;
+    padding: 0 2rem;    
+    margin: 2em 1em 20em 1em;
     
 `;
 

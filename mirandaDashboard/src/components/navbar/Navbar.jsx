@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from './sidebar/Sidebar';
-import { StyledNavbarWrapper } from './StyledNavbar';
+import { StyledNavbarWrapper, StyledNavbarTitle } from './StyledNavbar';
 import { StyledBelIcon, StyledEmailIcon, StyledMenuIcon, StyledLogoutIcon } from '../reusable/StyledIcons';
 import { useAuth } from '../../context/auth.context';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -12,6 +12,26 @@ const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
     const auth = useAuth();
     const navigate = useNavigate();
 
+    const location = useLocation();
+
+    let title;
+
+    switch (location.pathname) {
+        case '/rooms':
+            title = 'Room List';
+            break;
+        case '/users':
+            title = 'Concierge List';
+            break;
+        case '/bookings':
+            title = 'Guest List';
+            break;
+        case '/profile':
+            title = 'Reviews';
+            break;
+        default:
+            title = 'Dashboard';
+    }
 
 
     const handleLogout = async (e) => {
@@ -33,12 +53,15 @@ const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
                 ''
             )}
             <StyledNavbarWrapper $isopen={sidebarOpen.toString()}>
-                <StyledMenuIcon
-                    onClick={() => {
-                        setOpen(!open)
-                        setSidebarOpen(!sidebarOpen)
-                    }}>
-                </StyledMenuIcon>
+                <div>
+                    <StyledMenuIcon
+                        onClick={() => {
+                            setOpen(!open)
+                            setSidebarOpen(!sidebarOpen)
+                        }}>
+                    </StyledMenuIcon>
+                    <StyledNavbarTitle>{title}</StyledNavbarTitle>
+                </div>
                 <div >
                     <StyledEmailIcon></StyledEmailIcon>
                     <StyledBelIcon></StyledBelIcon>

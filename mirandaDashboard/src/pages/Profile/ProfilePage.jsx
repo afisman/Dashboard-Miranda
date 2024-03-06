@@ -31,7 +31,7 @@ const ProfilePage = () => {
                     Published
                 </StyledMenuText>
                 <StyledMenuText
-                    onClick={() => handleMenuClick('inactive')}
+                    onClick={() => handleMenuClick('archived')}
                     $selected={selection === 'archived'}
                 >
                     Archived

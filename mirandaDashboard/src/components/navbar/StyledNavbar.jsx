@@ -15,6 +15,7 @@ export const StyledNavbarWrapper = styled.div`
         width: 20%;
         margin-right: 10%;
         justify-content: space-around;
+        align-items: center;
     }
 
     ${(props) =>
@@ -23,4 +24,11 @@ export const StyledNavbarWrapper = styled.div`
         width: 82.5%;
         `
     }
+`;
+
+export const StyledNavbarTitle = styled.p`
+    font-size: 1.75em;
+    font-weight: 600;
+    color: #262626;
+    line-height: 2.625;
 `;
