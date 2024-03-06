@@ -6,6 +6,7 @@ const AuthContext = createContext(null)
 export const AuthProvider = ({ children }) => {
 
     const login = (userName, password) => {
+        console.log(userName, password)
 
         return new Promise((resolve, reject) => {
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, useLocation } from "react-router-dom";
 
 
-const RequireAuth = ({ children }) => {
+const PrivateRoute = ({ children }) => {
     let location = useLocation()
 
     if (localStorage.getItem('isLoggedIn') !== 'true') {
@@ -12,4 +12,4 @@ const RequireAuth = ({ children }) => {
     return children
 }
 
-export default RequireAuth
+export default PrivateRoute

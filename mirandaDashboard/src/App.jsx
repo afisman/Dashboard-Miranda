@@ -12,14 +12,7 @@ import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, darkTheme, lightTheme } from './themes';
 import { AuthProvider } from './context/auth.context';
-import RequireAuth from './context/RequireAuth';
-
-
-
-
-
-
-
+import PrivateRoute from './context/PrivateRoute';
 
 function App() {
 
@@ -37,7 +30,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LoginPage />} />
             <>
-              <Route path='/' element={<RequireAuth><Layout /></RequireAuth>}>
+              <Route path='/' element={<PrivateRoute><Layout /></PrivateRoute>}>
                 <Route path="dashboard" element={<DashboardPage />} />
                 <Route path="bookings" element={<BookingsPage />} />
                 <Route path="rooms" element={<RoomsPage />} />

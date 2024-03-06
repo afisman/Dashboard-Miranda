@@ -23,12 +23,12 @@ const makeButtons = [
         title: 'Bookings',
     },
     {
-        to: '/users',
+        to: '/profile',
         icon: <StyledContactIcon />,
         title: 'Guest'
     },
     {
-        to: '/profile',
+        to: '/users',
         icon: <StyledUsersIcon />,
         title: 'Concierge'
     },

@@ -11,16 +11,18 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const auth = useAuth();
-
-    let location = useLocation();
-    let from = location.state?.from?.pathname || "/";
+    const [error, setError] = useState(false)
 
 
     const handleEmailChange = (e) => {
+        setError(false);
+
         setEmail(e.target.value);
     }
 
     const handlePasswordChange = (e) => {
+        setError(false);
+
         setPassword(e.target.value);
     }
 
@@ -30,10 +32,9 @@ const LoginPage = () => {
 
         try {
             await auth.login(email, password);
-            localStorage.setItem('isLoggedIn', 'true');
-            navigate(from, { replace: true });
+            navigate('/dashboard', { replace: true });
         } catch (error) {
-            return alert(`Error while trying ot sign in, ${error}`);
+            setError(true);
         }
     }
 
@@ -58,6 +59,9 @@ const LoginPage = () => {
                     </StyledButton>
                     <p>alejandro@admin.com</p>
                     <p>alejandro1</p>
+                    {error &&
+                        <p>Incorrect email or password</p>
+                    }
                 </StyledFormContainer>
             </StyledFormWrapper>
         </>
