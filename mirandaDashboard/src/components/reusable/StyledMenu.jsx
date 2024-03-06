@@ -20,7 +20,7 @@ export const StyledMenuText = styled.p`
 
 
     ${(props) =>
-        props.selected &&
+        props.$selected &&
         `
         color: #135846;
         border-bottom: 2px solid #135846;

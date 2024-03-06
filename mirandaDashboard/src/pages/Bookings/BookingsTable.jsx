@@ -8,13 +8,12 @@ const BookingsTable = ({ data }) => {
         <>
             {data.map((el) => (
                 <StyledTableRow key={el.id}>
-                    <StyledTableCell name='imageCell'>
-                        <input type='checkbox' />
+                    <StyledTableCell $name='imageCell'>
                         <div>
-                            <StyledTableCellText letterstyle='title'>
+                            <StyledTableCellText $letterstyle='title'>
                                 {el.name}
                             </StyledTableCellText>
-                            <StyledTableCellText letterstyle='id'>
+                            <StyledTableCellText $letterstyle='id'>
                                 #{el.id}
                             </StyledTableCellText>
                         </div>
@@ -23,33 +22,33 @@ const BookingsTable = ({ data }) => {
                         {el.order_date}
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledTableCellText letterstyle='title'>
+                        <StyledTableCellText $letterstyle='title'>
                             {el.check_in}
                         </StyledTableCellText>
-                        <StyledTableCellText letterstyle='subtitle'>
+                        <StyledTableCellText $letterstyle='subtitle'>
                             {el.hour_check_in}
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledTableCellText letterstyle='title'>
+                        <StyledTableCellText $letterstyle='title'>
                             {el.check_out}
                         </StyledTableCellText>
-                        <StyledTableCellText letterstyle='subtitle'>
+                        <StyledTableCellText $letterstyle='subtitle'>
                             {el.hour_check_out}
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledButton name="view_notes">
+                        <StyledButton $name="view_notes">
                             View notes
                         </StyledButton>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledTableCellText letterstyle="title">
+                        <StyledTableCellText $letterstyle="title">
                             {el.room.id}
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledButton name={`${el.status}`}>
+                        <StyledButton $name={`${el.status}`}>
                             {el.status}
                         </StyledButton>
                     </StyledTableCell>

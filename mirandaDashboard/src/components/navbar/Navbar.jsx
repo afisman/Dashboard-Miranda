@@ -32,7 +32,7 @@ const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
             ) : (
                 ''
             )}
-            <StyledNavbarWrapper isopen={sidebarOpen.toString()}>
+            <StyledNavbarWrapper $isopen={sidebarOpen.toString()}>
                 <StyledMenuIcon
                     onClick={() => {
                         setOpen(!open)

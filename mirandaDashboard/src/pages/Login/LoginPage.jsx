@@ -54,7 +54,7 @@ const LoginPage = () => {
                         value={password}
                         onChange={handlePasswordChange}
                     ></StyledFormInput>
-                    <StyledButton name="login" type="submit">
+                    <StyledButton $name="login" type="submit">
                         LOGIN
                     </StyledButton>
                     <p>alejandro@admin.com</p>

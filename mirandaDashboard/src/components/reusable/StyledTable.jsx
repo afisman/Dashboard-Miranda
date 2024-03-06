@@ -39,20 +39,20 @@ export const StyledTableCell = styled.td`
     padding-left: 0.5em;
 
     ${(props) =>
-        props.name === 'facilities' &&
+        props.$name === 'facilities' &&
         `
         width:30%;
         `
     }
     ${(props) =>
-        props.name === 'rate' &&
+        props.$name === 'rate' &&
         `
         display: flex;
         align-items: center;
         `
     }
       ${(props) =>
-        props.name === 'imageCell' &&
+        props.$name === 'imageCell' &&
         `
         display: flex;
         align-items: center;
@@ -63,7 +63,7 @@ export const StyledTableCell = styled.td`
 export const StyledTableCellText = styled.p`
     padding-left: 0.5rem;
     ${(props) =>
-        props.letterstyle === "title" &&
+        props.$letterstyle === "title" &&
         `
         font-weight: 500;
         color: #393939;
@@ -71,7 +71,7 @@ export const StyledTableCellText = styled.p`
         `}
 
     ${(props) =>
-        props.letterstyle === "semiBold" &&
+        props.$letterstyle === "semiBold" &&
         `
         font-weight: 600;
         color: #393939;
@@ -80,26 +80,26 @@ export const StyledTableCellText = styled.p`
         `}
 
     ${(props) =>
-        props.letterstyle === "id" &&
+        props.$letterstyle === "id" &&
         `
         font-size: 0.8rem;
         color: #799283;
         margin: 0;`}
 
     ${(props) =>
-        props.letterstyle === "subtitle" &&
+        props.$letterstyle === "subtitle" &&
         `
         font-size: 0.8rem;
         color: #393939;
         margin: 0;`}
          ${(props) =>
-        props.letterstyle === "Active" &&
+        props.$letterstyle === "Active" &&
         `
         font: normal normal 600 14px/21px Poppins;
         color: #5AD07A;
         margin: 0;`}
          ${(props) =>
-        props.letterstyle === "Inactive" &&
+        props.$letterstyle === "Inactive" &&
         `
         font: normal normal 600 14px/21px Poppins;
         color: #E23428;
@@ -117,20 +117,20 @@ export const StyledTableCellImg = styled.div`
         }
 
         ${(props) =>
-        props.imgtype === "guest" &&
+        props.$imgtype === "guest" &&
         `
         width: 45px;
         height: 45px;
         `}
          ${(props) =>
-        props.imgtype === "concierge" &&
+        props.$imgtype === "concierge" &&
         `
         width: 44px;
         height: 44px;
         `}
 
          ${(props) =>
-        props.imgtype === "room" &&
+        props.$imgtype === "room" &&
         `
         width: 80px;
         height: 37px;

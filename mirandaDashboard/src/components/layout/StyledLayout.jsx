@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledLayout = styled.div`
     ${(props) =>
-        props.sidebaropen === 'true' &&
+        props.$sidebaropen === 'true' &&
         `
             margin-left: 17%;
         `

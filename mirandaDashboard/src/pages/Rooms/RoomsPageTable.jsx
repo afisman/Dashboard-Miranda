@@ -7,44 +7,44 @@ const RoomsPageTable = ({ data }) => {
         <>
             {data.map((el) => (
                 <StyledTableRow key={el.id}>
-                    <StyledTableCell name='imageCell'>
-                        <StyledTableCellImg imgtype='room'>
+                    <StyledTableCell $name='imageCell'>
+                        <StyledTableCellImg $imgtype='room'>
                             <img src={el.photos[0]} alt="room" />
                         </StyledTableCellImg>
                         <div>
-                            <StyledTableCellText letterstyle='id'>
+                            <StyledTableCellText $letterstyle='id'>
                                 #{el.id}
                             </StyledTableCellText>
-                            <StyledTableCellText letterstyle='title'>
+                            <StyledTableCellText $letterstyle='title'>
                                 {el.room_number}
                             </StyledTableCellText>
                         </div>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledTableCellText letterstyle='title'>
+                        <StyledTableCellText $letterstyle='title'>
                             {el.room_type}
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledTableCellText letterstyle='title'>
+                        <StyledTableCellText $letterstyle='title'>
                             {el.room_floor}
                         </StyledTableCellText>
                     </StyledTableCell>
-                    <StyledTableCell name='facilities'>
-                        <StyledTableCellText letterstyle='title'>
+                    <StyledTableCell $name='facilities'>
+                        <StyledTableCellText $letterstyle='title'>
                             {el.amenities.join(', ')}
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell style={{ display: 'flex', alignItems: 'center' }}>
-                        <StyledTableCellText letterstyle='semiBold'>
+                        <StyledTableCellText $letterstyle='semiBold'>
                             ${el.rate}
                         </StyledTableCellText>
-                        <StyledTableCellText letterstyle='id'>
+                        <StyledTableCellText $letterstyle='id'>
                             /night
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledButton name={`${el.status}`}>
+                        <StyledButton $name={`${el.status}`}>
                             {el.status}
                         </StyledButton>
                     </StyledTableCell>

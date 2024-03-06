@@ -12,7 +12,7 @@ const Layout = () => {
     return (
         <div>
             <Navbar setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
-            <StyledLayout sidebaropen={sidebarOpen.toString()}>
+            <StyledLayout $sidebaropen={sidebarOpen.toString()}>
                 <Outlet />
             </StyledLayout>
         </div>

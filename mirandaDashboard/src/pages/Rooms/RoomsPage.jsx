@@ -10,7 +10,6 @@ const RoomsPage = () => {
     const [selection, setSelection] = useState('all')
 
     const handleMenuClick = (option) => {
-        console.log(option)
         setSelection(option);
     }
 
@@ -19,19 +18,19 @@ const RoomsPage = () => {
             <StyledMenu>
                 <StyledMenuText
                     onClick={() => handleMenuClick('all')}
-                    selected={selection === 'all'}
+                    $selected={selection === 'all'}
                 >
                     All Rooms
                 </StyledMenuText>
                 <StyledMenuText
                     onClick={() => handleMenuClick('active')}
-                    selected={selection === 'active'}
+                    $selected={selection === 'active'}
                 >
                     Active Employee
                 </StyledMenuText>
                 <StyledMenuText
                     onClick={() => handleMenuClick('inactive')}
-                    selected={selection === 'inactive'}
+                    $selected={selection === 'inactive'}
                 >
                     Inactive Employee
                 </StyledMenuText>

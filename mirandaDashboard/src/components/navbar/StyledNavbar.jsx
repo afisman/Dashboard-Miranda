@@ -18,7 +18,7 @@ export const StyledNavbarWrapper = styled.div`
     }
 
     ${(props) =>
-        props.isopen === 'true' && `
+        props.$isopen === 'true' && `
         margin-left: 17%;
         width: 82.5%;
         `

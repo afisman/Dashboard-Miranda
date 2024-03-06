@@ -5,7 +5,7 @@ export const StyledButton = styled.button`
     border: none;
 
     ${(props) =>
-        props.name === "login" &&
+        props.$name === "login" &&
         `
             border-radius: 8px;
             background: #EBF1EF 0% 0% no-repeat padding-box;
@@ -23,7 +23,7 @@ export const StyledButton = styled.button`
     `
     }
     ${(props) =>
-        props.name === "view_notes" &&
+        props.$name === "view_notes" &&
         `
             border-radius: 12px;
             background: #EEF9F2 0% 0% no-repeat padding-box;
@@ -41,7 +41,7 @@ export const StyledButton = styled.button`
     `
     }
     ${(props) =>
-        props.name === "refund" &&
+        props.$name === "refund" &&
         `
             border-radius: 12px;
             background: #FFEDEC 0% 0% no-repeat padding-box;
@@ -60,7 +60,7 @@ export const StyledButton = styled.button`
     `
     }
     ${(props) =>
-        props.name === "booked" &&
+        props.$name === "booked" &&
         `
             border-radius: 12px;
             background: #E8FFEE 0% 0% no-repeat padding-box;
@@ -79,7 +79,7 @@ export const StyledButton = styled.button`
     `
     }
     ${(props) =>
-        props.name === "pending" &&
+        props.$name === "pending" &&
         `
             border-radius: 12px;
             background: #E2E2E2 0% 0% no-repeat padding-box;
@@ -98,7 +98,7 @@ export const StyledButton = styled.button`
     `
     }
     ${(props) =>
-        props.name === "cancelled" &&
+        props.$name === "cancelled" &&
         `
             border-radius: 12px;
             background: #575757 0% 0% no-repeat padding-box;
@@ -118,7 +118,7 @@ export const StyledButton = styled.button`
     }
 
        ${(props) =>
-        props.name === "Booked" &&
+        props.$name === "Booked" &&
         `
             border-radius: 12px;
             background: #E23428 0% 0% no-repeat padding-box;
@@ -138,7 +138,7 @@ export const StyledButton = styled.button`
     }
 
       ${(props) =>
-        props.name === "Available" &&
+        props.$name === "Available" &&
         `
             border-radius: 12px;
             background: #5AD07A 0% 0% no-repeat padding-box;
