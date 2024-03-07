@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledTableCell, StyledTableRow, StyledTableCellText } from '../../components/reusable/StyledTable';
 
-const ProfilePageTable = ({ data }) => {
+const ContactPageTable = ({ data }) => {
     return (
         <>
             {data.map((el) => (
@@ -40,4 +40,4 @@ const ProfilePageTable = ({ data }) => {
     )
 }
 
-export default ProfilePageTable
+export default ContactPageTable
