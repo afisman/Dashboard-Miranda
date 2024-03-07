@@ -14,7 +14,7 @@ import { AuthProvider } from './context/auth.context';
 import PrivateRoute from './context/PrivateRoute';
 import BookingPage from './pages/Booking/BookingPage';
 import NewRoomPage from './pages/NewRoom/NewRoomPage';
-import NewBookingPage from './pages/NewBooking/NewBookingPage';
+import NewUserPage from './pages/NewUser/NewUserPage';
 
 
 function App() {
@@ -36,12 +36,13 @@ function App() {
               <Route path='/' element={<PrivateRoute><Layout /></PrivateRoute>}>
                 <Route path="dashboard" element={<DashboardPage />} />
                 <Route path="bookings" element={<BookingsPage />} />
-                <Route path="bookings/newbooking" element={<NewBookingPage />} />
                 <Route path="bookings/:id" element={<BookingPage />} />
                 <Route path="rooms" element={<RoomsPage />} />
                 <Route path="rooms/newroom" element={<NewRoomPage />} />
                 <Route path="contact" element={<ContactPage />} />
                 <Route path="users" element={<UsersPage />} />
+                <Route path="users/newuser" element={<NewUserPage />} />
+
               </Route>
             </>
           </Routes>
