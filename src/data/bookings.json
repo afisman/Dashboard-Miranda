@@ -7,6 +7,8 @@
         "hour_check_in": "12:00",
         "check_out": "2024-02-15",
         "hour_check_out": "16:00",
+        "room_type": "Deluxe -002424",
+        "rate": "$150",
         "special_request": "James Callahan has asked for a room overlooking the ocean for his reservation",
         "room": {
             "id": 3
@@ -21,6 +23,8 @@
         "hour_check_in": "12:00",
         "check_out": "2024-02-15",
         "hour_check_out": "16:00",
+        "room_type": "Deluxe -002424",
+        "rate": "$150",
         "special_request": "George Lahm has asked for a room overlooking the ocean for his reservation",
         "room": {
             "id": 1
@@ -35,6 +39,8 @@
         "hour_check_in": "12:00",
         "check_out": "2024-02-15",
         "hour_check_out": "16:00",
+        "room_type": "Deluxe -002424",
+        "rate": "$150",
         "special_request": "Al Bundy has asked for a room overlooking the ocean for his reservation",
         "room": {
             "id": 4
@@ -49,6 +55,8 @@
         "hour_check_in": "09:00",
         "check_out": "2024-02-06",
         "hour_check_out": "15:00",
+        "room_type": "Deluxe -002424",
+        "rate": "$150",
         "special_request": "Lyn Adler has asked for a room overlooking the ocean for his reservation",
         "room": {
             "id": 12
@@ -63,6 +71,8 @@
         "hour_check_in": "12:00",
         "check_out": "2024-02-15",
         "hour_check_out": "16:00",
+        "room_type": "Deluxe -002424",
+        "rate": "$150",
         "special_request": "Allison Kent has asked for a room overlooking the ocean for his reservation",
         "room": {
             "id": 7
@@ -77,6 +87,8 @@
         "hour_check_in": "12:00",
         "check_out": "2024-03-04",
         "hour_check_out": "13:30:00",
+        "room_type": "Deluxe -002424",
+        "rate": "$150",
         "special_request": "John Clark has asked for a room overlooking the ocean for his reservation",
         "room": {
             "id": 6
