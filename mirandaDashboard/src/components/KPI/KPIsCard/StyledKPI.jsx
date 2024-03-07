@@ -17,7 +17,7 @@ export const StyledKPIcard = styled.div`
     display: flex;
     padding: 0.5em ;
     border-radius: 0.75em;
-    width: 22%;
+    width: 20%;
     background-color: #fff;
     > .active {
         box-shadow: 0px 16px 30px #00000014;  

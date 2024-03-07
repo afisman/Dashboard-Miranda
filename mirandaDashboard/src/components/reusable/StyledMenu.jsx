@@ -28,3 +28,21 @@ export const StyledMenuText = styled.p`
     }
 `;
 
+export const StyledSelect = styled.select`
+    width: 8.375em;
+    height: 3em;
+    border: 1px solid #135846;
+    color: #135846;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-right: 2em;
+    border-radius: 0.5em;
+    text-align: center;
+
+    &::after {
+        padding-right: 0.5em;
+        color: #CCC;
+    }
+
+`;
+

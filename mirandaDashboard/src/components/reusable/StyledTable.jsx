@@ -52,7 +52,6 @@ export const StyledTableCell = styled.td`
         `
     }
 `;
-
 export const StyledTableCellText = styled.p`
     padding-left: 0.5rem;
     ${(props) =>
@@ -62,7 +61,6 @@ export const StyledTableCellText = styled.p`
         color: #393939;
         margin: 0;
         `}
-
     ${(props) =>
         props.$letterstyle === "semiBold" &&
         `
@@ -70,33 +68,38 @@ export const StyledTableCellText = styled.p`
         color: #393939;
         padding-right: 0.25em;
         margin: 0;
-        `}
-
+        `
+    }
     ${(props) =>
         props.$letterstyle === "id" &&
         `
         font-size: 0.8rem;
         color: #799283;
-        margin: 0;`}
+        margin: 0;`
+    }
+
 
     ${(props) =>
         props.$letterstyle === "subtitle" &&
         `
         font-size: 0.8rem;
         color: #393939;
-        margin: 0;`}
+        margin: 0;`
+    }
          ${(props) =>
         props.$letterstyle === "Active" &&
         `
         font: normal normal 600 14px/21px Poppins;
         color: #5AD07A;
-        margin: 0;`}
+        margin: 0;`
+    }
          ${(props) =>
         props.$letterstyle === "Inactive" &&
         `
         font: normal normal 600 14px/21px Poppins;
         color: #E23428;
-        margin: 0;`}
+        margin: 0;`
+    }
 `;
 
 export const StyledTableCellImg = styled.div`

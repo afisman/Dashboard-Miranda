@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyledTable, StyledTableHeader, StyledTableRow } from '../../components/reusable/StyledTable';
 import data from '../../data/bookings.json';
 import BookingsTable from './BookingsTable';
-import { StyledMenu, StyledMenuText } from '../../components/reusable/StyledMenu';
+import { StyledMenu, StyledMenuText, StyledSelect } from '../../components/reusable/StyledMenu';
 
 
 const BookingsPage = () => {
@@ -10,6 +10,7 @@ const BookingsPage = () => {
     const [pageNumber, setPageNumber] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [selection, setSelection] = useState('all');
+    const [order, setOrder] = useState('newest')
 
     const handleMenuClick = (option) => {
         setSelection(option);
@@ -19,38 +20,46 @@ const BookingsPage = () => {
 
     return (
         <>
-            <StyledMenu>
-                <StyledMenuText
-                    onClick={() => handleMenuClick('all')}
-                    $selected={selection === 'all'}
-                >
-                    All Guest
-                </StyledMenuText>
-                <StyledMenuText
-                    onClick={() => handleMenuClick('pending')}
-                    $selected={selection === 'pending'}
-                >
-                    Pending
-                </StyledMenuText>
-                <StyledMenuText
-                    onClick={() => handleMenuClick('booked')}
-                    $selected={selection === 'booked'}
-                >
-                    Booked
-                </StyledMenuText>
-                <StyledMenuText
-                    onClick={() => handleMenuClick('canceled')}
-                    $selected={selection === 'canceled'}
-                >
-                    Canceled
-                </StyledMenuText>
-                <StyledMenuText
-                    onClick={() => handleMenuClick('refund')}
-                    $selected={selection === 'refund'}
-                >
-                    Refund
-                </StyledMenuText>
-            </StyledMenu>
+            <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2em', alignItems: 'center' }}>
+                <StyledMenu>
+                    <StyledMenuText
+                        onClick={() => handleMenuClick('all')}
+                        $selected={selection === 'all'}
+                    >
+                        All Guest
+                    </StyledMenuText>
+                    <StyledMenuText
+                        onClick={() => handleMenuClick('pending')}
+                        $selected={selection === 'pending'}
+                    >
+                        Pending
+                    </StyledMenuText>
+                    <StyledMenuText
+                        onClick={() => handleMenuClick('booked')}
+                        $selected={selection === 'booked'}
+                    >
+                        Booked
+                    </StyledMenuText>
+                    <StyledMenuText
+                        onClick={() => handleMenuClick('canceled')}
+                        $selected={selection === 'canceled'}
+                    >
+                        Canceled
+                    </StyledMenuText>
+                    <StyledMenuText
+                        onClick={() => handleMenuClick('refund')}
+                        $selected={selection === 'refund'}
+                    >
+                        Refund
+                    </StyledMenuText>
+                </StyledMenu>
+                <StyledSelect name="order" id="order">
+                    <option value='newest'>Newest</option>
+                    <option value='checkin'>Check in</option>
+                    <option value='checkout'>Check out</option>
+                    <option value='guest'>Guest</option>
+                </StyledSelect>
+            </div>
             <StyledTable>
                 <thead>
                     <tr>
