@@ -26,7 +26,6 @@ const ContactSwiper = () => {
                     enabled: true,
                 }}
                 navigation={true}
-
             >
                 {
                     contacts.map((el) => (

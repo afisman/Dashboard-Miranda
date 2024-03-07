@@ -27,8 +27,7 @@ export const StyledSwiperSlide = styled(SwiperSlide)`
     background-color: #fff;
     padding: 1.5em;
     max-width: 25%;
-    margin: 1em;
-   
+    margin: 1em; 
 
     >div {
         display: flex;
@@ -47,12 +46,7 @@ export const StyledSwiperSlide = styled(SwiperSlide)`
             object-fit: cover;
         }
         }
-    }
-
-
-
-
-    
+    }  
 `;
 
 export const StyledSwiperSliderText = styled.p`
@@ -79,5 +73,29 @@ export const StyledSwiperSliderText = styled.p`
         color: #799283;
         `}
 `;
+
+export const StyledCardSwiper = styled(Swiper)`  
+    width: 100% ;
+    height: 100%;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+
+    & .swiper-button-prev, .swiper-button-next {
+        color: #fff;
+        background: #bdbabad1;
+        width: 2em;
+        height: 2em;
+        border-radius: 0.3em;
+        &::after {
+            font-size: 1rem;
+        }
+    }  
+`;
+
+export const SwiperSliderImg = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+`
 
 

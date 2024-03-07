@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledCardWrapper = styled.div`
-    width: 80%;
+    width: 90%;
     margin: 3em auto;
     display: flex;
     border-radius: 1em;
@@ -14,6 +14,9 @@ flex: 1 1 0;
 `;
 export const StyledCardRight = styled.div`
     flex: 1 1 0;
+    width: 50%;
+    background-color: transparent;
+    
 `;
 
 export const StyledCardTop = styled.div`
@@ -39,9 +42,7 @@ export const StyledCardText = styled.p`
     font-size: 0.875rem;
     margin: 0.5em;
 
-    /* >div {
-        height: auto;
-    } */
+    
     ${(props) =>
         props.$lettertype === "title" &&
         `

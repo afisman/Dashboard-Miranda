@@ -1,11 +1,29 @@
-import React from 'react'
-import { StyledCardRight } from '../../components/reusable/StyledDataCard'
+import React from 'react';
+import { StyledCardRight } from '../../components/reusable/StyledDataCard';
+import { StyledCardSwiper, SwiperSliderImg } from '../../components/reusable/StyledSwiper';
+import { Navigation, Pagination } from 'swiper/modules';
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { SwiperSlide } from 'swiper/react';
+
+
 
 const BookingPageSwiper = ({ images }) => {
     return (
         <>
             <StyledCardRight>
-                <div>BookingPageSwiper</div>
+                <StyledCardSwiper
+                    slidesPerView={1}
+                    spaceBetween={10}
+                    navigation={true}
+                    modules={[Navigation]}
+                    className="mySwiper"
+                >
+                    {images.map((el, i) => (
+                        <SwiperSlide key={i}><SwiperSliderImg src={el} /></SwiperSlide>
+                    ))}
+                </StyledCardSwiper>
             </StyledCardRight>
         </>
     )
