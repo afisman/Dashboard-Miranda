@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import ContactSwiper from '../../components/contactSwiper/ContactSwiper';
-import ProfilePageTable from './ProfilePageTable';
+import ContactPageTable from './ContactPageTable';
 import { StyledMenu, StyledMenuText } from '../../components/reusable/StyledMenu';
 import data from '../../data/contact.json';
 import { StyledTable, StyledTableHeader } from '../../components/reusable/StyledTable';
 
 
 
-const ProfilePage = () => {
+const ContactPage = () => {
     const [selection, setSelection] = useState('all');
     const [contactsList, setContactsList] = useState(data)
 
@@ -48,7 +48,7 @@ const ProfilePage = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <ProfilePageTable
+                    <ContactPageTable
                         data={contactsList}
                     />
                 </tbody>
@@ -57,4 +57,4 @@ const ProfilePage = () => {
     )
 }
 
-export default ProfilePage
+export default ContactPage

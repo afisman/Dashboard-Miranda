@@ -6,13 +6,14 @@ import DashboardPage from './pages/Dashboard/DashboardPage';
 import Layout from './pages/Layout/Layout';
 import BookingsPage from './pages/Bookings/BookingsPage';
 import RoomsPage from './pages/Rooms/RoomsPage'
-import ProfilePage from './pages/Profile/ProfilePage';
+import ContactPage from './pages/Contact/ContactPage';
 import UsersPage from './pages/Users/UsersPage';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, darkTheme, lightTheme } from './themes';
 import { AuthProvider } from './context/auth.context';
 import PrivateRoute from './context/PrivateRoute';
+import BookingPage from './pages/Booking/BookingPage';
 
 function App() {
 
@@ -33,8 +34,9 @@ function App() {
               <Route path='/' element={<PrivateRoute><Layout /></PrivateRoute>}>
                 <Route path="dashboard" element={<DashboardPage />} />
                 <Route path="bookings" element={<BookingsPage />} />
+                <Route path="bookings/:id" element={<BookingPage />} />
                 <Route path="rooms" element={<RoomsPage />} />
-                <Route path="profile" element={<ProfilePage />} />
+                <Route path="profile" element={<ContactPage />} />
                 <Route path="users" element={<UsersPage />} />
               </Route>
             </>

@@ -12,10 +12,11 @@ export const StyledNavbarWrapper = styled.div`
 
     >div {
         display: flex;
-        width: 20%;
+        min-width: 25%;
         margin-right: 10%;
         justify-content: space-around;
         align-items: center;
+        gap: 1em;
     }
 
     ${(props) =>

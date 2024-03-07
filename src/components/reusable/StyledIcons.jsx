@@ -24,6 +24,11 @@ const styleIconsSize = `
     cursor: pointer;
 `;
 
+export const StyledPhoneIcon = styled(MdOutlineLocalPhone)`
+    ${styleIconsColor2}
+    ${styleIconsSize}
+`;
+
 export const StyledSearchIcon = styled(IoIosSearch)`
     ${styleIconsSize}
 `;
