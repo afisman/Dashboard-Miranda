@@ -1,14 +1,15 @@
-import { IoIosSearch, IoMdHeartEmpty, IoMdMore } from "react-icons/io";
+import { IoIosSearch } from "react-icons/io";
 import { FiBell } from "react-icons/fi";
-import { MdOutlineMail, MdOutlineLocalPhone } from "react-icons/md";
+import { MdOutlineMail } from "react-icons/md";
 import { RxCrossCircled } from "react-icons/rx";
 import styled from "styled-components";
 import { LuLayoutDashboard, LuCalendarCheck2 } from "react-icons/lu";
-import { BiKey } from "react-icons/bi";
-import { FaRegUser } from "react-icons/fa6";
+import { BiKey, BiSolidMessageRoundedDetail } from "react-icons/bi";
+import { FaRegUser, FaPhone } from "react-icons/fa6";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { HiOutlinePuzzle, HiOutlineMenuAlt2 } from "react-icons/hi";
 import { SlLogin } from "react-icons/sl";
+
 
 const styleIconsColor1 = `
     color: #799283; 
@@ -24,9 +25,17 @@ const styleIconsSize = `
     cursor: pointer;
 `;
 
-export const StyledPhoneIcon = styled(MdOutlineLocalPhone)`
+export const StyledMessageBubble = styled(BiSolidMessageRoundedDetail)`
+    fill:#fff;
+    background-color: #135846;
+    ${styleIconsSize}
+    padding: 0.5em;
+`;
+
+export const StyledPhoneIcon = styled(FaPhone)`
     ${styleIconsColor2}
     ${styleIconsSize}
+    padding: 1em;
 `;
 
 export const StyledSearchIcon = styled(IoIosSearch)`

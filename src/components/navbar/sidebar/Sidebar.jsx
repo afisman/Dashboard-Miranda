@@ -23,9 +23,9 @@ const makeButtons = [
         title: 'Bookings',
     },
     {
-        to: '/profile',
+        to: '/contact',
         icon: <StyledContactIcon />,
-        title: 'Guest'
+        title: 'Contact'
     },
     {
         to: '/users',

@@ -16,19 +16,32 @@ const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
 
     let title;
 
-    switch (location.pathname) {
-        case '/rooms':
+
+    const checkPath = () => {
+
+        return location.pathname.startsWith();
+    }
+
+    console.log(location.pathname.startsWith('/rooms'))
+
+    switch (true) {
+        case location.pathname.startsWith('/rooms'):
             title = 'Room List';
             break;
-        case '/users':
+        case location.pathname.startsWith('/users'):
             title = 'Concierge List';
             break;
-        case '/bookings':
+        case location.pathname.startsWith('/bookings/'):
+            title = 'Guest Details';
+            break;
+        case location.pathname.startsWith('/bookings'):
             title = 'Guest List';
             break;
-        case '/profile':
+        case location.pathname.startsWith('/profile'):
+
             title = 'Reviews';
             break;
+
         default:
             title = 'Dashboard';
     }

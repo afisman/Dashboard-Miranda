@@ -1,29 +1,31 @@
 import React from 'react';
-import { StyledCardLeft, StyledCardTop, StyledCardText, StyledCardInfo } from '../../components/reusable/StyledDataCard';
+import { StyledCardLeft, StyledCardTop, StyledCardText, StyledCardInfo, StyledButtonGroup } from '../../components/reusable/StyledDataCard';
 import { StyledButton } from '../../components/reusable/StyledButton';
-import { StyledPhoneIcon } from '../../components/reusable/StyledIcons';
+import { StyledMessageBubble, StyledPhoneIcon } from '../../components/reusable/StyledIcons';
 
 
 
 const BookingPageCard = ({ booking, room }) => {
+    console.log(room.amenities.slice(0, 3))
     return (
         <>
             <StyledCardLeft>
                 <StyledCardTop>
-                    <StyledCardText>
+                    <StyledCardText $lettertype='title'>
                         {booking.name}
                     </StyledCardText>
-                    <StyledCardText>
+                    <StyledCardText $lettertype='id'>
                         ID {booking.id}
                     </StyledCardText>
-                    <div style={{ display: 'flex' }}>
+                    <StyledButtonGroup $type='contact'>
                         <StyledButton>
                             <StyledPhoneIcon />
                         </StyledButton>
-                        <StyledButton>
+                        <StyledButton $name='card'>
+                            <StyledMessageBubble />
                             Send Message
                         </StyledButton>
-                    </div>
+                    </StyledButtonGroup>
                 </StyledCardTop>
                 <StyledCardInfo $type='check'>
                     <div>
@@ -56,19 +58,34 @@ const BookingPageCard = ({ booking, room }) => {
                         <StyledCardText>
                             Price:
                         </StyledCardText>
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <StyledCardText $lettertype='info'>
-                                {booking.rate}
-                            </StyledCardText>
-                            <StyledCardText $lettertype='check'>
-                                <p>/night</p>
-                            </StyledCardText>
-                        </div>
+                        <StyledCardText $lettertype='rate'>
+                            {booking.rate}
+                            <small>
+                                /night
+                            </small>
+                        </StyledCardText>
                     </div>
                 </StyledCardInfo>
                 <StyledCardText>
                     {room.description}
                 </StyledCardText>
+                <StyledCardText $lettertype='check'>
+                    Facilities:
+                </StyledCardText>
+                <StyledButtonGroup $type='large'>
+                    {room.amenities.slice(0, 3).map((el) => (
+                        <StyledButton $name='login' key={el}>
+                            {el}
+                        </StyledButton>
+                    ))}
+                </StyledButtonGroup>
+                <StyledButtonGroup $type='small'>
+                    {room.amenities.slice(3, 6).map((el) => (
+                        <StyledButton $name='facilities2' key={el}>
+                            {el}
+                        </StyledButton>
+                    ))}
+                </StyledButtonGroup>
             </StyledCardLeft>
         </>
     )
