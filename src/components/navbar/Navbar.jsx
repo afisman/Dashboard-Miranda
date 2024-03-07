@@ -22,8 +22,6 @@ const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
         return location.pathname.startsWith();
     }
 
-    console.log(location.pathname.startsWith('/rooms'))
-
     switch (true) {
         case location.pathname.startsWith('/rooms'):
             title = 'Room List';

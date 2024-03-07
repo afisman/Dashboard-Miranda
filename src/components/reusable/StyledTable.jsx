@@ -62,6 +62,22 @@ export const StyledTableCellText = styled.p`
         font-weight: 500;
         color: #393939;
         `}
+         ${(props) =>
+        props.$letterstyle === "dots" &&
+        `
+        font-weight: 500;
+        color: #393939;
+        margin-right: 0.5em;
+        cursor: pointer;
+        text-align: center;
+        padding-left: 0;
+
+        &:hover {
+            background-color: #393939;
+            color: #fff;
+            border-radius: 0.5em;
+        }
+        `}
     ${(props) =>
         props.$letterstyle === "semiBold" &&
         `

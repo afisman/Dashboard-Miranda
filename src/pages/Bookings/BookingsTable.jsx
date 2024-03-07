@@ -4,6 +4,12 @@ import { StyledButton } from '../../components/reusable/StyledButton';
 
 const BookingsTable = ({ data }) => {
 
+    const handleOpenOptions = (e) => {
+        e.preventDefault();
+
+        console.log(e.target)
+    }
+
     return (
         <>
             {data.map((el) => (
@@ -51,6 +57,11 @@ const BookingsTable = ({ data }) => {
                         <StyledButton $name={`${el.status}`}>
                             {el.status}
                         </StyledButton>
+                    </StyledTableCell>
+                    <StyledTableCell>
+                        <StyledTableCellText $letterstyle="dots" onClick={(e) => { handleOpenOptions(e) }}>
+                            &#xFE19;
+                        </StyledTableCellText>
                     </StyledTableCell>
                 </StyledTableRow>
 
