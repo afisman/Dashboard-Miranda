@@ -34,6 +34,11 @@ export const StyledCardInfo = styled.div`
 
 export const StyledCardText = styled.p`
     font-size: 0.875rem;
+    margin: 0;
+
+    >div {
+        height: auto;
+    }
     ${(props) =>
         props.$lettertype === "check" &&
         `
@@ -52,6 +57,7 @@ export const StyledCardText = styled.p`
         `
         color: #212121;
         font-weight: 500;
+        font-size:1.25rem;
         `
     }
 

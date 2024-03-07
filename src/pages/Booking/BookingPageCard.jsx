@@ -48,7 +48,7 @@ const BookingPageCard = ({ booking, room }) => {
                         <StyledCardText>
                             Room info:
                         </StyledCardText>
-                        <StyledCardText>
+                        <StyledCardText $lettertype='info'>
                             {booking.room_type}
                         </StyledCardText>
                     </div>
@@ -56,9 +56,14 @@ const BookingPageCard = ({ booking, room }) => {
                         <StyledCardText>
                             Price:
                         </StyledCardText>
-                        <StyledCardText>
-                            {booking.rate}
-                        </StyledCardText>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <StyledCardText $lettertype='info'>
+                                {booking.rate}
+                            </StyledCardText>
+                            <StyledCardText $lettertype='check'>
+                                <p>/night</p>
+                            </StyledCardText>
+                        </div>
                     </div>
                 </StyledCardInfo>
                 <StyledCardText>
