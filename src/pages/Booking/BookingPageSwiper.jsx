@@ -18,7 +18,6 @@ const BookingPageSwiper = ({ images }) => {
                     spaceBetween={10}
                     navigation={true}
                     modules={[Navigation]}
-                    className="mySwiper"
                 >
                     {images.map((el, i) => (
                         <SwiperSlide key={i}><SwiperSliderImg src={el} /></SwiperSlide>
