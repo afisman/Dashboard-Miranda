@@ -9,12 +9,11 @@ export const AuthProvider = ({ children }) => {
 
         return new Promise((resolve, reject) => {
 
-            if (userName === 'alejandro@admin.com' && password === 'alejandro1') {
+            if (userName === 'alejandro@admin.com' && password === 'admin') {
                 localStorage.setItem('isLoggedIn', 'true');
                 resolve('success')
             } else {
                 reject('Incorrect password or username, check information in form')
-
             }
         })
     }

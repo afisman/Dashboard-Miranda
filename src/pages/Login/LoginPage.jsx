@@ -5,12 +5,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/auth.context';
 
 
-const LoginPage = () => {
+const LoginPage = ({ auth, setAuth }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const auth = useAuth();
+    // const auth = useAuth();
     const [error, setError] = useState(false)
 
 
@@ -30,9 +30,14 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (e.target.email.value === 'alejandro@admin.com' && e.target.password.value === 'admin') {
+            setAuth(true)
+            navigate('/');
+        }
+
         try {
             await auth.login(email, password);
-            navigate('/dashboard', { replace: true });
+            navigate('/', { replace: true });
         } catch (error) {
             setError(true);
         }
@@ -45,20 +50,22 @@ const LoginPage = () => {
                     <StyledFormInput
                         placeholder='Email'
                         type='email'
-                        value={email}
+                        name='email'
+                        value={'alejandro@admin.com'}
                         onChange={handleEmailChange}
                     ></StyledFormInput>
                     <StyledFormInput
                         placeholder='Password'
                         type='password'
-                        value={password}
+                        name='password'
+                        value={'admin'}
                         onChange={handlePasswordChange}
                     ></StyledFormInput>
                     <StyledButton $name="login" type="submit">
                         LOGIN
                     </StyledButton>
                     <p>alejandro@admin.com</p>
-                    <p>alejandro1</p>
+                    <p>admin</p>
                     {error &&
                         <p>Incorrect email or password</p>
                     }

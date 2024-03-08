@@ -47,7 +47,7 @@ const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
 
         try {
             await auth.logout();
-            navigate('/', { replace: true });
+            navigate('/login', { replace: true });
         } catch (error) {
             return alert(`Error while trying ot sign out, ${error}`);
         }

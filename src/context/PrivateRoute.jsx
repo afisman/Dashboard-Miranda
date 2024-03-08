@@ -2,11 +2,11 @@ import React from 'react';
 import { Navigate, useLocation } from "react-router-dom";
 
 
-const PrivateRoute = ({ children }) => {
+const PrivateRoute = ({ children, auth }) => {
     let location = useLocation()
 
-    if (localStorage.getItem('isLoggedIn') !== 'true') {
-        return <Navigate to="/" state={{ from: location }} replace />
+    if (auth !== true) {
+        return <Navigate to="/login" state={{ from: location }} replace />
     }
 
     return children
