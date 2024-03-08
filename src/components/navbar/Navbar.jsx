@@ -7,13 +7,26 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 
 
-const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
+
+const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
     const auth = useAuth();
     const navigate = useNavigate();
 
     const location = useLocation();
 
     let title;
+
+    console.log(sidebarOpen)
+
+    const handleClick = () => {
+        sidebarOpen === 'true' ? setSidebarOpen('false') : setSidebarOpen('true');
+
+
+
+
+
+    }
+
 
 
     const checkPath = () => {
@@ -47,7 +60,7 @@ const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
 
         try {
             await auth.logout();
-            navigate('/login', { replace: true });
+            navigate('/login');
         } catch (error) {
             return alert(`Error while trying ot sign out, ${error}`);
         }
@@ -55,16 +68,16 @@ const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
 
     return (
         <div>
-            {sidebarOpen === true ? (
+            {sidebarOpen === 'true' ? (
                 <Sidebar />
             ) : (
                 ''
             )}
-            <StyledNavbarWrapper $isopen={sidebarOpen.toString()}>
+            <StyledNavbarWrapper $isopen={sidebarOpen}>
                 <div>
                     <StyledMenuIcon
                         onClick={() => {
-                            setSidebarOpen(prevState => !prevState)
+                            handleClick()
                         }}>
                     </StyledMenuIcon>
                     <StyledNavbarTitle>{title}</StyledNavbarTitle>
