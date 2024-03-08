@@ -31,10 +31,10 @@ function App() {
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
           <GlobalStyles />
           <Routes>
-            <Route path="/" element={<LoginPage />} />
+            <Route path="/Login" element={<LoginPage />} />
             <>
               <Route path='/' element={<PrivateRoute><Layout /></PrivateRoute>}>
-                <Route path="dashboard" element={<DashboardPage />} />
+                <Route index element={<DashboardPage />} />
                 <Route path="bookings" element={<BookingsPage />} />
                 <Route path="bookings/:id" element={<BookingPage />} />
                 <Route path="rooms" element={<RoomsPage />} />

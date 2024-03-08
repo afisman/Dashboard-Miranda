@@ -6,16 +6,15 @@ import { StyledLayout } from '../../components/layout/StyledLayout';
 
 
 const Layout = () => {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
-
+    const [sidebarOpen, setSidebarOpen] = useState(true);
 
     return (
-        <div>
+        <>
             <Navbar setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
             <StyledLayout $sidebaropen={sidebarOpen.toString()}>
                 <Outlet />
             </StyledLayout>
-        </div>
+        </>
     )
 }
 

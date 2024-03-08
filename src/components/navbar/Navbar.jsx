@@ -8,7 +8,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 
 const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
-    const [open, setOpen] = useState(false);
     const auth = useAuth();
     const navigate = useNavigate();
 
@@ -36,10 +35,8 @@ const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
             title = 'Guest List';
             break;
         case location.pathname.startsWith('/profile'):
-
             title = 'Reviews';
             break;
-
         default:
             title = 'Dashboard';
     }
@@ -52,7 +49,7 @@ const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
             await auth.logout();
             navigate('/', { replace: true });
         } catch (error) {
-            return alert(`Error while trying ot sign in, ${error}`);
+            return alert(`Error while trying ot sign out, ${error}`);
         }
     }
 
@@ -67,8 +64,7 @@ const Navbar = ({ setSidebarOpen, sidebarOpen }) => {
                 <div>
                     <StyledMenuIcon
                         onClick={() => {
-                            setOpen(!open)
-                            setSidebarOpen(!sidebarOpen)
+                            setSidebarOpen(prevState => !prevState)
                         }}>
                     </StyledMenuIcon>
                     <StyledNavbarTitle>{title}</StyledNavbarTitle>

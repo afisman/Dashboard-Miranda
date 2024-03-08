@@ -7,7 +7,6 @@ const BookingsTable = ({ data }) => {
     const handleOpenOptions = (e) => {
         e.preventDefault();
 
-        console.log(e.target)
     }
 
     return (

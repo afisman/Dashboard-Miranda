@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyledTable, StyledTableHeader, StyledTableRow } from '../../components/reusable/StyledTable';
 import data from '../../data/bookings.json';
 import BookingsTable from './BookingsTable';
-import { StyledMenu, StyledMenuText, StyledSelect } from '../../components/reusable/StyledMenu';
+import { StyledMenu, StyledMenuText, StyledSelect, StyledMenuWrapper } from '../../components/reusable/StyledMenu';
 
 
 const BookingsPage = () => {
@@ -20,7 +20,7 @@ const BookingsPage = () => {
 
     return (
         <>
-            <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2em', alignItems: 'center' }}>
+            <StyledMenuWrapper>
                 <StyledMenu>
                     <StyledMenuText
                         onClick={() => handleMenuClick('all')}
@@ -59,7 +59,7 @@ const BookingsPage = () => {
                     <option value='checkout'>Check out</option>
                     <option value='guest'>Guest</option>
                 </StyledSelect>
-            </div>
+            </StyledMenuWrapper>
             <StyledTable>
                 <thead>
                     <tr>

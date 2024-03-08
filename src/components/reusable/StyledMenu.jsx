@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const StyledMenuWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 2em;
+    align-items: center;
+`;
 export const StyledMenu = styled.div`
     display: flex;
     min-width: 34em;
