@@ -6,17 +6,17 @@ Contac:
 | HTTP Method 	| URI path      	| Description                                    	| 
 |-------------	|---------------	|------------------------------------------------	|
 | GET         	| `/bookings` 	| displays bookings list 	| |
-| POST         	| `/bookings/create` 	| Creates booking 	| |
+| POST         	| `/bookings/newbooking` 	| Creates booking 	| |
 | GET         	| `/bookings/:id` 	| Shows booking details	| |
 | PUT         	| `/bookings/:id/` 	| Edit booking 	| |
 | DELETE        | `/bookings/:id/` 	| Deletes booking 	| |
 | GET         	| `/rooms` 	| displays rooms list 	| |
-| POST         	| `/rooms/create` 	| Creates rooms 	| |
+| POST         	| `/rooms/newroom` 	| Creates rooms 	| |
 | GET         	| `/rooms/:id` 	| Shows rooms details	| |
 | PUT         	| `/rooms/:id/` 	| Edit rooms 	| |
 | DELETE        | `/rooms/:id/` 	| Deletes rooms 	| |
 | GET         	| `/users` 	| displays users list 	| |
-| POST         	| `/users/create` 	| Creates users 	| |
+| POST         	| `/users/newuser` 	| Creates users 	| |
 | GET         	| `/users/:id` 	| Shows users details	| |
 | PUT         	| `/users/:id/` 	| Edit users 	| |
 | DELETE        | `/users/:id/` 	| Deletes users 	| |
