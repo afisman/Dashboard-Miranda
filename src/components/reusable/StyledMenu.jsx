@@ -22,8 +22,7 @@ export const StyledMenuText = styled.p`
     text-align: center;
     padding-bottom: 1em;
     cursor: pointer;
-        border-bottom: 1px solid #c8c8c8;
-
+    border-bottom: 1px solid #c8c8c8;
 
     ${(props) =>
         props.$selected &&
@@ -49,6 +48,11 @@ export const StyledSelect = styled.select`
         padding-right: 0.5em;
         color: #CCC;
     }
+`;
 
+export const StyledMenuButtons = styled.div`
+    display: flex;
+    /* align-items: center; */
+    gap: 2em;
 `;
 

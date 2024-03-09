@@ -10,7 +10,7 @@ const BookingsPage = () => {
     const [pageNumber, setPageNumber] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [selection, setSelection] = useState('all');
-    const [order, setOrder] = useState('newest')
+    const [order, setOrder] = useState('newest');
 
     const handleMenuClick = (option) => {
         setSelection(option);

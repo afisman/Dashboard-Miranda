@@ -111,4 +111,18 @@ export const StyledButton = styled.button`
             padding: 0.5em 1em;
     `
     }
+    ${(props) =>
+        props.$name === 'new' &&
+        `
+            background-color: #135846;
+            color: #fff;
+            font-weight: 500;
+            padding: 1em 2em;
+            text-decoration:none;
+            display:flex;
+            align-items:center;
+            justify-content: center;
+            min-width: 10em;
+        `
+    }
 `;
