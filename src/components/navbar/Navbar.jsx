@@ -16,14 +16,9 @@ const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
 
     let title;
 
-    console.log(sidebarOpen)
 
     const handleClick = () => {
         sidebarOpen === 'true' ? setSidebarOpen('false') : setSidebarOpen('true');
-
-
-
-
 
     }
 

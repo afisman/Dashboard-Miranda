@@ -9,8 +9,6 @@ const NewUserPage = () => {
     const handleFormChange = (e) => {
         const { name, value } = e.target;
 
-        console.log(e)
-
         setForm((prevData) => {
             if (name === 'amenities') {
                 return {

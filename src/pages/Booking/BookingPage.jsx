@@ -14,8 +14,6 @@ const BookingPage = () => {
     const [booking, setBooking] = useState(data.find((el) => el.id === Number(id)))
     const room = rooms.find((el) => el.id == booking.room.id)
 
-    console.log(room)
-
     return (
         <StyledCardWrapper>
             <BookingPageCard booking={booking} room={room} />

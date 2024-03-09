@@ -6,7 +6,6 @@ import { StyledMessageBubble, StyledPhoneIcon } from '../../components/reusable/
 
 
 const BookingPageCard = ({ booking, room }) => {
-    console.log(room.amenities.slice(0, 3))
     return (
         <>
             <StyledCardLeft>
