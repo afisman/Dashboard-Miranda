@@ -1,18 +1,23 @@
 import React from 'react';
 import { StyledTableCell, StyledTableRow, StyledTableCellText } from '../../components/reusable/StyledTable';
 import { StyledButton } from '../../components/reusable/StyledButton';
+import { Link, useNavigate } from 'react-router-dom';
 
 const BookingsTable = ({ data }) => {
+    const navigate = useNavigate()
 
     const handleOpenOptions = (e) => {
         e.preventDefault();
+    }
 
+    const handleClick = (id) => {
+        navigate(`/bookings/${id}`);
     }
 
     return (
         <>
             {data.map((el) => (
-                <StyledTableRow key={el.id}>
+                <StyledTableRow key={el.id} onClick={() => handleClick(el.id)}>
                     <StyledTableCell $name='flexCell'>
                         <div>
                             <StyledTableCellText $letterstyle='title'>

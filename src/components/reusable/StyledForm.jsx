@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 
 export const StyledFormWrapper = styled.div`
-    margin: 0 auto;
+    margin: 2em auto;
     width: 28em;
     text-align: center;
     box-shadow: 0px 20px 30px #00000014;
-    transform: translateY(100%);
+    /* transform: translateY(50%); */
     padding: 2em;
 `;
 
