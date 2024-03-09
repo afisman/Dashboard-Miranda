@@ -10,14 +10,16 @@ const BookingsTable = ({ data }) => {
         e.preventDefault();
     }
 
-    const handleClick = (id) => {
+    const handleClick = (e, id) => {
+        e.stopPropagation()
+
         navigate(`/bookings/${id}`);
     }
 
     return (
         <>
             {data.map((el) => (
-                <StyledTableRow key={el.id} onClick={() => handleClick(el.id)}>
+                <StyledTableRow key={el.id} onClick={(e) => handleClick(e, el.id)}>
                     <StyledTableCell $name='flexCell'>
                         <div>
                             <StyledTableCellText $letterstyle='title'>

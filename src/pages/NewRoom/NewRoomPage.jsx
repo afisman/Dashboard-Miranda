@@ -50,42 +50,46 @@ const NewRoomPage = () => {
                 <StyledFormContainer onSubmit={handleSubmit}>
                     <StyledFormInput
                         placeholder='Room Number'
+                        name='room_number'
                         type='string'
                         value={form.room_number || ''}
                         onChange={handleFormChange}
                     ></StyledFormInput>
                     <StyledFormInput
                         placeholder='Description'
+                        name='description'
                         type='string'
                         value={form.description || ''}
                         onChange={handleFormChange}
                     ></StyledFormInput>
-                    <div>
-                        <StyledFormInput
-                            placeholder='Price per night'
-                            type='number'
-                            value={form.price || ''}
-                            onChange={handleFormChange}
-                        ></StyledFormInput>
-                        <StyledFormInput
-                            placeholder='discount'
-                            type='number'
-                            value={form.discount || ''}
-                            onChange={handleFormChange}
-                        ></StyledFormInput>
-                    </div>
+                    <StyledFormInput
+                        placeholder='Price per night'
+                        name='price'
+                        type='number'
+                        value={form.price || ''}
+                        onChange={handleFormChange}
+                    ></StyledFormInput>
+                    <StyledFormInput
+                        placeholder='discount'
+                        name='discount'
+                        type='number'
+                        value={form.discount || ''}
+                        onChange={handleFormChange}
+                    ></StyledFormInput>
                     <StyledFormInput
                         placeholder='Cancelation'
+                        name='cancelation'
                         type='string'
                         value={form.cancelation || ''}
                         onChange={handleFormChange}
                     ></StyledFormInput>
-                    <StyledFormInput
+                    <StyledTextArea
                         placeholder='Amenities'
+                        name='amenities'
                         type='string'
                         value={form.amenities || []}
                         onChange={handleFormChange}
-                    ></StyledFormInput>
+                    ></StyledTextArea>
                     <StyledButton $name="login" type="submit">
                         Create Room
                     </StyledButton>

@@ -39,7 +39,7 @@ const UsersPage = () => {
                     </StyledMenuText>
                 </StyledMenu>
                 <StyledMenuButtons>
-                    <StyledButton as={Link} to='/users/newusers' $name='new'>
+                    <StyledButton as={Link} to='/users/newuser' $name='new'>
                         + New Employee
                     </StyledButton>
                     <StyledSelect name="order" id="order">

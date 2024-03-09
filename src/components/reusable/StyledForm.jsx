@@ -6,7 +6,6 @@ export const StyledFormWrapper = styled.div`
     width: 28em;
     text-align: center;
     box-shadow: 0px 20px 30px #00000014;
-    /* transform: translateY(50%); */
     padding: 2em;
 `;
 
@@ -24,6 +23,31 @@ export const StyledFormInput = styled.input`
     border-color: #135846;
     border: none;
     border-bottom: 1px solid #135846;
+    margin-bottom: 1.875em;
+
+     &::placeholder {
+            color: #135846;
+    }
+`;
+
+export const StyledTextArea = styled.textarea`
+    background: none;
+    font-family: "Poppins", sans-serif;
+    border-color: #135846;
     color: #135846;
-    margin-bottom: 1.875rem;
+    margin-bottom: 1.875em;
+    border-radius: 0.25em;
+
+    &::placeholder {
+            color: #135846;
+    }
+`;
+
+export const StyledFormSelect = styled.select`
+        background: none;
+        border: none;
+        margin-bottom: 1.875em;
+        border-bottom: 1px solid #135846;
+        font-family: "Poppins", sans-serif;
+        color: #135846;
 `;
