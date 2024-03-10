@@ -94,5 +94,101 @@
             "id": 6
         },
         "status": "cancelled"
+    },
+    {
+        "id": 7,
+        "name": "James Callahan",
+        "order_date": "2024-01-12 10:35",
+        "check_in": "2024-02-10",
+        "hour_check_in": "12:00",
+        "check_out": "2024-02-15",
+        "hour_check_out": "16:00",
+        "room_type": "Deluxe -002424",
+        "rate": "$150",
+        "special_request": "James Callahan has asked for a room overlooking the ocean for his reservation",
+        "room": {
+            "id": 3
+        },
+        "status": "booked"
+    },
+    {
+        "id": 8,
+        "name": "George Lahm",
+        "order_date": "2024-01-12 10:35",
+        "check_in": "2024-02-10",
+        "hour_check_in": "12:00",
+        "check_out": "2024-02-15",
+        "hour_check_out": "16:00",
+        "room_type": "Deluxe -002424",
+        "rate": "$150",
+        "special_request": "George Lahm has asked for a room overlooking the ocean for his reservation",
+        "room": {
+            "id": 1
+        },
+        "status": "pending"
+    },
+    {
+        "id": 9,
+        "name": "Al Bundy",
+        "order_date": "2024-01-12 10:35",
+        "check_in": "2024-02-10",
+        "hour_check_in": "12:00",
+        "check_out": "2024-02-15",
+        "hour_check_out": "16:00",
+        "room_type": "Deluxe -002424",
+        "rate": "$150",
+        "special_request": "Al Bundy has asked for a room overlooking the ocean for his reservation",
+        "room": {
+            "id": 4
+        },
+        "status": "refund"
+    },
+    {
+        "id": 10,
+        "name": "Lyn Adler",
+        "order_date": "2024-01-11 18:35",
+        "check_in": "2024-02-01",
+        "hour_check_in": "09:00",
+        "check_out": "2024-02-06",
+        "hour_check_out": "15:00",
+        "room_type": "Deluxe -002424",
+        "rate": "$150",
+        "special_request": "Lyn Adler has asked for a room overlooking the ocean for his reservation",
+        "room": {
+            "id": 12
+        },
+        "status": "booked"
+    },
+    {
+        "id": 11,
+        "name": "Allison Kent",
+        "order_date": "2024-01-12 10:35",
+        "check_in": "2024-02-10",
+        "hour_check_in": "12:00",
+        "check_out": "2024-02-15",
+        "hour_check_out": "16:00",
+        "room_type": "Deluxe -002424",
+        "rate": "$150",
+        "special_request": "Allison Kent has asked for a room overlooking the ocean for his reservation",
+        "room": {
+            "id": 7
+        },
+        "status": "pending"
+    },
+    {
+        "id": 12,
+        "name": "John Clark",
+        "order_date": "2023-012-12 10:35",
+        "check_in": "2024-03-01",
+        "hour_check_in": "12:00",
+        "check_out": "2024-03-04",
+        "hour_check_out": "13:30:00",
+        "room_type": "Deluxe -002424",
+        "rate": "$150",
+        "special_request": "John Clark has asked for a room overlooking the ocean for his reservation",
+        "room": {
+            "id": 6
+        },
+        "status": "cancelled"
     }
 ]

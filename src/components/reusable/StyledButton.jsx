@@ -125,4 +125,20 @@ export const StyledButton = styled.button`
             min-width: 10em;
         `
     }
+
+    ${(props) =>
+        props.$name === 'pagination' &&
+        `
+            background-color: #135846;
+            color: #fff;
+            font-weight: 500;
+            padding: 1em;
+            min-width: 10em;
+            margin: 0;
+
+            &:disabled {
+                background-color: #d9e0de;
+            }
+        `
+    }
 `;

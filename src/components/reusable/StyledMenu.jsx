@@ -54,5 +54,14 @@ export const StyledMenuButtons = styled.div`
     display: flex;
     /* align-items: center; */
     gap: 2em;
+
+    ${(props) =>
+        props.$type === 'pagination' &&
+        `
+        width:50%;
+        margin: 1em auto;
+        justify-content: center;
+        `
+    }
 `;
 

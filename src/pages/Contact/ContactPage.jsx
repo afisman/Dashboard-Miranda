@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ContactSwiper from '../../components/contactSwiper/ContactSwiper';
 import ContactPageTable from './ContactPageTable';
-import { StyledMenu, StyledMenuText } from '../../components/reusable/StyledMenu';
+import { StyledMenu, StyledMenuText, StyledSelect } from '../../components/reusable/StyledMenu';
 import data from '../../data/contact.json';
 import { StyledTable, StyledTableHeader } from '../../components/reusable/StyledTable';
 
@@ -14,6 +14,8 @@ const ContactPage = () => {
     const handleMenuClick = (option) => {
         setSelection(option);
     }
+
+
     return (
         <>
             <ContactSwiper />
@@ -37,6 +39,12 @@ const ContactPage = () => {
                     Archived
                 </StyledMenuText>
             </StyledMenu>
+            <StyledSelect name="order" id="order">
+                <option value='newest'>Newest</option>
+                <option value='checkin'>Check in</option>
+                <option value='checkout'>Check out</option>
+                <option value='guest'>Guest</option>
+            </StyledSelect>
             <StyledTable>
                 <thead>
                     <tr>
