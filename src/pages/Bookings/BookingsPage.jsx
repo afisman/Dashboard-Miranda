@@ -18,7 +18,7 @@ const BookingsPage = () => {
     const totalPages = Math.ceil(data.length / 10);
     const firstBooking = (currentPage - 1) * 10;
     const lastBooking = firstBooking + 10;
-    const displayedBookings = bookingsList.slice(firstBooking, lastBooking)
+    const displayedBookings = bookingsList.slice(firstBooking, lastBooking);
 
     const processData = (data) => {
 
@@ -32,7 +32,7 @@ const BookingsPage = () => {
     }
 
     const handlePageChange = (newPage) => {
-        setCurrentPage(newPage)
+        setCurrentPage(newPage);
     }
 
 
