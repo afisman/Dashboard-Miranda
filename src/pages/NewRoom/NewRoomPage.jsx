@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { StyledFormContainer, StyledFormInput, StyledFormWrapper } from '../../components/reusable/StyledForm';
+import { StyledFormContainer, StyledFormInput, StyledFormWrapper, StyledTextArea } from '../../components/reusable/StyledForm';
 import { StyledButton } from '../../components/reusable/StyledButton';
+
 
 
 const NewRoomPage = () => {
