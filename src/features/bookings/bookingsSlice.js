@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchBookings, fetchSingleBooking } from "./bookingsThunk";
+import { fetchBookings, fetchSingleBooking, fetchCreateBooking, fetchUpdateBooking, fetchDeleteBooking } from "./bookingsThunk";
 
 
 export const bookingsSlice = createSlice({
@@ -34,6 +34,50 @@ export const bookingsSlice = createSlice({
                 state.booking = action.payload;
             })
             .addCase(fetchSingleBooking.rejected, (state, action) => {
+                state.status = 'rejected';
+                state.error = action.error.message;
+            })
+
+        builder
+            .addCase(fetchCreateBooking.pending, (state) => {
+                state.status = 'pending';
+            })
+            .addCase(fetchCreateBooking.fulfilled, (state, action) => {
+                state.status = 'fulfilled';
+                state.bookings.push(action.payload);
+            })
+            .addCase(fetchCreateBooking.rejected, (state, action) => {
+                state.status = 'rejected';
+                state.error = action.error.message;
+            })
+
+        builder
+            .addCase(fetchUpdateBooking.pending, (state) => {
+                state.status = 'pending';
+            })
+            .addCase(fetchUpdateBooking.fulfilled, (state, action) => {
+                const updatedBooking = action.payload;
+                state.status = 'fulfilled';
+                state.bookings.map((booking) => (
+                    booking.id === updatedBooking.id ? updatedBooking : booking
+                ));
+            })
+            .addCase(fetchUpdateBooking.rejected, (state, action) => {
+                state.status = 'rejected';
+                state.error = action.error.message;
+            })
+        builder
+            .addCase(fetchDeleteBooking.pending, (state) => {
+                state.status = 'pending';
+            })
+            .addCase(fetchDeleteBooking.fulfilled, (state, action) => {
+                const id = action.payload;
+                state.status = 'fulfilled';
+                state.bookings.filter((booking) => (
+                    booking.id !== id
+                ))
+            })
+            .addCase(fetchDeleteBooking, (state, action) => {
                 state.status = 'rejected';
                 state.error = action.error.message;
             })

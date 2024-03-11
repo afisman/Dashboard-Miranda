@@ -5,7 +5,7 @@ import BookingsTable from './BookingsTable';
 import { StyledMenu, StyledMenuText, StyledSelect, StyledMenuWrapper, StyledMenuButtons } from '../../components/reusable/StyledMenu';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBookingsList } from '../../features/bookings/bookingsSlice';
+import { getBookingsList, getBookingsStatus, getBookingsError } from '../../features/bookings/bookingsSlice';
 import { fetchBookings } from '../../features/bookings/bookingsThunk';
 
 
@@ -20,19 +20,15 @@ const BookingsPage = () => {
 
     const dispatch = useDispatch()
     const bookingsData = useSelector(getBookingsList);
-    console.log(bookingsData)
-
-
-
+    const bookingsStatus = useSelector(getBookingsStatus);
+    const bookingsError = useSelector(getBookingsError);
 
     const totalPages = Math.ceil(data.length / 10);
     const firstBooking = (currentPage - 1) * 10;
     const lastBooking = firstBooking + 10;
     const displayedBookings = bookingsList.slice(firstBooking, lastBooking);
 
-    const processData = (data) => {
 
-    }
     // const [bookingsList, setBookingsList] = useMemo(() => processData(data, order, selection, currentPage), [data, order, selection, currentPage])
 
 
@@ -46,8 +42,13 @@ const BookingsPage = () => {
     }
 
     useEffect(() => {
-        dispatch(fetchBookings())
-    }, [dispatch])
+        if (bookingsStatus === 'idle') {
+            dispatch(fetchBookings())
+        } else if (bookingsStatus === 'fulfilled') {
+
+        }
+
+    }, [dispatch, bookingsData, bookingsStatus])
 
 
     return (
