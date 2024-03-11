@@ -77,7 +77,7 @@ export const bookingsSlice = createSlice({
                     booking.id !== id
                 ))
             })
-            .addCase(fetchDeleteBooking, (state, action) => {
+            .addCase(fetchDeleteBooking.rejected, (state, action) => {
                 state.status = 'rejected';
                 state.error = action.error.message;
             })

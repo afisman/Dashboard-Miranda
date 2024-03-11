@@ -11,7 +11,7 @@ import { fetchBookings } from '../../features/bookings/bookingsThunk';
 
 
 const BookingsPage = () => {
-    const [bookingsList, setBookingsList] = useState(data)
+    // const [bookingsList, setBookingsList] = useState(data)
     const [pageNumber, setPageNumber] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [selection, setSelection] = useState('all');
@@ -26,10 +26,14 @@ const BookingsPage = () => {
     const totalPages = Math.ceil(data.length / 10);
     const firstBooking = (currentPage - 1) * 10;
     const lastBooking = firstBooking + 10;
-    const displayedBookings = bookingsList.slice(firstBooking, lastBooking);
+    let displayedBookings = bookingsData?.slice(firstBooking, lastBooking);
 
 
-    // const [bookingsList, setBookingsList] = useMemo(() => processData(data, order, selection, currentPage), [data, order, selection, currentPage])
+    const [bookingsList, setBookingsList] = useMemo(() => {
+
+
+    }
+        , [data, order, selection, currentPage])
 
 
 
@@ -44,6 +48,7 @@ const BookingsPage = () => {
     useEffect(() => {
         if (bookingsStatus === 'idle') {
             dispatch(fetchBookings())
+
         } else if (bookingsStatus === 'fulfilled') {
 
         }
@@ -108,7 +113,7 @@ const BookingsPage = () => {
                 </thead>
                 <tbody>
                     <BookingsTable
-                        data={bookingsData}
+                        data={displayedBookings}
                         pageNumber={pageNumber}
                     />
                 </tbody>
