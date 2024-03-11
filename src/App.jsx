@@ -15,6 +15,8 @@ import PrivateRoute from './context/PrivateRoute';
 import BookingPage from './pages/Booking/BookingPage';
 import NewRoomPage from './pages/NewRoom/NewRoomPage';
 import NewUserPage from './pages/NewUser/NewUserPage';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
 
 
 function App() {
@@ -35,25 +37,27 @@ function App() {
 
   return (
     <>
-      <AuthProvider>
-        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-          <GlobalStyles />
-          <Routes>
-            <Route path="/login" element={<LoginPage auth={auth} setAuth={setAuth} />} />
-            <Route path='/' element={<PrivateRoute auth={auth}><Layout /></PrivateRoute>}>
-              <Route index element={<DashboardPage />} />
-              <Route path="bookings" element={<BookingsPage />} />
-              <Route path="bookings/:id" element={<BookingPage />} />
-              <Route path="rooms" element={<RoomsPage />} />
-              <Route path="rooms/newroom" element={<NewRoomPage />} />
-              <Route path="contact" element={<ContactPage />} />
-              <Route path="users" element={<UsersPage />} />
-              <Route path="users/newuser" element={<NewUserPage />} />
-            </Route>
-            <Route path="/*" element={<Navigate to='/' />}></Route>
-          </Routes>
-        </ThemeProvider>
-      </AuthProvider>
+      <Provider store={store}>
+        <AuthProvider>
+          <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+            <GlobalStyles />
+            <Routes>
+              <Route path="/login" element={<LoginPage auth={auth} setAuth={setAuth} />} />
+              <Route path='/' element={<PrivateRoute auth={auth}><Layout /></PrivateRoute>}>
+                <Route index element={<DashboardPage />} />
+                <Route path="bookings" element={<BookingsPage />} />
+                <Route path="bookings/:id" element={<BookingPage />} />
+                <Route path="rooms" element={<RoomsPage />} />
+                <Route path="rooms/newroom" element={<NewRoomPage />} />
+                <Route path="contact" element={<ContactPage />} />
+                <Route path="users" element={<UsersPage />} />
+                <Route path="users/newuser" element={<NewUserPage />} />
+              </Route>
+              <Route path="/*" element={<Navigate to='/' />}></Route>
+            </Routes>
+          </ThemeProvider>
+        </AuthProvider>
+      </Provider>
     </>
   )
 }

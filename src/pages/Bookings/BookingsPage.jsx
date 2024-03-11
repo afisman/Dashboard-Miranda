@@ -1,9 +1,13 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { StyledTable, StyledTableHeader, StyledTableRow } from '../../components/reusable/StyledTable';
 import data from '../../data/bookings.json';
 import BookingsTable from './BookingsTable';
 import { StyledMenu, StyledMenuText, StyledSelect, StyledMenuWrapper, StyledMenuButtons } from '../../components/reusable/StyledMenu';
 import { StyledButton } from '../../components/reusable/StyledButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBookingsList } from '../../features/bookings/bookingsSlice';
+import { fetchBookings } from '../../features/bookings/bookingsThunk';
+
 
 
 const BookingsPage = () => {
@@ -12,6 +16,12 @@ const BookingsPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [selection, setSelection] = useState('all');
     const [order, setOrder] = useState('newest');
+
+
+    const dispatch = useDispatch()
+    const bookingsData = useSelector(getBookingsList);
+    console.log(bookingsData)
+
 
 
 
@@ -35,6 +45,9 @@ const BookingsPage = () => {
         setCurrentPage(newPage);
     }
 
+    useEffect(() => {
+        dispatch(fetchBookings())
+    }, [dispatch])
 
 
     return (
@@ -94,7 +107,7 @@ const BookingsPage = () => {
                 </thead>
                 <tbody>
                     <BookingsTable
-                        data={displayedBookings}
+                        data={bookingsData}
                         pageNumber={pageNumber}
                     />
                 </tbody>

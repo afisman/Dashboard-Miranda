@@ -1,5 +1,9 @@
-const { configureStore } = require("@reduxjs/toolkit");
+import bookingsReducer from "../features/bookings/bookingsSlice";
+import { configureStore } from "@reduxjs/toolkit";
+
 
 export const store = configureStore({
-    reducer: {}
+    reducer: {
+        bookings: bookingsReducer,
+    }
 })
