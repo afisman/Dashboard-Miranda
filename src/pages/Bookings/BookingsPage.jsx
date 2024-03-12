@@ -23,14 +23,12 @@ const BookingsPage = () => {
     const bookingsStatus = useSelector(getBookingsStatus);
     const bookingsError = useSelector(getBookingsError);
 
-    const totalPages = Math.ceil(data.length / 10);
-    const firstBooking = (currentPage - 1) * 10;
-    const lastBooking = firstBooking + 10;
+
 
 
 
     const bookingsList = useMemo(() => {
-        let orderedBookings
+        let orderedBookings;
         if (selection !== 'all') {
             orderedBookings = [...bookingsData]?.filter((el) => (el.status === selection))
         } else {
@@ -66,6 +64,10 @@ const BookingsPage = () => {
         return orderedBookings
     }
         , [bookingsData, order, selection, currentPage])
+
+    const totalPages = Math.ceil(bookingsList.length / 10);
+    const firstBooking = (currentPage - 1) * 10;
+    const lastBooking = firstBooking + 10;
 
     let displayedBookings = bookingsList?.slice(firstBooking, lastBooking);
 

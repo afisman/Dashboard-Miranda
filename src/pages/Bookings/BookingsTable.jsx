@@ -11,9 +11,13 @@ const BookingsTable = ({ data }) => {
     }
 
     const handleClick = (e, id) => {
-        e.stopPropagation()
-
         navigate(`/bookings/${id}`);
+    }
+
+    const handleNotesClick = (e, el) => {
+        e.stopPropagation();
+
+        console.log(el.special_request)
     }
 
     return (
@@ -31,11 +35,11 @@ const BookingsTable = ({ data }) => {
                         </div>
                     </StyledTableCell>
                     <StyledTableCell>
-                        {el.order_date}
+                        {el.order_date.slice(0, 10)}
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText $letterstyle='title'>
-                            {el.check_in}
+                            {el.check_in.slice(0, 10)}
                         </StyledTableCellText>
                         <StyledTableCellText $letterstyle='subtitle'>
                             {el.hour_check_in}
@@ -43,14 +47,14 @@ const BookingsTable = ({ data }) => {
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText $letterstyle='title'>
-                            {el.check_out}
+                            {el.check_out.slice(0, 10)}
                         </StyledTableCellText>
                         <StyledTableCellText $letterstyle='subtitle'>
                             {el.hour_check_out}
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledButton $name="view_notes">
+                        <StyledButton $name="view_notes" onClick={(e) => handleNotesClick(e, el)}>
                             View notes
                         </StyledButton>
                     </StyledTableCell>

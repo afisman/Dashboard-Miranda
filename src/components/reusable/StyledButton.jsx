@@ -60,7 +60,7 @@ export const StyledButton = styled.button`
     `
     }
     ${(props) =>
-        props.$name === "cancelled" &&
+        props.$name === "canceled" &&
         `
             background: #575757 0% 0% no-repeat padding-box;
             font-weight: 500;
