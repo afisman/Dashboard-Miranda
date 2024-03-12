@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
 import { StyledFormContainer, StyledFormInput, StyledFormWrapper, StyledTextArea } from '../../components/reusable/StyledForm';
 import { StyledButton } from '../../components/reusable/StyledButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const NewRoomPage = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+
+
+
     const [form, setForm] = useState({});
+
 
     const handleFormChange = (e) => {
         const { name, value } = e.target;
 
         setForm((prevData) => {
-            if (name === 'amenities') {
+            if (name === 'amenities' || name === 'photos') {
                 return {
                     ...prevData,
                     [name]: value.split("\n")

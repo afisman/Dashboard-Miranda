@@ -17,6 +17,7 @@ import NewRoomPage from './pages/NewRoom/NewRoomPage';
 import NewUserPage from './pages/NewUser/NewUserPage';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
+import NewBookingPage from './pages/NewBooking/NewBookingPage';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
               <Route path='/' element={<PrivateRoute auth={auth}><Layout /></PrivateRoute>}>
                 <Route index element={<DashboardPage />} />
                 <Route path="bookings" element={<BookingsPage />} />
+                <Route path="bookings/newbooking" element={<NewBookingPage />} />
                 <Route path="bookings/:id" element={<BookingPage />} />
                 <Route path="rooms" element={<RoomsPage />} />
                 <Route path="rooms/newroom" element={<NewRoomPage />} />

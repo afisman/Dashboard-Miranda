@@ -41,6 +41,7 @@ export const roomsSlice = createSlice({
             .addCase(fetchCreateRoom.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 state.rooms.push(action.payload);
+                console.log(state.rooms)
             })
             .addCase(fetchCreateRoom.rejected, (state, action) => {
                 state.status = 'rejected';
@@ -79,6 +80,8 @@ export const roomsSlice = createSlice({
     }
 })
 
+export const getAvailableRooms = state => state.rooms.rooms.filter((room) => room.status === "Available");
+export const getBookedRooms = state => state.rooms.rooms.filter((room) => room.status === "Booked");
 
 export const getRoomsList = (state) => state.rooms.rooms;
 export const getRoomStatus = (state) => state.rooms.status;

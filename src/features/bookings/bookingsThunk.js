@@ -35,13 +35,15 @@ export const fetchSingleBooking = createAsyncThunk(
 export const fetchCreateBooking = createAsyncThunk(
     "bookings/fetchCreateBooking",
     async (newBooking) => {
-        return await delay("bookings/fetchCreateBooking", newBooking)
+        console.log(newBooking)
+
+        return await delay("bookings/fetchCreateBooking", newBooking.id, newBooking)
 
     })
 export const fetchUpdateBooking = createAsyncThunk(
     "bookings/fetchUpdateBooking",
     async (updatedBooking) => {
-        return await delay("bookings/fetchUpdateBooking", updatedBooking)
+        return await delay("bookings/fetchUpdateBooking", updatedBooking.id, updatedBooking)
 
     })
 export const fetchDeleteBooking = createAsyncThunk(

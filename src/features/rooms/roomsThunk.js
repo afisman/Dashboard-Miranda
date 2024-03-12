@@ -35,6 +35,7 @@ export const fetchSingleRoom = createAsyncThunk(
 export const fetchCreateRoom = createAsyncThunk(
     "rooms/fetchCreateRoom",
     async (newRoom) => {
+        console.log(newRoom)
         return await delay("rooms/fetchCreateRoom", newRoom)
 
     })

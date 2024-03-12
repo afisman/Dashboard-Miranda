@@ -45,6 +45,7 @@ export const bookingsSlice = createSlice({
             .addCase(fetchCreateBooking.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 state.bookings.push(action.payload);
+                console.log(state)
             })
             .addCase(fetchCreateBooking.rejected, (state, action) => {
                 state.status = 'rejected';
