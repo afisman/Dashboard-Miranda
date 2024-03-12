@@ -16,6 +16,13 @@ const RoomsPage = () => {
         setSelection(option);
     }
 
+    const handleOrderChange = (e) => {
+        e.preventDefault();
+
+        setOrder(e.target.value)
+
+    }
+
     return (
         <>
             <StyledMenuWrapper>
@@ -44,10 +51,9 @@ const RoomsPage = () => {
                         + New Room
                     </StyledButton>
                     <StyledSelect name="order" id="order">
-                        <option value='newest'>Newest</option>
-                        <option value='checkin'>Check in</option>
-                        <option value='checkout'>Check out</option>
-                        <option value='guest'>Guest</option>
+                        <option value='status'>Status</option>
+                        <option value='cheapest'>Cheapest</option>
+                        <option value='expensive'>Costly</option>
                     </StyledSelect>
                 </StyledMenuButtons>
             </StyledMenuWrapper>
