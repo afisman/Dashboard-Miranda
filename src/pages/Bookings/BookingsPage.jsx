@@ -7,21 +7,28 @@ import { StyledButton } from '../../components/reusable/StyledButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBookingsList, getBookingsStatus, getBookingsError } from '../../features/bookings/bookingsSlice';
 import { fetchBookings } from '../../features/bookings/bookingsThunk';
+import ModalComponent from '../../components/modal/Modal';
 
 
 
 const BookingsPage = () => {
-    // const [bookingsList, setBookingsList] = useState(data)
     const [pageNumber, setPageNumber] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [selection, setSelection] = useState('all');
     const [order, setOrder] = useState('order_date');
+    const [specialRequest, setSpecialRequest] = useState('');
+    const [modalOpen, setModalOpen] = useState(false);
+
+
 
 
     const dispatch = useDispatch()
     const bookingsData = useSelector(getBookingsList);
     const bookingsStatus = useSelector(getBookingsStatus);
     const bookingsError = useSelector(getBookingsError);
+
+    const handleOpen = () => setModalOpen(true);
+    const handleClose = () => setModalOpen(false);
 
 
 
@@ -99,6 +106,8 @@ const BookingsPage = () => {
 
     return (
         <>
+            <ModalComponent open={modalOpen} handleclose={handleClose} description={specialRequest}></ModalComponent>
+
             <StyledMenuWrapper>
                 <StyledMenu>
                     <StyledMenuText
@@ -156,6 +165,8 @@ const BookingsPage = () => {
                     <BookingsTable
                         data={displayedBookings}
                         pageNumber={pageNumber}
+                        setSpecialRequest={setSpecialRequest}
+                        handleOpen={handleOpen}
                     />
                 </tbody>
             </StyledTable>

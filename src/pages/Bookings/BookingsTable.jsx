@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyledTableCell, StyledTableRow, StyledTableCellText } from '../../components/reusable/StyledTable';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { Link, useNavigate } from 'react-router-dom';
 
-const BookingsTable = ({ data }) => {
-    const navigate = useNavigate()
+const BookingsTable = ({ data, pageNumber, setSpecialRequest, handleOpen }) => {
+    const navigate = useNavigate();
+
 
     const handleOpenOptions = (e) => {
         e.preventDefault();
@@ -16,12 +17,13 @@ const BookingsTable = ({ data }) => {
 
     const handleNotesClick = (e, el) => {
         e.stopPropagation();
-
-        console.log(el.special_request)
+        setSpecialRequest(el.special_request)
+        handleOpen();
     }
 
     return (
         <>
+
             {data?.map((el) => (
                 <StyledTableRow key={el.id} onClick={(e) => handleClick(e, el.id)}>
                     <StyledTableCell $name='flexCell'>
