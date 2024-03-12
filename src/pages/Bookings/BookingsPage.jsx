@@ -15,7 +15,7 @@ const BookingsPage = () => {
     const [pageNumber, setPageNumber] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [selection, setSelection] = useState('all');
-    const [order, setOrder] = useState('newest');
+    const [order, setOrder] = useState('order_date');
 
 
     const dispatch = useDispatch()
@@ -26,16 +26,48 @@ const BookingsPage = () => {
     const totalPages = Math.ceil(data.length / 10);
     const firstBooking = (currentPage - 1) * 10;
     const lastBooking = firstBooking + 10;
-    let displayedBookings = bookingsData?.slice(firstBooking, lastBooking);
 
 
-    const [bookingsList, setBookingsList] = useMemo(() => {
 
+    const bookingsList = useMemo(() => {
+        let orderedBookings
+        if (selection !== 'all') {
+            orderedBookings = [...bookingsData]?.filter((el) => (el.status === selection))
+        } else {
+            orderedBookings = bookingsData;
+        }
 
+        orderedBookings = [...orderedBookings]?.sort((a, b) => {
+            switch (order) {
+                case 'check_in':
+                    return new Date(b.check_in) - new Date(a.check_in);
+                    break;
+                case 'check_out':
+                    return new Date(b.check_out) - new Date(a.check_out);
+                    break;
+                case 'name':
+                    const nameA = a.name.toUpperCase();
+                    const nameB = b.name.toUpperCase();
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }
+                    return 0;
+                    break;
+                default:
+                    return new Date(b.order_date) - new Date(a.order_date);
+
+            }
+        }
+        )
+
+        return orderedBookings
     }
-        , [data, order, selection, currentPage])
+        , [bookingsData, order, selection, currentPage])
 
-
+    let displayedBookings = bookingsList?.slice(firstBooking, lastBooking);
 
     const handleMenuClick = (option) => {
         setSelection(option);
@@ -43,6 +75,13 @@ const BookingsPage = () => {
 
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
+    }
+
+    const handleOrderChange = (e) => {
+        e.preventDefault();
+
+        setOrder(e.target.value)
+
     }
 
     useEffect(() => {
@@ -91,11 +130,11 @@ const BookingsPage = () => {
                         Refund
                     </StyledMenuText>
                 </StyledMenu>
-                <StyledSelect name="order" id="order">
-                    <option value='newest'>Newest</option>
-                    <option value='checkin'>Check in</option>
-                    <option value='checkout'>Check out</option>
-                    <option value='guest'>Guest</option>
+                <StyledSelect name="order" id="order" onChange={(e) => handleOrderChange(e)}>
+                    <option value='order_date'>Newest</option>
+                    <option value='check_in'>Check in</option>
+                    <option value='check_out'>Check out</option>
+                    <option value='name'>Guest</option>
                 </StyledSelect>
             </StyledMenuWrapper>
             <StyledTable>

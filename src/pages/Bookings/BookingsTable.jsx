@@ -18,7 +18,7 @@ const BookingsTable = ({ data }) => {
 
     return (
         <>
-            {data.map((el) => (
+            {data?.map((el) => (
                 <StyledTableRow key={el.id} onClick={(e) => handleClick(e, el.id)}>
                     <StyledTableCell $name='flexCell'>
                         <div>

@@ -1,50 +1,51 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import data from '../../data/bookings.json';
+import bookings from '../../data/bookings.json';
 
+function delay(path, id = 0, data = null) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            if (path === "bookings/fetchBookings") {
+                resolve(bookings)
+            } else if (path === "bookings/fetchSingleBooking") {
+                resolve(bookings.find((el) => data[el].id === id))
+            } else if (path === "bookings/fetchCreateBooking") {
+                resolve(data)
+            } else if (path === "bookings/fetchUpdateBooking") {
+                resolve(data)
+            } else if ("bookings/fetchDeleteBooking") {
+                resolve(id)
+            } else {
+                rejects("Error")
+            }
+        }, 200)
+    })
+}
 
 export const fetchBookings = createAsyncThunk(
     "bookings/fetchBookings",
     async () => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(data)
-            }, 200)
-        })
+        return await delay("bookings/fetchBookings")
     })
 export const fetchSingleBooking = createAsyncThunk(
     "bookings/fetchSingleBooking",
     async (id) => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                const booking = data.find((el) => data[el].id === id)
-                resolve(booking)
-            }, 200)
-        })
+        return await delay("bookings/fetchBookings", id)
+
     })
 export const fetchCreateBooking = createAsyncThunk(
     "bookings/fetchCreateBooking",
     async (newBooking) => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(newBooking)
-            }, 200)
-        })
+        return await delay("bookings/fetchBookings", newBooking)
+
     })
 export const fetchUpdateBooking = createAsyncThunk(
     "bookings/fetchUpdateBooking",
     async (updatedBooking) => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(updatedBooking)
-            }, 200)
-        })
+        return await delay("bookings/fetchBookings", updatedBooking)
+
     })
 export const fetchDeleteBooking = createAsyncThunk(
     "bookings/fetchDeleteBooking",
     async (id) => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(id)
-            }, 200)
-        })
+        return await delay("bookings/fetchBookings", id)
     })
