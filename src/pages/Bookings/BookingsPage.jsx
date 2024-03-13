@@ -1,13 +1,14 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect, useCallback } from 'react';
 import { StyledTable, StyledTableHeader, StyledTableRow } from '../../components/reusable/StyledTable';
 import data from '../../data/bookings.json';
 import BookingsTable from './BookingsTable';
 import { StyledMenu, StyledMenuText, StyledSelect, StyledMenuWrapper, StyledMenuButtons } from '../../components/reusable/StyledMenu';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBookingsList, getBookingsStatus, getBookingsError } from '../../features/bookings/bookingsSlice';
+import { getBookingsList, getBookingsStatus, getBookingsError, getSingleBooking } from '../../features/bookings/bookingsSlice';
 import { fetchBookings } from '../../features/bookings/bookingsThunk';
 import ModalComponent from '../../components/modal/Modal';
+import { getRoomsList } from '../../features/rooms/roomsSlice';
 
 
 
@@ -31,7 +32,17 @@ const BookingsPage = () => {
     const handleClose = () => setModalOpen(false);
 
 
+    // const initialFetch = useCallback(async () => {
+    //     await dispatch(getRoomsList()).unwrap();
+    //     if (id) {
+    //         await dispatch(getSingleBooking());
+    //     }
+    //     setSpinner(false)
+    // }, [id, dispatch])
 
+    // useEffect(() => {
+    //     initialFetch();
+    // }, [initialFetch])
 
 
     const bookingsList = useMemo(() => {
@@ -158,7 +169,7 @@ const BookingsPage = () => {
                         <StyledTableHeader>Special Request</StyledTableHeader>
                         <StyledTableHeader>Room Type</StyledTableHeader>
                         <StyledTableHeader>Status</StyledTableHeader>
-                        <StyledTableHeader></StyledTableHeader>
+                        <StyledTableHeader>Action</StyledTableHeader>
                     </tr>
                 </thead>
                 <tbody>
@@ -167,6 +178,7 @@ const BookingsPage = () => {
                         pageNumber={pageNumber}
                         setSpecialRequest={setSpecialRequest}
                         handleOpen={handleOpen}
+                        dispatch={dispatch}
                     />
                 </tbody>
             </StyledTable>

@@ -18,6 +18,8 @@ import NewUserPage from './pages/NewUser/NewUserPage';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import NewBookingPage from './pages/NewBooking/NewBookingPage';
+import EditBookingPage from './pages/NewBooking/EditBookingPage';
+
 
 
 function App() {
@@ -48,6 +50,7 @@ function App() {
                 <Route index element={<DashboardPage />} />
                 <Route path="bookings" element={<BookingsPage />} />
                 <Route path="bookings/newbooking" element={<NewBookingPage />} />
+                <Route path="bookings/editbooking" element={<EditBookingPage />} />
                 <Route path="bookings/:id" element={<BookingPage />} />
                 <Route path="rooms" element={<RoomsPage />} />
                 <Route path="rooms/newroom" element={<NewRoomPage />} />

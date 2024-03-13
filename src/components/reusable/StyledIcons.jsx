@@ -1,12 +1,12 @@
 import { IoIosSearch } from "react-icons/io";
 import { FiBell } from "react-icons/fi";
-import { MdOutlineMail } from "react-icons/md";
+import { MdOutlineMail, MdDeleteForever } from "react-icons/md";
 import { RxCrossCircled } from "react-icons/rx";
 import styled from "styled-components";
 import { LuLayoutDashboard, LuCalendarCheck2 } from "react-icons/lu";
 import { BiKey, BiSolidMessageRoundedDetail } from "react-icons/bi";
 import { FaRegUser, FaPhone } from "react-icons/fa6";
-import { FaRegCheckCircle } from "react-icons/fa";
+import { FaRegCheckCircle, FaEdit } from "react-icons/fa";
 import { HiOutlinePuzzle, HiOutlineMenuAlt2 } from "react-icons/hi";
 import { SlLogin } from "react-icons/sl";
 
@@ -23,6 +23,31 @@ const styleIconsSize = `
     width: 1.5em;
     height: 1.5em;
     cursor: pointer;
+`;
+
+export const StyledEditIcon = styled(FaEdit)`
+    ${styleIconsSize}
+    ${styleIconsColor2}
+    padding: 0.2em;
+    border-radius: 0.2em;
+
+    &:hover {
+      background-color: #135846;
+      fill:#fff;
+    }
+    `;
+
+export const StyledDeleteIcon = styled(MdDeleteForever)`
+    ${styleIconsSize}
+    ${styleIconsColor2}
+    padding: 0.2em;
+    border-radius: 0.2em;
+
+
+     &:hover {
+      background-color: #135846;
+      fill:#fff;
+    }
 `;
 
 export const StyledMessageBubble = styled(BiSolidMessageRoundedDetail)`
@@ -48,12 +73,12 @@ export const StyledEmailIcon = styled(MdOutlineMail)`
 `;
 
 export const StyledBelIcon = styled(FiBell)`
-       ${styleIconsSize};
+    ${styleIconsSize};
     ${styleIconsColor2};
 `;
 
 export const StyledLogoutIcon = styled(SlLogin)`
-   ${styleIconsSize};
+    ${styleIconsSize};
     ${styleIconsColor2};
     margin-right: 3rem;
 `;

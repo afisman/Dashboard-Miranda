@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import { StyledTableCell, StyledTableRow, StyledTableCellText } from '../../components/reusable/StyledTable';
 import { StyledButton } from '../../components/reusable/StyledButton';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
 
-const BookingsTable = ({ data, pageNumber, setSpecialRequest, handleOpen }) => {
+const BookingsTable = ({ data, pageNumber, setSpecialRequest, handleOpen, dispatch }) => {
     const navigate = useNavigate();
 
 
-    const handleOpenOptions = (e) => {
-        e.preventDefault();
+    const handleEditClick = (e) => {
+        e.stopPropagation();
+        navigate('/bookings/editbooking')
+    }
+
+    const handleDeleteClick = (e) => {
+        e.stopPropagation();
     }
 
     const handleClick = (e, id) => {
@@ -71,8 +77,9 @@ const BookingsTable = ({ data, pageNumber, setSpecialRequest, handleOpen }) => {
                         </StyledButton>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledTableCellText $letterstyle="dots" onClick={(e) => { handleOpenOptions(e) }}>
-                            &#xFE19;
+                        <StyledTableCellText  >
+                            <StyledEditIcon onClick={(e) => { handleEditClick(e) }}></StyledEditIcon>
+                            <StyledDeleteIcon onClick={(e) => { handleDeleteClick(e) }}></StyledDeleteIcon>
                         </StyledTableCellText>
                     </StyledTableCell>
                 </StyledTableRow>

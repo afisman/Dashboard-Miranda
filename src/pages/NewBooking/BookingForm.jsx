@@ -10,10 +10,7 @@ import { StyledSelect } from '../../components/reusable/StyledMenu';
 import { getBookingsList, getBookingsError, getBookingsStatus } from '../../features/bookings/bookingsSlice';
 
 
-
-
-
-const NewBookingPage = () => {
+const BookingForm = ({ id }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const bookingsList = useSelector(getBookingsList);
@@ -161,4 +158,4 @@ const NewBookingPage = () => {
     )
 }
 
-export default NewBookingPage
+export default BookingForm
