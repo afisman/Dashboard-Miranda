@@ -87,13 +87,7 @@ const BookingsPage = () => {
     }
 
     useEffect(() => {
-        if (bookingsStatus === 'idle') {
-            dispatch(fetchBookings())
-
-        } else if (bookingsStatus === 'fulfilled') {
-
-        }
-
+        dispatch(fetchBookings())
     }, [dispatch, bookingsData, bookingsStatus])
 
 

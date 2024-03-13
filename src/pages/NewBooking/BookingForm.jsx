@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getRoomsList } from '../../features/rooms/roomsSlice';
 import { fetchRooms } from '../../features/rooms/roomsThunk';
-import { fetchBookings, fetchCreateBooking, fetchUpdateBooking } from '../../features/bookings/bookingsThunk';
+import { fetchCreateBooking, fetchUpdateBooking } from '../../features/bookings/bookingsThunk';
 import { StyledSelect } from '../../components/reusable/StyledMenu';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner';
 
@@ -21,7 +21,6 @@ const BookingForm = ({ singleBooking, type }) => {
 
     const availableRooms = useMemo(() => {
         return [...roomsList].filter((room) => room.status === 'Available')
-
     }, [roomsList])
 
     const initialFetch = useCallback(async () => {
@@ -30,17 +29,9 @@ const BookingForm = ({ singleBooking, type }) => {
 
     }, [dispatch])
 
-    // const updateFormData = () => {
-    //     setFormData(singleBooking)
-    // }
-
     useEffect(() => {
         initialFetch();
     }, [initialFetch])
-
-    // useEffect(() => {
-    //     updateFormData()
-    // }, [singleBooking])
 
     const handleFormChange = (e) => {
         const { name, value } = e.target;
