@@ -80,9 +80,6 @@ export const roomsSlice = createSlice({
     }
 })
 
-export const getAvailableRooms = state => state.rooms.rooms.filter((room) => room.status === "Available");
-export const getBookedRooms = state => state.rooms.rooms.filter((room) => room.status === "Booked");
-
 export const getRoomsList = (state) => state.rooms.rooms;
 export const getRoomStatus = (state) => state.rooms.status;
 export const getRoomsError = (state) => state.rooms.error;

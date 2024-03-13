@@ -5,19 +5,6 @@ function delay(data) {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(data)
-            // if (path === "bookings/fetchBookings") {
-            //     resolve(bookings)
-            // } else if (path === "bookings/fetchSingleBooking") {
-            //     resolve(bookings.find((el) => data[el].id === id))
-            // } else if (path === "bookings/fetchCreateBooking") {
-            //     resolve(data)
-            // } else if (path === "bookings/fetchUpdateBooking") {
-            //     resolve(data)
-            // } else if ("bookings/fetchDeleteBooking") {
-            //     resolve(id)
-            // } else {
-            //     rejects("Error")
-            // }
         }, 200)
     })
 }
