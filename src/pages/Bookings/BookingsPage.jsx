@@ -1,14 +1,14 @@
-import React, { useMemo, useState, useEffect, useCallback } from 'react';
-import { StyledTable, StyledTableHeader, StyledTableRow } from '../../components/reusable/StyledTable';
-import data from '../../data/bookings.json';
+import React, { useMemo, useState, useEffect } from 'react';
+import { StyledTable, StyledTableHeader } from '../../components/reusable/StyledTable';
 import BookingsTable from './BookingsTable';
 import { StyledMenu, StyledMenuText, StyledSelect, StyledMenuWrapper, StyledMenuButtons } from '../../components/reusable/StyledMenu';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBookingsList, getBookingsStatus, getBookingsError, getSingleBooking } from '../../features/bookings/bookingsSlice';
+import { getBookingsList, getBookingsStatus } from '../../features/bookings/bookingsSlice';
 import { fetchBookings } from '../../features/bookings/bookingsThunk';
 import ModalComponent from '../../components/modal/Modal';
-import { getRoomsList } from '../../features/rooms/roomsSlice';
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -26,23 +26,9 @@ const BookingsPage = () => {
     const dispatch = useDispatch()
     const bookingsData = useSelector(getBookingsList);
     const bookingsStatus = useSelector(getBookingsStatus);
-    const bookingsError = useSelector(getBookingsError);
 
     const handleOpen = () => setModalOpen(true);
     const handleClose = () => setModalOpen(false);
-
-
-    // const initialFetch = useCallback(async () => {
-    //     await dispatch(getRoomsList()).unwrap();
-    //     if (id) {
-    //         await dispatch(getSingleBooking());
-    //     }
-    //     setSpinner(false)
-    // }, [id, dispatch])
-
-    // useEffect(() => {
-    //     initialFetch();
-    // }, [initialFetch])
 
 
     const bookingsList = useMemo(() => {
@@ -56,11 +42,9 @@ const BookingsPage = () => {
         orderedBookings = [...orderedBookings]?.sort((a, b) => {
             switch (order) {
                 case 'check_in':
-                    return new Date(b.check_in) - new Date(a.check_in);
-                    break;
+                    return new Date(a.check_in) - new Date(b.check_in);
                 case 'check_out':
-                    return new Date(b.check_out) - new Date(a.check_out);
-                    break;
+                    return new Date(a.check_out) - new Date(b.check_out);
                 case 'name':
                     const nameA = a.name.toUpperCase();
                     const nameB = b.name.toUpperCase();
@@ -71,10 +55,8 @@ const BookingsPage = () => {
                         return 1;
                     }
                     return 0;
-                    break;
                 default:
                     return new Date(b.order_date) - new Date(a.order_date);
-
             }
         }
         )
@@ -152,12 +134,17 @@ const BookingsPage = () => {
                         Refund
                     </StyledMenuText>
                 </StyledMenu>
-                <StyledSelect name="order" id="order" onChange={(e) => handleOrderChange(e)}>
-                    <option value='order_date'>Newest</option>
-                    <option value='check_in'>Check in</option>
-                    <option value='check_out'>Check out</option>
-                    <option value='name'>Guest</option>
-                </StyledSelect>
+                <StyledMenuButtons>
+                    <StyledButton as={Link} to='/bookings/newbooking' $name='new'>
+                        + New Booking
+                    </StyledButton>
+                    <StyledSelect name="order" id="order" onChange={(e) => handleOrderChange(e)}>
+                        <option value='order_date'>Newest</option>
+                        <option value='check_in'>Check in</option>
+                        <option value='check_out'>Check out</option>
+                        <option value='name'>Guest</option>
+                    </StyledSelect>
+                </StyledMenuButtons>
             </StyledMenuWrapper>
             <StyledTable>
                 <thead>

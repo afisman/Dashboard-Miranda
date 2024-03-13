@@ -69,11 +69,8 @@ export const bookingsSlice = createSlice({
                 state.status = 'pending';
             })
             .addCase(fetchDeleteBooking.fulfilled, (state, action) => {
-                const id = action.payload;
                 state.status = 'fulfilled';
-                state.bookings.filter((booking) => (
-                    booking.id !== id
-                ))
+                state.bookings = action.payload;
             })
             .addCase(fetchDeleteBooking.rejected, (state, action) => {
                 state.status = 'rejected';

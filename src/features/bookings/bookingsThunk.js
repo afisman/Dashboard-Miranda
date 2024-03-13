@@ -19,7 +19,6 @@ export const fetchSingleBooking = createAsyncThunk(
     "bookings/fetchSingleBooking",
     async (id) => {
         return await delay(bookings.find((el) => el.id == id))
-
     })
 export const fetchCreateBooking = createAsyncThunk(
     "bookings/fetchCreateBooking",
@@ -30,16 +29,15 @@ export const fetchCreateBooking = createAsyncThunk(
 export const fetchUpdateBooking = createAsyncThunk(
     "bookings/fetchUpdateBooking",
     async (updatedBooking) => {
-        console.log(bookings.map((booking) => (
-            booking.id == updatedBooking.id ? updatedBooking : booking
-        )))
         return await delay(bookings.map((booking) => (
             booking.id == updatedBooking.id ? updatedBooking : booking
         )))
-
     })
 export const fetchDeleteBooking = createAsyncThunk(
     "bookings/fetchDeleteBooking",
     async (id) => {
-        return await delay(id)
+        console.log(typeof (id), typeof (bookings[0].id))
+        return await delay(bookings.filter((booking) => (
+            booking.id !== id
+        )))
     })

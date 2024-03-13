@@ -2,73 +2,45 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { StyledFormContainer, StyledFormInput, StyledFormWrapper, StyledTextArea } from '../../components/reusable/StyledForm';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { getRoomStatus, getRoomsList } from '../../features/rooms/roomsSlice';
+import { useNavigate } from 'react-router-dom';
+import { getRoomsList } from '../../features/rooms/roomsSlice';
 import { fetchRooms } from '../../features/rooms/roomsThunk';
-import { fetchBookings, fetchCreateBooking, fetchSingleBooking, fetchUpdateBooking } from '../../features/bookings/bookingsThunk';
+import { fetchBookings, fetchCreateBooking, fetchUpdateBooking } from '../../features/bookings/bookingsThunk';
 import { StyledSelect } from '../../components/reusable/StyledMenu';
-import { getBookingsList, getBookingsError, getBookingsStatus, getSingleBooking } from '../../features/bookings/bookingsSlice';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner';
 
 
 
-const BookingForm = ({ id = null }) => {
+const BookingForm = ({ singleBooking, type }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const bookingsList = useSelector(getBookingsList);
-    const bookingsListError = useSelector(getBookingsError);
-    const bookingsListStatus = useSelector(getBookingsStatus);
+
     const roomsList = useSelector(getRoomsList);
-    const roomsListStatus = useSelector(getRoomStatus);
-    const singleBooking = useSelector(getSingleBooking);
-
-
-
     const [spinner, setSpinner] = useState(true)
-    const moment = new Date();
-
-    const [formData, setFormData] = useState(
-        {
-            id: 1,
-            name: "",
-            order_date: "",
-            check_in: "",
-            hour_check_in: "",
-            check_out: "",
-            hour_check_out: "",
-            special_request: "",
-            room_id: "",
-        }
-    );
+    const [formData, setFormData] = useState(singleBooking);
 
     const availableRooms = useMemo(() => {
         return [...roomsList].filter((room) => room.status === 'Available')
 
     }, [roomsList])
 
-
-
     const initialFetch = useCallback(async () => {
         await dispatch(fetchRooms()).unwrap();
-        await dispatch(fetchBookings()).unwrap();
-        if (id) {
-            await dispatch(fetchSingleBooking(id));
-        }
-    }, [id, dispatch])
-
-    const updateFormData = () => {
-        setFormData(singleBooking)
         setSpinner(false)
 
-    }
+    }, [dispatch])
+
+    // const updateFormData = () => {
+    //     setFormData(singleBooking)
+    // }
 
     useEffect(() => {
         initialFetch();
     }, [initialFetch])
 
-    useEffect(() => {
-        updateFormData()
-    }, [singleBooking])
+    // useEffect(() => {
+    //     updateFormData()
+    // }, [singleBooking])
 
     const handleFormChange = (e) => {
         const { name, value } = e.target;
@@ -76,19 +48,25 @@ const BookingForm = ({ id = null }) => {
         setFormData((prevData) => ({ ...prevData, [name]: value }))
     }
 
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(fetchUpdateBooking(formData));
+        if (type === 'Edit') {
+            dispatch(fetchUpdateBooking(formData));
+        }
+
+        if (type === 'New') {
+            dispatch(fetchCreateBooking(formData))
+        }
     }
 
     return (
         <>
             {
-                singleBooking ?
+                spinner ?
 
 
+                    <StyledSpinner />
+                    :
                     <>
                         <StyledButton $name='goBack' onClick={() => { navigate('/bookings') }}>
                             Go back
@@ -106,14 +84,14 @@ const BookingForm = ({ id = null }) => {
                                     placeholder='Check in'
                                     name='check_in'
                                     type='date'
-                                    value={""}
+                                    value={formData.check_in != "" ? new Date(formData.check_in).toISOString().slice(0, 10) : formData.check_in}
                                     onChange={(e) => handleFormChange(e)}
                                 ></StyledFormInput>
                                 <StyledFormInput
                                     placeholder='Check out'
                                     name='check_out'
                                     type='date'
-                                    value={""}
+                                    value={formData.check_out != "" ? new Date(formData.check_out).toISOString().slice(0, 10) : formData.check_out}
                                     onChange={(e) => handleFormChange(e)}
                                 ></StyledFormInput>
                                 <StyledFormInput
@@ -143,13 +121,12 @@ const BookingForm = ({ id = null }) => {
                                     ))}
                                 </StyledSelect>
                                 <StyledButton $name="login" type="submit">
-                                    {id ? 'Edit' : 'Create'} Booking
+                                    {type} Booking
                                 </StyledButton>
                             </StyledFormContainer>
                         </StyledFormWrapper>
                     </>
-                    :
-                    <StyledSpinner />
+
 
             }
         </>

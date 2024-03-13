@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyledTableCell, StyledTableRow, StyledTableCellText } from '../../components/reusable/StyledTable';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useNavigate } from 'react-router-dom';
 import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
+import { fetchDeleteBooking } from '../../features/bookings/bookingsThunk';
 
 const BookingsTable = ({ data, pageNumber, setSpecialRequest, handleOpen, dispatch }) => {
     const navigate = useNavigate();
@@ -13,8 +14,9 @@ const BookingsTable = ({ data, pageNumber, setSpecialRequest, handleOpen, dispat
         navigate(`/bookings/editbooking/${id}`)
     }
 
-    const handleDeleteClick = (e) => {
+    const handleDeleteClick = (e, id) => {
         e.stopPropagation();
+        dispatch(fetchDeleteBooking(id))
     }
 
     const handleClick = (e, id) => {
@@ -79,7 +81,7 @@ const BookingsTable = ({ data, pageNumber, setSpecialRequest, handleOpen, dispat
                     <StyledTableCell>
                         <StyledTableCellText  >
                             <StyledEditIcon onClick={(e) => { handleEditClick(e, el.id) }}></StyledEditIcon>
-                            <StyledDeleteIcon onClick={(e) => { handleDeleteClick(e) }}></StyledDeleteIcon>
+                            <StyledDeleteIcon onClick={(e) => { handleDeleteClick(e, el.id) }}></StyledDeleteIcon>
                         </StyledTableCellText>
                     </StyledTableCell>
                 </StyledTableRow>
