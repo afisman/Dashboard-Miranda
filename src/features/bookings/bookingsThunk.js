@@ -4,6 +4,7 @@ import bookings from '../../data/bookings.json';
 function delay(data) {
     return new Promise((resolve) => {
         setTimeout(() => {
+            console.log(data)
             resolve(data)
         }, 200)
     })
@@ -17,7 +18,7 @@ export const fetchBookings = createAsyncThunk(
 export const fetchSingleBooking = createAsyncThunk(
     "bookings/fetchSingleBooking",
     async (id) => {
-        return await delay(id)
+        return await delay(bookings.find((el) => el.id == id))
 
     })
 export const fetchCreateBooking = createAsyncThunk(

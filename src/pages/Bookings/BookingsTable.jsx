@@ -8,9 +8,9 @@ const BookingsTable = ({ data, pageNumber, setSpecialRequest, handleOpen, dispat
     const navigate = useNavigate();
 
 
-    const handleEditClick = (e) => {
+    const handleEditClick = (e, id) => {
         e.stopPropagation();
-        navigate('/bookings/editbooking')
+        navigate(`/bookings/editbooking/${id}`)
     }
 
     const handleDeleteClick = (e) => {
@@ -78,7 +78,7 @@ const BookingsTable = ({ data, pageNumber, setSpecialRequest, handleOpen, dispat
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText  >
-                            <StyledEditIcon onClick={(e) => { handleEditClick(e) }}></StyledEditIcon>
+                            <StyledEditIcon onClick={(e) => { handleEditClick(e, el.id) }}></StyledEditIcon>
                             <StyledDeleteIcon onClick={(e) => { handleDeleteClick(e) }}></StyledDeleteIcon>
                         </StyledTableCellText>
                     </StyledTableCell>

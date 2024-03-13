@@ -50,7 +50,7 @@ function App() {
                 <Route index element={<DashboardPage />} />
                 <Route path="bookings" element={<BookingsPage />} />
                 <Route path="bookings/newbooking" element={<NewBookingPage />} />
-                <Route path="bookings/editbooking" element={<EditBookingPage />} />
+                <Route path="bookings/editbooking/:id" element={<EditBookingPage />} />
                 <Route path="bookings/:id" element={<BookingPage />} />
                 <Route path="rooms" element={<RoomsPage />} />
                 <Route path="rooms/newroom" element={<NewRoomPage />} />

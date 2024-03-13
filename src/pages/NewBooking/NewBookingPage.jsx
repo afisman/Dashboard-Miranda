@@ -3,7 +3,7 @@ import { StyledFormContainer, StyledFormInput, StyledFormWrapper, StyledTextArea
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getRoomStatus, getRoomsList, getAvailableRooms } from '../../features/rooms/roomsSlice';
+import { getRoomStatus, getRoomsList } from '../../features/rooms/roomsSlice';
 import { fetchRooms } from '../../features/rooms/roomsThunk';
 import { fetchBookings, fetchCreateBooking } from '../../features/bookings/bookingsThunk';
 import { StyledSelect } from '../../components/reusable/StyledMenu';
