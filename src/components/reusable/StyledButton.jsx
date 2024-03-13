@@ -141,4 +141,16 @@ export const StyledButton = styled.button`
             }
         `
     }
+
+    ${(props) =>
+        props.$name === "goBack" &&
+        `
+            background:  #135846;
+            font-weight: 600;
+            color: #EBF1EF;
+            padding: 0.5rem 1rem;
+            margin-top: 2em;
+            margin-left: 2em;
+    `
+    }
 `;

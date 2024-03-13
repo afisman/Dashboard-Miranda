@@ -43,7 +43,6 @@ const NewBookingPage = () => {
 
     }, [roomsList])
 
-    console.log(availableRooms)
     useEffect(
         () => {
 

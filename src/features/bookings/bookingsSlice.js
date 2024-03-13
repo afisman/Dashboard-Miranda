@@ -46,7 +46,6 @@ export const bookingsSlice = createSlice({
             .addCase(fetchCreateBooking.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 state.bookings.push(action.payload);
-                console.log(state)
             })
             .addCase(fetchCreateBooking.rejected, (state, action) => {
                 state.status = 'rejected';
@@ -58,11 +57,8 @@ export const bookingsSlice = createSlice({
                 state.status = 'pending';
             })
             .addCase(fetchUpdateBooking.fulfilled, (state, action) => {
-                const updatedBooking = action.payload;
                 state.status = 'fulfilled';
-                state.bookings.map((booking) => (
-                    booking.id === updatedBooking.id ? updatedBooking : booking
-                ));
+                state.bookings = action.payload;
             })
             .addCase(fetchUpdateBooking.rejected, (state, action) => {
                 state.status = 'rejected';
