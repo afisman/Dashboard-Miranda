@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchContacts, fetchDeleteContact, fetchSingleContact, fetchUpdateContact } from "./contactThunk";
 
 export const contactSlice = createSlice({
-    name: 'contact',
+    name: 'contacts',
     initialState: {
         contacts: [],
         status: 'idle',
@@ -52,7 +52,6 @@ export const contactSlice = createSlice({
                 state.status = 'pending';
             })
             .addCase(fetchDeleteContact.fulfilled, (state, action) => {
-                const id = action.payload;
                 state.status = 'fulfilled';
                 state.contacts = action.payload;
             })

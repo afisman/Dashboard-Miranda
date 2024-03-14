@@ -10,7 +10,7 @@ export const store = configureStore({
         bookings: bookingsReducer,
         rooms: roomsReducer,
         users: usersReducer,
-        contact: contactReducer
+        contacts: contactReducer
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

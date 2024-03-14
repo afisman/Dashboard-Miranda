@@ -19,16 +19,11 @@ const BookingsPage = () => {
     const [specialRequest, setSpecialRequest] = useState('');
     const [modalOpen, setModalOpen] = useState(false);
 
-
-
-
     const dispatch = useDispatch()
     const bookingsData = useSelector(getBookingsList);
-    const bookingsStatus = useSelector(getBookingsStatus);
 
     const handleOpen = () => setModalOpen(true);
     const handleClose = () => setModalOpen(false);
-
 
     const bookingsList = useMemo(() => {
         let orderedBookings;
