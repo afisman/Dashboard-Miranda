@@ -5,14 +5,29 @@ import { StyledMenu, StyledMenuText, StyledMenuButtons, StyledSelect, StyledMenu
 import UsersTablePage from './UsersTablePage';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+
 const UsersPage = () => {
     const [usersList, setUsersList] = useState(data)
-    const [pageNumber, setPageNumber] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [selection, setSelection] = useState('all');
 
+    const dispatch = useDispatch();
+
+    const totalPages = Math.ceil(usersList.length / 10);
+    const firstuser = (currentPage - 1) * 10;
+    const lastUser = firstuser + 10;
+
+    let displayedUsers = usersList?.slice(firstuser, lastUser);
+
+
     const handleMenuClick = (option) => {
         setSelection(option);
+    }
+
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage);
     }
 
     return (
@@ -58,16 +73,28 @@ const UsersPage = () => {
                         <StyledTableHeader>Schedule</StyledTableHeader>
                         <StyledTableHeader>Contact</StyledTableHeader>
                         <StyledTableHeader>Status</StyledTableHeader>
-                        <StyledTableHeader></StyledTableHeader>
+                        <StyledTableHeader>Actions</StyledTableHeader>
                     </tr>
                 </thead>
                 <tbody>
                     <UsersTablePage
-                        data={usersList}
-                        pageNumber={pageNumber}
+                        data={displayedUsers}
+                        dispatch={dispatch}
                     />
                 </tbody>
             </StyledTable>
+            <StyledMenuButtons $type='pagination'>
+                <StyledButton $name='pagination' onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                >
+                    Previous
+                </StyledButton>
+                <StyledButton $name='pagination' onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                >
+                    Next
+                </StyledButton>
+            </StyledMenuButtons>
         </>)
 }
 

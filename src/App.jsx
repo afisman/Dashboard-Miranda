@@ -20,6 +20,7 @@ import { store } from './app/store';
 import NewBookingPage from './pages/NewBooking/NewBookingPage';
 import EditBookingPage from './pages/NewBooking/EditBookingPage';
 import EditRoomPage from './pages/NewRoom/EditRoomPage';
+import EditUserPage from './pages/NewUser/EditUserPage';
 
 
 
@@ -59,6 +60,7 @@ function App() {
                 <Route path="contact" element={<ContactPage />} />
                 <Route path="users" element={<UsersPage />} />
                 <Route path="users/newuser" element={<NewUserPage />} />
+                <Route path="users/edituser/:id" element={<EditUserPage />} />
               </Route>
               <Route path="/*" element={<Navigate to='/' />}></Route>
             </Routes>

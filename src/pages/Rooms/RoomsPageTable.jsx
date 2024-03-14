@@ -12,13 +12,12 @@ const RoomsPageTable = ({ data, dispatch }) => {
 
     const handleEditClick = (e, id) => {
         e.stopPropagation();
-        navigate(`/rooms/editroom/${id}`)
+        navigate(`/rooms/editroom/${id}`);
     }
 
     const handleDeleteClick = (e, id) => {
         e.stopPropagation();
-        console.log(id)
-        dispatch(fetchDeleteRoom(id))
+        dispatch(fetchDeleteRoom(id));
     }
 
     return (

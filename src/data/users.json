@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "first_name": "Judy",
+        "full_name": "Judy",
         "contact": "364-929-3576",
         "email": "jsagar0@stanford.edu",
         "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -11,7 +11,7 @@
     },
     {
         "id": 2,
-        "first_name": "Nicol",
+        "full_name": "Nicol",
         "contact": "522-974-1968",
         "email": "nnormand1@t-online.de",
         "photo": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -21,7 +21,7 @@
     },
     {
         "id": 3,
-        "first_name": "Alta",
+        "full_name": "Alta",
         "contact": "459-322-2241",
         "email": "astamper2@gmpg.org",
         "photo": "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -31,7 +31,7 @@
     },
     {
         "id": 4,
-        "first_name": "Marchall",
+        "full_name": "Marchall",
         "contact": "830-394-7839",
         "email": "mjerdon3@examiner.com",
         "photo": "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -41,7 +41,7 @@
     },
     {
         "id": 5,
-        "first_name": "Laraine",
+        "full_name": "Laraine",
         "contact": "289-402-9652",
         "email": "lrasell4@booking.com",
         "photo": "https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -51,7 +51,7 @@
     },
     {
         "id": 6,
-        "first_name": "Lucila",
+        "full_name": "Lucila",
         "contact": "248-192-3033",
         "email": "lmattiazzi5@google.de",
         "photo": "https://images.unsplash.com/photo-1491349174775-aaafddd81942?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -61,7 +61,7 @@
     },
     {
         "id": 7,
-        "first_name": "Lisabeth",
+        "full_name": "Lisabeth",
         "contact": "726-310-3025",
         "email": "lewbanck6@independent.co.uk",
         "photo": "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -71,7 +71,7 @@
     },
     {
         "id": 8,
-        "first_name": "Georgia",
+        "full_name": "Georgia",
         "contact": "991-331-1128",
         "email": "gjuggins7@fc2.com",
         "photo": "https://plus.unsplash.com/premium_photo-1668989224643-6b79eaea2108?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -81,7 +81,7 @@
     },
     {
         "id": 9,
-        "first_name": "Penrod",
+        "full_name": "Penrod",
         "contact": "730-809-1566",
         "email": "pvigietti8@house.gov",
         "photo": "https://plus.unsplash.com/premium_photo-1678197937465-bdbc4ed95815?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -91,7 +91,7 @@
     },
     {
         "id": 10,
-        "first_name": "Jonah",
+        "full_name": "Jonah",
         "contact": "911-451-3798",
         "email": "jcummins9@google.de",
         "photo": "https://plus.unsplash.com/premium_photo-1664536392896-cd1743f9c02c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -101,7 +101,7 @@
     },
     {
         "id": 11,
-        "first_name": "Stanislaus",
+        "full_name": "Stanislaus",
         "contact": "769-199-5878",
         "email": "smellmotha@gov.uk",
         "photo": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -111,7 +111,7 @@
     },
     {
         "id": 12,
-        "first_name": "Ryan",
+        "full_name": "Ryan",
         "contact": "926-224-0883",
         "email": "rdombb@gizmodo.com",
         "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",

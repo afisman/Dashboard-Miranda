@@ -50,10 +50,10 @@ const RoomsPage = () => {
     }, [roomsData, order, selection, currentPage])
 
     const totalPages = Math.ceil(roomsList.length / 10);
-    const firstBooking = (currentPage - 1) * 10;
-    const lastBooking = firstBooking + 10;
+    const firstRoom = (currentPage - 1) * 10;
+    const lastRoom = firstRoom + 10;
 
-    let displayedRooms = roomsList?.slice(firstBooking, lastBooking);
+    let displayedRooms = roomsList?.slice(firstRoom, lastRoom);
 
 
 

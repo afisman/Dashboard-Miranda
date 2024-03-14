@@ -1,8 +1,24 @@
 import React from 'react';
 import { StyledTableCell, StyledTableRow, StyledTableCellText, StyledTableCellImg } from '../../components/reusable/StyledTable';
 import { StyledButton } from '../../components/reusable/StyledButton';
+import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
+import { useNavigate } from 'react-router';
+import { fetchDeleteUser } from '../../features/users/usersThunk';
 
-const UsersTablePage = ({ data }) => {
+
+const UsersTablePage = ({ data, dispatch }) => {
+    const navigate = useNavigate();
+
+    const handleEditClick = (e, id) => {
+        e.stopPropagation();
+        navigate(`/users/edituser/${id}`);
+    }
+
+    const handleDeleteClick = (e, id) => {
+        e.stopPropagation();
+        dispatch(fetchDeleteUser(id));
+    }
+
     return (
         <>
             {data.map((el) => (
@@ -42,6 +58,12 @@ const UsersTablePage = ({ data }) => {
                     <StyledTableCell $name='flexCell'>
                         <StyledTableCellText $letterstyle={`${el.status}`}>
                             {el.status}
+                        </StyledTableCellText>
+                    </StyledTableCell>
+                    <StyledTableCell>
+                        <StyledTableCellText style={{ display: 'flex' }} >
+                            <StyledEditIcon onClick={(e) => { handleEditClick(e, el.id) }}></StyledEditIcon>
+                            <StyledDeleteIcon onClick={(e) => { handleDeleteClick(e, el.id) }}></StyledDeleteIcon>
                         </StyledTableCellText>
                     </StyledTableCell>
                 </StyledTableRow>
