@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { StyledFormContainer, StyledFormInput, StyledFormWrapper, StyledTextArea, StyledFormSelect } from '../../components/reusable/StyledForm';
 import { StyledButton } from '../../components/reusable/StyledButton';
+import { useNavigate } from 'react-router';
+import { fetchCreateUser, fetchUpdateUser } from '../../features/users/usersThunk';
+import { useDispatch } from 'react-redux';
 
 const UserForm = ({ singleUser, type }) => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({ ...singleUser });
+    const [spinner, setSpinner] = useState(true);
+    const dispatch = useDispatch();
+
 
     const handleFormChange = (e) => {
         const { name, value } = e.target;
@@ -21,13 +28,21 @@ const UserForm = ({ singleUser, type }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const { name, value } = e.target;
+        if (type === 'Edit') {
+            dispatch(fetchUpdateUser(formData));
+        }
 
-
+        if (type === 'New') {
+            console.log(formData)
+            dispatch(fetchCreateUser(formData))
+        }
     }
 
     return (
         <>
+            <StyledButton $name='goBack' onClick={() => { navigate('/users') }}>
+                Go back
+            </StyledButton>
             <StyledFormWrapper>
                 <StyledFormContainer onSubmit={(e) => handleSubmit(e)}>
                     <StyledFormInput

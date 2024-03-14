@@ -14,7 +14,7 @@ const RoomForm = ({ singleRoom, type }) => {
     const dispatch = useDispatch();
     const roomsList = useSelector(getRoomsList)
 
-    const [spinner, setSpinner] = useState(false);
+    const [spinner, setSpinner] = useState(true);
     const [formData, setFormData] = useState({ ...singleRoom });
 
     const initialFetch = useCallback(async () => {
