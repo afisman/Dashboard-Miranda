@@ -17,6 +17,7 @@ const RoomsPageTable = ({ data, dispatch }) => {
 
     const handleDeleteClick = (e, id) => {
         e.stopPropagation();
+        console.log(id)
         dispatch(fetchDeleteRoom(id))
     }
 

@@ -11,5 +11,9 @@ export const store = configureStore({
         rooms: roomsReducer,
         users: usersReducer,
         contact: contactReducer
-    }
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 })

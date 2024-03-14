@@ -17,7 +17,6 @@ export const fetchRooms = createAsyncThunk(
 export const fetchSingleRoom = createAsyncThunk(
     "rooms/fetchSingleRoom",
     async (id) => {
-        console.log(id)
         return await delay(rooms.find((el) => el.id == id))
 
     })
@@ -30,9 +29,7 @@ export const fetchCreateRoom = createAsyncThunk(
 export const fetchUpdateRoom = createAsyncThunk(
     "rooms/fetchUpdateRoom",
     async (updateRoom) => {
-        console.log(updateRoom.id)
         return await delay(rooms.map((room) => {
-            console.log(updateRoom.id == room.id)
             return room.id == updateRoom.id ? updateRoom : room
         }))
 

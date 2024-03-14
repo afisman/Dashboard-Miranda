@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect, useCallback } from 'react';
 import { StyledTable, StyledTableHeader } from '../../components/reusable/StyledTable';
 import data from '../../data/rooms.json';
 import RoomsPageTable from './RoomsPageTable';
@@ -36,17 +36,38 @@ const RoomsPage = () => {
                     return b.rate - a.rate;
                 case 'status':
                     return a.status - b.status;
+                default:
+                    return
             }
         })
 
         return orderedRooms
     }, [roomsData, order, selection, currentPage])
 
+    const totalPages = Math.ceil(roomsList.length / 10);
+    const firstBooking = (currentPage - 1) * 10;
+    const lastBooking = firstBooking + 10;
+
+    let displayedRooms = roomsList?.slice(firstBooking, lastBooking);
+
+    const initialFetch = useCallback(async () => {
+        try {
+            await dispatch(fetchRooms());
+        } catch (error) {
+            console.log(error);
+        }
+    }, [dispatch]);
+
     useEffect(() => {
-        dispatch(fetchRooms())
-    }, [dispatch, roomsData, roomStatus])
+        initialFetch();
+    }, [initialFetch]);
+
+    // useEffect(() => {
+    //     dispatch(fetchRooms())
+    // }, [dispatch, roomsData, roomStatus])
 
     const handleMenuClick = (option) => {
+        console.log(option)
         setSelection(option);
     }
 
@@ -68,13 +89,13 @@ const RoomsPage = () => {
                         All Rooms
                     </StyledMenuText>
                     <StyledMenuText
-                        onClick={() => handleMenuClick('active')}
+                        onClick={() => handleMenuClick('Available')}
                         $selected={selection === 'Available'}
                     >
                         Available
                     </StyledMenuText>
                     <StyledMenuText
-                        onClick={() => handleMenuClick('inactive')}
+                        onClick={() => handleMenuClick('Booked')}
                         $selected={selection === 'Booked'}
                     >
                         Booked
@@ -105,7 +126,7 @@ const RoomsPage = () => {
                 </thead>
                 <tbody>
                     <RoomsPageTable
-                        data={roomsList}
+                        data={displayedRooms}
                         dispatch={dispatch}
                     />
                 </tbody>

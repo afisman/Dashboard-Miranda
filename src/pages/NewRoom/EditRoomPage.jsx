@@ -19,7 +19,6 @@ const EditRoomPage = () => {
     useEffect(() => {
         initialFetch();
     }, [initialFetch])
-    console.log(singleRoom)
 
     return (<>
 

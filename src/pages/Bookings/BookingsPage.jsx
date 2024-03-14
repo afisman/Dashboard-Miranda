@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect, useCallback } from 'react';
 import { StyledTable, StyledTableHeader } from '../../components/reusable/StyledTable';
 import BookingsTable from './BookingsTable';
 import { StyledMenu, StyledMenuText, StyledSelect, StyledMenuWrapper, StyledMenuButtons } from '../../components/reusable/StyledMenu';
@@ -85,9 +85,17 @@ const BookingsPage = () => {
 
     }
 
+    const initialFetch = useCallback(async () => {
+        try {
+            await dispatch(fetchBookings());
+        } catch (error) {
+            console.log(error);
+        }
+    }, [dispatch]);
+
     useEffect(() => {
-        dispatch(fetchBookings())
-    }, [dispatch, bookingsData, bookingsStatus])
+        initialFetch();
+    }, [initialFetch]);
 
 
     return (
