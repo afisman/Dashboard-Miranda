@@ -2,7 +2,7 @@
     {
         "id": 1,
         "full_name": "Judy",
-        "contact": "364-929-3576",
+        "contact": "3649293576",
         "email": "jsagar0@stanford.edu",
         "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
@@ -22,7 +22,7 @@
     {
         "id": 3,
         "full_name": "Alta",
-        "contact": "459-322-2241",
+        "contact": "4593222241",
         "email": "astamper2@gmpg.org",
         "photo": "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
@@ -32,7 +32,7 @@
     {
         "id": 4,
         "full_name": "Marchall",
-        "contact": "830-394-7839",
+        "contact": "8303947839",
         "email": "mjerdon3@examiner.com",
         "photo": "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
@@ -42,7 +42,7 @@
     {
         "id": 5,
         "full_name": "Laraine",
-        "contact": "289-402-9652",
+        "contact": "2894029652",
         "email": "lrasell4@booking.com",
         "photo": "https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
@@ -52,7 +52,7 @@
     {
         "id": 6,
         "full_name": "Lucila",
-        "contact": "248-192-3033",
+        "contact": "2481923033",
         "email": "lmattiazzi5@google.de",
         "photo": "https://images.unsplash.com/photo-1491349174775-aaafddd81942?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
@@ -62,7 +62,7 @@
     {
         "id": 7,
         "full_name": "Lisabeth",
-        "contact": "726-310-3025",
+        "contact": "7263103025",
         "email": "lewbanck6@independent.co.uk",
         "photo": "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
@@ -72,7 +72,7 @@
     {
         "id": 8,
         "full_name": "Georgia",
-        "contact": "991-331-1128",
+        "contact": "9913311128",
         "email": "gjuggins7@fc2.com",
         "photo": "https://plus.unsplash.com/premium_photo-1668989224643-6b79eaea2108?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
@@ -82,7 +82,7 @@
     {
         "id": 9,
         "full_name": "Penrod",
-        "contact": "730-809-1566",
+        "contact": "7308091566",
         "email": "pvigietti8@house.gov",
         "photo": "https://plus.unsplash.com/premium_photo-1678197937465-bdbc4ed95815?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
@@ -92,7 +92,7 @@
     {
         "id": 10,
         "full_name": "Jonah",
-        "contact": "911-451-3798",
+        "contact": "9114513798",
         "email": "jcummins9@google.de",
         "photo": "https://plus.unsplash.com/premium_photo-1664536392896-cd1743f9c02c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
@@ -102,7 +102,7 @@
     {
         "id": 11,
         "full_name": "Stanislaus",
-        "contact": "769-199-5878",
+        "contact": "7691995878",
         "email": "smellmotha@gov.uk",
         "photo": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
@@ -112,7 +112,7 @@
     {
         "id": 12,
         "full_name": "Ryan",
-        "contact": "926-224-0883",
+        "contact": "9262240883",
         "email": "rdombb@gizmodo.com",
         "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",

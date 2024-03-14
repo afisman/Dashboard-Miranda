@@ -23,12 +23,7 @@ const UserForm = ({ singleUser, type }) => {
 
         const { name, value } = e.target;
 
-        setForm((prevData) => {
-            return {
-                ...prevData,
-                [name]: value
-            }
-        })
+
     }
 
     return (
@@ -53,7 +48,7 @@ const UserForm = ({ singleUser, type }) => {
                         placeholder='Phone number'
                         name='contact'
                         type='number'
-                        value={formData.contact}
+                        value={Number(formData.contact)}
                         onChange={(e) => handleFormChange(e)}
                     ></StyledFormInput>
                     <StyledFormInput
