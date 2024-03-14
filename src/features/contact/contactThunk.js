@@ -17,17 +17,22 @@ export const fetchContacts = createAsyncThunk(
 export const fetchSingleContact = createAsyncThunk(
     "contact/fetchSingleContact",
     async (id) => {
-        return await delay(id)
+        console.log(contact.find((el) => (el.id == id)))
+        return await delay(contact.find((el) => (el.id == id)))
 
     })
 export const fetchUpdateContact = createAsyncThunk(
     "contact/fetchUpdateContact",
-    async (updatedBooking) => {
-        return await delay(updatedBooking)
+    async (updateContact) => {
+        return await delay(contact.map((el) => {
+            return el.id == updateContact.id ? updateContact : el
+        }))
 
     })
 export const fetchDeleteContact = createAsyncThunk(
     "contact/fetchDeleteContact",
     async (id) => {
-        return await delay(id)
+        return await delay(contact.filter((el) => (
+            el.id !== id
+        )))
     })
