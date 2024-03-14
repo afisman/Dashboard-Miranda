@@ -3,6 +3,9 @@ import { StyledFormContainer, StyledFormInput, StyledFormWrapper, StyledTextArea
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { StyledSpinner } from '../../components/reusable/StyledSpinner';
+import { fetchUpdateRoom } from '../../features/rooms/roomsThunk';
+import { fetchCreateBooking } from '../../features/bookings/bookingsThunk';
 
 
 
@@ -10,7 +13,9 @@ const RoomForm = ({ singleRoom, type }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const [formData, setFormData] = useState(singleBooking);
+    const [spinner, setSpinner] = useState(true);
+    const [formData, setFormData] = useState(singleRoom);
+
 
     const handleFormChange = (e) => {
         const { name, value } = e.target;
@@ -32,70 +37,81 @@ const RoomForm = ({ singleRoom, type }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (type === 'Edit') {
+            dispatch(fetchUpdateRoom(formData));
+        }
 
-        const { name, value } = e.target;
+        if (type === 'New') {
+            dispatch(fetchCreateBooking(formData))
+        }
     }
 
     return (
         <>
-            <StyledFormWrapper>
-                <StyledFormContainer onSubmit={handleSubmit}>
-                    <StyledFormInput
-                        placeholder='Room Number'
-                        name='room_number'
-                        type='string'
-                        value={formData.room_number || ''}
-                        onChange={handleFormChange}
-                    ></StyledFormInput>
-                    <StyledTextArea
-                        placeholder='Photos'
-                        name='photos'
-                        type='string'
-                        value={formData.photos || []}
-                        onChange={handleFormChange}
-                        rows={6}
-                    ></StyledTextArea>
-                    <StyledFormInput
-                        placeholder='Description'
-                        name='description'
-                        type='string'
-                        value={formData.description || ''}
-                        onChange={handleFormChange}
-                    ></StyledFormInput>
-                    <StyledFormInput
-                        placeholder='Price per night'
-                        name='price'
-                        type='number'
-                        value={formData.price || ''}
-                        onChange={handleFormChange}
-                    ></StyledFormInput>
-                    <StyledFormInput
-                        placeholder='discount'
-                        name='discount'
-                        type='number'
-                        value={formData.discount || ''}
-                        onChange={handleFormChange}
-                    ></StyledFormInput>
-                    <StyledFormInput
-                        placeholder='Cancelation'
-                        name='cancelation'
-                        type='string'
-                        value={formData.cancelation || ''}
-                        onChange={handleFormChange}
-                    ></StyledFormInput>
-                    <StyledTextArea
-                        placeholder='Amenities'
-                        name='amenities'
-                        type='string'
-                        value={formData.amenities || []}
-                        onChange={handleFormChange}
-                        rows={6}
-                    ></StyledTextArea>
-                    <StyledButton $name="login" type="submit">
-                        Create Room
-                    </StyledButton>
-                </StyledFormContainer>
-            </StyledFormWrapper>
+            {spinner ?
+
+
+                <StyledSpinner />
+                :
+                <StyledFormWrapper>
+                    <StyledFormContainer onSubmit={(e) => handleSubmit(e)}>
+                        <StyledFormInput
+                            placeholder='Room Number'
+                            name='room_number'
+                            type='string'
+                            value={formData.room_number}
+                            onChange={(e) => handleFormChange(e)}
+                        ></StyledFormInput>
+                        <StyledTextArea
+                            placeholder='Photos'
+                            name='photos'
+                            type='string'
+                            value={formData.photos}
+                            onChange={(e) => handleFormChange(e)}
+                            rows={6}
+                        ></StyledTextArea>
+                        <StyledFormInput
+                            placeholder='Description'
+                            name='description'
+                            type='string'
+                            value={formData.description}
+                            onChange={(e) => handleFormChange(e)}
+                        ></StyledFormInput>
+                        <StyledFormInput
+                            placeholder='Price per night'
+                            name='price'
+                            type='number'
+                            value={formData.price}
+                            onChange={(e) => handleFormChange(e)}
+                        ></StyledFormInput>
+                        <StyledFormInput
+                            placeholder='discount'
+                            name='discount'
+                            type='number'
+                            value={formData.discount}
+                            onChange={(e) => handleFormChange(e)}
+                        ></StyledFormInput>
+                        <StyledFormInput
+                            placeholder='Cancelation'
+                            name='cancelation'
+                            type='string'
+                            value={formData.cancelation}
+                            onChange={(e) => handleFormChange(e)}
+                        ></StyledFormInput>
+                        <StyledTextArea
+                            placeholder='Amenities'
+                            name='amenities'
+                            type='string'
+                            value={formData.amenities}
+                            onChange={(e) => handleFormChange(e)}
+                            rows={6}
+                        ></StyledTextArea>
+                        <StyledButton $name="login" type="submit">
+                            {type} Room
+                        </StyledButton>
+                    </StyledFormContainer>
+                </StyledFormWrapper>
+            }
         </>
     )
 }

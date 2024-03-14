@@ -13,7 +13,7 @@
         "room": {
             "id": 3
         },
-        "status": "booked"
+        "status": "In progress"
     },
     {
         "id": 2,
@@ -29,7 +29,7 @@
         "room": {
             "id": 1
         },
-        "status": "pending"
+        "status": "Check out"
     },
     {
         "id": 3,
@@ -45,7 +45,7 @@
         "room": {
             "id": 4
         },
-        "status": "refund"
+        "status": "Check in"
     },
     {
         "id": 4,
@@ -61,7 +61,7 @@
         "room": {
             "id": 12
         },
-        "status": "booked"
+        "status": "In progress"
     },
     {
         "id": 5,
@@ -77,7 +77,7 @@
         "room": {
             "id": 7
         },
-        "status": "pending"
+        "status": "In progress"
     },
     {
         "id": 6,
@@ -93,7 +93,7 @@
         "room": {
             "id": 6
         },
-        "status": "canceled"
+        "status": "Check in"
     },
     {
         "id": 7,
@@ -109,7 +109,7 @@
         "room": {
             "id": 3
         },
-        "status": "booked"
+        "status": "Check out"
     },
     {
         "id": 8,
@@ -125,7 +125,7 @@
         "room": {
             "id": 1
         },
-        "status": "refund"
+        "status": "In progress"
     },
     {
         "id": 9,
@@ -138,7 +138,7 @@
         "room": {
             "id": 4
         },
-        "status": "refund",
+        "status": "In progress",
         "order_date": "2023-12-18T09:08:04Z",
         "check_in": "2024-01-05T08:46:38Z",
         "check_out": "2024-01-11T13:12:46Z"
@@ -154,7 +154,7 @@
         "room": {
             "id": 12
         },
-        "status": "booked",
+        "status": "Check out",
         "order_date": "2023-12-14T18:11:19Z",
         "check_in": "2024-01-02T19:09:42Z",
         "check_out": "2024-01-08T15:49:37Z"
@@ -173,7 +173,7 @@
         "room": {
             "id": 7
         },
-        "status": "pending"
+        "status": "Check out"
     },
     {
         "id": 12,
@@ -189,6 +189,6 @@
         "room": {
             "id": 6
         },
-        "status": "canceled"
+        "status": "Check in"
     }
 ]

@@ -30,7 +30,7 @@ export const StyledButton = styled.button`
     `
     }
     ${(props) =>
-        props.$name === "refund" &&
+        props.$name === "Check out" &&
         `
             background: #FFEDEC 0% 0% no-repeat padding-box;
             font-weight: 500;
@@ -40,7 +40,7 @@ export const StyledButton = styled.button`
     `
     }
     ${(props) =>
-        props.$name === "booked" &&
+        props.$name === "Check in" &&
         `
             background: #E8FFEE 0% 0% no-repeat padding-box;
             font-weight: 500;
@@ -50,17 +50,7 @@ export const StyledButton = styled.button`
     `
     }
     ${(props) =>
-        props.$name === "pending" &&
-        `
-            background: #E2E2E2 0% 0% no-repeat padding-box;
-            font-weight: 500;
-            color: #6D6D6D;
-            padding: 0.5rem 1rem;
-            width: 109px;
-    `
-    }
-    ${(props) =>
-        props.$name === "canceled" &&
+        props.$name === "In progress" &&
         `
             background: #575757 0% 0% no-repeat padding-box;
             font-weight: 500;

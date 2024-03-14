@@ -104,28 +104,22 @@ const BookingsPage = () => {
                         All Guest
                     </StyledMenuText>
                     <StyledMenuText
-                        onClick={() => handleMenuClick('pending')}
-                        $selected={selection === 'pending'}
+                        onClick={() => handleMenuClick('Check in')}
+                        $selected={selection === 'Check in'}
                     >
-                        Pending
+                        Check in
                     </StyledMenuText>
                     <StyledMenuText
-                        onClick={() => handleMenuClick('booked')}
-                        $selected={selection === 'booked'}
+                        onClick={() => handleMenuClick('Check out')}
+                        $selected={selection === 'Check out'}
                     >
-                        Booked
+                        Check out
                     </StyledMenuText>
                     <StyledMenuText
-                        onClick={() => handleMenuClick('canceled')}
-                        $selected={selection === 'canceled'}
+                        onClick={() => handleMenuClick('In progress')}
+                        $selected={selection === 'In progress'}
                     >
-                        Canceled
-                    </StyledMenuText>
-                    <StyledMenuText
-                        onClick={() => handleMenuClick('refund')}
-                        $selected={selection === 'refund'}
-                    >
-                        Refund
+                        In progress
                     </StyledMenuText>
                 </StyledMenu>
                 <StyledMenuButtons>
