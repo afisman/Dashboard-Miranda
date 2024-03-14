@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyledFormContainer, StyledFormInput, StyledFormWrapper, StyledTextArea, StyledFormSelect } from '../../components/reusable/StyledForm';
 import { StyledButton } from '../../components/reusable/StyledButton';
 
-const UserForm = ({ id = null }) => {
+const UserForm = ({ singleuser, type }) => {
     const [form, setForm] = useState({});
 
 

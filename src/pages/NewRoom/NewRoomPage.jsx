@@ -1,28 +1,7 @@
-import React, { useMemo, useEffect } from 'react';
-
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import RoomForm from './RoomForm';
-import { getRoomsList } from '../../features/rooms/roomsSlice';
-import { fetchRooms } from '../../features/rooms/roomsThunk';
-import { StyledSpinner } from '../../components/reusable/StyledSpinner';
-
-
 
 const NewRoomPage = () => {
-    // const dispatch = useDispatch();
-    // const roomsList = useSelector(getRoomsList);
-
-    // useEffect(
-    //     () => {
-    //         dispatch(fetchRooms());
-    //     }, [
-    //     dispatch,
-    //     roomsList]
-    // );
-
-    // const maxId = useMemo(() => {
-    //     return roomsList.reduce((prev, current) => (prev && prev.y > current.y) ? prev : current, 1).id
-    // }, [roomsList])
 
     const singleRoom = {
         id: 0,
@@ -39,10 +18,7 @@ const NewRoomPage = () => {
 
     return (
         <>
-            {/* {maxId ? */}
             <RoomForm singleRoom={singleRoom} type={"New"} />
-            {/* :
-                <StyledSpinner />} */}
         </>
     )
 }
