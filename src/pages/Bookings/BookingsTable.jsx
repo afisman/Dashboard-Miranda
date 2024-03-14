@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
 import { fetchDeleteBooking } from '../../features/bookings/bookingsThunk';
 
-const BookingsTable = ({ data, pageNumber, setSpecialRequest, handleOpen, dispatch }) => {
+const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }) => {
     const navigate = useNavigate();
 
 

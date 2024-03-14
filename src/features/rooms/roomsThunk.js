@@ -17,21 +17,24 @@ export const fetchRooms = createAsyncThunk(
 export const fetchSingleRoom = createAsyncThunk(
     "rooms/fetchSingleRoom",
     async (id) => {
+        console.log(id)
         return await delay(rooms.find((el) => el.id == id))
 
     })
 export const fetchCreateRoom = createAsyncThunk(
     "rooms/fetchCreateRoom",
     async (newRoom) => {
-        return await delay(newRoom)
+        return await delay([...rooms, newRoom])
 
     })
 export const fetchUpdateRoom = createAsyncThunk(
     "rooms/fetchUpdateRoom",
     async (updateRoom) => {
-        return await delay(rooms.map((room) => (
-            room.id == updateRoom.id ? updateRoom : room
-        )))
+        console.log(updateRoom.id)
+        return await delay(rooms.map((room) => {
+            console.log(updateRoom.id == room.id)
+            return room.id == updateRoom.id ? updateRoom : room
+        }))
 
     })
 export const fetchDeleteRoom = createAsyncThunk(

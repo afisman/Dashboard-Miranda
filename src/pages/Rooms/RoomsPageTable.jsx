@@ -1,8 +1,25 @@
-import React from 'react'
-import { StyledTableCell, StyledTableCellImg, StyledTableCellText, StyledTableRow } from '../../components/reusable/StyledTable'
-import { StyledButton } from '../../components/reusable/StyledButton'
+import React from 'react';
+import { StyledTableCell, StyledTableCellImg, StyledTableCellText, StyledTableRow } from '../../components/reusable/StyledTable';
+import { StyledButton } from '../../components/reusable/StyledButton';
+import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
+import { fetchDeleteRoom } from '../../features/rooms/roomsThunk';
+import { useNavigate } from 'react-router';
 
-const RoomsPageTable = ({ data }) => {
+
+
+const RoomsPageTable = ({ data, dispatch }) => {
+    const navigate = useNavigate();
+
+    const handleEditClick = (e, id) => {
+        e.stopPropagation();
+        navigate(`/rooms/editroom/${id}`)
+    }
+
+    const handleDeleteClick = (e, id) => {
+        e.stopPropagation();
+        dispatch(fetchDeleteRoom(id))
+    }
+
     return (
         <>
             {data.map((el) => (
@@ -47,6 +64,12 @@ const RoomsPageTable = ({ data }) => {
                         <StyledButton $name={`${el.status}`}>
                             {el.status}
                         </StyledButton>
+                    </StyledTableCell>
+                    <StyledTableCell>
+                        <StyledTableCellText style={{ display: 'flex' }} >
+                            <StyledEditIcon onClick={(e) => { handleEditClick(e, el.id) }}></StyledEditIcon>
+                            <StyledDeleteIcon onClick={(e) => { handleDeleteClick(e, el.id) }}></StyledDeleteIcon>
+                        </StyledTableCellText>
                     </StyledTableCell>
                 </StyledTableRow>
             ))}

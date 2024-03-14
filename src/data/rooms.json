@@ -12,6 +12,7 @@
         "offer": "No",
         "room_floor": "Floor 1",
         "rate": 130,
+        "discount": "0%",
         "amenities": [
             "Luxury bathroom",
             "Queen-size bed",
@@ -38,7 +39,8 @@
             "Double-size bed",
             "Built-in closet"
         ],
-        "status": "Booked"
+        "status": "Booked",
+        "discount": "0%"
     },
     {
         "id": 3,
@@ -61,7 +63,8 @@
             "Separate rooms",
             "Three beds"
         ],
-        "status": "Booked"
+        "status": "Booked",
+        "discount": "0%"
     },
     {
         "id": 4,
@@ -82,7 +85,8 @@
             "Terrace overlooking countryside",
             "Built-in closet"
         ],
-        "status": "Available"
+        "status": "Available",
+        "discount": "0%"
     },
     {
         "id": 5,
@@ -102,7 +106,8 @@
             "Double-size bed",
             "Built-in closet"
         ],
-        "status": "Booked"
+        "status": "Booked",
+        "discount": "0%"
     },
     {
         "id": 6,
@@ -125,7 +130,8 @@
             "Separate rooms",
             "Three beds"
         ],
-        "status": "Booked"
+        "status": "Booked",
+        "discount": "0%"
     },
     {
         "id": 7,
@@ -146,7 +152,8 @@
             "Terrace overlooking countryside",
             "Built-in closet"
         ],
-        "status": "Available"
+        "status": "Available",
+        "discount": "0%"
     },
     {
         "id": 8,
@@ -166,7 +173,8 @@
             "Double-size bed",
             "Built-in closet"
         ],
-        "status": "Booked"
+        "status": "Booked",
+        "discount": "0%"
     },
     {
         "id": 9,
@@ -189,7 +197,8 @@
             "Separate rooms",
             "Three beds"
         ],
-        "status": "Booked"
+        "status": "Booked",
+        "discount": "0%"
     },
     {
         "id": 10,
@@ -210,7 +219,8 @@
             "Terrace overlooking countryside",
             "Built-in closet"
         ],
-        "status": "Available"
+        "status": "Available",
+        "discount": "0%"
     },
     {
         "id": 11,
@@ -230,7 +240,8 @@
             "Double-size bed",
             "Built-in closet"
         ],
-        "status": "Booked"
+        "status": "Booked",
+        "discount": "0%"
     },
     {
         "id": 12,
@@ -253,6 +264,7 @@
             "Separate rooms",
             "Three beds"
         ],
-        "status": "Booked"
+        "status": "Booked",
+        "discount": "0%"
     }
 ]

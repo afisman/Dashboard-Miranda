@@ -13,7 +13,6 @@ import { Link } from 'react-router-dom';
 
 
 const BookingsPage = () => {
-    const [pageNumber, setPageNumber] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [selection, setSelection] = useState('all');
     const [order, setOrder] = useState('order_date');
@@ -150,7 +149,6 @@ const BookingsPage = () => {
                 <tbody>
                     <BookingsTable
                         data={displayedBookings}
-                        pageNumber={pageNumber}
                         setSpecialRequest={setSpecialRequest}
                         handleOpen={handleOpen}
                         dispatch={dispatch}
