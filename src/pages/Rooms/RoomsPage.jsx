@@ -11,7 +11,6 @@ import { fetchRooms } from '../../features/rooms/roomsThunk';
 
 
 const RoomsPage = () => {
-    // const [roomsList, setRoomsList] = useState(data);
     const [order, setOrder] = useState('newest');
     const [selection, setSelection] = useState('all');
     const [currentPage, setCurrentPage] = useState(1);
@@ -34,10 +33,16 @@ const RoomsPage = () => {
                     return a.rate - b.rate;
                 case 'expensive':
                     return b.rate - a.rate;
-                case 'status':
-                    return a.status - b.status;
                 default:
-                    return
+                    const statusA = a.status.toUpperCase();
+                    const statusB = b.status.toUpperCase();
+                    if (statusA < statusB) {
+                        return -1;
+                    }
+                    if (statusA > statusB) {
+                        return 1;
+                    }
+                    return 0;
             }
         })
 
@@ -49,6 +54,8 @@ const RoomsPage = () => {
     const lastBooking = firstBooking + 10;
 
     let displayedRooms = roomsList?.slice(firstBooking, lastBooking);
+
+
 
     const initialFetch = useCallback(async () => {
         try {
@@ -62,12 +69,11 @@ const RoomsPage = () => {
         initialFetch();
     }, [initialFetch]);
 
-    // useEffect(() => {
-    //     dispatch(fetchRooms())
-    // }, [dispatch, roomsData, roomStatus])
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage);
+    }
 
     const handleMenuClick = (option) => {
-        console.log(option)
         setSelection(option);
     }
 
@@ -105,7 +111,7 @@ const RoomsPage = () => {
                     <StyledButton as={Link} to='/rooms/newroom' $name='new'>
                         + New Room
                     </StyledButton>
-                    <StyledSelect name="order" id="order">
+                    <StyledSelect name="order" id="order" onChange={(e) => handleOrderChange(e)}>
                         <option value='status'>Status</option>
                         <option value='cheapest'>Cheapest</option>
                         <option value='expensive'>Costly</option>
@@ -131,6 +137,18 @@ const RoomsPage = () => {
                     />
                 </tbody>
             </StyledTable>
+            <StyledMenuButtons $type='pagination'>
+                <StyledButton $name='pagination' onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                >
+                    Previous
+                </StyledButton>
+                <StyledButton $name='pagination' onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                >
+                    Next
+                </StyledButton>
+            </StyledMenuButtons>
         </>
     )
 }
