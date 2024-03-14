@@ -41,7 +41,6 @@ export const roomsSlice = createSlice({
             .addCase(fetchCreateRoom.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 state.rooms.push(action.payload);
-                console.log(state.rooms)
             })
             .addCase(fetchCreateRoom.rejected, (state, action) => {
                 state.status = 'rejected';
@@ -52,11 +51,8 @@ export const roomsSlice = createSlice({
                 state.status = 'pending';
             })
             .addCase(fetchUpdateRoom.fulfilled, (state, action) => {
-                const updatedRoom = action.payload;
                 state.status = 'fulfilled';
-                state.rooms.map((room) => (
-                    room.id === updatedRoom.id ? updatedRoom : room
-                ));
+                state.rooms = action.payload;
             })
             .addCase(fetchUpdateRoom.rejected, (state, action) => {
                 state.status = 'rejected';
@@ -67,11 +63,9 @@ export const roomsSlice = createSlice({
                 state.status = 'pending';
             })
             .addCase(fetchDeleteRoom.fulfilled, (state, action) => {
-                const id = action.payload;
                 state.status = 'fulfilled';
-                state.rooms.filter((room) => (
-                    room.id !== id
-                ))
+                state.rooms = action.payload;
+
             })
             .addCase(fetchDeleteRoom.rejected, (state, action) => {
                 state.status = 'rejected';

@@ -1,62 +1,46 @@
 import React, { useState } from 'react';
-import { StyledFormContainer, StyledFormInput, StyledFormWrapper, StyledTextArea } from '../../components/reusable/StyledForm';
-import { StyledButton } from '../../components/reusable/StyledButton';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import RoomForm from './RoomForm';
+import { getRoomsList } from '../../features/rooms/roomsSlice';
+import { fetchRooms } from '../../features/rooms/roomsThunk';
 
 
 
 const NewRoomPage = () => {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
+    const roomsList = useSelector(getRoomsList);
+
+    useEffect(
+        () => {
+            dispatch(fetchRooms());
+        }, [
+        dispatch,
+        roomsList]
+    );
+
+    const maxId = useMemo(() => {
+        return roomsList.reduce((prev, current) => (prev && prev.y > current.y) ? prev : current, 1).id
+    }, [roomsList])
 
 
-
-
-    const [form, setForm] = useState({});
-
-
-    const handleFormChange = (e) => {
-        const { name, value } = e.target;
-
-        setForm((prevData) => {
-            if (name === 'amenities' || name === 'photos') {
-                return {
-                    ...prevData,
-                    [name]: value.split("\n")
-                }
-            } else {
-                return {
-                    ...prevData,
-                    [name]: value
-                }
-            }
-        })
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const { name, value } = e.target;
-
-        setForm((prevData) => {
-            if (name === 'amenities') {
-                return {
-                    ...prevData,
-                    [name]: value.split("\n")
-                }
-            } else {
-                return {
-                    ...prevData,
-                    [name]: value
-                }
-            }
-        })
+    const singleRoom = {
+        id: maxId + 1,
+        photos: [],
+        room_type: "",
+        room_number: "",
+        description: "",
+        offer: "",
+        rate: "",
+        amenities: [],
+        status: "Available",
+        discount: ""
     }
 
     return (
         <>
-            <StyledFormWrapper>
+            <RoomForm singleRoom={singleRoom} type={"New"} />
+            {/* <StyledFormWrapper>
                 <StyledFormContainer onSubmit={handleSubmit}>
                     <StyledFormInput
                         placeholder='Room Number'
@@ -104,7 +88,7 @@ const NewRoomPage = () => {
                         Create Room
                     </StyledButton>
                 </StyledFormContainer>
-            </StyledFormWrapper>
+            </StyledFormWrapper> */}
         </>
     )
 }

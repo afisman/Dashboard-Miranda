@@ -1,22 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import rooms from '../../data/rooms.json';
 
-function delay(path, id = 0, data = null) {
+function delay(data) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            if (path === "rooms/fetchRooms") {
-                resolve(rooms)
-            } else if (path === "rooms/fetchSingleRoom") {
-                resolve(rooms.find((el) => data[el].id === id))
-            } else if (path === "rooms/fetchCreateRoom") {
-                resolve(data)
-            } else if (path === "rooms/fetchUpdateRoom") {
-                resolve(data)
-            } else if ("rooms/fetchDeleteRoom") {
-                resolve(id)
-            } else {
-                rejects("Error")
-            }
+            resolve(data)
         }, 200)
     })
 }
@@ -24,29 +12,32 @@ function delay(path, id = 0, data = null) {
 export const fetchRooms = createAsyncThunk(
     "rooms/fetchRooms",
     async () => {
-        return await delay("rooms/fetchRooms")
+        return await delay(rooms)
     })
 export const fetchSingleRoom = createAsyncThunk(
     "rooms/fetchSingleRoom",
     async (id) => {
-        return await delay("rooms/fetchSingleRoom", id)
+        return await delay(rooms.find((el) => el.id == id))
 
     })
 export const fetchCreateRoom = createAsyncThunk(
     "rooms/fetchCreateRoom",
     async (newRoom) => {
-        console.log(newRoom)
-        return await delay("rooms/fetchCreateRoom", newRoom)
+        return await delay(newRoom)
 
     })
 export const fetchUpdateRoom = createAsyncThunk(
     "rooms/fetchUpdateRoom",
     async (updateRoom) => {
-        return await delay("rooms/fetchUpdateRoom", updateRoom)
+        return await delay(rooms.map((room) => (
+            room.id == updateRoom.id ? updateRoom : room
+        )))
 
     })
 export const fetchDeleteRoom = createAsyncThunk(
     "rooms/fetchDeleteRoom",
     async (id) => {
-        return await delay("rooms/fetchDeleteRoom", id)
+        return await delay(rooms.filter((room) => (
+            room.id !== id
+        )))
     })

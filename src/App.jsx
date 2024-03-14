@@ -19,6 +19,7 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import NewBookingPage from './pages/NewBooking/NewBookingPage';
 import EditBookingPage from './pages/NewBooking/EditBookingPage';
+import EditRoomPage from './pages/NewRoom/EditRoomPage';
 
 
 
@@ -54,6 +55,7 @@ function App() {
                 <Route path="bookings/:id" element={<BookingPage />} />
                 <Route path="rooms" element={<RoomsPage />} />
                 <Route path="rooms/newroom" element={<NewRoomPage />} />
+                <Route path="rooms/editroom/:id" element={<EditRoomPage />} />
                 <Route path="contact" element={<ContactPage />} />
                 <Route path="users" element={<UsersPage />} />
                 <Route path="users/newuser" element={<NewUserPage />} />

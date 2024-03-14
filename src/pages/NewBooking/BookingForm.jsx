@@ -16,17 +16,16 @@ const BookingForm = ({ singleBooking, type }) => {
     const dispatch = useDispatch();
 
     const roomsList = useSelector(getRoomsList);
-    const [spinner, setSpinner] = useState(true)
+    const [spinner, setSpinner] = useState(true);
     const [formData, setFormData] = useState(singleBooking);
 
     const availableRooms = useMemo(() => {
-        return [...roomsList].filter((room) => room.status === 'Available')
+        return [...roomsList].filter((room) => room.status === 'Available');
     }, [roomsList])
 
     const initialFetch = useCallback(async () => {
         await dispatch(fetchRooms()).unwrap();
-        setSpinner(false)
-
+        setSpinner(false);
     }, [dispatch])
 
     useEffect(() => {
