@@ -1,19 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { StyledTable, StyledTableHeader } from '../../components/reusable/StyledTable';
-import data from '../../data/users.json';
 import { StyledMenu, StyledMenuText, StyledMenuButtons, StyledSelect, StyledMenuWrapper } from '../../components/reusable/StyledMenu';
 import UsersTablePage from './UsersTablePage';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUsersList } from '../../features/users/usersSlice';
+import { fetchUsers } from '../../features/users/usersThunk';
 
 
 const UsersPage = () => {
-    const [usersList, setUsersList] = useState(data)
     const [currentPage, setCurrentPage] = useState(1);
     const [selection, setSelection] = useState('all');
+    const [order, setOrder] = useState('newest');
+    const usersData = useSelector(getUsersList);
 
     const dispatch = useDispatch();
+
+    const usersList = useMemo(() => {
+        let orderedUsers;
+        if (selection !== 'all') {
+            orderedUsers = [...usersData].filter((el) => (el.status === selection))
+        } else {
+            orderedUsers = usersData;
+        }
+
+        orderedUsers = [...orderedUsers].sort((a, b) => {
+            if (order === 'name') {
+                const statusA = a.full_name.toUpperCase();
+                const statusB = b.full_name.toUpperCase();
+                if (statusA < statusB) {
+                    return -1;
+                }
+                if (statusA > statusB) {
+                    return 1;
+                }
+                return 0;
+            } else {
+                return new Date(a.start_date) - new Date(b.start_date);
+            }
+        })
+
+        return orderedUsers
+    }, [usersData, order, selection, currentPage])
 
     const totalPages = Math.ceil(usersList.length / 10);
     const firstuser = (currentPage - 1) * 10;
@@ -21,6 +50,23 @@ const UsersPage = () => {
 
     let displayedUsers = usersList?.slice(firstuser, lastUser);
 
+    const initialFetch = useCallback(async () => {
+        try {
+            await dispatch(fetchUsers());
+        } catch (error) {
+            console.log(error);
+        }
+    }, [dispatch]);
+
+    useEffect(() => {
+        initialFetch();
+    }, [initialFetch]);
+
+    const handleOrderChange = (e) => {
+        e.preventDefault();
+
+        setOrder(e.target.value)
+    }
 
     const handleMenuClick = (option) => {
         setSelection(option);
@@ -41,14 +87,14 @@ const UsersPage = () => {
                         All Employees
                     </StyledMenuText>
                     <StyledMenuText
-                        onClick={() => handleMenuClick('active')}
-                        $selected={selection === 'active'}
+                        onClick={() => handleMenuClick('Active')}
+                        $selected={selection === 'Active'}
                     >
                         Active Employee
                     </StyledMenuText>
                     <StyledMenuText
-                        onClick={() => handleMenuClick('inactive')}
-                        $selected={selection === 'inactive'}
+                        onClick={() => handleMenuClick('Inactive')}
+                        $selected={selection === 'Inactive'}
                     >
                         Inactive Employee
                     </StyledMenuText>
@@ -57,11 +103,9 @@ const UsersPage = () => {
                     <StyledButton as={Link} to='/users/newuser' $name='new'>
                         + New Employee
                     </StyledButton>
-                    <StyledSelect name="order" id="order">
+                    <StyledSelect name="order" id="order" onChange={(e) => handleOrderChange(e)} >
                         <option value='newest'>Newest</option>
-                        <option value='checkin'>Check in</option>
-                        <option value='checkout'>Check out</option>
-                        <option value='guest'>Guest</option>
+                        <option value='name'>Name</option>
                     </StyledSelect>
                 </StyledMenuButtons>
             </StyledMenuWrapper>

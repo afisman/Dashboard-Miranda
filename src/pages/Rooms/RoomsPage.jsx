@@ -17,7 +17,6 @@ const RoomsPage = () => {
 
     const dispatch = useDispatch();
     const roomsData = useSelector(getRoomsList);
-    const roomStatus = useSelector(getRoomStatus);
 
     const roomsList = useMemo(() => {
         let orderedRooms;

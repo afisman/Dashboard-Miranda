@@ -28,9 +28,8 @@ const UsersTablePage = ({ data, dispatch }) => {
                             <img src={el.photo} alt="user" />
                         </StyledTableCellImg>
                         <div>
-
                             <StyledTableCellText $letterstyle='title'>
-                                {el.first_name}
+                                {el.full_name}
                             </StyledTableCellText>
                             <StyledTableCellText $letterstyle='id'>
                                 #{el.id}
