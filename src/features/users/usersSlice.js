@@ -43,8 +43,7 @@ export const usersSlice = createSlice({
             })
             .addCase(fetchCreateUser.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
-                state.users.push(action.payload);
-                console.log(state)
+                state.users = action.payload;
             })
             .addCase(fetchCreateUser.rejected, (state, action) => {
                 state.status = 'rejected';
@@ -56,11 +55,8 @@ export const usersSlice = createSlice({
                 state.status = 'pending';
             })
             .addCase(fetchUpdateUser.fulfilled, (state, action) => {
-                const updatedUser = action.payload;
                 state.status = 'fulfilled';
-                state.users.map((user) => (
-                    user.id === updatedUser.id ? updatedUser : user
-                ));
+                state.users = action.payload;
             })
             .addCase(fetchUpdateUser.rejected, (state, action) => {
                 state.status = 'rejected';
@@ -71,11 +67,8 @@ export const usersSlice = createSlice({
                 state.status = 'pending';
             })
             .addCase(fetchDeleteUser.fulfilled, (state, action) => {
-                const id = action.payload;
                 state.status = 'fulfilled';
-                state.users.filter((user) => (
-                    user.id !== id
-                ))
+                state.users = action.payload;
             })
             .addCase(fetchDeleteUser.rejected, (state, action) => {
                 state.status = 'rejected';
