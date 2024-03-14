@@ -13,9 +13,6 @@ const EditUserPage = () => {
     const singleUser = useSelector(getSingleUser);
     const dispatch = useDispatch();
 
-
-
-
     const initialFetch = useCallback(async () => {
         await dispatch(fetchSingleUser(id)).unwrap();
     }, [id, dispatch])
@@ -23,8 +20,6 @@ const EditUserPage = () => {
     useEffect(() => {
         initialFetch();
     }, [initialFetch])
-
-    console.log(singleUser)
 
     return (
         <>

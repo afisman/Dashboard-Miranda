@@ -17,7 +17,6 @@ export const fetchContacts = createAsyncThunk(
 export const fetchSingleContact = createAsyncThunk(
     "contacts/fetchSingleContact",
     async (id) => {
-        console.log(contact.find((el) => (el.id == id)))
         return await delay(contact.find((el) => (el.id == id)))
 
     })

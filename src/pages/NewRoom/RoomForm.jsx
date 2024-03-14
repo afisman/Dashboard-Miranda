@@ -72,7 +72,6 @@ const RoomForm = ({ singleRoom, type }) => {
         }
 
         if (type === 'New') {
-            console.log(formData)
             dispatch(fetchCreateRoom(formData))
         }
     }

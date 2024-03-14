@@ -33,7 +33,6 @@ const UserForm = ({ singleUser, type }) => {
         }
 
         if (type === 'New') {
-            console.log(formData)
             dispatch(fetchCreateUser(formData))
         }
     }
