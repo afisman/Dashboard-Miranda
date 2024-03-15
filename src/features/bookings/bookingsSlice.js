@@ -56,8 +56,11 @@ export const bookingsSlice = createSlice({
                 state.status = 'pending';
             })
             .addCase(fetchUpdateBooking.fulfilled, (state, action) => {
+                const updatedBooking = action.payload;
                 state.status = 'fulfilled';
-                state.bookings = action.payload;
+                state.bookings.map((booking) => (
+                    booking.id == updatedBooking.id ? updatedBooking : booking
+                ));
             })
             .addCase(fetchUpdateBooking.rejected, (state, action) => {
                 state.status = 'rejected';
@@ -68,8 +71,11 @@ export const bookingsSlice = createSlice({
                 state.status = 'pending';
             })
             .addCase(fetchDeleteBooking.fulfilled, (state, action) => {
+                const id = action.payload;
                 state.status = 'fulfilled';
-                state.bookings = action.payload;
+                state.bookings.filter((booking) => (
+                    booking.id !== id
+                ));
             })
             .addCase(fetchDeleteBooking.rejected, (state, action) => {
                 state.status = 'rejected';

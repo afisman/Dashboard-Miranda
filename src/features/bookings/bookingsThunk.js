@@ -28,14 +28,10 @@ export const fetchCreateBooking = createAsyncThunk(
 export const fetchUpdateBooking = createAsyncThunk(
     "bookings/fetchUpdateBooking",
     async (updatedBooking) => {
-        return await delay(bookings.map((booking) => (
-            booking.id == updatedBooking.id ? updatedBooking : booking
-        )))
+        return await delay(updatedBooking)
     })
 export const fetchDeleteBooking = createAsyncThunk(
     "bookings/fetchDeleteBooking",
     async (id) => {
-        return await delay(bookings.filter((booking) => (
-            booking.id !== id
-        )))
+        return await delay(id)
     })
