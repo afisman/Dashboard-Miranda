@@ -37,7 +37,5 @@ export const fetchUpdateRoom = createAsyncThunk(
 export const fetchDeleteRoom = createAsyncThunk(
     "rooms/fetchDeleteRoom",
     async (id) => {
-        return await delay(rooms.filter((room) => (
-            room.id !== id
-        )))
+        return await delay(id)
     })
