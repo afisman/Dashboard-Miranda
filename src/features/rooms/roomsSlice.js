@@ -40,7 +40,7 @@ export const roomsSlice = createSlice({
             })
             .addCase(fetchCreateRoom.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
-                state.rooms = action.payload;
+                state.rooms.push(action.payload);
             })
             .addCase(fetchCreateRoom.rejected, (state, action) => {
                 state.status = 'rejected';

@@ -22,22 +22,18 @@ export const fetchSingleUser = createAsyncThunk(
     })
 export const fetchCreateUser = createAsyncThunk(
     "users/fetchCreateUser",
-    async (newBooking) => {
-        return await delay([...users, newBooking])
+    async (newUser) => {
+        return await delay(newUser)
 
     })
 export const fetchUpdateUser = createAsyncThunk(
     "users/fetchUpdateUser",
     async (updatedUser) => {
-        return await delay(users.map((user) => {
-            return user.id == updatedUser.id ? updatedUser : user
-        }))
+        return await delay(updatedUser)
 
     })
 export const fetchDeleteUser = createAsyncThunk(
     "users/fetchDeleteUser",
     async (id) => {
-        return await delay(users.filter((user) => (
-            user.id !== id
-        )))
+        return await delay(id)
     })
