@@ -23,15 +23,11 @@ export const fetchSingleContact = createAsyncThunk(
 export const fetchUpdateContact = createAsyncThunk(
     "contacts/fetchUpdateContact",
     async (updateContact) => {
-        return await delay(contact.map((el) => {
-            return el.id == updateContact.id ? updateContact : el
-        }))
+        return await delay(updateContact)
 
     })
 export const fetchDeleteContact = createAsyncThunk(
     "contacts/fetchDeleteContact",
     async (id) => {
-        return await delay(contact.filter((el) => (
-            el.id !== id
-        )))
+        return await delay(id)
     })

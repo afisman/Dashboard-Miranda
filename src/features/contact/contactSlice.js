@@ -40,8 +40,11 @@ export const contactSlice = createSlice({
                 state.status = 'pending';
             })
             .addCase(fetchUpdateContact.fulfilled, (state, action) => {
+                const updateContact = action.payload;
                 state.status = 'fulfilled';
-                state.contacts = action.payload;
+                state.contacts.map((contact) => {
+                    return contact.id == updateContact.id ? updateContact : contact
+                });
             })
             .addCase(fetchUpdateContact.rejected, (state, action) => {
                 state.status = 'rejected';
@@ -52,8 +55,11 @@ export const contactSlice = createSlice({
                 state.status = 'pending';
             })
             .addCase(fetchDeleteContact.fulfilled, (state, action) => {
+                const id = action.payload;
                 state.status = 'fulfilled';
-                state.contacts = action.payload;
+                state.contacts.filter((contact) => (
+                    contact.id !== id
+                ));
             })
             .addCase(fetchDeleteContact.rejected, (state, action) => {
                 state.status = 'rejected';
