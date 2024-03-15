@@ -28,14 +28,9 @@ const BookingsPage = () => {
     const handleClose = () => setModalOpen(false);
 
     const bookingsList = useMemo(() => {
-        let orderedBookings;
-        if (selection !== 'all') {
-            orderedBookings = bookingsData.filter((booking) => (booking.status === selection))
-        } else {
-            orderedBookings = bookingsData;
-        }
+        const orderedBookings = bookingsData.filter(booking => (selection === 'all' ? true : booking.status === selection))
 
-        orderedBookings = [...orderedBookings].sort((a, b) => {
+        orderedBookings.sort((a, b) => {
             switch (order) {
                 case 'check_in':
                     return new Date(a.check_in) - new Date(b.check_in);

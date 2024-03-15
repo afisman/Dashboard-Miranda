@@ -26,14 +26,8 @@ const ContactPage = () => {
     const handleClose = () => setModalOpen(false);
 
     const contactsList = useMemo(() => {
-        let orderedContacts;
-        if (selection !== 'all') {
-            orderedContacts = contactsData.filter((el) => (el.status === selection))
-        } else {
-            orderedContacts = contactsData;
-        }
-
-        orderedContacts = [...orderedContacts].sort((a, b) => {
+        const orderedContacts = contactsData.filter(contact => (selection === 'all' ? true : contact.read.toString() === selection))
+        orderedContacts.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
         }
         )
@@ -83,14 +77,14 @@ const ContactPage = () => {
                         All Reviews
                     </StyledMenuText>
                     <StyledMenuText
-                        onClick={() => handleMenuClick('published')}
-                        $selected={selection === 'published'}
+                        onClick={() => handleMenuClick('true')}
+                        $selected={selection === 'true'}
                     >
-                        Published
+                        Read
                     </StyledMenuText>
                     <StyledMenuText
-                        onClick={() => handleMenuClick('archived')}
-                        $selected={selection === 'archived'}
+                        onClick={() => handleMenuClick('false')}
+                        $selected={selection === 'false'}
                     >
                         Archived
                     </StyledMenuText>
