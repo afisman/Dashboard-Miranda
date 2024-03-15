@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useCallback, useEffect } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import ContactSwiper from '../../components/contactSwiper/ContactSwiper';
 import ContactPageTable from './ContactPageTable';
 import { StyledMenu, StyledMenuText, StyledSelect, StyledMenuButtons, StyledMenuWrapper } from '../../components/reusable/StyledMenu';
@@ -27,12 +27,12 @@ const ContactPage = () => {
     const contactsList = useMemo(() => {
         let orderedContacts;
         if (selection !== 'all') {
-            orderedContacts = [...contactsData]?.filter((el) => (el.status === selection))
+            orderedContacts = contactsData.filter((el) => (el.status === selection))
         } else {
             orderedContacts = contactsData;
         }
 
-        orderedContacts = [...orderedContacts]?.sort((a, b) => {
+        orderedContacts = [...orderedContacts].sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
         }
         )
@@ -50,13 +50,13 @@ const ContactPage = () => {
     const lastContact = firstContact + 10;
     const displayedContacts = contactsList.slice(firstContact, lastContact);
 
-    const initialFetch = useCallback(async () => {
+    const initialFetch = async () => {
         try {
             await dispatch(fetchContacts());
         } catch (error) {
             console.log(error);
         }
-    }, [dispatch]);
+    };
 
     useEffect(() => {
         initialFetch();

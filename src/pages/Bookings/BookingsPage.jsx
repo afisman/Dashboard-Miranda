@@ -1,10 +1,10 @@
-import React, { useMemo, useState, useEffect, useCallback } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { StyledTable, StyledTableHeader } from '../../components/reusable/StyledTable';
 import BookingsTable from './BookingsTable';
 import { StyledMenu, StyledMenuText, StyledSelect, StyledMenuWrapper, StyledMenuButtons } from '../../components/reusable/StyledMenu';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBookingsList, getBookingsStatus } from '../../features/bookings/bookingsSlice';
+import { getBookingsList } from '../../features/bookings/bookingsSlice';
 import { fetchBookings } from '../../features/bookings/bookingsThunk';
 import ModalComponent from '../../components/modal/Modal';
 import { Link } from 'react-router-dom';
@@ -28,12 +28,12 @@ const BookingsPage = () => {
     const bookingsList = useMemo(() => {
         let orderedBookings;
         if (selection !== 'all') {
-            orderedBookings = [...bookingsData]?.filter((el) => (el.status === selection))
+            orderedBookings = bookingsData.filter((booking) => (booking.status === selection))
         } else {
             orderedBookings = bookingsData;
         }
 
-        orderedBookings = [...orderedBookings]?.sort((a, b) => {
+        orderedBookings = [...orderedBookings].sort((a, b) => {
             switch (order) {
                 case 'check_in':
                     return new Date(a.check_in) - new Date(b.check_in);
@@ -80,13 +80,13 @@ const BookingsPage = () => {
 
     }
 
-    const initialFetch = useCallback(async () => {
+    const initialFetch = async () => {
         try {
             await dispatch(fetchBookings());
         } catch (error) {
             console.log(error);
         }
-    }, [dispatch]);
+    };
 
     useEffect(() => {
         initialFetch();

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { StyledTable, StyledTableHeader } from '../../components/reusable/StyledTable';
 import { StyledMenu, StyledMenuText, StyledMenuButtons, StyledSelect, StyledMenuWrapper } from '../../components/reusable/StyledMenu';
 import UsersTablePage from './UsersTablePage';
@@ -20,7 +20,7 @@ const UsersPage = () => {
     const usersList = useMemo(() => {
         let orderedUsers;
         if (selection !== 'all') {
-            orderedUsers = [...usersData].filter((el) => (el.status === selection))
+            orderedUsers = usersData.filter((el) => (el.status === selection))
         } else {
             orderedUsers = usersData;
         }
@@ -50,13 +50,13 @@ const UsersPage = () => {
 
     let displayedUsers = usersList?.slice(firstuser, lastUser);
 
-    const initialFetch = useCallback(async () => {
+    const initialFetch = async () => {
         try {
             await dispatch(fetchUsers());
         } catch (error) {
             console.log(error);
         }
-    }, [dispatch]);
+    };
 
     useEffect(() => {
         initialFetch();

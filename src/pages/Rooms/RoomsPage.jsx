@@ -1,12 +1,11 @@
-import React, { useMemo, useState, useEffect, useCallback } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { StyledTable, StyledTableHeader } from '../../components/reusable/StyledTable';
-import data from '../../data/rooms.json';
 import RoomsPageTable from './RoomsPageTable';
 import { StyledMenu, StyledMenuText, StyledMenuWrapper, StyledSelect, StyledMenuButtons } from '../../components/reusable/StyledMenu';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRoomStatus, getRoomsList } from '../../features/rooms/roomsSlice';
+import { getRoomsList } from '../../features/rooms/roomsSlice';
 import { fetchRooms } from '../../features/rooms/roomsThunk';
 
 
@@ -21,7 +20,7 @@ const RoomsPage = () => {
     const roomsList = useMemo(() => {
         let orderedRooms;
         if (selection !== 'all') {
-            orderedRooms = [...roomsData].filter((el) => (el.status === selection))
+            orderedRooms = roomsData.filter((el) => (el.status === selection))
         } else {
             orderedRooms = roomsData;
         }
@@ -56,13 +55,13 @@ const RoomsPage = () => {
 
 
 
-    const initialFetch = useCallback(async () => {
+    const initialFetch = async () => {
         try {
             await dispatch(fetchRooms());
         } catch (error) {
             console.log(error);
         }
-    }, [dispatch]);
+    };
 
     useEffect(() => {
         initialFetch();
