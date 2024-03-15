@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, darkTheme, lightTheme } from './themes';
 import { AuthProvider } from './context/auth.context';
-import PrivateRoute from './context/PrivateRoute';
+import PrivateRoute from './PrivateRoute';
 import BookingPage from './pages/Booking/BookingPage';
 import NewRoomPage from './pages/NewRoom/NewRoomPage';
 import NewUserPage from './pages/NewUser/NewUserPage';
