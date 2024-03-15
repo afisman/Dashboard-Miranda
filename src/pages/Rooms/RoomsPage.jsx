@@ -10,6 +10,7 @@ import { fetchRooms } from '../../features/rooms/roomsThunk';
 
 
 const RoomsPage = () => {
+    const roomsPerPage = 10;
     const [order, setOrder] = useState('newest');
     const [selection, setSelection] = useState('all');
     const [currentPage, setCurrentPage] = useState(1);
@@ -47,9 +48,9 @@ const RoomsPage = () => {
         return orderedRooms
     }, [roomsData, order, selection, currentPage])
 
-    const totalPages = Math.ceil(roomsList.length / 10);
-    const firstRoom = (currentPage - 1) * 10;
-    const lastRoom = firstRoom + 10;
+    const totalPages = Math.ceil(roomsList.length / roomsPerPage);
+    const firstRoom = (currentPage - 1) * roomsPerPage;
+    const lastRoom = firstRoom + roomsPerPage;
 
     let displayedRooms = roomsList?.slice(firstRoom, lastRoom);
 

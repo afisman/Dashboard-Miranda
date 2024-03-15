@@ -11,6 +11,7 @@ import ModalComponent from '../../components/modal/Modal';
 
 
 const ContactPage = () => {
+    const contactsPerPage = 10;
     const [selection, setSelection] = useState('all');
     const [order, setOrder] = useState('date');
     const [currentPage, setCurrentPage] = useState(1);
@@ -45,9 +46,9 @@ const ContactPage = () => {
         setSelection(option);
     }
 
-    const totalPages = Math.ceil(contactsData.length / 10);
-    const firstContact = (currentPage - 1) * 10;
-    const lastContact = firstContact + 10;
+    const totalPages = Math.ceil(contactsData.length / contactsPerPage);
+    const firstContact = (currentPage - 1) * contactsPerPage;
+    const lastContact = firstContact + contactsPerPage;
     const displayedContacts = contactsList.slice(firstContact, lastContact);
 
     const initialFetch = async () => {

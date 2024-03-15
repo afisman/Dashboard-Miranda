@@ -13,6 +13,8 @@ import { Link } from 'react-router-dom';
 
 
 const BookingsPage = () => {
+    const bookingsPerPage = 10;
+
     const [currentPage, setCurrentPage] = useState(1);
     const [selection, setSelection] = useState('all');
     const [order, setOrder] = useState('order_date');
@@ -59,9 +61,9 @@ const BookingsPage = () => {
     }
         , [bookingsData, order, selection, currentPage])
 
-    const totalPages = Math.ceil(bookingsList.length / 10);
-    const firstBooking = (currentPage - 1) * 10;
-    const lastBooking = firstBooking + 10;
+    const totalPages = Math.ceil(bookingsList.length / bookingsPerPage);
+    const firstBooking = (currentPage - 1) * bookingsPerPage;
+    const lastBooking = firstBooking + bookingsPerPage;
 
     let displayedBookings = bookingsList?.slice(firstBooking, lastBooking);
 

@@ -10,6 +10,8 @@ import { fetchUsers } from '../../features/users/usersThunk';
 
 
 const UsersPage = () => {
+    const usersPerPage = 10;
+
     const [currentPage, setCurrentPage] = useState(1);
     const [selection, setSelection] = useState('all');
     const [order, setOrder] = useState('newest');
@@ -44,9 +46,9 @@ const UsersPage = () => {
         return orderedUsers
     }, [usersData, order, selection, currentPage])
 
-    const totalPages = Math.ceil(usersList.length / 10);
-    const firstuser = (currentPage - 1) * 10;
-    const lastUser = firstuser + 10;
+    const totalPages = Math.ceil(usersList.length / usersPerPage);
+    const firstuser = (currentPage - 1) * usersPerPage;
+    const lastUser = firstuser + usersPerPage;
 
     let displayedUsers = usersList?.slice(firstuser, lastUser);
 
