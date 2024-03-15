@@ -19,29 +19,14 @@ const RoomsPage = () => {
     const roomsData = useSelector(getRoomsList);
 
     const roomsList = useMemo(() => {
-        let orderedRooms;
-        if (selection !== 'all') {
-            orderedRooms = roomsData.filter((el) => (el.status === selection))
-        } else {
-            orderedRooms = roomsData;
-        }
+        const orderedRooms = roomsData.filter(room => (selection === 'all' ? true : room.status === selection))
 
-        orderedRooms = [...orderedRooms].sort((a, b) => {
+        orderedRooms.sort((a, b) => {
             switch (order) {
-                case 'cheapest':
-                    return a.rate - b.rate;
                 case 'expensive':
                     return b.rate - a.rate;
                 default:
-                    const statusA = a.status.toUpperCase();
-                    const statusB = b.status.toUpperCase();
-                    if (statusA < statusB) {
-                        return -1;
-                    }
-                    if (statusA > statusB) {
-                        return 1;
-                    }
-                    return 0;
+                    return a.rate - b.rate;
             }
         })
 
@@ -111,7 +96,6 @@ const RoomsPage = () => {
                         + New Room
                     </StyledButton>
                     <StyledSelect name="order" id="order" onChange={(e) => handleOrderChange(e)}>
-                        <option value='status'>Status</option>
                         <option value='cheapest'>Cheapest</option>
                         <option value='expensive'>Costly</option>
                     </StyledSelect>

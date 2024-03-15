@@ -20,14 +20,9 @@ const UsersPage = () => {
     const dispatch = useDispatch();
 
     const usersList = useMemo(() => {
-        let orderedUsers;
-        if (selection !== 'all') {
-            orderedUsers = usersData.filter((el) => (el.status === selection))
-        } else {
-            orderedUsers = usersData;
-        }
+        const orderedUsers = usersData.filter(user => (selection === 'all' ? true : user.status === selection))
 
-        orderedUsers = [...orderedUsers].sort((a, b) => {
+        orderedUsers.sort((a, b) => {
             if (order === 'name') {
                 const statusA = a.full_name.toUpperCase();
                 const statusB = b.full_name.toUpperCase();
