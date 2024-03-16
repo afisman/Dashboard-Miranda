@@ -19,25 +19,9 @@ export const contactSlice = createSlice({
                 state.status = 'fulfilled';
                 state.contacts = action.payload;
             })
-            .addCase(fetchContacts.rejected, (state, action) => {
-                state.status = 'rejected';
-                state.error = action.error.message;
-            })
-        builder
-            .addCase(fetchSingleContact.pending, (state) => {
-                state.status = 'pending';
-            })
             .addCase(fetchSingleContact.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 state.contact = action.payload;
-            })
-            .addCase(fetchSingleContact.rejected, (state, action) => {
-                state.status = 'rejected';
-                state.error = action.error.message;
-            })
-        builder
-            .addCase(fetchUpdateContact.pending, (state) => {
-                state.status = 'pending';
             })
             .addCase(fetchUpdateContact.fulfilled, (state, action) => {
                 const updateContact = action.payload;
@@ -46,14 +30,6 @@ export const contactSlice = createSlice({
                     return contact.id == updateContact.id ? updateContact : contact
                 });
             })
-            .addCase(fetchUpdateContact.rejected, (state, action) => {
-                state.status = 'rejected';
-                state.error = action.error.message;
-            })
-        builder
-            .addCase(fetchDeleteContact.pending, (state) => {
-                state.status = 'pending';
-            })
             .addCase(fetchDeleteContact.fulfilled, (state, action) => {
                 const id = action.payload;
                 state.status = 'fulfilled';
@@ -61,7 +37,20 @@ export const contactSlice = createSlice({
                     contact.id !== id
                 ));
             })
-            .addCase(fetchDeleteContact.rejected, (state, action) => {
+            .addMatcher(isAnyOf(
+                fetchContacts.pending,
+                fetchSingleContact.pending,
+                fetchDeleteContact.pending,
+                fetchUpdateContact.pending
+            ), (state) => {
+                state.status = 'pending'
+            })
+            .addMatcher(isAnyOf(
+                fetchContacts.rejected,
+                fetchSingleContact.rejected,
+                fetchDeleteContact.rejected,
+                fetchUpdateContact.rejected
+            ), (state, action) => {
                 state.status = 'rejected';
                 state.error = action.error.message;
             })
