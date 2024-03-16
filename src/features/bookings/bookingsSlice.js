@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { fetchBookings, fetchSingleBooking, fetchCreateBooking, fetchUpdateBooking, fetchDeleteBooking } from "./bookingsThunk";
 
 
@@ -13,47 +13,17 @@ export const bookingsSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchBookings.pending, (state) => {
-                state.status = 'pending';
-            })
             .addCase(fetchBookings.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 state.bookings = action.payload;
-            })
-            .addCase(fetchBookings.rejected, (state, action) => {
-                state.status = 'rejected';
-                state.error = action.error.message;
-            })
-
-        builder
-            .addCase(fetchSingleBooking.pending, (state) => {
-                state.status = 'pending';
             })
             .addCase(fetchSingleBooking.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 state.booking = action.payload;
             })
-            .addCase(fetchSingleBooking.rejected, (state, action) => {
-                state.status = 'rejected';
-                state.error = action.error.message;
-            })
-
-        builder
-            .addCase(fetchCreateBooking.pending, (state) => {
-                state.status = 'pending';
-            })
             .addCase(fetchCreateBooking.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 state.bookings.push(action.payload);
-            })
-            .addCase(fetchCreateBooking.rejected, (state, action) => {
-                state.status = 'rejected';
-                state.error = action.error.message;
-            })
-
-        builder
-            .addCase(fetchUpdateBooking.pending, (state) => {
-                state.status = 'pending';
             })
             .addCase(fetchUpdateBooking.fulfilled, (state, action) => {
                 const updatedBooking = action.payload;
@@ -62,14 +32,6 @@ export const bookingsSlice = createSlice({
                     booking.id == updatedBooking.id ? updatedBooking : booking
                 ));
             })
-            .addCase(fetchUpdateBooking.rejected, (state, action) => {
-                state.status = 'rejected';
-                state.error = action.error.message;
-            })
-        builder
-            .addCase(fetchDeleteBooking.pending, (state) => {
-                state.status = 'pending';
-            })
             .addCase(fetchDeleteBooking.fulfilled, (state, action) => {
                 const id = action.payload;
                 state.status = 'fulfilled';
@@ -77,11 +39,25 @@ export const bookingsSlice = createSlice({
                     booking.id !== id
                 ));
             })
-            .addCase(fetchDeleteBooking.rejected, (state, action) => {
+            .addMatcher(isAnyOf(
+                fetchBookings.pending,
+                fetchCreateBooking.pending,
+                fetchSingleBooking.pending,
+                fetchDeleteBooking.pending,
+                fetchUpdateBooking.pending
+            ), (state) => {
+                state.status = 'pending'
+            })
+            .addMatcher(isAnyOf(
+                fetchBookings.rejected,
+                fetchCreateBooking.rejected,
+                fetchSingleBooking.rejected,
+                fetchDeleteBooking.rejected,
+                fetchUpdateBooking.rejected
+            ), (state, action) => {
                 state.status = 'rejected';
                 state.error = action.error.message;
             })
-
     }
 })
 

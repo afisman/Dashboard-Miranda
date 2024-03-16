@@ -18,11 +18,10 @@ export const StyledFormContainer = styled.form`
 
 export const StyledFormInput = styled.input`
     height: 1.687em;
-    background: none;
+    background: #e2e8e3f8;
     font-family: "Poppins", sans-serif;
-    border-color: #135846;
     border: none;
-    border-bottom: 1px solid #135846;
+    border-radius: 0.25em;
     margin-bottom: 1.875em;
 
      &::placeholder {
@@ -31,12 +30,17 @@ export const StyledFormInput = styled.input`
 `;
 
 export const StyledTextArea = styled.textarea`
-    background: none;
+    background: #e2e8e3f8;
     font-family: "Poppins", sans-serif;
-    border-color: #135846;
+    border: none;
     color: #135846;
     margin-bottom: 1.875em;
     border-radius: 0.25em;
+    padding: 0.5em;
+
+    &::focus {
+        border: 1px solid #135846;
+    }
 
     &::placeholder {
             color: #135846;
