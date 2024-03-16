@@ -11,44 +11,17 @@ export const roomsSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchRooms.pending, (state) => {
-                state.status = 'pending';
-            })
             .addCase(fetchRooms.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 state.rooms = action.payload;
-            })
-            .addCase(fetchRooms.rejected, (state, action) => {
-                state.status = 'rejected';
-                state.error = action.error.message;
-            })
-        builder
-            .addCase(fetchSingleRoom.pending, (state) => {
-                state.status = 'pending';
             })
             .addCase(fetchSingleRoom.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 state.room = action.payload;
             })
-            .addCase(fetchSingleRoom.rejected, (state, action) => {
-                state.status = 'rejected';
-                state.error = action.error.message;
-            })
-        builder
-            .addCase(fetchCreateRoom.pending, (state) => {
-                state.status = 'pending';
-            })
             .addCase(fetchCreateRoom.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 state.rooms.push(action.payload);
-            })
-            .addCase(fetchCreateRoom.rejected, (state, action) => {
-                state.status = 'rejected';
-                state.error = action.error.message;
-            })
-        builder
-            .addCase(fetchUpdateRoom.pending, (state) => {
-                state.status = 'pending';
             })
             .addCase(fetchUpdateRoom.fulfilled, (state, action) => {
                 const updateRoom = action.payload;
@@ -57,23 +30,29 @@ export const roomsSlice = createSlice({
                     return room.id == updateRoom.id ? updateRoom : room
                 });
             })
-            .addCase(fetchUpdateRoom.rejected, (state, action) => {
-                state.status = 'rejected';
-                state.error = action.error.message;
-            })
-        builder
-            .addCase(fetchDeleteRoom.pending, (state) => {
-                state.status = 'pending';
-            })
             .addCase(fetchDeleteRoom.fulfilled, (state, action) => {
                 const id = action.payload;
                 state.status = 'fulfilled';
                 state.rooms.filter((room) => (
                     room.id !== id
                 ));
-
             })
-            .addCase(fetchDeleteRoom.rejected, (state, action) => {
+            .addMatcher(isAnyOf(
+                fetchRooms.pending,
+                fetchCreateRoom.pending,
+                fetchSingleRoom.pending,
+                fetchDeleteRoom.pending,
+                fetchUpdateRoom.pending
+            ), (state) => {
+                state.status = 'pending'
+            })
+            .addMatcher(isAnyOf(
+                fetchRooms.rejected,
+                fetchCreateRoom.rejected,
+                fetchSingleRoom.rejected,
+                fetchDeleteRoom.rejected,
+                fetchUpdateRoom.rejected
+            ), (state, action) => {
                 state.status = 'rejected';
                 state.error = action.error.message;
             })
