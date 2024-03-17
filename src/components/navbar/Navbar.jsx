@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Sidebar from './sidebar/Sidebar';
 import { StyledNavbarWrapper, StyledNavbarTitle } from './StyledNavbar';
 import { StyledBelIcon, StyledEmailIcon, StyledMenuIcon, StyledLogoutIcon } from '../reusable/StyledIcons';
@@ -10,7 +10,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 
 const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
-    // const auth = useAuth();
     const { state, dispatch } = useAuth()
 
     const navigate = useNavigate();

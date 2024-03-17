@@ -7,7 +7,7 @@ import BookingsPage from './pages/Bookings/BookingsPage';
 import RoomsPage from './pages/Rooms/RoomsPage'
 import ContactPage from './pages/Contact/ContactPage';
 import UsersPage from './pages/Users/UsersPage';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, darkTheme, lightTheme } from './themes';
 import { AuthProvider } from './context/AuthContext';
@@ -25,20 +25,16 @@ import EditUserPage from './pages/NewUser/EditUserPage';
 
 
 function App() {
-  // const isAuth = localStorage.getItem('isLoggedIn') ? (localStorage.getItem('isLoggedIn') === "true" ? true : false) : false;
 
 
   const [theme, setTheme] = useState('light');
-  // const [auth, setAuth] = useState(isAuth);
 
 
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light')
   }
 
-  // useEffect(() => {
-  //   localStorage.setItem('isLoggedIn', auth ? 'true' : 'false');
-  // }, [auth]);
+
 
   return (
     <>
@@ -47,8 +43,8 @@ function App() {
           <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles />
             <Routes>
-              <Route path="/login" element={<LoginPage /*auth={auth} setAuth={setAuth}*/ />} />
-              <Route path='/' element={<PrivateRoute /*auth={auth}*/><Layout /></PrivateRoute>}>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path='/' element={<PrivateRoute ><Layout /></PrivateRoute>}>
                 <Route index element={<DashboardPage />} />
                 <Route path="bookings" element={<BookingsPage />} />
                 <Route path="bookings/newbooking" element={<NewBookingPage />} />

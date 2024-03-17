@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import { StyledFormContainer, StyledFormInput, StyledFormWrapper } from '../../components/reusable/StyledForm';
 import { StyledButton } from '../../components/reusable/StyledButton';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { Navigate } from "react-router-dom";
 
-const LoginPage = (/*{ auth, setAuth }*/) => {
+const LoginPage = () => {
 
     const { state, dispatch } = useAuth()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
-    // const auth = useAuth();
     const [error, setError] = useState(false)
 
 
@@ -39,18 +36,7 @@ const LoginPage = (/*{ auth, setAuth }*/) => {
                 }
             })
             setError(false)
-
-
-            // setAuth(true)
-            // navigate('/');
         }
-
-        // try {
-        //     await auth.login(email, password);
-        //     navigate('/', { replace: true });
-        // } catch (error) {
-        //     setError(true);
-        // }
     }
 
     return (
