@@ -10,7 +10,7 @@ import UsersPage from './pages/Users/UsersPage';
 import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, darkTheme, lightTheme } from './themes';
-import { AuthProvider } from './context/auth.context';
+import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './PrivateRoute';
 import BookingPage from './pages/Booking/BookingPage';
 import NewRoomPage from './pages/NewRoom/NewRoomPage';
@@ -25,20 +25,20 @@ import EditUserPage from './pages/NewUser/EditUserPage';
 
 
 function App() {
-  const isAuth = localStorage.getItem('isLoggedIn') ? (localStorage.getItem('isLoggedIn') === "true" ? true : false) : false;
+  // const isAuth = localStorage.getItem('isLoggedIn') ? (localStorage.getItem('isLoggedIn') === "true" ? true : false) : false;
 
 
   const [theme, setTheme] = useState('light');
-  const [auth, setAuth] = useState(isAuth);
+  // const [auth, setAuth] = useState(isAuth);
 
 
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light')
   }
 
-  useEffect(() => {
-    localStorage.setItem('isLoggedIn', auth ? 'true' : 'false');
-  }, [auth]);
+  // useEffect(() => {
+  //   localStorage.setItem('isLoggedIn', auth ? 'true' : 'false');
+  // }, [auth]);
 
   return (
     <>
@@ -47,8 +47,8 @@ function App() {
           <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles />
             <Routes>
-              <Route path="/login" element={<LoginPage auth={auth} setAuth={setAuth} />} />
-              <Route path='/' element={<PrivateRoute auth={auth}><Layout /></PrivateRoute>}>
+              <Route path="/login" element={<LoginPage /*auth={auth} setAuth={setAuth}*/ />} />
+              <Route path='/' element={<PrivateRoute /*auth={auth}*/><Layout /></PrivateRoute>}>
                 <Route index element={<DashboardPage />} />
                 <Route path="bookings" element={<BookingsPage />} />
                 <Route path="bookings/newbooking" element={<NewBookingPage />} />

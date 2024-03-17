@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import Sidebar from './sidebar/Sidebar';
 import { StyledNavbarWrapper, StyledNavbarTitle } from './StyledNavbar';
 import { StyledBelIcon, StyledEmailIcon, StyledMenuIcon, StyledLogoutIcon } from '../reusable/StyledIcons';
-import { useAuth } from '../../context/auth.context';
+import { useAuth } from '../../context/AuthContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 
 
 
+
 const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
-    const auth = useAuth();
+    // const auth = useAuth();
+    const { state, dispatch } = useAuth()
+
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -80,7 +83,7 @@ const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
                 <div >
                     <StyledEmailIcon></StyledEmailIcon>
                     <StyledBelIcon></StyledBelIcon>
-                    <StyledLogoutIcon onClick={(e) => handleLogout(e)}></StyledLogoutIcon>
+                    <StyledLogoutIcon /*onClick={(e) => handleLogout(e)}*/ onClick={() => dispatch({ type: 'logout' })}></StyledLogoutIcon>
                 </div>
             </StyledNavbarWrapper>
         </div>

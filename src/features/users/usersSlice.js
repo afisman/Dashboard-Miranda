@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { fetchCreateUser, fetchDeleteUser, fetchSingleUser, fetchUpdateUser, fetchUsers } from "./usersThunk";
 
 export const usersSlice = createSlice({
