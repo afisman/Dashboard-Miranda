@@ -9,6 +9,7 @@ export const StyledButton = styled.button`
     border-radius: 0.75em;
     margin: 0 auto;
     border: none;
+    background-color: #fff;
 
 
     ${(props) =>
@@ -42,7 +43,7 @@ export const StyledButton = styled.button`
     ${(props) =>
         props.$name === "Check in" &&
         `
-            background: #E8FFEE 0% 0% no-repeat padding-box;
+            background-color: #E8FFEE ;
             font-weight: 500;
             color: #5AD07A;
             padding: 0.5rem 1rem;
@@ -52,7 +53,7 @@ export const StyledButton = styled.button`
     ${(props) =>
         props.$name === "In progress" &&
         `
-            background: #575757 0% 0% no-repeat padding-box;
+            background-color: #575757;
             font-weight: 500;
             color: #BEBEBE;
             padding: 0.5rem 1rem;
@@ -62,7 +63,7 @@ export const StyledButton = styled.button`
        ${(props) =>
         props.$name === "Booked" &&
         `
-            background: #E23428 0% 0% no-repeat padding-box;
+            background-color: #E23428 ;
             font-weight: 500;
             color: #fff;
             padding: 0.5rem 1rem;
@@ -144,3 +145,11 @@ export const StyledButton = styled.button`
     `
     }
 `;
+
+const ButtonComponent = ({ $name, children, onClick }) => {
+    <StyledButton onClick={onClick} $name={$name}>
+        {children}
+    </StyledButton>
+}
+
+export default ButtonComponent
