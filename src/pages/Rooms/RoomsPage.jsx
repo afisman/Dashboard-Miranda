@@ -92,7 +92,7 @@ const RoomsPage = () => {
                     </StyledMenuText>
                 </StyledMenu>
                 <StyledMenuButtons>
-                    <StyledButton as={Link} to='/rooms/newroom' $name='new'>
+                    <StyledButton as={Link} to='/rooms/newroom' $name='new' id='new_room_button'>
                         + New Room
                     </StyledButton>
                     <StyledSelect name="order" id="order" onChange={(e) => handleOrderChange(e)}>

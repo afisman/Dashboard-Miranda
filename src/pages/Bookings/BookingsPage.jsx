@@ -122,7 +122,7 @@ const BookingsPage = () => {
                     </StyledMenuText>
                 </StyledMenu>
                 <StyledMenuButtons>
-                    <StyledButton as={Link} to='/bookings/newbooking' $name='new'>
+                    <StyledButton as={Link} to='/bookings/newbooking' $name='new' id='new_booking_button'>
                         + New Booking
                     </StyledButton>
                     <StyledSelect name="order" id="order" onChange={(e) => handleOrderChange(e)}>

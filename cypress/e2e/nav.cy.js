@@ -1,7 +1,7 @@
 import { loginCypress } from "../../src/utils/LoginCypress";
 
 
-describe('Navigation template spec', () => {
+describe('Navigation for sidebar links template spec', () => {
     it('Navigates to users page', () => {
         cy.visit('/');
         loginCypress();
@@ -24,5 +24,13 @@ describe('Navigation template spec', () => {
         cy.get('#sidebar_button').click();
         cy.get('#nav_Rooms').click();
         cy.url().should('include', '/rooms');
+    })
+
+    it('Navigates to contact page', () => {
+        cy.visit('/');
+        loginCypress();
+        cy.get('#sidebar_button').click();
+        cy.get('#nav_Contact').click();
+        cy.url().should('include', '/contact');
     })
 })

@@ -78,7 +78,7 @@ const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
                             handleClick()
                         }}>
                     </StyledMenuIcon>
-                    <StyledNavbarTitle>{title}</StyledNavbarTitle>
+                    <StyledNavbarTitle id='title'>{title}</StyledNavbarTitle>
                 </div>
                 <div >
                     <StyledEmailIcon></StyledEmailIcon>

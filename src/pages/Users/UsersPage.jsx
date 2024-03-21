@@ -97,7 +97,7 @@ const UsersPage = () => {
                     </StyledMenuText>
                 </StyledMenu>
                 <StyledMenuButtons>
-                    <StyledButton as={Link} to='/users/newuser' $name='new'>
+                    <StyledButton as={Link} to='/users/newuser' $name='new' id='new_user_button' >
                         + New Employee
                     </StyledButton>
                     <StyledSelect name="order" id="order" onChange={(e) => handleOrderChange(e)} >
