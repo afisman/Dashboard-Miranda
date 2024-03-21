@@ -9,7 +9,7 @@ const SButton = styled.button`
     border-radius: 0.75em;
     margin: 0 auto;
     border: none;
-    background-color: #fff;
+    background-color: #ffffff;
 
 
     ${(props) =>

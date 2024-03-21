@@ -13,6 +13,9 @@ describe('It checks button color', () => {
             <ButtonStyled onClick={() => { }} children={'Button'} $name={''} />
         )
         const style = getStyledTest(ButtonStyled)
+        const rgb = hexToRgb('#ffffff')
+
+        expect(style.backgroundColor).toEqual(rgb);
 
         expect(style.cursor).toBe('pointer')
     })
