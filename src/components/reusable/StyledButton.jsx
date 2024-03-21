@@ -146,10 +146,3 @@ export const StyledButton = styled.button`
     }
 `;
 
-const ButtonComponent = ({ $name, children, onClick }) => {
-    <StyledButton onClick={onClick} $name={$name}>
-        {children}
-    </StyledButton>
-}
-
-export default ButtonComponent
