@@ -82,7 +82,7 @@ const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
                 <div >
                     <StyledEmailIcon></StyledEmailIcon>
                     <StyledBelIcon></StyledBelIcon>
-                    <StyledLogoutIcon /*onClick={(e) => handleLogout(e)}*/ onClick={() => dispatch({ type: 'logout' })}></StyledLogoutIcon>
+                    <StyledLogoutIcon id='log_out' onClick={() => dispatch({ type: 'logout' })}></StyledLogoutIcon>
                 </div>
             </StyledNavbarWrapper>
         </div>
