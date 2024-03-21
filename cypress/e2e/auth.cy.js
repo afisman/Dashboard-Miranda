@@ -1,4 +1,8 @@
-describe('template spec', () => {
+import { loginCypress } from "../../src/utils/LoginCypress";
+
+
+
+describe('Login template spec', () => {
     it('Visit home and redirect to login', () => {
         cy.visit('/');
         cy.url().should('include', '/login')
@@ -13,16 +17,12 @@ describe('template spec', () => {
     })
     it('Fill inputs incorrectly and pass', () => {
         cy.visit('/');
-        cy.get('input[name = email]');
-        cy.get('input[name = password]');
-        cy.get('button[type=submit]').click();
+        loginCypress();
         cy.url().should('not.include', '/login');
     })
     it('Logs out when clicking button', () => {
         cy.visit('/');
-        cy.get('input[name = email]');
-        cy.get('input[name = password]');
-        cy.get('button[type=submit]').click();
+        loginCypress();
         cy.get('#log_out').click();
         cy.url().should('include', '/login');
     })

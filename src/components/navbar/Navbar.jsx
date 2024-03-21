@@ -73,6 +73,7 @@ const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
             <StyledNavbarWrapper $isopen={sidebarOpen}>
                 <div>
                     <StyledMenuIcon
+                        id='sidebar_button'
                         onClick={() => {
                             handleClick()
                         }}>

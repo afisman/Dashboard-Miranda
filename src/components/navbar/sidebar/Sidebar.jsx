@@ -15,7 +15,7 @@ const makeButtons = [
     {
         to: '/rooms',
         icon: <StyledRoomsIcon />,
-        title: 'Room',
+        title: 'Rooms',
     },
     {
         to: '/bookings',
@@ -44,7 +44,7 @@ const Sidebar = () => {
                     <Logo />
                     <UnorderList>
                         {makeButtons.map((btn, i) => (
-                            <SidebarButton to={btn.to} icon={btn.icon} title={btn.title} key={i} />
+                            <SidebarButton to={btn.to} icon={btn.icon} title={btn.title} key={i} id={`nav_${btn.title}`} />
                         ))}
                     </UnorderList>
                     <UserCard />

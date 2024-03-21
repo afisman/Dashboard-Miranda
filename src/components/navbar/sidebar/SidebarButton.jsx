@@ -1,9 +1,9 @@
 import React from 'react';
 import { Icon, NavLinks } from './SidebarStyles';
 
-const SidebarButton = ({ to, icon, title }) => {
+const SidebarButton = ({ to, icon, title, id }) => {
     return (
-        <li>
+        <li id={id}>
             <NavLinks
                 strict="true"
                 to={{
