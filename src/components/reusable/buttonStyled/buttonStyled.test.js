@@ -16,7 +16,6 @@ describe('It checks button color', () => {
         const rgb = hexToRgb('#ffffff')
 
         expect(style.backgroundColor).toEqual(rgb);
-
         expect(style.cursor).toBe('pointer')
     })
 
