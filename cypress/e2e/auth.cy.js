@@ -1,4 +1,4 @@
-import { loginCypress } from "../../src/utils/LoginCypress";
+import { loginCypress } from "../helpers/LoginCypress";
 
 
 

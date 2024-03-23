@@ -1,4 +1,4 @@
-import { loginCypress } from "../../src/utils/LoginCypress";
+import { loginCypress } from "../helpers/LoginCypress";
 
 describe('Forms to add new items to redux store', () => {
 
@@ -34,7 +34,7 @@ describe('Forms to add new items to redux store', () => {
         cy.get('#new_room_button').click();
 
         cy.get('input[name=room_number]').type('Room 420');
-        cy.get('textarea[name=photos]').type("https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        cy.get('textarea[name=photos]').type('https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
         cy.get('input[name=description]').type('Double room with minibar and terrace');
         cy.get('input[name=rate]').type('170');
         cy.get('input[name=discount]').type('15');
