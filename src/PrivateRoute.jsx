@@ -1,14 +1,13 @@
 import React from 'react';
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from './context/AuthContext';
+import { useAuth } from './context/AuthContext.tsx';
 
 
 const PrivateRoute = ({ children }) => {
-    let location = useLocation()
     const { state } = useAuth();
 
-    if (state.isAuthenticated !== true) {
-        return <Navigate to="/login" state={{ from: location }} replace />
+    if (state.auth !== true) {
+        return <Navigate to="/login" replace />
     }
 
     return children

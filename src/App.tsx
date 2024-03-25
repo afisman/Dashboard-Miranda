@@ -10,7 +10,7 @@ import UsersPage from './pages/Users/UsersPage';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, darkTheme, lightTheme } from './themes';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './context/AuthContext.tsx';
 import PrivateRoute from './PrivateRoute';
 import BookingPage from './pages/Booking/BookingPage';
 import NewRoomPage from './pages/NewRoom/NewRoomPage';
@@ -27,7 +27,7 @@ import EditUserPage from './pages/NewUser/EditUserPage';
 function App() {
 
 
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState<string>('light');
 
 
   const themeToggler = () => {

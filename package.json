@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.12",
     "@reduxjs/toolkit": "^2.2.1",
+    "@types/react-router": "^5.1.20",
     "jest-styled-components": "^7.2.0",
     "react": "^18.2.0",
     "react-dnd": "^16.0.1",

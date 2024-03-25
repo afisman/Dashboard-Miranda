@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { StyledFormContainer, StyledFormInput, StyledFormWrapper } from '../../components/reusable/StyledForm';
 import { StyledButton } from '../../components/reusable/StyledButton';
-import { useAuth } from '../../context/AuthContext';
-import { Navigate } from "react-router-dom";
+import { useAuth } from '../../context/AuthContext.tsx';
+import { Navigate, useNavigate } from "react-router-dom";
+
+// interface FormData extends EventTarget {
+//     user: HTMLFormElement,
+//     password: HTMLFormElement
+// }
 
 const LoginPage = () => {
 
@@ -10,6 +15,7 @@ const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false)
+    const navigate = useNavigate();
 
 
     const handleEmailChange = (e) => {
@@ -29,13 +35,9 @@ const LoginPage = () => {
         e.preventDefault();
 
         if (e.target.email.value === 'alejandro@admin.com' && e.target.password.value === 'admin') {
-            dispatch({
-                type: 'login', payload: {
-                    email,
-                    fullName: 'Alejandro'
-                }
-            })
-            setError(false)
+            dispatch({ type: 'login', payload: { auth: true, user: 'Alejandro Fisman', email: 'alejandro@admin.com' } });
+            navigate('/');
+            setError(false);
         }
     }
 

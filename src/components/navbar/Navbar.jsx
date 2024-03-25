@@ -2,7 +2,7 @@ import React from 'react';
 import Sidebar from './sidebar/Sidebar';
 import { StyledNavbarWrapper, StyledNavbarTitle } from './StyledNavbar';
 import { StyledBelIcon, StyledEmailIcon, StyledMenuIcon, StyledLogoutIcon } from '../reusable/StyledIcons';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext.tsx';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 
