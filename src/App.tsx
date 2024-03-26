@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import LoginPage from './pages/Login/LoginPage';
 import DashboardPage from './pages/Dashboard/DashboardPage';
-import Layout from './pages/Layout/Layout';
+import Layout from './pages/Layout/Layout.tsx';
 import BookingsPage from './pages/Bookings/BookingsPage';
 import RoomsPage from './pages/Rooms/RoomsPage'
 import ContactPage from './pages/Contact/ContactPage';

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 
-export default function useStoreSidebar(key, initialValue) {
-    const [value, setValue] = useState<number>(() => {
+export default function useStoreSidebar(key: string, initialValue: string) {
+    const [value, setValue] = useState<string>(() => {
         let currentValue;
 
         try {

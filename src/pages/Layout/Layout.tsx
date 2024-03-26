@@ -13,7 +13,7 @@ const Layout = () => {
     return (
         <>
             <Navbar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-            <StyledLayout $sidebaropen={sidebarOpen}>
+            <StyledLayout $sidebaropen={sidebarOpen as string}>
                 <Outlet />
             </StyledLayout>
         </>
