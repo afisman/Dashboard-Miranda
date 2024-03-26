@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBookings } from '../../features/bookings/bookingsThunk';
-import { getBookingsList } from '../../features/bookings/bookingsSlice';
+import { fetchBookings } from '../../features/bookings/bookingsThunk.ts';
+import { getBookingsList } from '../../features/bookings/bookingsSlice.ts';
 import BookingForm from './BookingForm';
 
 

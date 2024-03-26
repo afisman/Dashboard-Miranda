@@ -1,21 +1,31 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { fetchBookings, fetchSingleBooking, fetchCreateBooking, fetchUpdateBooking, fetchDeleteBooking } from "./bookingsThunk";
+import { fetchBookings, fetchSingleBooking, fetchCreateBooking, fetchUpdateBooking, fetchDeleteBooking } from "./bookingsThunk.ts";
+import { BookingInterface } from '../../interfaces/booking/bookingInterface';
+import { RootState } from "../../app/store";
+
+
+export interface BookingInitialStateInterface {
+    data: BookingInterface[]
+    status: "idle" | "pending" | "fulfilled" | "rejected"
+    error: string | null
+    booking: BookingInterface
+}
 
 
 export const bookingsSlice = createSlice({
     name: 'bookings',
     initialState: {
-        bookings: [],
+        data: [],
         status: 'idle',
         error: null,
-        booking: null
-    },
+        booking: {} as BookingInterface
+    } as BookingInitialStateInterface,
     reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(fetchBookings.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
-                state.bookings = action.payload;
+                state.data = action.payload;
             })
             .addCase(fetchSingleBooking.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
@@ -23,19 +33,19 @@ export const bookingsSlice = createSlice({
             })
             .addCase(fetchCreateBooking.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
-                state.bookings.push(action.payload);
+                state.data.push(action.payload);
             })
             .addCase(fetchUpdateBooking.fulfilled, (state, action) => {
                 const updatedBooking = action.payload;
                 state.status = 'fulfilled';
-                state.bookings.map((booking) => (
+                state.data.map((booking) => (
                     booking.id == updatedBooking.id ? updatedBooking : booking
                 ));
             })
             .addCase(fetchDeleteBooking.fulfilled, (state, action) => {
                 const id = action.payload;
                 state.status = 'fulfilled';
-                state.bookings.filter((booking) => (
+                state.data.filter((booking) => (
                     booking.id !== id
                 ));
             })
@@ -56,14 +66,14 @@ export const bookingsSlice = createSlice({
                 fetchUpdateBooking.rejected
             ), (state, action) => {
                 state.status = 'rejected';
-                state.error = action.error.message;
+                state.error = action.error.message || null;
             })
     }
 })
 
-export const getBookingsList = (state) => state.bookings.bookings;
-export const getBookingsStatus = (state) => state.bookings.status;
-export const getBookingsError = (state) => state.bookings.error;
-export const getSingleBooking = (state) => state.bookings.booking;
+export const getBookingsList = (state: RootState) => state.bookings.data;
+export const getBookingsStatus = (state: RootState) => state.bookings.status;
+export const getBookingsError = (state: RootState) => state.bookings.error;
+export const getSingleBooking = (state: RootState) => state.bookings.booking;
 
 export default bookingsSlice.reducer;

@@ -4,8 +4,8 @@ import BookingsTable from './BookingsTable';
 import { StyledMenu, StyledMenuText, StyledSelect, StyledMenuWrapper, StyledMenuButtons } from '../../components/reusable/StyledMenu';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBookingsList } from '../../features/bookings/bookingsSlice';
-import { fetchBookings } from '../../features/bookings/bookingsThunk';
+import { getBookingsList } from '../../features/bookings/bookingsSlice.ts';
+import { fetchBookings } from '../../features/bookings/bookingsThunk.ts';
 import ModalComponent from '../../components/modal/Modal';
 import { Link } from 'react-router-dom';
 

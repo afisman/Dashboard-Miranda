@@ -3,7 +3,7 @@ import { StyledTableCell, StyledTableRow, StyledTableCellText } from '../../comp
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useNavigate } from 'react-router-dom';
 import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
-import { fetchDeleteBooking } from '../../features/bookings/bookingsThunk';
+import { fetchDeleteBooking } from '../../features/bookings/bookingsThunk.ts';
 
 const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }) => {
     const navigate = useNavigate();

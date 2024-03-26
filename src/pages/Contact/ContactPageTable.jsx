@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledTableCell, StyledTableRow, StyledTableCellText } from '../../components/reusable/StyledTable';
-import { fetchUpdateContact } from '../../features/contact/contactThunk';
+import { fetchUpdateContact } from '../../features/contact/contactThunk.ts';
 
 const ContactPageTable = ({ data, setMessage, handleOpen, dispatch }) => {
 

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getRoomsList } from '../../features/rooms/roomsSlice';
 import { fetchRooms } from '../../features/rooms/roomsThunk';
-import { fetchCreateBooking, fetchUpdateBooking } from '../../features/bookings/bookingsThunk';
+import { fetchCreateBooking, fetchUpdateBooking } from '../../features/bookings/bookingsThunk.ts';
 import { StyledSelect } from '../../components/reusable/StyledMenu';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner';
 
@@ -42,10 +42,13 @@ const BookingForm = ({ singleBooking, type }) => {
         e.preventDefault();
         if (type === 'Edit') {
             dispatch(fetchUpdateBooking(formData));
+            navigate('/bookings')
         }
 
         if (type === 'New') {
             dispatch(fetchCreateBooking(formData))
+            navigate('/bookings')
+
         }
     }
 

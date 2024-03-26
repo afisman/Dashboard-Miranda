@@ -1,7 +1,7 @@
-import bookingsReducer from "../features/bookings/bookingsSlice";
+import bookingsReducer from "../features/bookings/bookingsSlice.ts";
 import roomsReducer from "../features/rooms/roomsSlice";
 import usersReducer from "../features/users/usersSlice";
-import contactReducer from "../features/contact/contactSlice";
+import contactReducer from "../features/contact/contactSlice.ts";
 import { configureStore } from "@reduxjs/toolkit";
 
 

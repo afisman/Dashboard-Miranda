@@ -1,8 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import bookings from '../../data/bookings.json';
+import { BookingInterface } from "../../interfaces/booking/bookingInterface";
 
-function delay(data) {
-    return new Promise((resolve) => {
+function delay(data: any) {
+    return new Promise<any>((resolve) => {
         setTimeout(() => {
             resolve(data)
         }, 200)
@@ -16,22 +17,22 @@ export const fetchBookings = createAsyncThunk(
     })
 export const fetchSingleBooking = createAsyncThunk(
     "bookings/fetchSingleBooking",
-    async (id) => {
+    async (id: number) => {
         return await delay(bookings.find((el) => el.id == id))
     })
 export const fetchCreateBooking = createAsyncThunk(
     "bookings/fetchCreateBooking",
-    async (newBooking) => {
+    async (newBooking: BookingInterface) => {
         return await delay(newBooking)
 
     })
 export const fetchUpdateBooking = createAsyncThunk(
     "bookings/fetchUpdateBooking",
-    async (updatedBooking) => {
+    async (updatedBooking: BookingInterface) => {
         return await delay(updatedBooking)
     })
 export const fetchDeleteBooking = createAsyncThunk(
     "bookings/fetchDeleteBooking",
-    async (id) => {
-        return await delay(id)
+    async (id: number) => {
+        return await delay(bookings.find((el) => el.id == id))
     })

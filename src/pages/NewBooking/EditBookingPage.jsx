@@ -2,8 +2,8 @@ import React, { useCallback, useEffect } from 'react';
 import BookingForm from './BookingForm';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSingleBooking } from '../../features/bookings/bookingsSlice';
-import { fetchSingleBooking } from '../../features/bookings/bookingsThunk';
+import { getSingleBooking } from '../../features/bookings/bookingsSlice.ts';
+import { fetchSingleBooking } from '../../features/bookings/bookingsThunk.ts';
 
 const EditBookingPage = () => {
     const { id } = useParams();

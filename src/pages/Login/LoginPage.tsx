@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyledFormContainer, StyledFormInput, StyledFormWrapper } from '../../components/reusable/StyledForm';
 import { StyledButton } from '../../components/reusable/StyledButton';
-import { useAuth } from '../../context/AuthContext.tsx';
+import { useAuth } from '../../context/AuthContext';
 import { Navigate, useNavigate } from "react-router-dom";
 
 

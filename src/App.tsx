@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
-import LoginPage from './pages/Login/LoginPage.tsx';
+import LoginPage from './pages/Login/LoginPage';
 import DashboardPage from './pages/Dashboard/DashboardPage';
 import Layout from './pages/Layout/Layout';
 import BookingsPage from './pages/Bookings/BookingsPage';
@@ -10,7 +10,7 @@ import UsersPage from './pages/Users/UsersPage';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, darkTheme, lightTheme } from './themes';
-import { AuthProvider } from './context/AuthContext.tsx';
+import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './PrivateRoute';
 import BookingPage from './pages/Booking/BookingPage';
 import NewRoomPage from './pages/NewRoom/NewRoomPage';

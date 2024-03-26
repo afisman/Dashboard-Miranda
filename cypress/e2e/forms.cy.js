@@ -21,7 +21,7 @@ describe('Forms to add new items to redux store', () => {
                 .its("store")
                 .invoke("getState")
                 .its("bookings")
-                .its("bookings")
+                .its("data")
                 .should("have.length", 13);
         });
     })
@@ -47,7 +47,7 @@ describe('Forms to add new items to redux store', () => {
                 .its("store")
                 .invoke("getState")
                 .its("rooms")
-                .its("rooms")
+                .its("data")
                 .should("have.length", 13);
         });
     })
@@ -72,7 +72,7 @@ describe('Forms to add new items to redux store', () => {
                 .its("store")
                 .invoke("getState")
                 .its("users")
-                .its("users")
+                .its("data")
                 .should("have.length", 13);
         });
     })

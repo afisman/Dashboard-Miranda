@@ -1,8 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import contact from '../../data/contact.json';
+import { ContactInterface } from "../../interfaces/user/userInterface";
 
-function delay(data) {
-    return new Promise((resolve) => {
+function delay(data: any) {
+    return new Promise<any>((resolve) => {
         setTimeout(() => {
             resolve(data)
         }, 200)
@@ -16,18 +17,18 @@ export const fetchContacts = createAsyncThunk(
     })
 export const fetchSingleContact = createAsyncThunk(
     "contacts/fetchSingleContact",
-    async (id) => {
+    async (id: number) => {
         return await delay(contact.find((el) => (el.id == id)))
 
     })
 export const fetchUpdateContact = createAsyncThunk(
     "contacts/fetchUpdateContact",
-    async (updateContact) => {
+    async (updateContact: ContactInterface) => {
         return await delay(updateContact)
 
     })
 export const fetchDeleteContact = createAsyncThunk(
     "contacts/fetchDeleteContact",
-    async (id) => {
+    async (id: number) => {
         return await delay(id)
     })

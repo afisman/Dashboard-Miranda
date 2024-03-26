@@ -5,8 +5,8 @@ import { StyledMenu, StyledMenuText, StyledSelect, StyledMenuButtons, StyledMenu
 import { StyledTable, StyledTableHeader } from '../../components/reusable/StyledTable';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContactList } from '../../features/contact/contactSlice';
-import { fetchContacts } from '../../features/contact/contactThunk';
+import { getContactList } from '../../features/contact/contactSlice.ts';
+import { fetchContacts } from '../../features/contact/contactThunk.ts';
 import ModalComponent from '../../components/modal/Modal';
 
 
