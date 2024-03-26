@@ -49,7 +49,7 @@ export const StyledSwiperSlide = styled(SwiperSlide)`
     }  
 `;
 
-export const StyledSwiperSliderText = styled.p<{ $name: string }>`
+export const StyledSwiperSliderText = styled.p<{ $name?: string }>`
 
     font-size: .8rem;
     line-height: 1.5rem;

@@ -28,7 +28,7 @@ export const StyledTableHeader = styled.th`
     padding: 1em 0.5em;
 `;
 
-export const StyledTableCell = styled.td<{ $name: string }>`
+export const StyledTableCell = styled.td<{ $name?: string }>`
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
@@ -44,7 +44,7 @@ export const StyledTableCell = styled.td<{ $name: string }>`
         width:30%;
         `
     }
-      ${(props) =>
+    ${(props) =>
         props.$name === 'flexCell' &&
         `
         display: flex;
@@ -52,7 +52,7 @@ export const StyledTableCell = styled.td<{ $name: string }>`
         `
     }
 `;
-export const StyledTableCellText = styled.p<{ $letterstyle: string }>`
+export const StyledTableCellText = styled.p<{ $letterstyle?: string }>`
     padding-left: 0.5rem;
     margin: 0;
 
@@ -62,7 +62,7 @@ export const StyledTableCellText = styled.p<{ $letterstyle: string }>`
         font-weight: 500;
         color: #393939;
         `}
-         ${(props) =>
+        ${(props) =>
         props.$letterstyle === "dots" &&
         `
         font-weight: 500;
@@ -100,14 +100,14 @@ export const StyledTableCellText = styled.p<{ $letterstyle: string }>`
         color: #393939;
         `
     }
-         ${(props) =>
+    ${(props) =>
         props.$letterstyle === "Active" &&
         `
         font: normal normal 600 14px/21px Poppins;
         color: #5AD07A;
         `
     }
-         ${(props) =>
+    ${(props) =>
         props.$letterstyle === "Inactive" &&
         `
         font: normal normal 600 14px/21px Poppins;
@@ -116,7 +116,7 @@ export const StyledTableCellText = styled.p<{ $letterstyle: string }>`
     }
 `;
 
-export const StyledTableCellImg = styled.div<{ $imgtype: string }>`
+export const StyledTableCellImg = styled.div<{ $imgtype?: string }>`
         border-radius: 5px;
 
         >img {
@@ -132,14 +132,14 @@ export const StyledTableCellImg = styled.div<{ $imgtype: string }>`
         width: 45px;
         height: 45px;
         `}
-         ${(props) =>
+        ${(props) =>
         props.$imgtype === "concierge" &&
         `
         width: 44px;
         height: 44px;
         `}
 
-         ${(props) =>
+        ${(props) =>
         props.$imgtype === "room" &&
         `
         width: 80px;

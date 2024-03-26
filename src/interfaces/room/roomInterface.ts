@@ -1,14 +1,14 @@
 export interface RoomInterface {
-    id: number;
-    photos: string[];
-    roomType: string;
-    roomNumber: string;
-    description: string;
-    offer: string;
-    priceNight: number;
-    discount: number | null;
-    cancellation: string;
-    amenities: string[];
-    status: string;
+    id: number
+    photos: string[]
+    room_type: string
+    room_number: string
+    description: string
+    offer: string
+    room_floor: string
+    rate: number
+    discount: string
+    amenities: string[]
+    status: string
 }
 

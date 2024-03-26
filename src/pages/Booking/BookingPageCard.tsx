@@ -2,10 +2,17 @@ import React from 'react';
 import { StyledCardLeft, StyledCardTop, StyledCardText, StyledCardInfo, StyledButtonGroup } from '../../components/reusable/StyledDataCard';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { StyledMessageBubble, StyledPhoneIcon } from '../../components/reusable/StyledIcons';
+import { BookingInterface } from '../../interfaces/booking/bookingInterface';
+import { RoomInterface } from '../../interfaces/room/RoomInterface';
+
+interface BookingCardInterface {
+    booking: BookingInterface
+    room: RoomInterface
+}
 
 
 
-const BookingPageCard = ({ booking, room }) => {
+const BookingPageCard: React.FC<BookingCardInterface> = ({ booking, room }) => {
     return (
         <>
             <StyledCardLeft>
@@ -50,7 +57,7 @@ const BookingPageCard = ({ booking, room }) => {
                             Room info:
                         </StyledCardText>
                         <StyledCardText $lettertype='info'>
-                            {booking.room_type}
+                            {room.room_type}
                         </StyledCardText>
                     </div>
                     <div>

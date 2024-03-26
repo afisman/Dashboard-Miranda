@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledButton = styled.button<{ $name: string }>`
+export const StyledButton = styled.button<{ $name?: string }>`
     cursor: pointer;
     border: none;
     opacity: 1;
@@ -60,7 +60,7 @@ export const StyledButton = styled.button<{ $name: string }>`
             width: 109px;
     `
     }
-       ${(props) =>
+    ${(props) =>
         props.$name === "Booked" &&
         `
             background-color: #E23428 ;
@@ -71,7 +71,7 @@ export const StyledButton = styled.button<{ $name: string }>`
     `
     }
 
-      ${(props) =>
+    ${(props) =>
         props.$name === "Available" &&
         `
             background: #5AD07A 0% 0% no-repeat padding-box;
@@ -92,7 +92,7 @@ export const StyledButton = styled.button<{ $name: string }>`
             align-items:center;
     `
     }
-     ${(props) =>
+    ${(props) =>
         props.$name === "facilities2" &&
         `
             background: #EBF1EF 0% 0% no-repeat padding-box;
