@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledTableCell, StyledTableCellImg, StyledTableCellText, StyledTableRow } from '../../components/reusable/StyledTable';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
-import { fetchDeleteRoom } from '../../features/rooms/roomsThunk';
+import { fetchDeleteRoom } from '../../features/rooms/roomsThunk.ts';
 import { useNavigate } from 'react-router';
 
 

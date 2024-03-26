@@ -7,7 +7,8 @@
         "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Active"
+        "status": "Active",
+        "position": "Manager"
     },
     {
         "id": 2,
@@ -17,7 +18,8 @@
         "photo": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Active"
+        "status": "Active",
+        "position": "Manager"
     },
     {
         "id": 3,
@@ -27,7 +29,8 @@
         "photo": "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Active"
+        "status": "Active",
+        "position": "Manager"
     },
     {
         "id": 4,
@@ -37,7 +40,8 @@
         "photo": "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Inactive"
+        "status": "Inactive",
+        "position": "Manager"
     },
     {
         "id": 5,
@@ -47,7 +51,8 @@
         "photo": "https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Active"
+        "status": "Active",
+        "position": "Manager"
     },
     {
         "id": 6,
@@ -57,7 +62,8 @@
         "photo": "https://images.unsplash.com/photo-1491349174775-aaafddd81942?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Inactive"
+        "status": "Inactive",
+        "position": "Manager"
     },
     {
         "id": 7,
@@ -67,7 +73,8 @@
         "photo": "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Active"
+        "status": "Active",
+        "position": "Manager"
     },
     {
         "id": 8,
@@ -77,7 +84,8 @@
         "photo": "https://plus.unsplash.com/premium_photo-1668989224643-6b79eaea2108?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Inactive"
+        "status": "Inactive",
+        "position": "Manager"
     },
     {
         "id": 9,
@@ -87,7 +95,8 @@
         "photo": "https://plus.unsplash.com/premium_photo-1678197937465-bdbc4ed95815?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Active"
+        "status": "Active",
+        "position": "Manager"
     },
     {
         "id": 10,
@@ -97,7 +106,8 @@
         "photo": "https://plus.unsplash.com/premium_photo-1664536392896-cd1743f9c02c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Inactive"
+        "status": "Inactive",
+        "position": "Manager"
     },
     {
         "id": 11,
@@ -107,7 +117,8 @@
         "photo": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Active"
+        "status": "Active",
+        "position": "Manager"
     },
     {
         "id": 12,
@@ -117,6 +128,7 @@
         "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "start_date": "2022-02-10",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Active"
+        "status": "Active",
+        "position": "Manager"
     }
 ]

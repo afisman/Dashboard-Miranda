@@ -5,8 +5,8 @@ import { StyledMenu, StyledMenuText, StyledMenuWrapper, StyledSelect, StyledMenu
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRoomsList } from '../../features/rooms/roomsSlice';
-import { fetchRooms } from '../../features/rooms/roomsThunk';
+import { getRoomsList } from '../../features/rooms/roomsSlice.ts';
+import { fetchRooms } from '../../features/rooms/roomsThunk.ts';
 
 
 const RoomsPage = () => {

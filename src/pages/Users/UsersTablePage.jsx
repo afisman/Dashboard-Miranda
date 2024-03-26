@@ -3,7 +3,7 @@ import { StyledTableCell, StyledTableRow, StyledTableCellText, StyledTableCellIm
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
 import { useNavigate } from 'react-router';
-import { fetchDeleteUser } from '../../features/users/usersThunk';
+import { fetchDeleteUser } from '../../features/users/usersThunk.ts';
 
 
 const UsersTablePage = ({ data, dispatch }) => {

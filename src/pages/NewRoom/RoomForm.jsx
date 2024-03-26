@@ -4,9 +4,10 @@ import { StyledButton } from '../../components/reusable/StyledButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner';
-import { fetchCreateRoom, fetchRooms, fetchUpdateRoom } from '../../features/rooms/roomsThunk';
-import { getRoomsList } from '../../features/rooms/roomsSlice';
+import { fetchCreateRoom, fetchRooms, fetchUpdateRoom } from '../../features/rooms/roomsThunk.ts';
+import { getRoomsList } from '../../features/rooms/roomsSlice.ts';
 
+//Solve issue when refreshing page on edit form
 
 
 const RoomForm = ({ singleRoom, type }) => {
@@ -99,7 +100,7 @@ const RoomForm = ({ singleRoom, type }) => {
                                 placeholder='Photos, enter each in a different line'
                                 name='photos'
                                 type='string'
-                                value={formData.photos.join("\n")}
+                                value={formData.photos?.join("\n")}
                                 onChange={(e) => handleFormChange(e)}
                                 rows={6}
                             ></StyledTextArea>
@@ -135,7 +136,7 @@ const RoomForm = ({ singleRoom, type }) => {
                                 placeholder='Amenities, enter each in a different line'
                                 name='amenities'
                                 type='string'
-                                value={formData.amenities.join("\n")}
+                                value={formData.amenities?.join("\n")}
                                 onChange={(e) => handleFormChange(e)}
                                 rows={6}
                             ></StyledTextArea>

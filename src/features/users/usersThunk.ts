@@ -1,8 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import users from '../../data/users.json';
+import { UserInterface } from "../../interfaces/user/userInterface";
 
-function delay(data) {
-    return new Promise((resolve) => {
+function delay(data: any) {
+    return new Promise<any>((resolve) => {
         setTimeout(() => {
             resolve(data)
         }, 200)
@@ -16,19 +17,19 @@ export const fetchUsers = createAsyncThunk(
     })
 export const fetchSingleUser = createAsyncThunk(
     "users/fetchSingleUser",
-    async (id) => {
+    async (id: number) => {
         return await delay(users.find((el) => el.id == id))
 
     })
 export const fetchCreateUser = createAsyncThunk(
     "users/fetchCreateUser",
-    async (newUser) => {
+    async (newUser: UserInterface) => {
         return await delay(newUser)
 
     })
 export const fetchUpdateUser = createAsyncThunk(
     "users/fetchUpdateUser",
-    async (updatedUser) => {
+    async (updatedUser: UserInterface) => {
         return await delay(updatedUser)
 
     })

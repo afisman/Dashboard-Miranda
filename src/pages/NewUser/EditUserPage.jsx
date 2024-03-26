@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
-import { getSingleUser } from '../../features/users/usersSlice';
+import { getSingleUser } from '../../features/users/usersSlice.ts';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSingleUser } from '../../features/users/usersThunk';
+import { fetchSingleUser } from '../../features/users/usersThunk.ts';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner';
 import UserForm from './UserForm';
 import { useParams } from 'react-router';

@@ -2,9 +2,9 @@ import React, { useCallback, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import RoomForm from './RoomForm';
-import { getSingleRoom } from '../../features/rooms/roomsSlice';
+import { getSingleRoom } from '../../features/rooms/roomsSlice.ts';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner';
-import { fetchSingleRoom } from '../../features/rooms/roomsThunk';
+import { fetchSingleRoom } from '../../features/rooms/roomsThunk.ts';
 
 const EditRoomPage = () => {
     const { id } = useParams();

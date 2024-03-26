@@ -1,10 +1,10 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { fetchBookings, fetchSingleBooking, fetchCreateBooking, fetchUpdateBooking, fetchDeleteBooking } from "./bookingsThunk.ts";
+import { fetchBookings, fetchSingleBooking, fetchCreateBooking, fetchUpdateBooking, fetchDeleteBooking } from "./bookingsThunk";
 import { BookingInterface } from '../../interfaces/booking/bookingInterface';
 import { RootState } from "../../app/store";
 
 
-export interface BookingInitialStateInterface {
+interface BookingInitialStateInterface {
     data: BookingInterface[]
     status: "idle" | "pending" | "fulfilled" | "rejected"
     error: string | null

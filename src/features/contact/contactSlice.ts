@@ -1,9 +1,9 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { fetchContacts, fetchDeleteContact, fetchSingleContact, fetchUpdateContact } from "./contactThunk.ts";
+import { fetchContacts, fetchDeleteContact, fetchSingleContact, fetchUpdateContact } from "./contactThunk";
 import { ContactInterface } from "../../interfaces/contact/contactInterface";
 import { RootState } from "../../app/store";
 
-export interface ContactInitialStateInterface {
+interface ContactInitialStateInterface {
     data: ContactInterface[]
     status: "idle" | "pending" | "fulfilled" | "rejected"
     error: string | null

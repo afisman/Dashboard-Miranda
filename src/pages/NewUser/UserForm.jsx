@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyledFormContainer, StyledFormInput, StyledFormWrapper, StyledTextArea, StyledFormSelect } from '../../components/reusable/StyledForm';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useNavigate } from 'react-router';
-import { fetchCreateUser, fetchUpdateUser } from '../../features/users/usersThunk';
+import { fetchCreateUser, fetchUpdateUser } from '../../features/users/usersThunk.ts';
 import { useDispatch } from 'react-redux';
 
 const UserForm = ({ singleUser, type }) => {

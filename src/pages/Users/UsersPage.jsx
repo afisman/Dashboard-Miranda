@@ -5,8 +5,8 @@ import UsersTablePage from './UsersTablePage';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUsersList } from '../../features/users/usersSlice';
-import { fetchUsers } from '../../features/users/usersThunk';
+import { getUsersList } from '../../features/users/usersSlice.ts';
+import { fetchUsers } from '../../features/users/usersThunk.ts';
 
 
 const UsersPage = () => {
