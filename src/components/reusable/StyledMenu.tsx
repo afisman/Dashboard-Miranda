@@ -13,7 +13,7 @@ export const StyledMenu = styled.div`
     margin:0 2em 2em 2em;
 `;
 
-export const StyledMenuText = styled.p`
+export const StyledMenuText = styled.p<{ $selected: string }>`
     width: 30%;
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
@@ -50,7 +50,7 @@ export const StyledSelect = styled.select`
     }
 `;
 
-export const StyledMenuButtons = styled.div`
+export const StyledMenuButtons = styled.div<{ $type: string }>`
     display: flex;
     /* align-items: center; */
     gap: 2em;

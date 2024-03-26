@@ -1,11 +1,19 @@
 import React from 'react';
 import { Icon, NavLinks } from './SidebarStyles';
 
-const SidebarButton = ({ to, icon, title, id }) => {
+interface SidebarButtonProps {
+    to: string
+    icon: JSX.Element
+    title: string
+    id: string
+
+}
+
+const SidebarButton: React.FC<SidebarButtonProps> = ({ to, icon, title, id }) => {
     return (
         <li id={id}>
             <NavLinks
-                strict="true"
+                // strict="true"
                 to={{
                     pathname: to
                 }}

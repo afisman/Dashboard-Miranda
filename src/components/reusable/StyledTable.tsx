@@ -28,7 +28,7 @@ export const StyledTableHeader = styled.th`
     padding: 1em 0.5em;
 `;
 
-export const StyledTableCell = styled.td`
+export const StyledTableCell = styled.td<{ $name: string }>`
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
@@ -52,7 +52,7 @@ export const StyledTableCell = styled.td`
         `
     }
 `;
-export const StyledTableCellText = styled.p`
+export const StyledTableCellText = styled.p<{ $letterstyle: string }>`
     padding-left: 0.5rem;
     margin: 0;
 
@@ -116,7 +116,7 @@ export const StyledTableCellText = styled.p`
     }
 `;
 
-export const StyledTableCellImg = styled.div`
+export const StyledTableCellImg = styled.div<{ $imgtype: string }>`
         border-radius: 5px;
 
         >img {

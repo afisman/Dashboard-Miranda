@@ -6,7 +6,13 @@ import { StyledBookingIcon, StyledContactIcon, StyledDashboardIcon, StyledRoomsI
 import { SidebarBody, SidebarWrapper, UnorderList } from './SidebarStyles';
 import UserCard from './UserCard';
 
-const makeButtons = [
+interface makeButtonsInterface {
+    to: string
+    icon: JSX.Element
+    title: string
+}
+
+const makeButtons: makeButtonsInterface[] = [
     {
         to: '/dashboard',
         icon: <StyledDashboardIcon />,
@@ -36,7 +42,7 @@ const makeButtons = [
 
 ]
 
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
     return (
         <div>
             <SidebarWrapper>

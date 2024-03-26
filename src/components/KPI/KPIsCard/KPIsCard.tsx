@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledBedIcon, StyledKPIText, StyledKPIWrapper, StyledKPIcard, StyledCalendarIcon, StyledCheckIn, StyledCheckOut } from './StyledKPI';
 
-const KPIsCard = () => {
+const KPIsCard: React.FC = () => {
     return (
         <>
             <StyledKPIWrapper>

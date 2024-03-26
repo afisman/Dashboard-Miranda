@@ -25,7 +25,7 @@ export const StyledCardTop = styled.div`
    text-align: left;
 `;
 
-export const StyledCardInfo = styled.div`
+export const StyledCardInfo = styled.div<{ $type: string }>`
     display: flex;
     justify-content: space-between;
     margin-bottom: 1em;
@@ -38,7 +38,7 @@ export const StyledCardInfo = styled.div`
     }
 `;
 
-export const StyledCardText = styled.p`
+export const StyledCardText = styled.p<{ $lettertype: string }>`
     font-size: 0.875rem;
     margin: 0.5em;
 
@@ -94,7 +94,7 @@ export const StyledCardText = styled.p`
 
 `;
 
-export const StyledButtonGroup = styled.div`
+export const StyledButtonGroup = styled.div<{ $type: string }>`
     display: flex;
     gap: 1em;
     margin: 1em 0;

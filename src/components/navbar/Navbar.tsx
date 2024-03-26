@@ -1,35 +1,29 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import Sidebar from './sidebar/Sidebar';
 import { StyledNavbarWrapper, StyledNavbarTitle } from './StyledNavbar';
 import { StyledBelIcon, StyledEmailIcon, StyledMenuIcon, StyledLogoutIcon } from '../reusable/StyledIcons';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { NavbarProps } from '../../interfaces/props/propsInterface';
 
 
 
 
 
-const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
-    const { state, dispatch } = useAuth()
+const Navbar: React.FC<NavbarProps> = ({ sidebarOpen, setSidebarOpen }) => {
+    const { dispatch } = useAuth()
 
     const navigate = useNavigate();
 
-    const location = useLocation();
+    const location: any = useLocation();
 
-    let title;
+    let title: string;
 
 
-    const handleClick = () => {
+    const handleClick = (): void => {
         sidebarOpen === 'true' ? setSidebarOpen('false') : setSidebarOpen('true');
-
     }
 
-
-
-    const checkPath = () => {
-
-        return location.pathname.startsWith();
-    }
 
     switch (true) {
         case location.pathname.startsWith('/rooms'):
@@ -52,15 +46,10 @@ const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
     }
 
 
-    const handleLogout = async (e) => {
+    const handleLogout = (e: MouseEvent) => {
         e.preventDefault();
-
-        try {
-            await auth.logout();
-            navigate('/login');
-        } catch (error) {
-            return alert(`Error while trying ot sign out, ${error}`);
-        }
+        dispatch({ type: 'logout', payload: { auth: false, user: '', email: '' } });
+        navigate('/login');
     }
 
     return (
@@ -83,7 +72,7 @@ const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
                 <div >
                     <StyledEmailIcon></StyledEmailIcon>
                     <StyledBelIcon></StyledBelIcon>
-                    <StyledLogoutIcon id='log_out' onClick={() => dispatch({ type: 'logout' })}></StyledLogoutIcon>
+                    <StyledLogoutIcon id='log_out' onClick={(e: MouseEvent) => handleLogout(e)}></StyledLogoutIcon>
                 </div>
             </StyledNavbarWrapper>
         </div>

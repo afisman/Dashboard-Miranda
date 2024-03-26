@@ -12,7 +12,7 @@ const Layout = () => {
 
     return (
         <>
-            <Navbar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+            <Navbar sidebarOpen={sidebarOpen as string} setSidebarOpen={setSidebarOpen as React.Dispatch<React.SetStateAction<string>>} />
             <StyledLayout $sidebaropen={sidebarOpen as string}>
                 <Outlet />
             </StyledLayout>

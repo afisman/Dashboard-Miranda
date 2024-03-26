@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledNavbarWrapper = styled.div`
+export const StyledNavbarWrapper = styled.div < { $isopen: string } > `
     height: 3.5em;
     width: 100%;
     display: flex;

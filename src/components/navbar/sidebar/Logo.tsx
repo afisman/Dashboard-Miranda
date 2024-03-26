@@ -49,7 +49,7 @@ align-items: center;
 }
 `;
 
-const Logo = () => {
+const Logo: React.FC = () => {
     return (
         <LogoWrapper>
             <Link to="dashboard">

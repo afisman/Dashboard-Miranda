@@ -1,11 +1,11 @@
 import React from 'react';
-import KPIs from '../../components/KPI/KPIs';
 import ContactSwiper from '../../components/contactSwiper/ContactSwiper';
+import KPIsCard from '../../components/KPI/KPIsCard/KPIsCard';
 
-const DashboardPage = () => {
+const DashboardPage: React.FC = () => {
     return (
         <>
-            <KPIs />
+            <KPIsCard />
             <ContactSwiper />
         </>
     )
