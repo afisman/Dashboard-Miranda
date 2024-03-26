@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
-import LoginPage from './pages/Login/LoginPage';
+import LoginPage from './pages/Login/LoginPage.tsx';
 import DashboardPage from './pages/Dashboard/DashboardPage';
 import Layout from './pages/Layout/Layout';
 import BookingsPage from './pages/Bookings/BookingsPage';

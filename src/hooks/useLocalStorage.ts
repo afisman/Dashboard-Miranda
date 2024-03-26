@@ -15,6 +15,5 @@ const reducer = ({ key, action, item }: LocalStorageState) => {
 }
 
 export const useLocalStorage = ({ key, action, item }: LocalStorageState) => {
-    console.log(reducer({ key, action, item }))
     return reducer({ key, item, action });
 }
