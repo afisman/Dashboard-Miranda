@@ -1,4 +1,4 @@
-import { RoomInterface } from "../room/RoomInterface";
+// import { RoomInterface } from "../room/RoomInterface";
 
 export interface BookingInterface {
     id: number;

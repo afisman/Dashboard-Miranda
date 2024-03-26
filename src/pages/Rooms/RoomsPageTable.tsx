@@ -2,20 +2,26 @@ import React from 'react';
 import { StyledTableCell, StyledTableCellImg, StyledTableCellText, StyledTableRow } from '../../components/reusable/StyledTable';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
-import { fetchDeleteRoom } from '../../features/rooms/roomsThunk.ts';
+import { fetchDeleteRoom } from '../../features/rooms/roomsThunk';
 import { useNavigate } from 'react-router';
+import { RoomInterface } from '../../interfaces/room/RoomInterface';
+import { ThunkDispatch } from '@reduxjs/toolkit';
+import { RootState } from '../../app/store';
 
+interface RoomsTableProps {
+    data: RoomInterface[]
+    dispatch: ThunkDispatch<RootState, any, any>
+}
 
-
-const RoomsPageTable = ({ data, dispatch }) => {
+const RoomsPageTable = ({ data, dispatch }: RoomsTableProps) => {
     const navigate = useNavigate();
 
-    const handleEditClick = (e, id) => {
+    const handleEditClick = (e: React.MouseEvent, id: number) => {
         e.stopPropagation();
         navigate(`/rooms/editroom/${id}`);
     }
 
-    const handleDeleteClick = (e, id) => {
+    const handleDeleteClick = (e: React.MouseEvent, id: number) => {
         e.stopPropagation();
         dispatch(fetchDeleteRoom(id));
     }

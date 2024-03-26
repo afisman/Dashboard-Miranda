@@ -13,7 +13,7 @@ export const StyledMenu = styled.div`
     margin:0 2em 2em 2em;
 `;
 
-export const StyledMenuText = styled.p<{ $selected?: string }>`
+export const StyledMenuText = styled.p<{ $selected?: boolean }>`
     width: 30%;
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;

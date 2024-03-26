@@ -1,9 +1,12 @@
 import React from 'react';
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from './context/AuthContext.tsx';
+import { useAuth } from './context/AuthContext.js';
 
+interface PrivateRouteProps {
+    children: JSX.Element
+}
 
-const PrivateRoute = ({ children }) => {
+const PrivateRoute = ({ children }: PrivateRouteProps) => {
     const { state } = useAuth();
 
     if (state.auth !== true) {

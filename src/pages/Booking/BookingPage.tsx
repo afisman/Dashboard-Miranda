@@ -19,7 +19,7 @@ const BookingPage = () => {
     return (
         <StyledCardWrapper>
             <BookingPageCard booking={booking as BookingInterface} room={room as RoomInterface} />
-            <BookingPageSwiper images={room?.photos} />
+            <BookingPageSwiper images={room?.photos as string[]} />
         </StyledCardWrapper>
     )
 }

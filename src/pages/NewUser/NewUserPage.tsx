@@ -1,11 +1,12 @@
 import React from 'react';
 import UserForm from './UserForm';
+import { UserInterface } from '../../interfaces/user/userInterface';
 
 
 
 const NewUserPage = () => {
 
-    const singleUser = {
+    const singleUser: UserInterface = {
         id: 0,
         full_name: "",
         contact: "",
@@ -13,7 +14,8 @@ const NewUserPage = () => {
         photo: "",
         start_date: "",
         description: "",
-        status: "Active"
+        status: "Active",
+        position: ""
     }
 
     return (

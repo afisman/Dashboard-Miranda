@@ -3,18 +3,25 @@ import { StyledTableCell, StyledTableRow, StyledTableCellText, StyledTableCellIm
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
 import { useNavigate } from 'react-router';
-import { fetchDeleteUser } from '../../features/users/usersThunk.ts';
+import { UserInterface } from '../../interfaces/user/userInterface';
+import { fetchDeleteUser } from '../../features/users/usersThunk';
+import { ThunkDispatch } from '@reduxjs/toolkit';
+import { RootState } from '../../app/store';
 
+interface UsersTableProps {
+    data: UserInterface[]
+    dispatch: ThunkDispatch<RootState, any, any>
+}
 
-const UsersTablePage = ({ data, dispatch }) => {
+const UsersTablePage = ({ data, dispatch }: UsersTableProps) => {
     const navigate = useNavigate();
 
-    const handleEditClick = (e, id) => {
+    const handleEditClick = (e: React.MouseEvent, id: number) => {
         e.stopPropagation();
         navigate(`/users/edituser/${id}`);
     }
 
-    const handleDeleteClick = (e, id) => {
+    const handleDeleteClick = (e: React.MouseEvent, id: number) => {
         e.stopPropagation();
         dispatch(fetchDeleteUser(id));
     }
@@ -46,7 +53,7 @@ const UsersTablePage = ({ data, dispatch }) => {
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText $letterstyle='title'>
-                            {el.room_floor}
+                            {el.start_date}
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell $name='facilities'>

@@ -3,11 +3,12 @@ import { StyledTable, StyledTableHeader } from '../../components/reusable/Styled
 import BookingsTable from './BookingsTable';
 import { StyledMenu, StyledMenuText, StyledSelect, StyledMenuWrapper, StyledMenuButtons } from '../../components/reusable/StyledMenu';
 import { StyledButton } from '../../components/reusable/StyledButton';
-import { useDispatch, useSelector } from 'react-redux';
-import { getBookingsList } from '../../features/bookings/bookingsSlice.ts';
-import { fetchBookings } from '../../features/bookings/bookingsThunk.ts';
+import { getBookingsList } from '../../features/bookings/bookingsSlice';
+import { fetchBookings } from '../../features/bookings/bookingsThunk';
 import ModalComponent from '../../components/modal/Modal';
 import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
+import { BookingInterface } from '../../interfaces/booking/bookingInterface';
 
 
 
@@ -15,27 +16,27 @@ import { Link } from 'react-router-dom';
 const BookingsPage = () => {
     const bookingsPerPage = 10;
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const [selection, setSelection] = useState('all');
-    const [order, setOrder] = useState('order_date');
-    const [specialRequest, setSpecialRequest] = useState('');
-    const [modalOpen, setModalOpen] = useState(false);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [selection, setSelection] = useState<string>('all');
+    const [order, setOrder] = useState<string>('order_date');
+    const [specialRequest, setSpecialRequest] = useState<string>('');
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
 
-    const dispatch = useDispatch()
-    const bookingsData = useSelector(getBookingsList);
+    const dispatch = useAppDispatch()
+    const bookingsData = useAppSelector(getBookingsList);
 
-    const handleOpen = () => setModalOpen(true);
-    const handleClose = () => setModalOpen(false);
+    const handleOpen = (): void => setModalOpen(true);
+    const handleClose = (): void => setModalOpen(false);
 
     const bookingsList = useMemo(() => {
         const orderedBookings = bookingsData.filter(booking => (selection === 'all' ? true : booking.status === selection))
 
-        orderedBookings.sort((a, b) => {
+        orderedBookings.sort((a: BookingInterface, b: BookingInterface) => {
             switch (order) {
                 case 'check_in':
-                    return new Date(a.check_in) - new Date(b.check_in);
+                    return new Date(a.check_in).getTime() - new Date(b.check_in).getTime();
                 case 'check_out':
-                    return new Date(a.check_out) - new Date(b.check_out);
+                    return new Date(a.check_out).getTime() - new Date(b.check_out).getTime();
                 case 'name':
                     const nameA = a.name.toUpperCase();
                     const nameB = b.name.toUpperCase();
@@ -47,7 +48,7 @@ const BookingsPage = () => {
                     }
                     return 0;
                 default:
-                    return new Date(b.order_date) - new Date(a.order_date);
+                    return new Date(b.order_date).getTime() - new Date(a.order_date).getTime();
             }
         }
         )
@@ -62,19 +63,18 @@ const BookingsPage = () => {
 
     let displayedBookings = bookingsList?.slice(firstBooking, lastBooking);
 
-    const handleMenuClick = (option) => {
+    const handleMenuClick = (option: string) => {
         setSelection(option);
     }
 
-    const handlePageChange = (newPage) => {
+    const handlePageChange = (newPage: number) => {
         setCurrentPage(newPage);
     }
 
-    const handleOrderChange = (e) => {
-        e.preventDefault();
+    const handleOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        event.preventDefault();
 
-        setOrder(e.target.value)
-
+        setOrder(event.target.value)
     }
 
     const initialFetch = async () => {
@@ -125,7 +125,7 @@ const BookingsPage = () => {
                     <StyledButton as={Link} to='/bookings/newbooking' $name='new' id='new_booking_button'>
                         + New Booking
                     </StyledButton>
-                    <StyledSelect name="order" id="order" onChange={(e) => handleOrderChange(e)}>
+                    <StyledSelect name="order" id="order" onChange={(event: React.ChangeEvent<HTMLSelectElement>) => handleOrderChange(event)}>
                         <option value='order_date'>Newest</option>
                         <option value='check_in'>Check in</option>
                         <option value='check_out'>Check out</option>

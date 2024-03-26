@@ -35,6 +35,6 @@ export const fetchUpdateUser = createAsyncThunk(
     })
 export const fetchDeleteUser = createAsyncThunk(
     "users/fetchDeleteUser",
-    async (id) => {
+    async (id: number) => {
         return await delay(id)
     })

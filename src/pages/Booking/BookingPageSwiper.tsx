@@ -7,9 +7,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { SwiperSlide } from 'swiper/react';
 
+interface BookingSwiperProps {
+    images: string[]
+}
 
-
-const BookingPageSwiper = ({ images }) => {
+const BookingPageSwiper: React.FC<BookingSwiperProps> = ({ images }) => {
     return (
         <>
             <StyledCardRight>

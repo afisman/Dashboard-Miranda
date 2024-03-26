@@ -3,29 +3,41 @@ import { StyledTableCell, StyledTableRow, StyledTableCellText } from '../../comp
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useNavigate } from 'react-router-dom';
 import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
-import { fetchDeleteBooking } from '../../features/bookings/bookingsThunk.ts';
+import { fetchDeleteBooking } from '../../features/bookings/bookingsThunk';
+import { BookingInterface } from '../../interfaces/booking/bookingInterface';
+import { ThunkDispatch } from '@reduxjs/toolkit';
+import { RootState } from '../../app/store';
 
-const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }) => {
+
+interface BookingsTableProps {
+    data: BookingInterface[]
+    setSpecialRequest: React.Dispatch<React.SetStateAction<string>>
+    handleOpen: () => void
+    dispatch: ThunkDispatch<RootState, any, any>
+
+}
+
+const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }: BookingsTableProps) => {
     const navigate = useNavigate();
 
 
-    const handleEditClick = (e, id) => {
+    const handleEditClick = (e: React.MouseEvent, id: number) => {
         e.stopPropagation();
         navigate(`/bookings/editbooking/${id}`)
     }
 
-    const handleDeleteClick = (e, id) => {
+    const handleDeleteClick = (e: React.MouseEvent, id: number) => {
         e.stopPropagation();
         dispatch(fetchDeleteBooking(id))
     }
 
-    const handleClick = (e, id) => {
+    const handleClick = (e: React.MouseEvent, id: number) => {
         navigate(`/bookings/${id}`);
     }
 
-    const handleNotesClick = (e, el) => {
+    const handleNotesClick = (e: React.MouseEvent, el: BookingInterface) => {
         e.stopPropagation();
-        setSpecialRequest(el.special_request)
+        setSpecialRequest(el.special_request || '')
         handleOpen();
     }
 

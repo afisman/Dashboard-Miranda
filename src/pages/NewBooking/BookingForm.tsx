@@ -1,44 +1,49 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { StyledFormContainer, StyledFormInput, StyledFormWrapper, StyledTextArea } from '../../components/reusable/StyledForm';
 import { StyledButton } from '../../components/reusable/StyledButton';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getRoomsList } from '../../features/rooms/roomsSlice.ts';
-import { fetchRooms } from '../../features/rooms/roomsThunk.ts';
-import { fetchCreateBooking, fetchUpdateBooking } from '../../features/bookings/bookingsThunk.ts';
+import { getRoomsList } from '../../features/rooms/roomsSlice';
+import { fetchRooms } from '../../features/rooms/roomsThunk';
+import { fetchCreateBooking, fetchUpdateBooking } from '../../features/bookings/bookingsThunk';
 import { StyledSelect } from '../../components/reusable/StyledMenu';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner';
+import { BookingInterface } from '../../interfaces/booking/bookingInterface';
+import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
+
+interface BookingFormProps {
+    singleBooking: BookingInterface
+    type: string
+}
 
 
-
-const BookingForm = ({ singleBooking, type }) => {
+const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
-    const roomsList = useSelector(getRoomsList);
-    const [spinner, setSpinner] = useState(true);
-    const [formData, setFormData] = useState(singleBooking);
+    const roomsList = useAppSelector(getRoomsList);
+    const [spinner, setSpinner] = useState<boolean>(true);
+    const [formData, setFormData] = useState<BookingInterface>(singleBooking);
 
     const availableRooms = useMemo(() => {
         return [...roomsList].filter((room) => room.status === 'Available');
     }, [roomsList])
 
-    const initialFetch = useCallback(async () => {
+    const initialFetch = async (): Promise<void> => {
         await dispatch(fetchRooms()).unwrap();
         setSpinner(false);
-    }, [dispatch])
+    }
 
     useEffect(() => {
         initialFetch();
     }, [initialFetch])
 
-    const handleFormChange = (e) => {
+    const handleFormChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement>) => {
         const { name, value } = e.target;
 
         setFormData((prevData) => ({ ...prevData, [name]: value }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (type === 'Edit') {
             dispatch(fetchUpdateBooking(formData));
@@ -65,7 +70,7 @@ const BookingForm = ({ singleBooking, type }) => {
                             Go back
                         </StyledButton>
                         <StyledFormWrapper>
-                            <StyledFormContainer onSubmit={(e) => handleSubmit(e)}>
+                            <StyledFormContainer onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSubmit(e)}>
                                 <StyledFormInput
                                     placeholder='Full name'
                                     name='name'
@@ -104,7 +109,6 @@ const BookingForm = ({ singleBooking, type }) => {
                                 <StyledTextArea
                                     placeholder='Special request'
                                     name='special_request'
-                                    type='text'
                                     value={formData?.special_request}
                                     onChange={(e) => handleFormChange(e)}
                                 ></StyledTextArea>

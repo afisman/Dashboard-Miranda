@@ -4,20 +4,20 @@ import { StyledMenu, StyledMenuText, StyledMenuButtons, StyledSelect, StyledMenu
 import UsersTablePage from './UsersTablePage';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUsersList } from '../../features/users/usersSlice.ts';
-import { fetchUsers } from '../../features/users/usersThunk.ts';
+import { getUsersList } from '../../features/users/usersSlice';
+import { fetchUsers } from '../../features/users/usersThunk';
+import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 
 
 const UsersPage = () => {
     const usersPerPage = 10;
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const [selection, setSelection] = useState('all');
-    const [order, setOrder] = useState('newest');
-    const usersData = useSelector(getUsersList);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [selection, setSelection] = useState<string>('all');
+    const [order, setOrder] = useState<string>('newest');
+    const usersData = useAppSelector(getUsersList);
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const usersList = useMemo(() => {
         const orderedUsers = usersData.filter(user => (selection === 'all' ? true : user.status === selection))
@@ -34,7 +34,7 @@ const UsersPage = () => {
                 }
                 return 0;
             } else {
-                return new Date(a.start_date) - new Date(b.start_date);
+                return new Date(a.start_date).getTime() - new Date(b.start_date).getTime();
             }
         })
 
@@ -59,17 +59,17 @@ const UsersPage = () => {
         initialFetch();
     }, [initialFetch]);
 
-    const handleOrderChange = (e) => {
-        e.preventDefault();
+    const handleOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        event.preventDefault();
 
-        setOrder(e.target.value)
+        setOrder(event.target.value)
     }
 
-    const handleMenuClick = (option) => {
+    const handleMenuClick = (option: string) => {
         setSelection(option);
     }
 
-    const handlePageChange = (newPage) => {
+    const handlePageChange = (newPage: number) => {
         setCurrentPage(newPage);
     }
 
@@ -100,7 +100,7 @@ const UsersPage = () => {
                     <StyledButton as={Link} to='/users/newuser' $name='new' id='new_user_button' >
                         + New Employee
                     </StyledButton>
-                    <StyledSelect name="order" id="order" onChange={(e) => handleOrderChange(e)} >
+                    <StyledSelect name="order" id="order" onChange={(event: React.ChangeEvent<HTMLSelectElement>) => handleOrderChange(event)} >
                         <option value='newest'>Newest</option>
                         <option value='name'>Name</option>
                     </StyledSelect>

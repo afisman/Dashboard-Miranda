@@ -4,19 +4,19 @@ import RoomsPageTable from './RoomsPageTable';
 import { StyledMenu, StyledMenuText, StyledMenuWrapper, StyledSelect, StyledMenuButtons } from '../../components/reusable/StyledMenu';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getRoomsList } from '../../features/rooms/roomsSlice.ts';
-import { fetchRooms } from '../../features/rooms/roomsThunk.ts';
+import { getRoomsList } from '../../features/rooms/roomsSlice';
+import { fetchRooms } from '../../features/rooms/roomsThunk';
+import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 
 
 const RoomsPage = () => {
     const roomsPerPage = 10;
-    const [order, setOrder] = useState('newest');
-    const [selection, setSelection] = useState('all');
-    const [currentPage, setCurrentPage] = useState(1);
+    const [order, setOrder] = useState<string>('newest');
+    const [selection, setSelection] = useState<string>('all');
+    const [currentPage, setCurrentPage] = useState<number>(1);
 
-    const dispatch = useDispatch();
-    const roomsData = useSelector(getRoomsList);
+    const dispatch = useAppDispatch();
+    const roomsData = useAppSelector(getRoomsList);
 
     const roomsList = useMemo(() => {
         const orderedRooms = roomsData.filter(room => (selection === 'all' ? true : room.status === selection))
@@ -53,18 +53,18 @@ const RoomsPage = () => {
         initialFetch();
     }, [initialFetch]);
 
-    const handlePageChange = (newPage) => {
+    const handlePageChange = (newPage: number) => {
         setCurrentPage(newPage);
     }
 
-    const handleMenuClick = (option) => {
+    const handleMenuClick = (option: string) => {
         setSelection(option);
     }
 
-    const handleOrderChange = (e) => {
-        e.preventDefault();
+    const handleOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        event.preventDefault();
 
-        setOrder(e.target.value)
+        setOrder(event.target.value)
 
     }
 
@@ -95,7 +95,7 @@ const RoomsPage = () => {
                     <StyledButton as={Link} to='/rooms/newroom' $name='new' id='new_room_button'>
                         + New Room
                     </StyledButton>
-                    <StyledSelect name="order" id="order" onChange={(e) => handleOrderChange(e)}>
+                    <StyledSelect name="order" id="order" onChange={(event: React.ChangeEvent<HTMLSelectElement>) => handleOrderChange(event)}>
                         <option value='cheapest'>Cheapest</option>
                         <option value='expensive'>Costly</option>
                     </StyledSelect>

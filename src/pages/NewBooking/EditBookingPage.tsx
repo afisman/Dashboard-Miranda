@@ -1,18 +1,19 @@
 import React, { useCallback, useEffect } from 'react';
 import BookingForm from './BookingForm';
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getSingleBooking } from '../../features/bookings/bookingsSlice.ts';
-import { fetchSingleBooking } from '../../features/bookings/bookingsThunk.ts';
+import { getSingleBooking } from '../../features/bookings/bookingsSlice';
+import { fetchSingleBooking } from '../../features/bookings/bookingsThunk';
+import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
+import { BookingInterface } from '../../interfaces/booking/bookingInterface';
 
 const EditBookingPage = () => {
     const { id } = useParams();
-    const singleBooking = useSelector(getSingleBooking);
-    const dispatch = useDispatch()
+    const singleBooking: BookingInterface = useAppSelector(getSingleBooking);
+    const dispatch = useAppDispatch()
 
 
     const initialFetch = useCallback(() => {
-        dispatch(fetchSingleBooking(id));
+        dispatch(fetchSingleBooking(Number(id)));
     }, [id, dispatch])
 
     useEffect(() => {

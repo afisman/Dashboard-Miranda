@@ -7,12 +7,13 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import data from '../../data/contact.json';
 import { StyledCheckIcon, StyledCrossIcon } from '../reusable/StyledIcons';
+import { ContactInterface } from '../../interfaces/contact/contactInterface';
 
 
 const ContactSwiper = () => {
-    const [contacts, setContacts] = useState(data)
+    const [contacts, setContacts] = useState<ContactInterface[]>(data)
 
-    const formatDate = (date) => {
+    const formatDate = (date: string) => {
         return Math.floor(((Date.now() - new Date(date).getTime()) / 1000 / 60 / 60) % 60)
     }
 
@@ -28,7 +29,7 @@ const ContactSwiper = () => {
                 navigation={true}
             >
                 {
-                    contacts.map((el) => (
+                    contacts.map((el: ContactInterface) => (
                         <StyledSwiperSlide
                             key={el.id}
                         >

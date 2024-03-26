@@ -1,16 +1,18 @@
 import React from 'react';
 import RoomForm from './RoomForm';
+import { RoomInterface } from '../../interfaces/room/RoomInterface';
 
 const NewRoomPage = () => {
 
-    const singleRoom = {
+    const singleRoom: RoomInterface = {
         id: 0,
         photos: [],
         room_type: "",
         room_number: "",
         description: "",
         offer: "",
-        rate: "",
+        room_floor: "",
+        rate: 0,
         amenities: [],
         status: "Available",
         discount: ""

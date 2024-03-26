@@ -4,16 +4,22 @@ import { StyledButton } from '../../components/reusable/StyledButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner';
-import { fetchCreateRoom, fetchRooms, fetchUpdateRoom } from '../../features/rooms/roomsThunk.ts';
-import { getRoomsList } from '../../features/rooms/roomsSlice.ts';
+import { fetchCreateRoom, fetchRooms, fetchUpdateRoom } from '../../features/rooms/roomsThunk';
+import { getRoomsList } from '../../features/rooms/roomsSlice';
+import { RoomInterface } from '../../interfaces/room/RoomInterface';
+import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 
 //Solve issue when refreshing page on edit form
+interface RoomFormProps {
+    singleRoom: RoomInterface
+    type: string
+}
 
 
-const RoomForm = ({ singleRoom, type }) => {
+const RoomForm: React.FC<RoomFormProps> = ({ singleRoom, type }) => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const roomsList = useSelector(getRoomsList)
+    const dispatch = useAppDispatch();
+    const roomsList: RoomInterface[] = useAppSelector(getRoomsList)
 
     const [spinner, setSpinner] = useState(true);
     const [formData, setFormData] = useState({ ...singleRoom });
@@ -27,9 +33,11 @@ const RoomForm = ({ singleRoom, type }) => {
         initialFetch();
     }, [initialFetch]);
 
-    const maxId = useMemo(() => {
-        return roomsList.reduce((prev, current) => (prev && prev.y > current.y) ? prev : current, 1).id + 1
+    const maxId: number = useMemo(() => {
+        return roomsList.reduce((prev: RoomInterface, current: RoomInterface) => (prev && prev.id > current.id) ? prev : current).id + 1
     }, [roomsList])
+
+    console.log(maxId)
 
     const handleUpdateId = () => {
         if (type === 'New') {
@@ -43,7 +51,7 @@ const RoomForm = ({ singleRoom, type }) => {
 
 
 
-    const handleFormChange = (e) => {
+    const handleFormChange = (e: React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
         setFormData((prevData) => {
@@ -66,7 +74,7 @@ const RoomForm = ({ singleRoom, type }) => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (type === 'Edit') {
             dispatch(fetchUpdateRoom(formData));
@@ -88,7 +96,7 @@ const RoomForm = ({ singleRoom, type }) => {
                         Go back
                     </StyledButton>
                     <StyledFormWrapper>
-                        <StyledFormContainer onSubmit={(e) => handleSubmit(e)}>
+                        <StyledFormContainer onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSubmit(e)}>
                             <StyledFormInput
                                 placeholder='Room Number'
                                 name='room_number'
@@ -99,7 +107,6 @@ const RoomForm = ({ singleRoom, type }) => {
                             <StyledTextArea
                                 placeholder='Photos, enter each in a different line'
                                 name='photos'
-                                type='string'
                                 value={formData.photos?.join("\n")}
                                 onChange={(e) => handleFormChange(e)}
                                 rows={6}
@@ -125,17 +132,16 @@ const RoomForm = ({ singleRoom, type }) => {
                                 value={formData.discount}
                                 onChange={(e) => handleFormChange(e)}
                             ></StyledFormInput>
-                            <StyledFormInput
+                            {/* <StyledFormInput
                                 placeholder='Cancelation'
                                 name='cancelation'
-                                type='string'
+                                type='text'
                                 value={formData.cancelation}
                                 onChange={(e) => handleFormChange(e)}
-                            ></StyledFormInput>
+                            ></StyledFormInput> */}
                             <StyledTextArea
                                 placeholder='Amenities, enter each in a different line'
                                 name='amenities'
-                                type='string'
                                 value={formData.amenities?.join("\n")}
                                 onChange={(e) => handleFormChange(e)}
                                 rows={6}

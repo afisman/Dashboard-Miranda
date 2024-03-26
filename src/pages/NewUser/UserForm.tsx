@@ -2,17 +2,23 @@ import React, { useState } from 'react';
 import { StyledFormContainer, StyledFormInput, StyledFormWrapper, StyledTextArea, StyledFormSelect } from '../../components/reusable/StyledForm';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useNavigate } from 'react-router';
-import { fetchCreateUser, fetchUpdateUser } from '../../features/users/usersThunk.ts';
-import { useDispatch } from 'react-redux';
+import { fetchCreateUser, fetchUpdateUser } from '../../features/users/usersThunk';
+import { useAppDispatch } from '../../hooks/useStore';
+import { UserInterface } from '../../interfaces/user/userInterface';
 
-const UserForm = ({ singleUser, type }) => {
+interface UserFormProps {
+    singleUser: UserInterface
+    type: string
+}
+
+const UserForm = ({ singleUser, type }: UserFormProps) => {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({ ...singleUser });
-    const [spinner, setSpinner] = useState(true);
-    const dispatch = useDispatch();
+    const [formData, setFormData] = useState<UserInterface>({ ...singleUser });
+    const [spinner, setSpinner] = useState<boolean>(true);
+    const dispatch = useAppDispatch();
 
 
-    const handleFormChange = (e) => {
+    const handleFormChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         const { name, value } = e.target;
 
         setFormData((prevData) => {
@@ -25,7 +31,7 @@ const UserForm = ({ singleUser, type }) => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (type === 'Edit') {
@@ -43,7 +49,7 @@ const UserForm = ({ singleUser, type }) => {
                 Go back
             </StyledButton>
             <StyledFormWrapper>
-                <StyledFormContainer onSubmit={(e) => handleSubmit(e)}>
+                <StyledFormContainer onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSubmit(e)}>
                     <StyledFormInput
                         placeholder='Full name'
                         name='full_name'
@@ -84,9 +90,8 @@ const UserForm = ({ singleUser, type }) => {
                     <StyledTextArea
                         placeholder='Description'
                         name='description'
-                        type='string'
                         value={formData.description}
-                        onChange={(e) => handleFormChange(e)}
+                        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleFormChange(e)}
                         rows={6}
                     ></StyledTextArea>
                     <StyledButton $name="login" type="submit">

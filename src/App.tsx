@@ -2,14 +2,14 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import LoginPage from './pages/Login/LoginPage';
 import DashboardPage from './pages/Dashboard/DashboardPage';
-import Layout from './pages/Layout/Layout.tsx';
+import Layout from './pages/Layout/Layout';
 import BookingsPage from './pages/Bookings/BookingsPage';
 import RoomsPage from './pages/Rooms/RoomsPage'
 import ContactPage from './pages/Contact/ContactPage';
 import UsersPage from './pages/Users/UsersPage';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles, darkTheme, lightTheme } from './themes';
+// import { GlobalStyles, darkTheme, lightTheme } from './themes.js';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './PrivateRoute';
 import BookingPage from './pages/Booking/BookingPage';
@@ -40,35 +40,35 @@ function App() {
     <>
       <Provider store={store}>
         <AuthProvider>
-          <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-            <GlobalStyles />
-            <Routes>
-              <Route path="/login" element={<LoginPage />} />
-              <Route path='/' element={<PrivateRoute ><Layout /></PrivateRoute>}>
-                <Route index element={<DashboardPage />} />
-                <Route path="bookings" element={<BookingsPage />} />
-                <Route path="bookings/newbooking" element={<NewBookingPage />} />
-                <Route path="bookings/editbooking/:id" element={<EditBookingPage />} />
-                <Route path="bookings/:id" element={<BookingPage />} />
-                <Route path="rooms" element={<RoomsPage />} />
-                <Route path="rooms/newroom" element={<NewRoomPage />} />
-                <Route path="rooms/editroom/:id" element={<EditRoomPage />} />
-                <Route path="contact" element={<ContactPage />} />
-                <Route path="users" element={<UsersPage />} />
-                <Route path="users/newuser" element={<NewUserPage />} />
-                <Route path="users/edituser/:id" element={<EditUserPage />} />
-              </Route>
-              <Route path="/*" element={<Navigate to='/' />}></Route>
-            </Routes>
-          </ThemeProvider>
+          {/* <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}> */}
+          {/* <GlobalStyles /> */}
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path='/' element={<PrivateRoute ><Layout /></PrivateRoute>}>
+              <Route index element={<DashboardPage />} />
+              <Route path="bookings" element={<BookingsPage />} />
+              <Route path="bookings/newbooking" element={<NewBookingPage />} />
+              <Route path="bookings/editbooking/:id" element={<EditBookingPage />} />
+              <Route path="bookings/:id" element={<BookingPage />} />
+              <Route path="rooms" element={<RoomsPage />} />
+              <Route path="rooms/newroom" element={<NewRoomPage />} />
+              <Route path="rooms/editroom/:id" element={<EditRoomPage />} />
+              <Route path="contact" element={<ContactPage />} />
+              <Route path="users" element={<UsersPage />} />
+              <Route path="users/newuser" element={<NewUserPage />} />
+              <Route path="users/edituser/:id" element={<EditUserPage />} />
+            </Route>
+            <Route path="/*" element={<Navigate to='/' />}></Route>
+          </Routes>
+          {/* </ThemeProvider> */}
         </AuthProvider>
       </Provider>
     </>
   )
 }
 
-if (window.Cypress) {
-  window.store = store;
-}
+// if (window.Cypress) {
+//   window.store = store;
+// }
 
 export default App
