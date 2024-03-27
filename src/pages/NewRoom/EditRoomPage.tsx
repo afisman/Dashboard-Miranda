@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import RoomForm from './RoomForm';
 import { getSingleRoom } from '../../features/rooms/roomsSlice';
@@ -12,26 +12,26 @@ const EditRoomPage = () => {
     const { id } = useParams();
     const singleRoom: RoomInterface = useAppSelector(getSingleRoom);
     const dispatch = useAppDispatch()
+    const [spinner, setSpinner] = useState<boolean>(true)
 
 
 
     const initialFetch = async () => {
         await dispatch(fetchSingleRoom(Number(id))).unwrap();
+        setSpinner(false)
     }
 
     useEffect(() => {
         initialFetch();
     }, [initialFetch])
 
+    if (spinner === true) {
+        return <StyledSpinner />
+
+    }
+
     return (<>
-
-        {
-            singleRoom ?
-                <RoomForm singleRoom={singleRoom} type={"Edit"} />
-                :
-                <StyledSpinner />
-
-        }
+        <RoomForm singleRoom={singleRoom} type={"Edit"} />
     </>
     )
 }
