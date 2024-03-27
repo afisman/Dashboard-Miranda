@@ -9,6 +9,7 @@ import { StyledSelect } from '../../components/reusable/StyledMenu';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner';
 import { BookingInterface } from '../../interfaces/booking/bookingInterface';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
+import { RoomInterface } from '../../interfaces/room/RoomInterface';
 
 interface BookingFormProps {
     singleBooking: BookingInterface
@@ -20,7 +21,7 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
-    const roomsList = useAppSelector(getRoomsList);
+    const roomsList: RoomInterface[] = useAppSelector(getRoomsList);
     const [spinner, setSpinner] = useState<boolean>(true);
     const [formData, setFormData] = useState<BookingInterface>(singleBooking);
 
@@ -37,7 +38,7 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
         initialFetch();
     }, [initialFetch])
 
-    const handleFormChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement>) => {
+    const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
 
         setFormData((prevData) => ({ ...prevData, [name]: value }))
@@ -59,73 +60,64 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
 
     return (
         <>
-            {
-                spinner ?
-
-
-                    <StyledSpinner />
-                    :
-                    <>
-                        <StyledButton $name='goBack' onClick={() => { navigate('/bookings') }}>
-                            Go back
+            <>
+                <StyledButton $name='goBack' onClick={() => { navigate('/bookings') }}>
+                    Go back
+                </StyledButton>
+                <StyledFormWrapper>
+                    <StyledFormContainer onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSubmit(e)}>
+                        <StyledFormInput
+                            placeholder='Full name'
+                            name='name'
+                            type='text'
+                            defaultValue={formData?.name}
+                            onChange={(e) => handleFormChange(e)}
+                        ></StyledFormInput>
+                        <StyledFormInput
+                            placeholder='Check in'
+                            name='check_in'
+                            type='date'
+                            defaultValue={!isNaN(new Date(formData.check_in).getTime()) ? new Date(formData.check_in)?.toISOString().slice(0, 10) : formData.check_in}
+                            onChange={(e) => handleFormChange(e)}
+                        ></StyledFormInput>
+                        <StyledFormInput
+                            placeholder='Check out'
+                            name='check_out'
+                            type='date'
+                            defaultValue={!isNaN(new Date(formData.check_out).getTime()) ? new Date(formData.check_out).toISOString().slice(0, 10) : formData.check_out}
+                            onChange={(e) => handleFormChange(e)}
+                        ></StyledFormInput>
+                        <StyledFormInput
+                            placeholder='Hour in'
+                            name='hour_check_in'
+                            type='time'
+                            defaultValue={formData?.hour_check_in}
+                            onChange={(e) => handleFormChange(e)}
+                        ></StyledFormInput>
+                        <StyledFormInput
+                            placeholder='Hour out'
+                            name='hour_check_out'
+                            type='time'
+                            defaultValue={formData?.hour_check_out}
+                            onChange={(e) => handleFormChange(e)}
+                        ></StyledFormInput>
+                        <StyledTextArea
+                            placeholder='Special request'
+                            name='special_request'
+                            defaultValue={formData?.special_request}
+                            onChange={(e) => handleFormChange(e)}
+                        ></StyledTextArea>
+                        <StyledSelect name="room_id" id="room_id" onChange={(e) => handleFormChange(e)}>
+                            {availableRooms?.map((room) => (
+                                <option defaultValue={room.id} key={room.id}>{room.room_number}</option>
+                            ))}
+                        </StyledSelect>
+                        <StyledButton $name="login" type="submit">
+                            {type} Booking
                         </StyledButton>
-                        <StyledFormWrapper>
-                            <StyledFormContainer onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSubmit(e)}>
-                                <StyledFormInput
-                                    placeholder='Full name'
-                                    name='name'
-                                    type='text'
-                                    value={formData?.name}
-                                    onChange={(e) => handleFormChange(e)}
-                                ></StyledFormInput>
-                                <StyledFormInput
-                                    placeholder='Check in'
-                                    name='check_in'
-                                    type='date'
-                                    value={formData.check_in != "" ? new Date(formData.check_in).toISOString().slice(0, 10) : formData.check_in}
-                                    onChange={(e) => handleFormChange(e)}
-                                ></StyledFormInput>
-                                <StyledFormInput
-                                    placeholder='Check out'
-                                    name='check_out'
-                                    type='date'
-                                    value={formData.check_out != "" ? new Date(formData.check_out).toISOString().slice(0, 10) : formData.check_out}
-                                    onChange={(e) => handleFormChange(e)}
-                                ></StyledFormInput>
-                                <StyledFormInput
-                                    placeholder='Hour in'
-                                    name='hour_check_in'
-                                    type='time'
-                                    value={formData?.hour_check_in}
-                                    onChange={(e) => handleFormChange(e)}
-                                ></StyledFormInput>
-                                <StyledFormInput
-                                    placeholder='Hour out'
-                                    name='hour_check_out'
-                                    type='time'
-                                    value={formData?.hour_check_out}
-                                    onChange={(e) => handleFormChange(e)}
-                                ></StyledFormInput>
-                                <StyledTextArea
-                                    placeholder='Special request'
-                                    name='special_request'
-                                    value={formData?.special_request}
-                                    onChange={(e) => handleFormChange(e)}
-                                ></StyledTextArea>
-                                <StyledSelect name="room_id" id="room_id" onChange={(e) => handleFormChange(e)}>
-                                    {availableRooms?.map((room) => (
-                                        <option value={room.id} key={room.id}>{room.room_number}</option>
-                                    ))}
-                                </StyledSelect>
-                                <StyledButton $name="login" type="submit">
-                                    {type} Booking
-                                </StyledButton>
-                            </StyledFormContainer>
-                        </StyledFormWrapper>
-                    </>
-
-
-            }
+                    </StyledFormContainer>
+                </StyledFormWrapper>
+            </>
         </>
     )
 }
