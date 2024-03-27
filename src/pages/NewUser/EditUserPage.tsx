@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { getSingleUser } from '../../features/users/usersSlice.js';
-import { useDispatch, useSelector } from 'react-redux';
 import { fetchSingleUser } from '../../features/users/usersThunk.js';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner.js';
 import UserForm from './UserForm.jsx';
@@ -13,22 +12,24 @@ const EditUserPage = () => {
     const { id } = useParams();
     const singleUser = useAppSelector(getSingleUser);
     const dispatch = useAppDispatch();
+    const [spinner, setSpinner] = useState<boolean>(true)
 
     const initialFetch = useCallback(async () => {
         await dispatch(fetchSingleUser(Number(id))).unwrap();
+        setSpinner(false)
     }, [id, dispatch])
 
     useEffect(() => {
         initialFetch();
     }, [initialFetch])
 
+    if (spinner === true) {
+        return <StyledSpinner />
+    }
+
     return (
         <>
-            {singleUser ?
-                <UserForm singleUser={singleUser} type={'Edit'} />
-                :
-                <StyledSpinner />
-            }
+            <UserForm singleUser={singleUser} type={'Edit'} />
         </>
     )
 }

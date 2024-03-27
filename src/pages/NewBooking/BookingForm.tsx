@@ -6,7 +6,6 @@ import { getRoomsList } from '../../features/rooms/roomsSlice';
 import { fetchRooms } from '../../features/rooms/roomsThunk';
 import { fetchCreateBooking, fetchUpdateBooking } from '../../features/bookings/bookingsThunk';
 import { StyledSelect } from '../../components/reusable/StyledMenu';
-import { StyledSpinner } from '../../components/reusable/StyledSpinner';
 import { BookingInterface } from '../../interfaces/booking/bookingInterface';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 import { RoomInterface } from '../../interfaces/room/RoomInterface';
@@ -22,7 +21,6 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
     const dispatch = useAppDispatch();
 
     const roomsList: RoomInterface[] = useAppSelector(getRoomsList);
-    const [spinner, setSpinner] = useState<boolean>(true);
     const [formData, setFormData] = useState<BookingInterface>(singleBooking);
 
     const availableRooms = useMemo(() => {
@@ -31,7 +29,6 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
 
     const initialFetch = async (): Promise<void> => {
         await dispatch(fetchRooms()).unwrap();
-        setSpinner(false);
     }
 
     useEffect(() => {

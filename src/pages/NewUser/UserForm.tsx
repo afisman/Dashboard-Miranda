@@ -14,11 +14,11 @@ interface UserFormProps {
 const UserForm = ({ singleUser, type }: UserFormProps) => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState<UserInterface>({ ...singleUser });
-    const [spinner, setSpinner] = useState<boolean>(true);
     const dispatch = useAppDispatch();
 
 
     const handleFormChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+        console.log(e.target)
         const { name, value } = e.target;
 
         setFormData((prevData) => {
@@ -68,7 +68,7 @@ const UserForm = ({ singleUser, type }: UserFormProps) => {
                         placeholder='Phone number'
                         name='contact'
                         type='number'
-                        value={Number(formData.contact)}
+                        value={Number(formData.contact.split('-').join(''))}
                         onChange={(e) => handleFormChange(e)}
                     ></StyledFormInput>
                     <StyledFormInput
