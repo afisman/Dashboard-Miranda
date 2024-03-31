@@ -13,12 +13,9 @@ const EditBookingPage = () => {
     const dispatch = useAppDispatch()
     const [spinner, setSpinner] = useState<boolean>(true);
 
-
-
     const initialFetch = useCallback(async () => {
         await dispatch(fetchSingleBooking(Number(id)));
         setSpinner(false)
-
     }, [id, dispatch])
 
     useEffect(() => {
@@ -28,9 +25,6 @@ const EditBookingPage = () => {
     if (spinner === true) {
         return <StyledSpinner />
     }
-
-    console.log(singleBooking)
-
 
     return (
         <BookingForm singleBooking={singleBooking} type={'Edit'} />

@@ -2,8 +2,6 @@ import React from 'react';
 import UserForm from './UserForm';
 import { UserInterface } from '../../interfaces/user/userInterface';
 
-
-
 const NewUserPage = () => {
 
     const singleUser: UserInterface = {

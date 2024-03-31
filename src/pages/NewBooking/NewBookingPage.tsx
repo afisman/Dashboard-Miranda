@@ -17,13 +17,10 @@ const NewBookingPage = () => {
         dispatch,
         bookingsList]
     );
-    // return roomsList.reduce((prev: RoomInterface, current: RoomInterface) => (prev && prev.id > current.id) ? prev : current).id + 1
+
     const maxId: number = useMemo(() => {
         return bookingsList.reduce((prev: BookingInterface, current: BookingInterface) => (prev && prev.id > current.id) ? prev : current).id + 1
     }, [bookingsList])
-
-    console.log(maxId)
-
 
     const singleBooking = {
         id: maxId,

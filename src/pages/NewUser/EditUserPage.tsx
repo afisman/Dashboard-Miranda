@@ -6,8 +6,6 @@ import UserForm from './UserForm.jsx';
 import { useParams } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore.js';
 
-
-
 const EditUserPage = () => {
     const { id } = useParams();
     const singleUser = useAppSelector(getSingleUser);

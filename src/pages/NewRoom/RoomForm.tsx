@@ -12,8 +12,7 @@ interface RoomFormProps {
     type: string
 }
 
-
-const RoomForm: React.FC<RoomFormProps> = ({ singleRoom, type }) => {
+const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const roomsList: RoomInterface[] = useAppSelector(getRoomsList)

@@ -25,11 +25,7 @@ import EditUserPage from './pages/NewUser/EditUserPage';
 
 
 function App() {
-
-
   const [theme, setTheme] = useState<string>('light');
-
-
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light')
   }

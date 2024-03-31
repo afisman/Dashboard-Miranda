@@ -14,8 +14,6 @@ const EditRoomPage = () => {
     const dispatch = useAppDispatch()
     const [spinner, setSpinner] = useState<boolean>(true)
 
-
-
     const initialFetch = async () => {
         await dispatch(fetchSingleRoom(Number(id))).unwrap();
         setSpinner(false)

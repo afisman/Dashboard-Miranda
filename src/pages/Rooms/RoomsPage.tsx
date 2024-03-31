@@ -39,8 +39,6 @@ const RoomsPage = () => {
 
     let displayedRooms = roomsList?.slice(firstRoom, lastRoom);
 
-
-
     const initialFetch = async () => {
         try {
             await dispatch(fetchRooms());
@@ -65,7 +63,6 @@ const RoomsPage = () => {
         event.preventDefault();
 
         setOrder(event.target.value)
-
     }
 
     return (

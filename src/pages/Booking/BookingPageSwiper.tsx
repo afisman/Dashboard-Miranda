@@ -11,7 +11,7 @@ interface BookingSwiperProps {
     images: string[]
 }
 
-const BookingPageSwiper: React.FC<BookingSwiperProps> = ({ images }) => {
+const BookingPageSwiper = ({ images }: BookingSwiperProps) => {
     return (
         <>
             <StyledCardRight>

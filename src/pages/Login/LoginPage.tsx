@@ -27,10 +27,8 @@ const LoginPage = () => {
         setPassword(e.currentTarget.value);
     }
 
-
     const handleSubmit = async (e: React.FormEvent<HTMLInputElement>): Promise<void> => {
         e.preventDefault();
-        //Need to check if better with e.target.value
         if (email === 'alejandro@admin.com' && password === 'admin') {
             dispatch({ type: 'login', payload: { auth: true, user: 'Alejandro Fisman', email: 'alejandro@admin.com' } });
             navigate('/');

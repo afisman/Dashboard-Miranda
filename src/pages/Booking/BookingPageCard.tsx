@@ -12,7 +12,7 @@ interface BookingCardInterface {
 
 
 
-const BookingPageCard: React.FC<BookingCardInterface> = ({ booking, room }) => {
+const BookingPageCard = ({ booking, room }: BookingCardInterface) => {
     return (
         <>
             <StyledCardLeft>
