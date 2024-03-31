@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const SButton = styled.button`
+const SButton = styled.button<{ $name?: string }>`
     cursor: pointer;
     border: none;
     opacity: 1;
@@ -23,7 +23,13 @@ const SButton = styled.button`
     }
     
 `;
-const ButtonStyled = ({ $name, children, onClick }) => {
+
+interface ButtonStyledProps {
+    $name: string
+    children: any
+    onClick: () => void
+}
+const ButtonStyled = ({ $name, children, onClick }: ButtonStyledProps) => {
     return (
         <SButton onClick={onClick} $name={$name}>
             {children}
