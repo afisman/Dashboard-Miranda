@@ -24,7 +24,7 @@ export const StyledFormInput = styled.input`
     border-radius: 0.25em;
     margin-bottom: 1.875em;
 
-     &::placeholder {
+    &::placeholder {
             color: #135846;
     }
 `;

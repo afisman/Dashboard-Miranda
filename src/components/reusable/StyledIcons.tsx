@@ -44,7 +44,7 @@ export const StyledDeleteIcon = styled(MdDeleteForever)`
     border-radius: 0.2em;
 
 
-     &:hover {
+    &:hover {
       background-color: #135846;
       fill:#fff;
     }
