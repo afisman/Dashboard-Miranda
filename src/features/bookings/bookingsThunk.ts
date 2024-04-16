@@ -17,7 +17,7 @@ export const fetchSingleBooking = createAsyncThunk(
 export const fetchCreateBooking = createAsyncThunk(
     "bookings/fetchCreateBooking",
     async (newBooking: BookingInterface) => {
-        return await callApi(`/bookings/${newBooking._id}`, 'POST', newBooking)
+        return await callApi(`/bookings`, 'POST', newBooking)
     })
 export const fetchUpdateBooking = createAsyncThunk(
     "bookings/fetchUpdateBooking",

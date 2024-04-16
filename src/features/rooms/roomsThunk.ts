@@ -17,7 +17,7 @@ export const fetchSingleRoom = createAsyncThunk(
 export const fetchCreateRoom = createAsyncThunk(
     "rooms/fetchCreateRoom",
     async (newRoom: RoomInterface) => {
-        return await callApi(`/rooms/${newRoom._id}`, 'POST', newRoom)
+        return await callApi(`/rooms`, 'POST', newRoom)
     })
 export const fetchUpdateRoom = createAsyncThunk(
     "rooms/fetchUpdateRoom",

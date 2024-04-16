@@ -57,7 +57,7 @@ const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }: Bookin
                         </div>
                     </StyledTableCell>
                     <StyledTableCell>
-                        {el.order_date.slice(0, 10)}
+                        {new Date(el.check_out).toISOString().slice(0, 10)}
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText $letterstyle='title'>
@@ -82,7 +82,7 @@ const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }: Bookin
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText $letterstyle="title">
-                            {el.room._id}
+                            {el.room.room_type}
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>

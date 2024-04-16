@@ -4,6 +4,7 @@ import { getBookingsList } from '../../features/bookings/bookingsSlice.js';
 import BookingForm from './BookingForm.js';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore.js';
 import { BookingInterface } from '../../interfaces/booking/bookingInterface.js';
+import { RoomInterface } from '../../interfaces/room/roomInterface.js';
 
 
 const NewBookingPage = () => {
@@ -13,25 +14,24 @@ const NewBookingPage = () => {
     useEffect(
         () => {
             dispatch(fetchBookings());
-        }, [
-        dispatch,
-        bookingsList]
+        }, []
     );
 
+    const currentDate = Date.now()
+    const dayInMs = 86400000
 
 
     const singleBooking = {
         name: "",
-        order_date: "",
-        check_in: "",
+        order_date: currentDate,
+        check_in: currentDate,
         hour_check_in: "",
-        check_out: "",
+        check_out: currentDate + dayInMs,
         hour_check_out: "",
         special_request: "",
-        rate: '',
-        room: { id: 1 },
-        room_type: "",
-        status: ""
+        rate: 0,
+        room: {} as RoomInterface,
+        status: "Check in"
     }
 
     return (

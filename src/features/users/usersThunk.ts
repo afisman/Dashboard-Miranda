@@ -1,40 +1,30 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import users from '../../data/users.json';
 import { UserInterface } from "../../interfaces/user/userInterface";
-
-function delay(data: any) {
-    return new Promise<any>((resolve) => {
-        setTimeout(() => {
-            resolve(data)
-        }, 200)
-    })
-}
+import { callApi } from "../../utils/callApi";
 
 export const fetchUsers = createAsyncThunk(
     "users/fetchUsers",
     async () => {
-        return await delay(users)
+        return await callApi('/users')
     })
 export const fetchSingleUser = createAsyncThunk(
     "users/fetchSingleUser",
-    async (id: number) => {
-        return await delay(users.find((el) => el.id == id))
-
+    async (id: string) => {
+        return await callApi(`/users/${id}`)
     })
 export const fetchCreateUser = createAsyncThunk(
     "users/fetchCreateUser",
     async (newUser: UserInterface) => {
-        return await delay(newUser)
-
+        return await callApi(`/users`, 'POST', newUser)
     })
 export const fetchUpdateUser = createAsyncThunk(
     "users/fetchUpdateUser",
     async (updatedUser: UserInterface) => {
-        return await delay(updatedUser)
-
+        return await callApi(`/users/${updatedUser._id}`, 'PUT', updatedUser)
     })
 export const fetchDeleteUser = createAsyncThunk(
     "users/fetchDeleteUser",
-    async (id: number) => {
-        return await delay(id)
+    async (id: string) => {
+        return await callApi(`/users/${id}`, 'DELETE')
     })
+

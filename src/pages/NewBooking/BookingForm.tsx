@@ -8,7 +8,7 @@ import { fetchCreateBooking, fetchUpdateBooking } from '../../features/bookings/
 import { StyledSelect } from '../../components/reusable/StyledMenu';
 import { BookingInterface } from '../../interfaces/booking/bookingInterface';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
-import { RoomInterface } from '../../interfaces/room/RoomInterface';
+import { RoomInterface } from '../../interfaces/room/roomInterface';
 
 interface BookingFormProps {
     singleBooking: BookingInterface
@@ -36,7 +36,15 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
     }, [])
 
     const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        e.preventDefault()
         const { name, value } = e.target;
+
+        if (name === 'room_id') {
+            const room = roomsList.find((el) => el._id === value)!
+            console.log(value)
+
+            setFormData((prevData) => ({ ...prevData, [name]: value, rate: room.rate }))
+        }
 
         setFormData((prevData) => ({ ...prevData, [name]: value }))
     }
@@ -51,7 +59,6 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
         if (type === 'New') {
             dispatch(fetchCreateBooking(formData))
             navigate('/bookings')
-
         }
     }
 
@@ -75,7 +82,6 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
                             name='check_in'
                             type='date'
                             defaultValue={new Date(formData?.check_out).toISOString().slice(0, 10)}
-                            // defaultValue={!isNaN(new Date(formData.check_in).getTime()) ? new Date(formData.check_in)?.toISOString().slice(0, 10) : formData.check_in}
                             onChange={(e) => handleFormChange(e)}
                         ></StyledFormInput>
                         <StyledFormInput
@@ -83,7 +89,6 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
                             name='check_out'
                             type='date'
                             defaultValue={new Date(formData?.check_in).toISOString().slice(0, 10)}
-                            // defaultValue={!isNaN(new Date(formData.check_out).getTime()) ? new Date(formData.check_out).toISOString().slice(0, 10) : formData.check_out}
                             onChange={(e) => handleFormChange(e)}
                         ></StyledFormInput>
                         <StyledFormInput
@@ -106,9 +111,9 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
                             defaultValue={formData?.special_request}
                             onChange={(e) => handleFormChange(e)}
                         ></StyledTextArea>
-                        <StyledSelect name="room_id" id="room_id" onChange={(e) => handleFormChange(e)}>
+                        <StyledSelect name="room" id="room" onChange={(e) => handleFormChange(e)}>
                             {availableRooms?.map((room) => (
-                                <option defaultValue={room._id} key={room._id}>{room.room_number}</option>
+                                <option value={room._id} key={room._id}>{room.room_number}</option>
                             ))}
                         </StyledSelect>
                         <StyledButton $name="login" type="submit">

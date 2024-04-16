@@ -16,12 +16,12 @@ interface UsersTableProps {
 const UsersTablePage = ({ data, dispatch }: UsersTableProps) => {
     const navigate = useNavigate();
 
-    const handleEditClick = (e: React.MouseEvent, id: number) => {
+    const handleEditClick = (e: React.MouseEvent, id: string) => {
         e.stopPropagation();
         navigate(`/users/edituser/${id}`);
     }
 
-    const handleDeleteClick = (e: React.MouseEvent, id: number) => {
+    const handleDeleteClick = (e: React.MouseEvent, id: string) => {
         e.stopPropagation();
         dispatch(fetchDeleteUser(id));
     }
@@ -29,7 +29,7 @@ const UsersTablePage = ({ data, dispatch }: UsersTableProps) => {
     return (
         <>
             {data.map((el) => (
-                <StyledTableRow key={el.id}>
+                <StyledTableRow key={el._id}>
                     <StyledTableCell $name='flexCell'>
                         <StyledTableCellImg $imgtype='concierge'>
                             <img src={el.photo} alt="user" />
@@ -39,10 +39,10 @@ const UsersTablePage = ({ data, dispatch }: UsersTableProps) => {
                                 {el.full_name}
                             </StyledTableCellText>
                             <StyledTableCellText $letterstyle='id'>
-                                #{el.id}
+                                #{el._id}
                             </StyledTableCellText>
                             <StyledTableCellText $letterstyle='subtitle'>
-                                Joined on {el.start_date}
+                                Joined on {new Date(el.start_date).toISOString().slice(0, 10)}
                             </StyledTableCellText>
                         </div>
                     </StyledTableCell>
@@ -68,8 +68,8 @@ const UsersTablePage = ({ data, dispatch }: UsersTableProps) => {
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText style={{ display: 'flex' }} >
-                            <StyledEditIcon onClick={(e) => { handleEditClick(e, el.id) }}></StyledEditIcon>
-                            <StyledDeleteIcon onClick={(e) => { handleDeleteClick(e, el.id) }}></StyledDeleteIcon>
+                            <StyledEditIcon onClick={(e) => { handleEditClick(e, el._id!) }}></StyledEditIcon>
+                            <StyledDeleteIcon onClick={(e) => { handleDeleteClick(e, el._id!) }}></StyledDeleteIcon>
                         </StyledTableCellText>
                     </StyledTableCell>
                 </StyledTableRow>

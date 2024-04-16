@@ -1,15 +1,15 @@
-// import { RoomInterface } from "../room/RoomInterface";
+import { RoomInterface } from "../room/roomInterface";
 
 export interface BookingInterface {
     _id?: string;
     name: string;
-    order_date: string;
-    check_in: string;
+    order_date: number;
+    check_in: number;
     hour_check_in: string;
-    check_out: string;
+    check_out: number;
     hour_check_out: string;
-    rate: string
-    room: { id: number };
+    rate: number
+    room: RoomInterface;
     special_request: string | undefined;
     status: string;
 }
