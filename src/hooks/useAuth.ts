@@ -3,7 +3,8 @@ import { useReducer } from "react";
 export interface UserAuthState {
     auth: boolean,
     user: string,
-    email: string
+    email: string,
+    token: string
 }
 
 export interface UserAuthActions {
@@ -14,7 +15,8 @@ export interface UserAuthActions {
 interface useUserAuthProps {
     isAuth: boolean,
     user: string,
-    email: string
+    email: string,
+    token: string
 }
 
 const authReducer = (state: UserAuthState, action: UserAuthActions) => {
@@ -23,29 +25,32 @@ const authReducer = (state: UserAuthState, action: UserAuthActions) => {
             return {
                 ...state,
                 auth: true,
-                user: action.payload?.user,
-                email: action.payload?.email
+                user: action.payload.user,
+                email: action.payload.email,
+                token: action.payload.token
             }
         case 'logout':
             return {
                 ...state,
                 auth: false,
                 user: '',
-                email: ''
+                email: '',
+                token: ''
             }
         case 'edit':
             return {
                 ...state,
                 user: action.payload?.user,
-                email: action.payload?.email
+                email: action.payload?.email,
+                token: action.payload?.token
             }
         default:
             return state
     }
 }
 
-export const useUserAuth = ({ isAuth, user, email }: useUserAuthProps) => {
-    const [state, dispatch] = useReducer(authReducer, { auth: isAuth, user: user, email: email });
+export const useUserAuth = ({ isAuth, user, email, token }: useUserAuthProps) => {
+    const [state, dispatch] = useReducer(authReducer, { auth: isAuth, user: user, email: email, token: token });
 
     return { state, dispatch };
 }

@@ -3,6 +3,7 @@ import { StyledFormContainer, StyledFormInput, StyledFormWrapper } from '../../c
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useAuth } from '../../context/AuthContext';
 import { Navigate, useNavigate } from "react-router-dom";
+import { loginApi } from '../../utils/callApi';
 
 
 
@@ -27,14 +28,30 @@ const LoginPage = () => {
         setPassword(e.currentTarget.value);
     }
 
-    const handleSubmit = async (e: React.FormEvent<HTMLInputElement>): Promise<void> => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
-        if (email === 'alejandro@admin.com' && password === 'admin') {
-            dispatch({ type: 'login', payload: { auth: true, user: 'Alejandro Fisman', email: 'alejandro@admin.com' } });
-            navigate('/');
-            setError(false);
+        try {
+            const response = await loginApi(email, password);
+            console.log(response)
+            if (response.email) {
+                dispatch({ type: 'login', payload: { auth: true, user: response.name, email: response.email, token: response.token } });
+                navigate('/');
+                setError(false);
+            }
+
+        } catch (error) {
+            console.error(error)
         }
     }
+
+    // const handleSubmit = async (e: React.FormEvent<HTMLInputElement>): Promise<void> => {
+    //     e.preventDefault();
+    //     if (email === 'alejandro@admin.com' && password === 'admin') {
+    //         dispatch({ type: 'login', payload: { auth: true, user: 'Alejandro Fisman', email: 'alejandro@admin.com' } });
+    //         navigate('/');
+    //         setError(false);
+    //     }
+    // }
 
     return (
         <> {
@@ -42,7 +59,7 @@ const LoginPage = () => {
                 <Navigate to='/' />
             ) : (
                 <StyledFormWrapper>
-                    <StyledFormContainer onSubmit={handleSubmit}>
+                    <StyledFormContainer onSubmit={(e) => handleSubmit(e)}>
                         <StyledFormInput
                             placeholder='Email'
                             type='email'
