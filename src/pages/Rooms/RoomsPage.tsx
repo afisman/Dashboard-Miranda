@@ -49,7 +49,7 @@ const RoomsPage = () => {
 
     useEffect(() => {
         initialFetch();
-    }, [initialFetch]);
+    }, []);
 
     const handlePageChange = (newPage: number) => {
         setCurrentPage(newPage);

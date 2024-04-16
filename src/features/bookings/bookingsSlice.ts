@@ -39,14 +39,14 @@ export const bookingsSlice = createSlice({
                 const updatedBooking = action.payload;
                 state.status = 'fulfilled';
                 state.data.map((booking) => (
-                    booking.id == updatedBooking.id ? updatedBooking : booking
+                    booking._id == updatedBooking._id ? updatedBooking : booking
                 ));
             })
             .addCase(fetchDeleteBooking.fulfilled, (state, action) => {
                 const id = action.payload;
                 state.status = 'fulfilled';
                 state.data.filter((booking) => (
-                    booking.id !== id
+                    booking._id !== id
                 ));
             })
             .addMatcher(isAnyOf(

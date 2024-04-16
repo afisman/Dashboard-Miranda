@@ -7,11 +7,12 @@ import { loginApi } from '../../utils/callApi';
 
 
 
+
 const LoginPage = () => {
 
     const { state, dispatch } = useAuth()
-    const [email, setEmail] = useState<string>('alejandro@admin.com');
-    const [password, setPassword] = useState<string>('admin');
+    const [email, setEmail] = useState<string>('Brett_Mueller@yahoo.com');
+    const [password, setPassword] = useState<string>('soxikuwibo');
     const [error, setError] = useState<boolean>(false)
     const navigate = useNavigate();
 
@@ -32,26 +33,18 @@ const LoginPage = () => {
         e.preventDefault();
         try {
             const response = await loginApi(email, password);
-            console.log(response)
             if (response.email) {
                 dispatch({ type: 'login', payload: { auth: true, user: response.name, email: response.email, token: response.token } });
                 navigate('/');
                 setError(false);
+            } else {
+                setError(true)
             }
 
         } catch (error) {
             console.error(error)
         }
     }
-
-    // const handleSubmit = async (e: React.FormEvent<HTMLInputElement>): Promise<void> => {
-    //     e.preventDefault();
-    //     if (email === 'alejandro@admin.com' && password === 'admin') {
-    //         dispatch({ type: 'login', payload: { auth: true, user: 'Alejandro Fisman', email: 'alejandro@admin.com' } });
-    //         navigate('/');
-    //         setError(false);
-    //     }
-    // }
 
     return (
         <> {
@@ -64,21 +57,21 @@ const LoginPage = () => {
                             placeholder='Email'
                             type='email'
                             name='email'
-                            defaultValue={'alejandro@admin.com'}
+                            defaultValue={'Brett_Mueller@yahoo.com'}
                             onChange={handleEmailChange}
                         ></StyledFormInput>
                         <StyledFormInput
                             placeholder='Password'
                             type='password'
                             name='password'
-                            defaultValue={'admin'}
+                            defaultValue={'soxikuwibo'}
                             onChange={handlePasswordChange}
                         ></StyledFormInput>
                         <StyledButton $name="login" type="submit">
                             LOGIN
                         </StyledButton>
-                        <p>alejandro@admin.com</p>
-                        <p>admin</p>
+                        <p>Brett_Mueller@yahoo.com</p>
+                        <p>soxikuwibo</p>
                         {error &&
                             <p>Incorrect email or password</p>
                         }

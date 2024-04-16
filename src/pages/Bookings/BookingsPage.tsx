@@ -9,6 +9,7 @@ import ModalComponent from '../../components/modal/Modal';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 import { BookingInterface } from '../../interfaces/booking/bookingInterface';
+import { StyledSpinner } from '../../components/reusable/StyledSpinner';
 
 
 
@@ -87,8 +88,11 @@ const BookingsPage = () => {
 
     useEffect(() => {
         initialFetch();
-    }, [initialFetch]);
+    }, []);
 
+    if (!bookingsData) {
+        return <StyledSpinner />
+    }
 
     return (
         <>

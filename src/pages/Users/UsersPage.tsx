@@ -57,7 +57,7 @@ const UsersPage = () => {
 
     useEffect(() => {
         initialFetch();
-    }, [initialFetch]);
+    }, []);
 
     const handleOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         event.preventDefault();

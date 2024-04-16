@@ -1,5 +1,5 @@
 export interface UserInterface {
-    id: number
+    _id?: string
     full_name: string
     contact: string
     email: string

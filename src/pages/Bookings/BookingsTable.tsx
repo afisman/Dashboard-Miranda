@@ -21,17 +21,17 @@ const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }: Bookin
     const navigate = useNavigate();
 
 
-    const handleEditClick = (e: React.MouseEvent, id: number) => {
+    const handleEditClick = (e: React.MouseEvent, id: string) => {
         e.stopPropagation();
         navigate(`/bookings/editbooking/${id}`)
     }
 
-    const handleDeleteClick = (e: React.MouseEvent, id: number) => {
+    const handleDeleteClick = (e: React.MouseEvent, id: string) => {
         e.stopPropagation();
         dispatch(fetchDeleteBooking(id))
     }
 
-    const handleClick = (e: React.MouseEvent, id: number) => {
+    const handleClick = (e: React.MouseEvent, id: string) => {
         navigate(`/bookings/${id}`);
     }
 
@@ -45,14 +45,14 @@ const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }: Bookin
         <>
 
             {data?.map((el) => (
-                <StyledTableRow key={el.id} onClick={(e) => handleClick(e, el.id)}>
+                <StyledTableRow key={el._id} onClick={(e) => handleClick(e, el._id!)}>
                     <StyledTableCell $name='flexCell'>
                         <div>
                             <StyledTableCellText $letterstyle='title'>
                                 {el.name}
                             </StyledTableCellText>
                             <StyledTableCellText $letterstyle='id'>
-                                #{el.id}
+                                #{el._id}
                             </StyledTableCellText>
                         </div>
                     </StyledTableCell>
@@ -82,7 +82,7 @@ const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }: Bookin
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText $letterstyle="title">
-                            {el.room.id}
+                            {el.room._id}
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
@@ -92,8 +92,8 @@ const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }: Bookin
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText  >
-                            <StyledEditIcon onClick={(e) => { handleEditClick(e, el.id) }}></StyledEditIcon>
-                            <StyledDeleteIcon onClick={(e) => { handleDeleteClick(e, el.id) }}></StyledDeleteIcon>
+                            <StyledEditIcon onClick={(e) => { handleEditClick(e, el._id!) }}></StyledEditIcon>
+                            <StyledDeleteIcon onClick={(e) => { handleDeleteClick(e, el._id!) }}></StyledDeleteIcon>
                         </StyledTableCellText>
                     </StyledTableCell>
                 </StyledTableRow>

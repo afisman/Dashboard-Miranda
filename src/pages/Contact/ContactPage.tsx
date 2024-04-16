@@ -55,7 +55,7 @@ const ContactPage = () => {
 
     useEffect(() => {
         initialFetch();
-    }, [initialFetch]);
+    }, []);
 
     const handlePageChange = (newPage: number): void => {
         setCurrentPage(newPage)
