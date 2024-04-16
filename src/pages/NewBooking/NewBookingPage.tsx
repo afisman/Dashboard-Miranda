@@ -18,12 +18,9 @@ const NewBookingPage = () => {
         bookingsList]
     );
 
-    const maxId: number = useMemo(() => {
-        return bookingsList.reduce((prev: BookingInterface, current: BookingInterface) => (prev && prev.id > current.id) ? prev : current).id + 1
-    }, [bookingsList])
+
 
     const singleBooking = {
-        id: maxId,
         name: "",
         order_date: "",
         check_in: "",

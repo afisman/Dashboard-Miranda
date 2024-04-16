@@ -61,7 +61,7 @@ const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }: Bookin
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText $letterstyle='title'>
-                            {el.check_in.slice(0, 10)}
+                            {new Date(el.check_in).toISOString().slice(0, 10)}
                         </StyledTableCellText>
                         <StyledTableCellText $letterstyle='subtitle'>
                             {el.hour_check_in}
@@ -69,7 +69,7 @@ const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }: Bookin
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText $letterstyle='title'>
-                            {el.check_out.slice(0, 10)}
+                            {new Date(el.check_out).toISOString().slice(0, 10)}
                         </StyledTableCellText>
                         <StyledTableCellText $letterstyle='subtitle'>
                             {el.hour_check_out}

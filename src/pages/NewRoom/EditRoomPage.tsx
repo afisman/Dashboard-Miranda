@@ -21,7 +21,7 @@ const EditRoomPage = () => {
 
     useEffect(() => {
         initialFetch();
-    }, [initialFetch])
+    }, [])
 
     if (spinner === true) {
         return <StyledSpinner />

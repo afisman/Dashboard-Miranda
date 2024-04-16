@@ -1,15 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import bookings from '../../data/bookings.json';
 import { BookingInterface } from "../../interfaces/booking/bookingInterface";
 import { callApi } from "../../utils/callApi";
-
-function delay(data: any) {
-    return new Promise<any>((resolve) => {
-        setTimeout(() => {
-            resolve(data)
-        }, 200)
-    })
-}
 
 
 export const fetchBookings = createAsyncThunk(
@@ -20,6 +11,7 @@ export const fetchBookings = createAsyncThunk(
 export const fetchSingleBooking = createAsyncThunk(
     "bookings/fetchSingleBooking",
     async (id: string) => {
+        console.log(id)
         return await callApi(`/bookings/${id}`)
     })
 export const fetchCreateBooking = createAsyncThunk(

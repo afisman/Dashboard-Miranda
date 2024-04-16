@@ -19,7 +19,7 @@ const EditUserPage = () => {
 
     useEffect(() => {
         initialFetch();
-    }, [initialFetch])
+    }, [])
 
     if (spinner === true) {
         return <StyledSpinner />

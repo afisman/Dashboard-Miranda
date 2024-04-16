@@ -25,7 +25,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
 
     useEffect(() => {
         initialFetch();
-    }, [initialFetch]);
+    }, []);
 
     const maxId: number = useMemo(() => {
         return roomsList.reduce((prev: RoomInterface, current: RoomInterface) => (prev && prev.id > current.id) ? prev : current).id + 1

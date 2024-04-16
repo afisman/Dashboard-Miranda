@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import BookingForm from './BookingForm';
 import { useParams } from 'react-router-dom';
 import { getSingleBooking } from '../../features/bookings/bookingsSlice';
@@ -14,13 +14,13 @@ const EditBookingPage = () => {
     const [spinner, setSpinner] = useState<boolean>(true);
 
     const initialFetch = useCallback(async () => {
-        await dispatch(fetchSingleBooking(Number(id)));
+        await dispatch(fetchSingleBooking(id!));
         setSpinner(false)
     }, [id, dispatch])
 
     useEffect(() => {
         initialFetch();
-    }, [initialFetch])
+    }, [])
 
     if (spinner === true) {
         return <StyledSpinner />

@@ -4,7 +4,7 @@ import { StyledButton } from '../../components/reusable/StyledButton';
 import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
 import { fetchDeleteRoom } from '../../features/rooms/roomsThunk';
 import { useNavigate } from 'react-router';
-import { RoomInterface } from '../../interfaces/room/RoomInterface';
+import { RoomInterface } from '../../interfaces/room/roomInterface';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
@@ -16,12 +16,12 @@ interface RoomsTableProps {
 const RoomsPageTable = ({ data, dispatch }: RoomsTableProps) => {
     const navigate = useNavigate();
 
-    const handleEditClick = (e: React.MouseEvent, id: number) => {
+    const handleEditClick = (e: React.MouseEvent, id: string) => {
         e.stopPropagation();
         navigate(`/rooms/editroom/${id}`);
     }
 
-    const handleDeleteClick = (e: React.MouseEvent, id: number) => {
+    const handleDeleteClick = (e: React.MouseEvent, id: string) => {
         e.stopPropagation();
         dispatch(fetchDeleteRoom(id));
     }
@@ -29,14 +29,14 @@ const RoomsPageTable = ({ data, dispatch }: RoomsTableProps) => {
     return (
         <>
             {data.map((el) => (
-                <StyledTableRow key={el.id}>
+                <StyledTableRow key={el._id}>
                     <StyledTableCell $name='flexCell'>
                         <StyledTableCellImg $imgtype='room'>
                             <img src={el.photos[0]} alt="room" />
                         </StyledTableCellImg>
                         <div>
                             <StyledTableCellText $letterstyle='id'>
-                                #{el.id}
+                                #{el._id}
                             </StyledTableCellText>
                             <StyledTableCellText $letterstyle='title'>
                                 {el.room_number}
@@ -73,8 +73,8 @@ const RoomsPageTable = ({ data, dispatch }: RoomsTableProps) => {
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText style={{ display: 'flex' }} >
-                            <StyledEditIcon onClick={(e) => { handleEditClick(e, el.id) }}></StyledEditIcon>
-                            <StyledDeleteIcon onClick={(e) => { handleDeleteClick(e, el.id) }}></StyledDeleteIcon>
+                            <StyledEditIcon onClick={(e) => { handleEditClick(e, el._id!) }}></StyledEditIcon>
+                            <StyledDeleteIcon onClick={(e) => { handleDeleteClick(e, el._id!) }}></StyledDeleteIcon>
                         </StyledTableCellText>
                     </StyledTableCell>
                 </StyledTableRow>

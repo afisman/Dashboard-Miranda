@@ -33,7 +33,7 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
 
     useEffect(() => {
         initialFetch();
-    }, [initialFetch])
+    }, [])
 
     const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -74,14 +74,16 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
                             placeholder='Check in'
                             name='check_in'
                             type='date'
-                            defaultValue={!isNaN(new Date(formData.check_in).getTime()) ? new Date(formData.check_in)?.toISOString().slice(0, 10) : formData.check_in}
+                            defaultValue={new Date(formData?.check_out).toISOString().slice(0, 10)}
+                            // defaultValue={!isNaN(new Date(formData.check_in).getTime()) ? new Date(formData.check_in)?.toISOString().slice(0, 10) : formData.check_in}
                             onChange={(e) => handleFormChange(e)}
                         ></StyledFormInput>
                         <StyledFormInput
                             placeholder='Check out'
                             name='check_out'
                             type='date'
-                            defaultValue={!isNaN(new Date(formData.check_out).getTime()) ? new Date(formData.check_out).toISOString().slice(0, 10) : formData.check_out}
+                            defaultValue={new Date(formData?.check_in).toISOString().slice(0, 10)}
+                            // defaultValue={!isNaN(new Date(formData.check_out).getTime()) ? new Date(formData.check_out).toISOString().slice(0, 10) : formData.check_out}
                             onChange={(e) => handleFormChange(e)}
                         ></StyledFormInput>
                         <StyledFormInput
@@ -106,7 +108,7 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
                         ></StyledTextArea>
                         <StyledSelect name="room_id" id="room_id" onChange={(e) => handleFormChange(e)}>
                             {availableRooms?.map((room) => (
-                                <option defaultValue={room.id} key={room.id}>{room.room_number}</option>
+                                <option defaultValue={room._id} key={room._id}>{room.room_number}</option>
                             ))}
                         </StyledSelect>
                         <StyledButton $name="login" type="submit">
