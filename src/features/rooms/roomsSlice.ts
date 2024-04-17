@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { fetchRooms, fetchDeleteRoom, fetchSingleRoom, fetchCreateRoom, fetchUpdateRoom } from "./roomsThunk";
-import { RoomInterface } from "../../interfaces/room/RoomInterface";
+import { RoomInterface } from "../../interfaces/room/roomInterface";
 import { RootState } from "../../app/store";
 
 interface RoomInitialStateInterface {
@@ -32,20 +32,23 @@ export const roomsSlice = createSlice({
             .addCase(fetchCreateRoom.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 state.data.push(action.payload);
+                state.status = 'idle';
             })
             .addCase(fetchUpdateRoom.fulfilled, (state, action) => {
                 const updateRoom = action.payload;
                 state.status = 'fulfilled';
                 state.data.map((room) => {
-                    return room.id == updateRoom.id ? updateRoom : room
+                    return room._id == updateRoom.id ? updateRoom : room
                 });
+                state.status = 'idle';
             })
             .addCase(fetchDeleteRoom.fulfilled, (state, action) => {
                 const id = action.payload;
                 state.status = 'fulfilled';
                 state.data.filter((room) => (
-                    room.id !== id
+                    room._id !== id
                 ));
+                state.status = 'idle';
             })
             .addMatcher(isAnyOf(
                 fetchRooms.pending,
@@ -54,7 +57,7 @@ export const roomsSlice = createSlice({
                 fetchDeleteRoom.pending,
                 fetchUpdateRoom.pending
             ), (state) => {
-                state.status = 'pending'
+                state.status = 'pending';
             })
             .addMatcher(isAnyOf(
                 fetchRooms.rejected,

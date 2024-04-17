@@ -34,6 +34,7 @@ export const bookingsSlice = createSlice({
             .addCase(fetchCreateBooking.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 state.data.push(action.payload);
+                state.status = 'idle';
             })
             .addCase(fetchUpdateBooking.fulfilled, (state, action) => {
                 const updatedBooking = action.payload;
@@ -41,6 +42,8 @@ export const bookingsSlice = createSlice({
                 state.data.map((booking) => (
                     booking._id == updatedBooking._id ? updatedBooking : booking
                 ));
+                state.status = 'idle';
+
             })
             .addCase(fetchDeleteBooking.fulfilled, (state, action) => {
                 const id = action.payload;
@@ -48,6 +51,8 @@ export const bookingsSlice = createSlice({
                 state.data.filter((booking) => (
                     booking._id !== id
                 ));
+                state.status = 'idle';
+
             })
             .addMatcher(isAnyOf(
                 fetchBookings.pending,
@@ -56,7 +61,7 @@ export const bookingsSlice = createSlice({
                 fetchDeleteBooking.pending,
                 fetchUpdateBooking.pending
             ), (state) => {
-                state.status = 'pending'
+                state.status = 'pending';
             })
             .addMatcher(isAnyOf(
                 fetchBookings.rejected,

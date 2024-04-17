@@ -36,15 +36,18 @@ export const contactSlice = createSlice({
                 const updateContact = action.payload;
                 state.status = 'fulfilled';
                 state.data.map((contact) => {
-                    return contact.id == updateContact.id ? updateContact : contact
+                    return contact._id == updateContact.id ? updateContact : contact
                 });
+                state.status = 'idle';
+
             })
             .addCase(fetchDeleteContact.fulfilled, (state, action) => {
                 const id = action.payload;
                 state.status = 'fulfilled';
                 state.data.filter((contact) => (
-                    contact.id !== id
+                    contact._id !== id
                 ));
+                state.status = 'idle';
             })
             .addMatcher(isAnyOf(
                 fetchContacts.pending,
@@ -52,7 +55,7 @@ export const contactSlice = createSlice({
                 fetchDeleteContact.pending,
                 fetchUpdateContact.pending
             ), (state) => {
-                state.status = 'pending'
+                state.status = 'pending';
             })
             .addMatcher(isAnyOf(
                 fetchContacts.rejected,

@@ -55,7 +55,7 @@ const RoomsPageTable = ({ data, dispatch }: RoomsTableProps) => {
                     </StyledTableCell>
                     <StyledTableCell $name='facilities'>
                         <StyledTableCellText $letterstyle='title'>
-                            {el.amenities.join(', ')}
+                            {el.amenities.length > 6 ? el.amenities.slice(0, 6).join(', ') + '...' : el.amenities.join(', ')}
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell $name='flexCell'>

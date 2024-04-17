@@ -11,8 +11,8 @@ import { loginApi } from '../../utils/callApi';
 const LoginPage = () => {
 
     const { state, dispatch } = useAuth()
-    const [email, setEmail] = useState<string>('Frank_OConnell@yahoo.com');
-    const [password, setPassword] = useState<string>('jupeyuwipu');
+    const [email, setEmail] = useState<string>('Earnestine12@hotmail.com');
+    const [password, setPassword] = useState<string>('mamujedefa');
     const [error, setError] = useState<boolean>(false)
     const navigate = useNavigate();
 
@@ -57,21 +57,21 @@ const LoginPage = () => {
                             placeholder='Email'
                             type='email'
                             name='email'
-                            defaultValue={'Frank_OConnell@yahoo.com'}
+                            defaultValue={'Earnestine12@hotmail.com'}
                             onChange={handleEmailChange}
                         ></StyledFormInput>
                         <StyledFormInput
                             placeholder='Password'
                             type='password'
                             name='password'
-                            defaultValue={'jupeyuwipu'}
+                            defaultValue={'mamujedefa'}
                             onChange={handlePasswordChange}
                         ></StyledFormInput>
                         <StyledButton $name="login" type="submit">
                             LOGIN
                         </StyledButton>
-                        <p>Frank_OConnell@yahoo.com</p>
-                        <p>jupeyuwipu</p>
+                        <p>Earnestine12@hotmail.com</p>
+                        <p>mamujedefa</p>
                         {error &&
                             <p>Incorrect email or password</p>
                         }

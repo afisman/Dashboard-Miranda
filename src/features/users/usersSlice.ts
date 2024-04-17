@@ -33,20 +33,23 @@ export const usersSlice = createSlice({
             .addCase(fetchCreateUser.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 state.data.push(action.payload);
+                state.status = 'idle';
             })
             .addCase(fetchUpdateUser.fulfilled, (state, action) => {
                 const updatedUser = action.payload;
                 state.status = 'fulfilled';
                 state.data.map((user) => {
-                    return user.id == updatedUser.id ? updatedUser : user
+                    return user._id == updatedUser.id ? updatedUser : user
                 });
+                state.status = 'idle';
             })
             .addCase(fetchDeleteUser.fulfilled, (state, action) => {
                 const id = action.payload;
                 state.status = 'fulfilled';
                 state.data.filter((user) => (
-                    user.id !== id
+                    user._id !== id
                 ));
+                state.status = 'idle';
             })
             .addMatcher(isAnyOf(
                 fetchUsers.pending,
@@ -55,7 +58,7 @@ export const usersSlice = createSlice({
                 fetchDeleteUser.pending,
                 fetchUpdateUser.pending
             ), (state) => {
-                state.status = 'pending'
+                state.status = 'pending';
             })
             .addMatcher(isAnyOf(
                 fetchUsers.rejected,
