@@ -1,34 +1,26 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import contact from '../../data/contact.json';
-import { ContactInterface } from "../../interfaces/user/userInterface";
-
-function delay(data: any) {
-    return new Promise<any>((resolve) => {
-        setTimeout(() => {
-            resolve(data)
-        }, 200)
-    })
-}
+import { ContactInterface } from "../../interfaces/contact/contactInterface";
+import { callApi } from "../../utils/callApi";
 
 export const fetchContacts = createAsyncThunk(
     "contacts/fetchContacts",
     async () => {
-        return await delay(contact)
+        return await callApi('/contact')
     })
 export const fetchSingleContact = createAsyncThunk(
     "contacts/fetchSingleContact",
-    async (id: number) => {
-        return await delay(contact.find((el) => (el.id == id)))
+    async (id: string) => {
+        return await callApi(`/contact/${id}`)
 
     })
 export const fetchUpdateContact = createAsyncThunk(
     "contacts/fetchUpdateContact",
     async (updateContact: ContactInterface) => {
-        return await delay(updateContact)
+        return await callApi(`/contact/${updateContact._id}`, 'PUT', updateContact)
 
     })
 export const fetchDeleteContact = createAsyncThunk(
     "contacts/fetchDeleteContact",
     async (id: number) => {
-        return await delay(id)
+        return await callApi(`/contact/${id}`, 'Delete')
     })

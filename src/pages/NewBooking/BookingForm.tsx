@@ -21,11 +21,12 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
     const dispatch = useAppDispatch();
 
     const roomsList: RoomInterface[] = useAppSelector(getRoomsList);
-    const [formData, setFormData] = useState<BookingInterface>(singleBooking);
 
     const availableRooms = useMemo(() => {
         return [...roomsList].filter((room) => room.status === 'Available');
     }, [roomsList])
+
+    const [formData, setFormData] = useState<BookingInterface>(type === 'New' ? { ...singleBooking, room: availableRooms[0] } : singleBooking);
 
     const initialFetch = async (): Promise<void> => {
         await dispatch(fetchRooms()).unwrap();
@@ -41,8 +42,6 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
 
         if (name === 'room_id') {
             const room = roomsList.find((el) => el._id === value)!
-            console.log(value)
-
             setFormData((prevData) => ({ ...prevData, [name]: value, rate: room.rate }))
         }
 
