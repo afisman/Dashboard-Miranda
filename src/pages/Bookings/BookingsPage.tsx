@@ -82,7 +82,7 @@ const BookingsPage = () => {
         try {
             await dispatch(fetchBookings());
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
 
@@ -107,16 +107,16 @@ const BookingsPage = () => {
                         All Guest
                     </StyledMenuText>
                     <StyledMenuText
-                        onClick={() => handleMenuClick('Check in')}
-                        $selected={selection === 'Check in'}
+                        onClick={() => handleMenuClick('Check In')}
+                        $selected={selection === 'Check In'}
                     >
-                        Check in
+                        Check In
                     </StyledMenuText>
                     <StyledMenuText
-                        onClick={() => handleMenuClick('Check out')}
-                        $selected={selection === 'Check out'}
+                        onClick={() => handleMenuClick('Check Out')}
+                        $selected={selection === 'Check Out'}
                     >
-                        Check out
+                        Check Out
                     </StyledMenuText>
                     <StyledMenuText
                         onClick={() => handleMenuClick('In progress')}

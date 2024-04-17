@@ -60,7 +60,7 @@ const RoomsPageTable = ({ data, dispatch }: RoomsTableProps) => {
                     </StyledTableCell>
                     <StyledTableCell $name='flexCell'>
                         <StyledTableCellText $letterstyle='semiBold'>
-                            ${el.rate}
+                            ${((el.rate * (1 - el.discount / 100)) / 100).toFixed(2)}
                         </StyledTableCellText>
                         <StyledTableCellText $letterstyle='id'>
                             /night

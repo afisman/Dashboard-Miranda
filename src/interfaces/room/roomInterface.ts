@@ -7,7 +7,7 @@ export interface RoomInterface {
     offer: string
     room_floor: string
     rate: number
-    discount: string
+    discount: number
     amenities: string[]
     status: string
 }

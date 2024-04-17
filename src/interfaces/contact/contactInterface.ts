@@ -4,7 +4,7 @@ export interface ContactInterface {
     full_name: string;
     email: string;
     phone: string;
-    date: string;
+    date: number;
     message: string;
     rating: number;
     read: boolean;

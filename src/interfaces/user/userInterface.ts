@@ -4,7 +4,7 @@ export interface UserInterface {
     contact: string
     email: string
     photo: string
-    start_date: string
+    start_date: number
     description: string
     status: string
     position: string
