@@ -8,4 +8,5 @@ export interface UserInterface {
     description: string
     status: string
     position: string
+    password: string
 }

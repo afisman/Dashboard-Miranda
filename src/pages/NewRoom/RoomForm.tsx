@@ -56,46 +56,27 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
     const handleFormChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         const { name, value } = e.target;
 
-        // let amenitiesToUpdate = []
-
-        // for (let amenity of roomAmenities) {
-        //     let amenityExists = amenitiesToUpdate.indexOf(amenity.value)
-        //     if (amenityExists === -1) {
-        //         amenitiesToUpdate.push(amenity.value)
-        //     } else {
-        //         amenitiesToUpdate.splice(amenityExists, 1)
-        //     }
-        // }
-
-        // console.log(amenitiesToUpdate)
-
         setFormData((prevData) => {
             if (name === 'photos') {
                 return {
                     ...prevData,
-                    [name]: value.split("\n"),
-                    // amenities: amenitiesToUpdate
+                    [name]: value.split("\n")
                 }
             } else if (name === 'rate') {
                 return {
                     ...prevData,
-                    [name]: Number(value),
-                    // amenities: amenitiesToUpdate
-
+                    [name]: Number(value)
                 }
             } else if (name === 'discount' && Number(value) > 0 && Number(value) < 100) {
                 return {
                     ...prevData,
                     [name]: Number(value),
-                    offer: 'Yes',
-                    // amenities: amenitiesToUpdate
-
+                    offer: 'Yes'
                 }
             } else {
                 return {
                     ...prevData,
-                    [name]: value,
-                    // amenities: amenitiesToUpdate
+                    [name]: value
                 }
             }
         })
@@ -149,6 +130,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                         <StyledFormInput
                             placeholder='Room Number'
                             name='room_number'
+                            id='room_number'
                             type='string'
                             value={formData.room_number}
                             onChange={(e) => handleFormChange(e)}
@@ -157,6 +139,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                         <StyledTextArea
                             placeholder='Photos, enter each in a different line'
                             name='photos'
+                            id='photos'
                             value={formData.photos?.join("\n")}
                             onChange={(e) => handleFormChange(e)}
                             rows={6}
@@ -165,6 +148,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                         <StyledFormInput
                             placeholder='Description'
                             name='room_type'
+                            id='room_type'
                             type='string'
                             value={formData.room_type}
                             onChange={(e) => handleFormChange(e)}
@@ -173,6 +157,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                         <StyledFormInput
                             placeholder='Room floor'
                             name='room_floor'
+                            id='room_floor'
                             type='string'
                             value={formData.room_floor}
                             onChange={(e) => handleFormChange(e)}
@@ -181,6 +166,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                         <StyledFormInput
                             placeholder='Description'
                             name='description'
+                            id='description'
                             type='string'
                             value={formData.description}
                             onChange={(e) => handleFormChange(e)}
@@ -189,6 +175,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                         <StyledFormInput
                             placeholder='Price per night'
                             name='rate'
+                            id='rate'
                             type='text'
                             value={String(formData.rate)}
                             onChange={(e) => handleFormChange(e)}
@@ -197,6 +184,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                         <StyledFormInput
                             placeholder='discount'
                             name='discount'
+                            id='discount'
                             type='text'
                             value={formData.discount}
                             onChange={(e) => handleFormChange(e)}
@@ -209,14 +197,15 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                                 onChange={(e) => handleFormChange(e)}
                             ></StyledFormInput> */}
                         <label htmlFor="amenities">Amenities</label>
-                        <Select isMulti options={amenities_list} value={roomAmenities} onChange={(e) => handleAmenitiesChange(e)} name='amenities' />
-                        {/* <StyledTextArea
-                            placeholder='Amenities, enter each in a different line'
+                        <Select
+                            openMenuOnFocus={true}
+                            isMulti
+                            options={amenities_list}
+                            value={roomAmenities}
+                            onChange={(e) => handleAmenitiesChange(e)}
                             name='amenities'
-                            value={formData.amenities?.join("\n")}
-                            onChange={(e) => handleFormChange(e)}
-                            rows={6}
-                        ></StyledTextArea> */}
+                            id='amenities' />
+                        <br />
                         <StyledButton $name="login" type="submit">
                             {type} Room
                         </StyledButton>

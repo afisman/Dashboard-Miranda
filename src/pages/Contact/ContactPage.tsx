@@ -96,7 +96,6 @@ const ContactPage = () => {
             <StyledTable>
                 <thead>
                     <tr>
-                        <StyledTableHeader>Order ID</StyledTableHeader>
                         <StyledTableHeader>Date</StyledTableHeader>
                         <StyledTableHeader>Customer</StyledTableHeader>
                         <StyledTableHeader>Comment</StyledTableHeader>

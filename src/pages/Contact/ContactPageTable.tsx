@@ -28,15 +28,10 @@ const ContactPageTable = ({ data, setMessage, handleOpen, dispatch }: ContactTab
     return (
         <>
             {data.map((el) => (
-                <StyledTableRow key={el.id} onClick={() => handleClick(el)} >
+                <StyledTableRow key={el._id} onClick={() => handleClick(el)} >
                     <StyledTableCell>
                         <StyledTableCellText>
-                            #{el.id}
-                        </StyledTableCellText>
-                    </StyledTableCell>
-                    <StyledTableCell>
-                        <StyledTableCellText>
-                            {el.date}
+                            {new Date(el.date).toISOString().slice(0, 10)}
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>

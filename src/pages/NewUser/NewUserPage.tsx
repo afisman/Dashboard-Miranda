@@ -5,15 +5,15 @@ import { UserInterface } from '../../interfaces/user/userInterface';
 const NewUserPage = () => {
 
     const singleUser: UserInterface = {
-        id: 0,
         full_name: "",
         contact: "",
         email: "",
         photo: "",
-        start_date: "",
+        start_date: Date.now(),
         description: "",
         status: "Active",
-        position: ""
+        position: "",
+        password: ""
     }
 
     return (

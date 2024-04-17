@@ -13,7 +13,7 @@ const EditUserPage = () => {
     const [spinner, setSpinner] = useState<boolean>(true)
 
     const initialFetch = useCallback(async () => {
-        await dispatch(fetchSingleUser(Number(id))).unwrap();
+        await dispatch(fetchSingleUser(id!)).unwrap();
         setSpinner(false)
     }, [id, dispatch])
 

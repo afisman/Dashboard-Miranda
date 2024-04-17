@@ -55,3 +55,8 @@ export const StyledFormSelect = styled.select`
         font-family: "Poppins", sans-serif;
         color: #135846;
 `;
+
+export const StyledRadio = styled.div`
+display: flex;
+margin-bottom: 1.875em;
+`

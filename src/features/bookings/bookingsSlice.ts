@@ -52,7 +52,6 @@ export const bookingsSlice = createSlice({
                     booking._id !== id
                 ));
                 state.status = 'idle';
-
             })
             .addMatcher(isAnyOf(
                 fetchBookings.pending,
