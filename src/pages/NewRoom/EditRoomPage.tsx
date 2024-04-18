@@ -29,7 +29,7 @@ const EditRoomPage = () => {
     }
 
     return (<>
-        <RoomForm singleRoom={singleRoom} type={"Edit"} />
+        <RoomForm singleRoom={singleRoom} type={'Edit'} />
     </>
     )
 }

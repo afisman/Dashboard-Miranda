@@ -76,12 +76,12 @@ const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }: Bookin
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledButton $name="view_notes" onClick={(e) => handleNotesClick(e, el)}>
+                        <StyledButton $name='view_notes' onClick={(e) => handleNotesClick(e, el)}>
                             View notes
                         </StyledButton>
                     </StyledTableCell>
                     <StyledTableCell>
-                        <StyledTableCellText $letterstyle="title">
+                        <StyledTableCellText $letterstyle='title'>
                             {el.room.room_type}
                         </StyledTableCellText>
                     </StyledTableCell>

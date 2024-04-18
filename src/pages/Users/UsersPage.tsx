@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { getUsersList } from '../../features/users/usersSlice';
 import { fetchUsers } from '../../features/users/usersThunk';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
+import { StyledSearchInput } from '../../components/reusable/StyledSearchInput';
 
 
 const UsersPage = () => {
@@ -15,12 +16,13 @@ const UsersPage = () => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [selection, setSelection] = useState<string>('all');
     const [order, setOrder] = useState<string>('newest');
+    const [search, setSearch] = useState<string>('');
     const usersData = useAppSelector(getUsersList);
 
     const dispatch = useAppDispatch();
 
     const usersList = useMemo(() => {
-        const orderedUsers = usersData.filter(user => (selection === 'all' ? true : user.status === selection))
+        let orderedUsers = usersData.filter(user => (selection === 'all' ? true : user.status === selection))
 
         orderedUsers.sort((a, b) => {
             if (order === 'name') {
@@ -37,6 +39,11 @@ const UsersPage = () => {
                 return new Date(a.start_date).getTime() - new Date(b.start_date).getTime();
             }
         })
+
+        if (search) {
+            const lowercaseSearch = search.toLowerCase();
+            orderedUsers = orderedUsers.filter((user) => user.full_name.toLowerCase().includes(lowercaseSearch));
+        }
 
         return orderedUsers
     }, [usersData, order, selection, currentPage])
@@ -96,6 +103,7 @@ const UsersPage = () => {
                         Inactive Employee
                     </StyledMenuText>
                 </StyledMenu>
+                <StyledSearchInput type='text' name='searchBar' id='searchBar' placeholder='Search Name' onChange={(e) => setSearch(e.target.value)} />
                 <StyledMenuButtons>
                     <StyledButton as={Link} to='/users/newuser' $name='new' id='new_user_button' >
                         + New Employee

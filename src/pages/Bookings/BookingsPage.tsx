@@ -10,6 +10,9 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 import { BookingInterface } from '../../interfaces/booking/bookingInterface';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner';
+import { StyledSearchInput } from '../../components/reusable/StyledSearchInput';
+
+
 
 
 
@@ -22,15 +25,16 @@ const BookingsPage = () => {
     const [order, setOrder] = useState<string>('order_date');
     const [specialRequest, setSpecialRequest] = useState<string>('');
     const [modalOpen, setModalOpen] = useState<boolean>(false);
+    const [search, setSearch] = useState<string>('');
 
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
     const bookingsData = useAppSelector(getBookingsList);
 
     const handleOpen = (): void => setModalOpen(true);
     const handleClose = (): void => setModalOpen(false);
 
     const bookingsList = useMemo(() => {
-        const orderedBookings = bookingsData.filter(booking => (selection === 'all' ? true : booking.status === selection))
+        let orderedBookings = bookingsData.filter(booking => (selection === 'all' ? true : booking.status === selection))
 
         orderedBookings.sort((a: BookingInterface, b: BookingInterface) => {
             switch (order) {
@@ -53,10 +57,14 @@ const BookingsPage = () => {
             }
         }
         )
+        if (search) {
+            const lowercaseSearch = search.toLowerCase();
+            orderedBookings = orderedBookings.filter((bookings) => bookings.name.toLowerCase().includes(lowercaseSearch));
+        }
 
         return orderedBookings
     }
-        , [bookingsData, order, selection, currentPage])
+        , [bookingsData, order, selection, currentPage, search])
 
     const totalPages = Math.ceil(bookingsList.length / bookingsPerPage);
     const firstBooking = (currentPage - 1) * bookingsPerPage;
@@ -125,11 +133,12 @@ const BookingsPage = () => {
                         In progress
                     </StyledMenuText>
                 </StyledMenu>
+                <StyledSearchInput type='text' name='searchBar' id='searchBar' placeholder='Search Name' onChange={(e) => setSearch(e.target.value)} />
                 <StyledMenuButtons>
                     <StyledButton as={Link} to='/bookings/newbooking' $name='new' id='new_booking_button'>
                         + New Booking
                     </StyledButton>
-                    <StyledSelect name="order" id="order" onChange={(event: React.ChangeEvent<HTMLSelectElement>) => handleOrderChange(event)}>
+                    <StyledSelect name='order' id='order' onChange={(event: React.ChangeEvent<HTMLSelectElement>) => handleOrderChange(event)}>
                         <option value='order_date'>Newest</option>
                         <option value='check_in'>Check in</option>
                         <option value='check_out'>Check out</option>

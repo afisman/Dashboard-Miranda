@@ -75,8 +75,8 @@ export const StyledSwiperSliderText = styled.p<{ $name?: string }>`
 `;
 
 export const StyledCardSwiper = styled(Swiper)`  
-    width: 100% ;
-    height: 100%;
+    /* width: 100% ; */
+    /* height: 100%; */
     border-top-right-radius: 1em;
     border-bottom-right-radius: 1em;
 

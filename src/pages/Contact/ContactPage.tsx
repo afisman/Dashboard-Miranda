@@ -8,6 +8,7 @@ import { getContactList } from '../../features/contact/contactSlice';
 import { fetchContacts } from '../../features/contact/contactThunk';
 import ModalComponent from '../../components/modal/Modal';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
+import { StyledSearchInput } from '../../components/reusable/StyledSearchInput';
 
 
 const ContactPage = () => {
@@ -17,6 +18,7 @@ const ContactPage = () => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [message, setMessage] = useState<string>('');
     const [modalOpen, setModalOpen] = useState<boolean>(false);
+    const [search, setSearch] = useState<string>('');
 
 
     const dispatch = useAppDispatch();
@@ -26,11 +28,16 @@ const ContactPage = () => {
     const handleClose = (): void => setModalOpen(false);
 
     const contactsList = useMemo(() => {
-        const orderedContacts = contactsData.filter(contact => (selection === 'all' ? true : contact.read.toString() === selection))
+        let orderedContacts = contactsData.filter(contact => (selection === 'all' ? true : contact.read.toString() === selection))
         orderedContacts.sort((a, b) => {
             return new Date(a.date).getTime() - new Date(b.date).getTime();
         }
         )
+
+        if (search) {
+            const lowercaseSearch = search.toLowerCase();
+            orderedContacts = orderedContacts.filter((contact) => contact.full_name.toLowerCase().includes(lowercaseSearch));
+        }
 
         return orderedContacts;
     }
@@ -89,6 +96,7 @@ const ContactPage = () => {
                         Archived
                     </StyledMenuText>
                 </StyledMenu>
+                <StyledSearchInput type='text' name='searchBar' id='searchBar' placeholder='Search Name' onChange={(e) => setSearch(e.target.value)} />
                 <StyledSelect name="order" id="order">
                     <option value='newest'>Newest</option>
                 </StyledSelect>

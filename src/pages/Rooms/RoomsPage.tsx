@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { getRoomsList } from '../../features/rooms/roomsSlice';
 import { fetchRooms } from '../../features/rooms/roomsThunk';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
+import { StyledSearchInput } from '../../components/reusable/StyledSearchInput';
 
 
 const RoomsPage = () => {
@@ -14,12 +15,14 @@ const RoomsPage = () => {
     const [order, setOrder] = useState<string>('newest');
     const [selection, setSelection] = useState<string>('all');
     const [currentPage, setCurrentPage] = useState<number>(1);
+    const [search, setSearch] = useState<string>('');
+
 
     const dispatch = useAppDispatch();
     const roomsData = useAppSelector(getRoomsList);
 
     const roomsList = useMemo(() => {
-        const orderedRooms = roomsData.filter(room => (selection === 'all' ? true : room.status === selection))
+        let orderedRooms = roomsData.filter(room => (selection === 'all' ? true : room.status === selection))
 
         orderedRooms.sort((a, b) => {
             switch (order) {
@@ -29,6 +32,11 @@ const RoomsPage = () => {
                     return a.rate - b.rate;
             }
         })
+
+        if (search) {
+            const lowercaseSearch = search.toLowerCase();
+            orderedRooms = orderedRooms.filter((room) => room.room_type.toLowerCase().includes(lowercaseSearch));
+        }
 
         return orderedRooms
     }, [roomsData, order, selection, currentPage])
@@ -88,6 +96,7 @@ const RoomsPage = () => {
                         Booked
                     </StyledMenuText>
                 </StyledMenu>
+                <StyledSearchInput type='text' name='searchBar' id='searchBar' placeholder='Search Name' onChange={(e) => setSearch(e.target.value)} />
                 <StyledMenuButtons>
                     <StyledButton as={Link} to='/rooms/newroom' $name='new' id='new_room_button'>
                         + New Room

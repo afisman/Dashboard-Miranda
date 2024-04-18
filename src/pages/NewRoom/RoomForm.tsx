@@ -60,7 +60,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
             if (name === 'photos') {
                 return {
                     ...prevData,
-                    [name]: value.split("\n")
+                    [name]: value.split('\n')
                 }
             } else if (name === 'rate') {
                 return {
@@ -126,7 +126,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                 </StyledButton>
                 <StyledFormWrapper>
                     <StyledFormContainer onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSubmit(e)}>
-                        <label htmlFor="room_number">Room number</label>
+                        <label htmlFor='room_number'>Room number</label>
                         <StyledFormInput
                             placeholder='Room Number'
                             name='room_number'
@@ -135,16 +135,16 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                             value={formData.room_number}
                             onChange={(e) => handleFormChange(e)}
                         ></StyledFormInput>
-                        <label htmlFor="photos">Images</label>
+                        <label htmlFor='photos'>Images</label>
                         <StyledTextArea
                             placeholder='Photos, enter each in a different line'
                             name='photos'
                             id='photos'
-                            value={formData.photos?.join("\n")}
+                            value={formData.photos?.join('\n')}
                             onChange={(e) => handleFormChange(e)}
                             rows={6}
                         ></StyledTextArea>
-                        <label htmlFor="room_type">Room type</label>
+                        <label htmlFor='room_type'>Room type</label>
                         <StyledFormInput
                             placeholder='Description'
                             name='room_type'
@@ -153,7 +153,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                             value={formData.room_type}
                             onChange={(e) => handleFormChange(e)}
                         ></StyledFormInput>
-                        <label htmlFor="room_type">Room floor</label>
+                        <label htmlFor='room_type'>Room floor</label>
                         <StyledFormInput
                             placeholder='Room floor'
                             name='room_floor'
@@ -162,7 +162,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                             value={formData.room_floor}
                             onChange={(e) => handleFormChange(e)}
                         ></StyledFormInput>
-                        <label htmlFor="description">Description</label>
+                        <label htmlFor='description'>Description</label>
                         <StyledFormInput
                             placeholder='Description'
                             name='description'
@@ -171,7 +171,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                             value={formData.description}
                             onChange={(e) => handleFormChange(e)}
                         ></StyledFormInput>
-                        <label htmlFor="rate">Rate</label>
+                        <label htmlFor='rate'>Rate</label>
                         <StyledFormInput
                             placeholder='Price per night'
                             name='rate'
@@ -180,7 +180,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                             value={String(formData.rate)}
                             onChange={(e) => handleFormChange(e)}
                         ></StyledFormInput>
-                        <label htmlFor="discount">Discount</label>
+                        <label htmlFor='discount'>Discount</label>
                         <StyledFormInput
                             placeholder='discount'
                             name='discount'
@@ -196,7 +196,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                                 value={formData.cancelation}
                                 onChange={(e) => handleFormChange(e)}
                             ></StyledFormInput> */}
-                        <label htmlFor="amenities">Amenities</label>
+                        <label htmlFor='amenities'>Amenities</label>
                         <Select
                             openMenuOnFocus={true}
                             isMulti
@@ -206,7 +206,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                             name='amenities'
                             id='amenities' />
                         <br />
-                        <StyledButton $name="login" type="submit">
+                        <StyledButton $name='login' type='submit'>
                             {type} Room
                         </StyledButton>
                     </StyledFormContainer>

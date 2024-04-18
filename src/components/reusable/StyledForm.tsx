@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 
 export const StyledFormWrapper = styled.div`
@@ -19,7 +19,7 @@ export const StyledFormContainer = styled.form`
 export const StyledFormInput = styled.input`
     height: 1.687em;
     background: #e2e8e3f8;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     border: none;
     border-radius: 0.25em;
     margin-bottom: 1.875em;
@@ -31,7 +31,7 @@ export const StyledFormInput = styled.input`
 
 export const StyledTextArea = styled.textarea`
     background: #e2e8e3f8;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     border: none;
     color: #135846;
     margin-bottom: 1.875em;
@@ -52,7 +52,7 @@ export const StyledFormSelect = styled.select`
         border: none;
         margin-bottom: 1.875em;
         border-bottom: 1px solid #135846;
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         color: #135846;
 `;
 

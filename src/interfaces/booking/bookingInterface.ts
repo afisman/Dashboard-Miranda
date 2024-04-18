@@ -1,4 +1,4 @@
-import { RoomInterface } from "../room/roomInterface";
+import { RoomInterface } from '../room/roomInterface';
 
 export interface BookingInterface {
     _id?: string;
@@ -8,7 +8,7 @@ export interface BookingInterface {
     hour_check_in: string;
     check_out: number;
     hour_check_out: string;
-    rate: number
+    discount: number
     room: RoomInterface;
     special_request: string | undefined;
     status: string;

@@ -9,7 +9,7 @@ export const StyledKPIWrapper = styled.div`
     justify-content: space-between;
     background-color: transparent;
     padding: 0 2rem;    
-    margin: 2em 1em 20em 1em;
+    margin: 2em 1em 2em 1em;
     
 `;
 

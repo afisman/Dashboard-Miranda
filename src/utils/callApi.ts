@@ -1,4 +1,4 @@
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -13,8 +13,8 @@ export const callApi = async (path: string, method = 'GET', data: any = null) =>
         const response = await fetch(url, {
             method: method,
             headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: data != null ? JSON.stringify(data) : null
         })
@@ -37,7 +37,7 @@ export const loginApi = async (email: string, password: string) => {
         const loginData = await fetch(url, {
             method: 'POST',
             headers: {
-                "Content-type": "application/json"
+                'Content-type': 'application/json'
             },
             body: JSON.stringify({
                 email: email,

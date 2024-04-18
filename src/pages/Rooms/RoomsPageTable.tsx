@@ -37,7 +37,7 @@ const RoomsPageTable = ({ data, dispatch }: RoomsTableProps) => {
                 <StyledTableRow key={el._id} onClick={(e) => handleClick(e, el._id!)}>
                     <StyledTableCell $name='flexCell'>
                         <StyledTableCellImg $imgtype='room'>
-                            <img src={el.photos[0]} alt="room" />
+                            <img src={el.photos[0]} alt='room' />
                         </StyledTableCellImg>
                         <div>
                             <StyledTableCellText $letterstyle='id'>

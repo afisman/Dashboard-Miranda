@@ -40,23 +40,23 @@ function App() {
           {/* <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}> */}
           {/* <GlobalStyles /> */}
           <Routes>
-            <Route path="/login" element={<LoginPage />} />
+            <Route path='/login' element={<LoginPage />} />
             <Route path='/' element={<PrivateRoute ><Layout /></PrivateRoute>}>
               <Route index element={<DashboardPage />} />
-              <Route path="bookings" element={<BookingsPage />} />
-              <Route path="bookings/newbooking" element={<NewBookingPage />} />
-              <Route path="bookings/editbooking/:id" element={<EditBookingPage />} />
-              <Route path="bookings/:id" element={<BookingPage />} />
-              <Route path="rooms" element={<RoomsPage />} />
-              <Route path="rooms/newroom" element={<NewRoomPage />} />
-              <Route path="rooms/editroom/:id" element={<EditRoomPage />} />
-              <Route path="rooms/:id" element={<RoomDetailsPage />} />
-              <Route path="contact" element={<ContactPage />} />
-              <Route path="users" element={<UsersPage />} />
-              <Route path="users/newuser" element={<NewUserPage />} />
-              <Route path="users/edituser/:id" element={<EditUserPage />} />
+              <Route path='bookings' element={<BookingsPage />} />
+              <Route path='bookings/newbooking' element={<NewBookingPage />} />
+              <Route path='bookings/editbooking/:id' element={<EditBookingPage />} />
+              <Route path='bookings/:id' element={<BookingPage />} />
+              <Route path='rooms' element={<RoomsPage />} />
+              <Route path='rooms/newroom' element={<NewRoomPage />} />
+              <Route path='rooms/editroom/:id' element={<EditRoomPage />} />
+              <Route path='rooms/:id' element={<RoomDetailsPage />} />
+              <Route path='contact' element={<ContactPage />} />
+              <Route path='users' element={<UsersPage />} />
+              <Route path='users/newuser' element={<NewUserPage />} />
+              <Route path='users/edituser/:id' element={<EditUserPage />} />
             </Route>
-            <Route path="/*" element={<Navigate to='/' />}></Route>
+            <Route path='/*' element={<Navigate to='/' />}></Route>
           </Routes>
           {/* </ThemeProvider> */}
         </AuthProvider>

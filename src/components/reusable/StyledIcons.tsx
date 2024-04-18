@@ -1,14 +1,14 @@
-import { IoIosSearch } from "react-icons/io";
-import { FiBell } from "react-icons/fi";
-import { MdOutlineMail, MdDeleteForever } from "react-icons/md";
-import { RxCrossCircled } from "react-icons/rx";
-import styled from "styled-components";
-import { LuLayoutDashboard, LuCalendarCheck2 } from "react-icons/lu";
-import { BiKey, BiSolidMessageRoundedDetail } from "react-icons/bi";
-import { FaRegUser, FaPhone } from "react-icons/fa6";
-import { FaRegCheckCircle, FaEdit } from "react-icons/fa";
-import { HiOutlinePuzzle, HiOutlineMenuAlt2 } from "react-icons/hi";
-import { SlLogin } from "react-icons/sl";
+import { IoIosSearch } from 'react-icons/io';
+import { FiBell } from 'react-icons/fi';
+import { MdOutlineMail, MdDeleteForever } from 'react-icons/md';
+import { RxCrossCircled } from 'react-icons/rx';
+import styled from 'styled-components';
+import { LuLayoutDashboard, LuCalendarCheck2 } from 'react-icons/lu';
+import { BiKey, BiSolidMessageRoundedDetail } from 'react-icons/bi';
+import { FaRegUser, FaPhone } from 'react-icons/fa6';
+import { FaRegCheckCircle, FaEdit } from 'react-icons/fa';
+import { HiOutlinePuzzle, HiOutlineMenuAlt2 } from 'react-icons/hi';
+import { SlLogin } from 'react-icons/sl';
 
 
 const styleIconsColor1 = `

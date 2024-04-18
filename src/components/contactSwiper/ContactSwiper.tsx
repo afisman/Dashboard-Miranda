@@ -1,20 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyledSwiper, StyledSwiperSlide, StyledSwiperSliderText } from '../reusable/StyledSwiper';
 import { Navigation, Keyboard } from 'swiper/modules';
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import data from '../../data/contact.json';
 import { StyledCheckIcon, StyledCrossIcon } from '../reusable/StyledIcons';
 import { ContactInterface } from '../../interfaces/contact/contactInterface';
+import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
+import { getContactList } from '../../features/contact/contactSlice';
+import { fetchContacts } from '../../features/contact/contactThunk';
 
 
 const ContactSwiper = () => {
-    const [contacts, setContacts] = useState<ContactInterface[]>(data)
+    const dispatch = useAppDispatch();
+    const contactsData = useAppSelector(getContactList);
 
-    const formatDate = (date: string) => {
-        return Math.floor(((Date.now() - new Date(date).getTime()) / 1000 / 60 / 60) % 60)
+    const initialFetch = async (): Promise<void> => {
+        try {
+            await dispatch(fetchContacts());
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
+
+    const showAll = (message: string) => {
+
+        let arr = message.split(' ');
+        let returnMessage = message;
+        if (arr.length > 12) {
+            returnMessage = arr.slice(0, 12).join(' ');
+        }
+        console.log(returnMessage)
+
+        return returnMessage
+    }
+
+    useEffect(() => {
+        initialFetch();
+    }, []);
+
+    const formatDate = (date: number) => {
+        return Math.floor((Date.now() - date))
     }
 
     return (
@@ -29,11 +58,11 @@ const ContactSwiper = () => {
                 navigation={true}
             >
                 {
-                    contacts.map((el: ContactInterface) => (
+                    contactsData.map((el: ContactInterface) => (
                         <StyledSwiperSlide
-                            key={el.id}
+                            key={el._id}
                         >
-                            <StyledSwiperSliderText $name='comment'>{el.message}</StyledSwiperSliderText>
+                            <StyledSwiperSliderText $name='comment'>{el.message.split(' ').slice(0, 12).join(' ')} ...</StyledSwiperSliderText>
                             <div>
                                 <div className="swiperIcons">
                                     <img src={el.image} alt={el.full_name} />
