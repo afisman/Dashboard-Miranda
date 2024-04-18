@@ -48,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = ({ sidebarOpen, setSidebarOpen }) => {
 
     const handleLogout = (e: MouseEvent) => {
         e.preventDefault();
-        dispatch({ type: 'logout', payload: { auth: false, user: '', email: '' } });
+        dispatch({ type: 'logout', payload: { auth: false, user: '', email: '', token: '' } });
         navigate('/login');
     }
 
