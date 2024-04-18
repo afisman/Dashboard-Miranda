@@ -49,16 +49,26 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
         setFormData((prevData) => ({ ...prevData, [name]: value }))
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (type === 'Edit') {
-            dispatch(fetchUpdateBooking(formData));
-            toast('Booking edited successfully!!')
-        }
+            try {
+                await dispatch(fetchUpdateBooking(formData));
+                toast('Booking edited successfully!!')
 
-        if (type === 'New') {
-            dispatch(fetchCreateBooking(formData));
-            toast('Booking created successfully!!')
+            } catch (error) {
+                console.log(error);
+                toast(`Error while editing, please try again.`);
+            }
+        }
+        try {
+            if (type === 'New') {
+                dispatch(fetchCreateBooking(formData));
+                toast('Booking created successfully!!')
+            }
+        } catch (error) {
+            console.log(error);
+            toast(`Error while creating, please try again.`);
         }
         navigate('/bookings');
     }

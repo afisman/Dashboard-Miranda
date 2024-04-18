@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getSingleUser } from '../../features/users/usersSlice.js';
 import { fetchSingleUser } from '../../features/users/usersThunk.js';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner.js';
@@ -12,10 +12,10 @@ const EditUserPage = () => {
     const dispatch = useAppDispatch();
     const [spinner, setSpinner] = useState<boolean>(true)
 
-    const initialFetch = useCallback(async () => {
+    const initialFetch = async () => {
         await dispatch(fetchSingleUser(id!)).unwrap();
         setSpinner(false)
-    }, [id, dispatch])
+    }
 
     useEffect(() => {
         initialFetch();

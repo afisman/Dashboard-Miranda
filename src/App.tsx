@@ -60,6 +60,7 @@ function App() {
               <Route path='users/edituser/:id' element={<EditUserPage />} />
             </Route>
             <Route path='/*' element={<Navigate to='/' />}></Route>
+
           </Routes>
           <ToastContainer />
           {/* </ThemeProvider> */}

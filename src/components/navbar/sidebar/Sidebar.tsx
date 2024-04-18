@@ -14,7 +14,7 @@ interface makeButtonsInterface {
 
 const makeButtons: makeButtonsInterface[] = [
     {
-        to: '/dashboard',
+        to: '/',
         icon: <StyledDashboardIcon />,
         title: 'Dashboard'
     },

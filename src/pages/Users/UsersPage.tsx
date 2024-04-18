@@ -5,7 +5,7 @@ import UsersTablePage from './UsersTablePage';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { Link } from 'react-router-dom';
 import { getUsersList, getUsersStatus } from '../../features/users/usersSlice';
-import { fetchUsers } from '../../features/users/usersThunk';
+import { fetchDeleteUser, fetchUsers } from '../../features/users/usersThunk';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 import { StyledSearchInput } from '../../components/reusable/StyledSearchInput';
 
@@ -59,7 +59,7 @@ const UsersPage = () => {
         try {
             await dispatch(fetchUsers());
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
 
@@ -77,6 +77,10 @@ const UsersPage = () => {
         event.preventDefault();
 
         setOrder(event.target.value)
+    }
+
+    const deleteUser = async (id: string) => {
+        await dispatch(fetchDeleteUser(id))
     }
 
     const handleMenuClick = (option: string) => {
@@ -135,7 +139,7 @@ const UsersPage = () => {
                 <tbody>
                     <UsersTablePage
                         data={displayedUsers}
-                        dispatch={dispatch}
+                        deleteUser={deleteUser}
                     />
                 </tbody>
             </StyledTable>

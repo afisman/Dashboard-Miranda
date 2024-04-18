@@ -32,19 +32,24 @@ const UserForm = ({ singleUser, type }: UserFormProps) => {
         })
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (type === 'Edit') {
-            dispatch(fetchUpdateUser(formData));
-            toast('User edited successfully!!');
-        }
+        try {
+            if (type === 'Edit') {
+                await dispatch(fetchUpdateUser(formData));
+                toast('User edited successfully!!');
+            }
 
-        if (type === 'New') {
-            dispatch(fetchCreateUser(formData));
-            toast('User created successfully!!');
-        }
+            if (type === 'New') {
+                await dispatch(fetchCreateUser(formData));
+                toast('User created successfully!!');
+            }
 
+        } catch (error) {
+            toast(`Error while ${type === 'New' ? 'creating' : 'editing'}, please try again.`);
+            console.error(error)
+        }
         navigate('/users')
     }
 

@@ -106,6 +106,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                 await dispatch(fetchUpdateRoom({ ...formData, amenities: amenitiesToUpdate }));
             } catch (error) {
                 console.log(error);
+                toast(`Error while editing, please try again.`);
             }
         }
 
@@ -115,6 +116,8 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
 
             } catch (error) {
                 console.log(error);
+                toast(`Error while creating, please try again.`);
+
             }
         }
 

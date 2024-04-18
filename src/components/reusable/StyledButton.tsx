@@ -31,7 +31,7 @@ export const StyledButton = styled.button<{ $name?: string }>`
     `
     }
     ${(props) =>
-        props.$name === "Check out" &&
+        props.$name === "Check Out" &&
         `
             background: #FFEDEC 0% 0% no-repeat padding-box;
             font-weight: 500;
@@ -41,7 +41,7 @@ export const StyledButton = styled.button<{ $name?: string }>`
     `
     }
     ${(props) =>
-        props.$name === "Check in" &&
+        props.$name === "Check In" &&
         `
             background-color: #E8FFEE ;
             font-weight: 500;

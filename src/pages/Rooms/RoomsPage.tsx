@@ -8,15 +8,12 @@ import { getRoomStatus, getRoomsList } from '../../features/rooms/roomsSlice';
 import { fetchDeleteRoom, fetchRooms } from '../../features/rooms/roomsThunk';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 import { StyledSearchInput } from '../../components/reusable/StyledSearchInput';
-import { fetchDeleteBooking } from '../../features/bookings/bookingsThunk';
-
 
 const RoomsPage = () => {
     const roomsPerPage = 10;
     const [order, setOrder] = useState<string>('newest');
     const [selection, setSelection] = useState<string>('all');
     const [currentPage, setCurrentPage] = useState<number>(1);
-    const [search, setSearch] = useState<string>('');
     const roomStatus = useAppSelector(getRoomStatus)
 
     const dispatch = useAppDispatch();
@@ -33,11 +30,6 @@ const RoomsPage = () => {
                     return a.rate - b.rate;
             }
         })
-
-        if (search) {
-            const lowercaseSearch = search.toLowerCase();
-            orderedRooms = orderedRooms.filter((room) => room.room_type.toLowerCase().includes(lowercaseSearch));
-        }
 
         return orderedRooms
     }, [roomsData, order, selection, currentPage])
@@ -107,7 +99,6 @@ const RoomsPage = () => {
                         Booked
                     </StyledMenuText>
                 </StyledMenu>
-                <StyledSearchInput type='text' name='searchBar' id='searchBar' placeholder='Search Name' onChange={(e) => setSearch(e.target.value)} />
                 <StyledMenuButtons>
                     <StyledButton as={Link} to='/rooms/newroom' $name='new' id='new_room_button'>
                         + New Room

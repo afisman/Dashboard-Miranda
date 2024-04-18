@@ -41,7 +41,7 @@ const NewBookingPage = () => {
         special_request: "",
         discount: 0,
         room: roomsList[0],
-        status: "Check in"
+        status: "Check In"
     }
     if (spinner) {
         return <StyledSpinner />

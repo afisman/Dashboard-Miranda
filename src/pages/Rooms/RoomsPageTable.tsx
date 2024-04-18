@@ -2,18 +2,15 @@ import React from 'react';
 import { StyledTableCell, StyledTableCellImg, StyledTableCellText, StyledTableRow } from '../../components/reusable/StyledTable';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
-import { fetchDeleteRoom } from '../../features/rooms/roomsThunk';
 import { useNavigate } from 'react-router';
 import { RoomInterface } from '../../interfaces/room/roomInterface';
-import { ThunkDispatch } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
+
 import swal from 'sweetalert';
 import { toast } from 'react-toastify';
 
 
 interface RoomsTableProps {
     data: RoomInterface[]
-    // dispatch: ThunkDispatch<RootState, any, any>
     deleteRoom: (id: string) => Promise<any>
 }
 
@@ -50,7 +47,6 @@ const RoomsPageTable = ({ data, deleteRoom }: RoomsTableProps) => {
                     toast('Your room is safe!');
                 }
             });
-        // dispatch(fetchDeleteRoom(id));
     }
 
     return (

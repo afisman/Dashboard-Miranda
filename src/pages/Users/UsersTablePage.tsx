@@ -1,19 +1,19 @@
 import React from 'react';
 import { StyledTableCell, StyledTableRow, StyledTableCellText, StyledTableCellImg } from '../../components/reusable/StyledTable';
-import { StyledButton } from '../../components/reusable/StyledButton';
 import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
 import { useNavigate } from 'react-router';
 import { UserInterface } from '../../interfaces/user/userInterface';
-import { fetchDeleteUser } from '../../features/users/usersThunk';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
+import swal from 'sweetalert';
+import { toast } from 'react-toastify';
 
 interface UsersTableProps {
     data: UserInterface[]
-    dispatch: ThunkDispatch<RootState, any, any>
+    deleteUser: any
 }
 
-const UsersTablePage = ({ data, dispatch }: UsersTableProps) => {
+const UsersTablePage = ({ data, deleteUser }: UsersTableProps) => {
     const navigate = useNavigate();
 
     const handleEditClick = (e: React.MouseEvent, id: string) => {
@@ -23,7 +23,25 @@ const UsersTablePage = ({ data, dispatch }: UsersTableProps) => {
 
     const handleDeleteClick = (e: React.MouseEvent, id: string) => {
         e.stopPropagation();
-        dispatch(fetchDeleteUser(id));
+        swal({
+            title: "Are you sure you want to delete the user?",
+            text: "Once deleted, you will not be able to recover this user!",
+            icon: "warning",
+            buttons: {
+                cancel: true,
+                confirm: true,
+            },
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    deleteUser(id)
+                    toast('User deleted successfully!!');
+                } else {
+                    toast('Your user is safe!');
+                }
+            });
+
     }
 
     return (

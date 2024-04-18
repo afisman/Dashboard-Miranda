@@ -3,10 +3,7 @@ import { StyledTableCell, StyledTableRow, StyledTableCellText } from '../../comp
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useNavigate } from 'react-router-dom';
 import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
-import { fetchDeleteBooking } from '../../features/bookings/bookingsThunk';
 import { BookingInterface } from '../../interfaces/booking/bookingInterface';
-import { ThunkDispatch } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
 import swal from 'sweetalert';
 import { toast } from 'react-toastify';
 
@@ -101,7 +98,7 @@ const BookingsTable = ({ data, setSpecialRequest, handleOpen, deleteBooking }: B
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText $letterstyle='title'>
-                            {el.room.room_type}
+                            {el.room?.room_type}
                         </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
