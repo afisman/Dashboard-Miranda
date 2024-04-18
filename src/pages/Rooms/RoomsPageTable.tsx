@@ -21,6 +21,11 @@ const RoomsPageTable = ({ data, dispatch }: RoomsTableProps) => {
         navigate(`/rooms/editroom/${id}`);
     }
 
+    const handleClick = (e: React.MouseEvent, id: string) => {
+        console.log(id)
+        navigate(`/rooms/${id}`);
+    }
+
     const handleDeleteClick = (e: React.MouseEvent, id: string) => {
         e.stopPropagation();
         dispatch(fetchDeleteRoom(id));
@@ -29,7 +34,7 @@ const RoomsPageTable = ({ data, dispatch }: RoomsTableProps) => {
     return (
         <>
             {data.map((el) => (
-                <StyledTableRow key={el._id}>
+                <StyledTableRow key={el._id} onClick={(e) => handleClick(e, el._id!)}>
                     <StyledTableCell $name='flexCell'>
                         <StyledTableCellImg $imgtype='room'>
                             <img src={el.photos[0]} alt="room" />

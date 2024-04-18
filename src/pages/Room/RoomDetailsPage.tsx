@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { StyledCardWrapper } from '../../components/reusable/StyledDataCard';
-import BookingPageCard from './BookingPageCard';
-import BookingPageSwiper from './BookingPageSwiper';
 import { useParams } from 'react-router';
 import { BookingInterface } from '../../interfaces/booking/bookingInterface';
 import { RoomInterface } from '../../interfaces/room/roomInterface';
@@ -11,36 +9,24 @@ import { getSingleRoom } from '../../features/rooms/roomsSlice';
 import { getSingleBooking } from '../../features/bookings/bookingsSlice';
 import { fetchSingleRoom } from '../../features/rooms/roomsThunk';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner';
+import RoomPageCard from './RoomPageCard';
+import RoomPageSwiper from './RoomPageSwiper';
 
-
-
-const BookingPage = () => {
+const RoomDetailsPage = () => {
     const { id } = useParams();
 
     const [spinner, setSpinner] = useState<boolean>(true)
 
-    const singleBooking: BookingInterface = useAppSelector(getSingleBooking);
     const dispatch = useAppDispatch();
     const singleRoom: RoomInterface = useAppSelector(getSingleRoom);
 
-
-
     const initialFetch = async () => {
-        await dispatch(fetchSingleBooking(id!)).unwrap()
-    }
-
-    const secondFetch = async () => {
-        await dispatch(fetchSingleRoom(singleBooking.room._id!))
+        await dispatch(fetchSingleRoom(id!)).unwrap()
         setSpinner(false)
-
     }
     useEffect(() => {
         initialFetch();
     }, [])
-
-    useEffect(() => {
-        secondFetch();
-    }, [singleBooking])
 
     if (spinner) {
         return <StyledSpinner />
@@ -48,10 +34,10 @@ const BookingPage = () => {
 
     return (
         <StyledCardWrapper>
-            <BookingPageCard booking={singleBooking as BookingInterface} room={singleRoom as RoomInterface} />
-            <BookingPageSwiper images={singleRoom?.photos as string[]} />
+            <RoomPageCard room={singleRoom as RoomInterface} />
+            <RoomPageSwiper images={singleRoom?.photos as string[]} />
         </StyledCardWrapper>
     )
 }
 
-export default BookingPage
+export default RoomDetailsPage

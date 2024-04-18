@@ -21,6 +21,7 @@ import NewBookingPage from './pages/NewBooking/NewBookingPage';
 import EditBookingPage from './pages/NewBooking/EditBookingPage';
 import EditRoomPage from './pages/NewRoom/EditRoomPage';
 import EditUserPage from './pages/NewUser/EditUserPage';
+import RoomDetailsPage from './pages/Room/RoomDetailsPage';
 
 
 
@@ -49,6 +50,7 @@ function App() {
               <Route path="rooms" element={<RoomsPage />} />
               <Route path="rooms/newroom" element={<NewRoomPage />} />
               <Route path="rooms/editroom/:id" element={<EditRoomPage />} />
+              <Route path="rooms/:id" element={<RoomDetailsPage />} />
               <Route path="contact" element={<ContactPage />} />
               <Route path="users" element={<UsersPage />} />
               <Route path="users/newuser" element={<NewUserPage />} />

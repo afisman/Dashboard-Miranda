@@ -4,13 +4,11 @@ import { Navigation } from 'swiper/modules';
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { SwiperSlide } from 'swiper/react';
-
-interface BookingSwiperProps {
+import { SwiperSlide } from 'swiper/react'; interface RoomSwiperProps {
     images: string[]
 }
 
-const BookingPageSwiper = ({ images }: BookingSwiperProps) => {
+const RoomPageSwiper = ({ images }: RoomSwiperProps) => {
     return (
         <>
             <StyledCardRight>
@@ -29,4 +27,4 @@ const BookingPageSwiper = ({ images }: BookingSwiperProps) => {
     )
 }
 
-export default BookingPageSwiper
+export default RoomPageSwiper

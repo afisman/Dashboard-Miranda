@@ -3,7 +3,7 @@ import { StyledCardLeft, StyledCardTop, StyledCardText, StyledCardInfo, StyledBu
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { StyledMessageBubble, StyledPhoneIcon } from '../../components/reusable/StyledIcons';
 import { BookingInterface } from '../../interfaces/booking/bookingInterface';
-import { RoomInterface } from '../../interfaces/room/RoomInterface';
+import { RoomInterface } from '../../interfaces/room/roomInterface';
 
 interface BookingCardInterface {
     booking: BookingInterface
@@ -21,7 +21,7 @@ const BookingPageCard = ({ booking, room }: BookingCardInterface) => {
                         {booking.name}
                     </StyledCardText>
                     <StyledCardText $lettertype='id'>
-                        ID {booking.id}
+                        ID {booking._id}
                     </StyledCardText>
                     <StyledButtonGroup $type='contact'>
                         <StyledButton>
@@ -39,7 +39,7 @@ const BookingPageCard = ({ booking, room }: BookingCardInterface) => {
                             Check In:
                         </StyledCardText>
                         <StyledCardText $lettertype='date'>
-                            {booking.check_in}
+                            {new Date(booking.check_in).toISOString().slice(0, 10)}
                         </StyledCardText>
                     </div>
                     <div>
@@ -47,7 +47,7 @@ const BookingPageCard = ({ booking, room }: BookingCardInterface) => {
                             Check Out:
                         </StyledCardText>
                         <StyledCardText $lettertype='date'>
-                            {booking.check_out}
+                            {new Date(booking.check_out).toISOString().slice(0, 10)}
                         </StyledCardText>
                     </div>
                 </StyledCardInfo>
@@ -65,7 +65,7 @@ const BookingPageCard = ({ booking, room }: BookingCardInterface) => {
                             Price:
                         </StyledCardText>
                         <StyledCardText $lettertype='rate'>
-                            {booking.rate}
+                            {((room.rate * (1 - room.discount / 100)) / 100).toFixed(2)}
                             <small>
                                 /night
                             </small>
