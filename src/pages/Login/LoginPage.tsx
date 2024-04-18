@@ -4,6 +4,7 @@ import { StyledButton } from '../../components/reusable/StyledButton';
 import { useAuth } from '../../context/AuthContext';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { loginApi } from '../../utils/callApi';
+import { toast } from 'react-toastify';
 
 
 
@@ -11,8 +12,8 @@ import { loginApi } from '../../utils/callApi';
 const LoginPage = () => {
 
     const { state, dispatch } = useAuth()
-    const [email, setEmail] = useState<string>('Eleanora93@hotmail.com');
-    const [password, setPassword] = useState<string>('dituzuvona');
+    const [email, setEmail] = useState<string>('Madonna5@hotmail.com');
+    const [password, setPassword] = useState<string>('dipawapaze');
     const [error, setError] = useState<boolean>(false)
     const navigate = useNavigate();
 
@@ -42,6 +43,7 @@ const LoginPage = () => {
             }
 
         } catch (error) {
+            toast('Wrong email or password, please try again!')
             console.error(error)
         }
     }
@@ -57,21 +59,21 @@ const LoginPage = () => {
                             placeholder='Email'
                             type='email'
                             name='email'
-                            defaultValue={'Eleanora93@hotmail.com'}
+                            defaultValue={'Madonna5@hotmail.com'}
                             onChange={handleEmailChange}
                         ></StyledFormInput>
                         <StyledFormInput
                             placeholder='Password'
                             type='password'
                             name='password'
-                            defaultValue={'dituzuvona'}
+                            defaultValue={'dipawapaze'}
                             onChange={handlePasswordChange}
                         ></StyledFormInput>
                         <StyledButton $name='login' type='submit'>
                             LOGIN
                         </StyledButton>
-                        <p>Eleanora93@hotmail.com</p>
-                        <p>dituzuvona</p>
+                        <p>Madonna5@hotmail.com</p>
+                        <p>dipawapaze</p>
                         {error &&
                             <p>Incorrect email or password</p>
                         }
