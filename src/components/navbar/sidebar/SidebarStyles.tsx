@@ -65,55 +65,74 @@ font-size: 20px;
 `;
 
 export const CardWrapper = styled.div`
-    width: 170px;
-    height: 221px;
+    width: 70%;
+    height: auto;
     margin: 0 auto;
-    padding: 10px;
+    padding: 0.8em;
     box-shadow: 0px 20px 30px #00000014;
-    border-radius: 10px;
+    border-radius: .6em;
 
     >div {
         text-align: center;
         > img {
-            width: 70px;
-            height: 70px;
+            width: 5em;
+            height: 5em;
             object-fit: cover;
-            border-radius: 5px;
+            border-radius: 0.5em;
         }
 
         > h4 {
             text-align: center;
             font-family: "Poppins", sans-serif;
-            font-size: 16px;
-            line-height: 25px;
-            letter-spacing: 0px;
+            font-size: 1.2em;
+            line-height: 1.6em;
             color: #393939;
             opacity: 1;
 
         }
         >p {
             font-family: "Poppins", sans-serif;
-            font-size: 12px;
-            line-height: 18px;
+            font-size: 1em;
+            line-height:1.2em;
             font-weight: 300;
-            letter-spacing: 0px;
             color: #B2B2B2;
             opacity: 1;
         }
         >button {
-            border-radius: 8px;
+            border-radius: 0.5em;
             background: #EBF1EF 0% 0% no-repeat padding-box;
             opacity: 1;
             font-family: "Poppins", sans-serif;
-            font-size: 14px;
-            line-height: 21px;
+            font-size:1em;
+            line-height: 1.5em;
             font-weight: 600;
-            letter-spacing: 0px;
             color: #135846;
             border: none;
-            padding: 10px 20px;
+            padding: 0.5em 1em;
             cursor: pointer;
         }
     }
 
 `;
+
+export const SideFooter = styled.div`
+padding: 1em;
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    /* gap: 1em; */
+
+    p{
+        font-size: 1.2em;
+        font-weight:400;
+        color:#799283;
+        line-height: 2em;
+    }
+
+    h2{
+        font-size: 1.4em;
+        font-weight: 600;
+        line-height: 2em;
+        color: #000
+    }
+`

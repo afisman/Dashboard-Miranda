@@ -29,7 +29,7 @@ const NewBookingPage = () => {
         check_out: currentDate + dayInMs,
         hour_check_out: "",
         special_request: "",
-        rate: 0,
+        discount: 0,
         room: {} as RoomInterface,
         status: "Check in"
     }

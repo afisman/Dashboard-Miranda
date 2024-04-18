@@ -28,6 +28,7 @@ export const StyledSwiperSlide = styled(SwiperSlide)`
     padding: 1.5em;
     max-width: 25%;
     margin: 1em; 
+    height: auto;
 
     >div {
         display: flex;
@@ -76,7 +77,7 @@ export const StyledSwiperSliderText = styled.p<{ $name?: string }>`
 
 export const StyledCardSwiper = styled(Swiper)`  
     /* width: 100% ; */
-    /* height: 100%; */
+    height: 100%;
     border-top-right-radius: 1em;
     border-bottom-right-radius: 1em;
 

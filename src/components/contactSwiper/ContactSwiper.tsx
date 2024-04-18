@@ -25,25 +25,15 @@ const ContactSwiper = () => {
     };
 
 
-
-    const showAll = (message: string) => {
-
-        let arr = message.split(' ');
-        let returnMessage = message;
-        if (arr.length > 12) {
-            returnMessage = arr.slice(0, 12).join(' ');
-        }
-        console.log(returnMessage)
-
-        return returnMessage
-    }
-
     useEffect(() => {
         initialFetch();
     }, []);
 
     const formatDate = (date: number) => {
-        return Math.floor((Date.now() - date))
+        let msToMinutes = 1000 * 60 * 60 * 24;
+        let minutes = Math.floor((Date.now() - date) / msToMinutes);
+        let hours = (minutes - (minutes % 60)) / 60
+        return [hours, minutes - (hours * 60)]
     }
 
     return (
@@ -68,7 +58,7 @@ const ContactSwiper = () => {
                                     <img src={el.image} alt={el.full_name} />
                                     <div>
                                         <StyledSwiperSliderText $name='bold'>{el.full_name}</StyledSwiperSliderText>
-                                        <StyledSwiperSliderText $name='date'>{formatDate(el.date)} min ago</StyledSwiperSliderText>
+                                        <StyledSwiperSliderText $name='date'>{formatDate(el.date)[0]} hours and {formatDate(el.date)[1]} min ago</StyledSwiperSliderText>
                                     </div>
                                 </div>
                                 <div className='swiperIcons'>

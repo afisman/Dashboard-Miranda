@@ -3,7 +3,7 @@ import React from 'react';
 import SidebarButton from './SidebarButton';
 import Logo from './Logo';
 import { StyledBookingIcon, StyledContactIcon, StyledDashboardIcon, StyledRoomsIcon, StyledUsersIcon } from '../../reusable/StyledIcons';
-import { SidebarBody, SidebarWrapper, UnorderList } from './SidebarStyles';
+import { SidebarBody, SidebarWrapper, UnorderList, SideFooter } from './SidebarStyles';
 import UserCard from './UserCard';
 
 interface makeButtonsInterface {
@@ -54,6 +54,11 @@ const Sidebar: React.FC = () => {
                         ))}
                     </UnorderList>
                     <UserCard />
+                    <SideFooter>
+                        <h2>Travl Hotel Admin Dashboard</h2>
+                        <p>© 2024 All Rights Reserved</p>
+                        <p>Made with ♥ by Alejandro</p>
+                    </SideFooter>
                 </SidebarBody>
             </SidebarWrapper>
         </div>
