@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 import { fetchCreateUser, fetchUpdateUser } from '../../features/users/usersThunk';
 import { useAppDispatch } from '../../hooks/useStore';
 import { UserInterface } from '../../interfaces/user/userInterface';
+import { toast } from 'react-toastify';
 
 interface UserFormProps {
     singleUser: UserInterface
@@ -36,10 +37,12 @@ const UserForm = ({ singleUser, type }: UserFormProps) => {
 
         if (type === 'Edit') {
             dispatch(fetchUpdateUser(formData));
+            toast('User edited successfully!!');
         }
 
         if (type === 'New') {
-            dispatch(fetchCreateUser(formData))
+            dispatch(fetchCreateUser(formData));
+            toast('User created successfully!!');
         }
 
         navigate('/users')

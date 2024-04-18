@@ -7,17 +7,19 @@ import { fetchDeleteBooking } from '../../features/bookings/bookingsThunk';
 import { BookingInterface } from '../../interfaces/booking/bookingInterface';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
+import swal from 'sweetalert';
+import { toast } from 'react-toastify';
 
 
 interface BookingsTableProps {
-    data: BookingInterface[]
-    setSpecialRequest: React.Dispatch<React.SetStateAction<string>>
-    handleOpen: () => void
-    dispatch: ThunkDispatch<RootState, any, any>
+    data: BookingInterface[];
+    setSpecialRequest: React.Dispatch<React.SetStateAction<string>>;
+    handleOpen: () => void;
+    deleteBooking: (id: string) => Promise<any>;
 
 }
 
-const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }: BookingsTableProps) => {
+const BookingsTable = ({ data, setSpecialRequest, handleOpen, deleteBooking }: BookingsTableProps) => {
     const navigate = useNavigate();
 
 
@@ -28,7 +30,24 @@ const BookingsTable = ({ data, setSpecialRequest, handleOpen, dispatch }: Bookin
 
     const handleDeleteClick = (e: React.MouseEvent, id: string) => {
         e.stopPropagation();
-        dispatch(fetchDeleteBooking(id))
+        swal({
+            title: "Are you sure you want to delete the booking?",
+            text: "Once deleted, you will not be able to recover this booking!",
+            icon: "warning",
+            buttons: {
+                cancel: true,
+                confirm: true,
+            },
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    deleteBooking(id)
+                    toast('Booking deleted successfully!!');
+                } else {
+                    toast("Your booking is safe!");
+                }
+            });
     }
 
     const handleClick = (e: React.MouseEvent, id: string) => {

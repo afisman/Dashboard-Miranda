@@ -4,7 +4,7 @@ import ContactPageTable from './ContactPageTable';
 import { StyledMenu, StyledMenuText, StyledSelect, StyledMenuButtons, StyledMenuWrapper } from '../../components/reusable/StyledMenu';
 import { StyledTable, StyledTableHeader } from '../../components/reusable/StyledTable';
 import { StyledButton } from '../../components/reusable/StyledButton';
-import { getContactList } from '../../features/contact/contactSlice';
+import { getContactList, getContactStatus } from '../../features/contact/contactSlice';
 import { fetchContacts } from '../../features/contact/contactThunk';
 import ModalComponent from '../../components/modal/Modal';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
@@ -19,6 +19,7 @@ const ContactPage = () => {
     const [message, setMessage] = useState<string>('');
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const [search, setSearch] = useState<string>('');
+    const contactStatus = useAppSelector(getContactStatus)
 
 
     const dispatch = useAppDispatch();
@@ -63,6 +64,11 @@ const ContactPage = () => {
     useEffect(() => {
         initialFetch();
     }, []);
+    useEffect(() => {
+        if (contactStatus === 'idle') {
+            initialFetch()
+        }
+    }, [contactStatus])
 
     const handlePageChange = (newPage: number): void => {
         setCurrentPage(newPage)

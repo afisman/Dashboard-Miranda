@@ -3,18 +3,14 @@ import { StyledTable, StyledTableHeader } from '../../components/reusable/Styled
 import BookingsTable from './BookingsTable';
 import { StyledMenu, StyledMenuText, StyledSelect, StyledMenuWrapper, StyledMenuButtons } from '../../components/reusable/StyledMenu';
 import { StyledButton } from '../../components/reusable/StyledButton';
-import { getBookingsList } from '../../features/bookings/bookingsSlice';
-import { fetchBookings } from '../../features/bookings/bookingsThunk';
+import { getBookingsList, getBookingsStatus } from '../../features/bookings/bookingsSlice';
+import { fetchBookings, fetchDeleteBooking } from '../../features/bookings/bookingsThunk';
 import ModalComponent from '../../components/modal/Modal';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 import { BookingInterface } from '../../interfaces/booking/bookingInterface';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner';
 import { StyledSearchInput } from '../../components/reusable/StyledSearchInput';
-
-
-
-
 
 
 const BookingsPage = () => {
@@ -26,6 +22,7 @@ const BookingsPage = () => {
     const [specialRequest, setSpecialRequest] = useState<string>('');
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const [search, setSearch] = useState<string>('');
+    const bookingsStatus = useAppSelector(getBookingsStatus)
 
     const dispatch = useAppDispatch();
     const bookingsData = useAppSelector(getBookingsList);
@@ -34,7 +31,7 @@ const BookingsPage = () => {
     const handleClose = (): void => setModalOpen(false);
 
     const bookingsList = useMemo(() => {
-        let orderedBookings = bookingsData.filter(booking => (selection === 'all' ? true : booking.status === selection))
+        let orderedBookings = bookingsData.filter((booking: BookingInterface) => (selection === 'all' ? true : booking.status === selection))
 
         orderedBookings.sort((a: BookingInterface, b: BookingInterface) => {
             switch (order) {
@@ -93,10 +90,18 @@ const BookingsPage = () => {
             console.error(error);
         }
     };
+    const deleteBooking = async (id: string): Promise<any> => await dispatch(fetchDeleteBooking(id));
+
 
     useEffect(() => {
         initialFetch();
     }, []);
+
+    useEffect(() => {
+        if (bookingsStatus === 'idle') {
+            initialFetch();
+        }
+    }, [bookingsStatus])
 
     if (!bookingsData) {
         return <StyledSpinner />
@@ -164,7 +169,7 @@ const BookingsPage = () => {
                         data={displayedBookings}
                         setSpecialRequest={setSpecialRequest}
                         handleOpen={handleOpen}
-                        dispatch={dispatch}
+                        deleteBooking={deleteBooking}
                     />
                 </tbody>
             </StyledTable>

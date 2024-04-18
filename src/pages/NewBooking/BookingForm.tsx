@@ -10,6 +10,8 @@ import { BookingInterface } from '../../interfaces/booking/bookingInterface';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 import { RoomInterface } from '../../interfaces/room/roomInterface';
 import swal from 'sweetalert';
+import { toast } from 'react-toastify';
+
 
 
 
@@ -29,7 +31,7 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
         return [...roomsList].filter((room) => room.status === 'Available');
     }, [roomsList])
 
-    const [formData, setFormData] = useState<BookingInterface>(type === 'New' ? { ...singleBooking, room: availableRooms[0] } : singleBooking);
+    const [formData, setFormData] = useState<BookingInterface>(singleBooking);
 
     const initialFetch = async (): Promise<void> => {
         await dispatch(fetchRooms()).unwrap();
@@ -42,7 +44,7 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
     const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         e.preventDefault()
         const { name, value } = e.target;
-
+        console.log(formData)
 
         setFormData((prevData) => ({ ...prevData, [name]: value }))
     }
@@ -51,23 +53,14 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
         e.preventDefault();
         if (type === 'Edit') {
             dispatch(fetchUpdateBooking(formData));
-            swal({
-                title: 'Booking edited successfully!!',
-                timer: 3000
-
-            })
-            navigate('/bookings');
+            toast('Booking edited successfully!!')
         }
 
         if (type === 'New') {
             dispatch(fetchCreateBooking(formData));
-            swal({
-                title: 'Booking created successfully!!',
-                timer: 3000
-
-            })
-            navigate('/bookings');
+            toast('Booking created successfully!!')
         }
+        navigate('/bookings');
     }
 
     return (

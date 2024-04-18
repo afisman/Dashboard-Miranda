@@ -6,6 +6,7 @@ import { fetchCreateRoom, fetchRooms, fetchUpdateRoom } from '../../features/roo
 import { RoomInterface } from '../../interfaces/room/roomInterface';
 import { useAppDispatch } from '../../hooks/useStore';
 import Select from 'react-select';
+import { toast } from 'react-toastify';
 
 interface RoomFormProps {
     singleRoom: RoomInterface
@@ -18,14 +19,6 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
 
     const [formData, setFormData] = useState({ ...singleRoom });
     const [roomAmenities, setRoomAmenities] = useState<any[]>([])
-
-    const initialFetch = async () => {
-        await dispatch(fetchRooms()).unwrap();
-    }
-
-    useEffect(() => {
-        initialFetch();
-    }, []);
 
     const amenities_list = [
         { value: 'Breakfast', label: 'Breakfast' },
@@ -44,11 +37,23 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
         { value: 'Terrace', label: 'Terrace' },
         { value: 'Room Service', label: 'Room Service' },
     ];
+    const initialFetch = async () => {
+        await dispatch(fetchRooms()).unwrap();
+        let amenitiesArray = [];
+        for (let i = 0; i < formData.amenities.length; i++) {
+            amenitiesArray.push({ value: formData.amenities[i], label: formData.amenities[i] });
+
+        }
+        setRoomAmenities(amenitiesArray);
+
+    }
+
+    useEffect(() => {
+        initialFetch();
+    }, []);
+
 
     const handleAmenitiesChange = (e: any) => {
-        console.log(e)
-
-
         setRoomAmenities(e)
 
     }
@@ -99,8 +104,6 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
         if (type === 'Edit') {
             try {
                 await dispatch(fetchUpdateRoom({ ...formData, amenities: amenitiesToUpdate }));
-                navigate('/rooms');
-
             } catch (error) {
                 console.log(error);
             }
@@ -108,15 +111,18 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
 
         if (type === 'New') {
             try {
-                await dispatch(fetchCreateRoom({ ...formData, amenities: amenitiesToUpdate }))
-                    ;
-                navigate('/rooms');
+                await dispatch(fetchCreateRoom({ ...formData, amenities: amenitiesToUpdate }));
 
             } catch (error) {
                 console.log(error);
             }
         }
+
+        toast(`Room ${type === 'New' ? 'created' : 'edited'} succesfully!!`);
+        navigate('/rooms');
     }
+
+
 
     return (
         <>
@@ -134,6 +140,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                             type='string'
                             value={formData.room_number}
                             onChange={(e) => handleFormChange(e)}
+                            required
                         ></StyledFormInput>
                         <label htmlFor='photos'>Images</label>
                         <StyledTextArea
@@ -142,6 +149,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                             id='photos'
                             value={formData.photos?.join('\n')}
                             onChange={(e) => handleFormChange(e)}
+                            required
                             rows={6}
                         ></StyledTextArea>
                         <label htmlFor='room_type'>Room type</label>
@@ -152,6 +160,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                             type='string'
                             value={formData.room_type}
                             onChange={(e) => handleFormChange(e)}
+                            required
                         ></StyledFormInput>
                         <label htmlFor='room_type'>Room floor</label>
                         <StyledFormInput
@@ -161,6 +170,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                             type='string'
                             value={formData.room_floor}
                             onChange={(e) => handleFormChange(e)}
+                            required
                         ></StyledFormInput>
                         <label htmlFor='description'>Description</label>
                         <StyledFormInput
@@ -170,6 +180,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                             type='string'
                             value={formData.description}
                             onChange={(e) => handleFormChange(e)}
+                            required
                         ></StyledFormInput>
                         <label htmlFor='rate'>Rate</label>
                         <StyledFormInput
@@ -179,6 +190,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                             type='text'
                             value={String(formData.rate)}
                             onChange={(e) => handleFormChange(e)}
+                            required
                         ></StyledFormInput>
                         <label htmlFor='discount'>Discount</label>
                         <StyledFormInput
@@ -188,6 +200,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                             type='text'
                             value={formData.discount}
                             onChange={(e) => handleFormChange(e)}
+                            required
                         ></StyledFormInput>
                         {/* <StyledFormInput
                                 placeholder='Cancelation'
@@ -203,6 +216,7 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
                             options={amenities_list}
                             value={roomAmenities}
                             onChange={(e) => handleAmenitiesChange(e)}
+                            required
                             name='amenities'
                             id='amenities' />
                         <br />

@@ -7,13 +7,17 @@ import { useNavigate } from 'react-router';
 import { RoomInterface } from '../../interfaces/room/roomInterface';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
+import swal from 'sweetalert';
+import { toast } from 'react-toastify';
+
 
 interface RoomsTableProps {
     data: RoomInterface[]
-    dispatch: ThunkDispatch<RootState, any, any>
+    // dispatch: ThunkDispatch<RootState, any, any>
+    deleteRoom: (id: string) => Promise<any>
 }
 
-const RoomsPageTable = ({ data, dispatch }: RoomsTableProps) => {
+const RoomsPageTable = ({ data, deleteRoom }: RoomsTableProps) => {
     const navigate = useNavigate();
 
     const handleEditClick = (e: React.MouseEvent, id: string) => {
@@ -28,7 +32,25 @@ const RoomsPageTable = ({ data, dispatch }: RoomsTableProps) => {
 
     const handleDeleteClick = (e: React.MouseEvent, id: string) => {
         e.stopPropagation();
-        dispatch(fetchDeleteRoom(id));
+        swal({
+            title: "Are you sure you want to delete the room?",
+            text: "Once deleted, you will not be able to recover this room!",
+            icon: "warning",
+            buttons: {
+                cancel: true,
+                confirm: true,
+            },
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    deleteRoom(id)
+                    toast('Room deleted successfully!!');
+                } else {
+                    toast('Your room is safe!');
+                }
+            });
+        // dispatch(fetchDeleteRoom(id));
     }
 
     return (

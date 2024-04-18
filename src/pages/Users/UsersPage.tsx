@@ -4,7 +4,7 @@ import { StyledMenu, StyledMenuText, StyledMenuButtons, StyledSelect, StyledMenu
 import UsersTablePage from './UsersTablePage';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { Link } from 'react-router-dom';
-import { getUsersList } from '../../features/users/usersSlice';
+import { getUsersList, getUsersStatus } from '../../features/users/usersSlice';
 import { fetchUsers } from '../../features/users/usersThunk';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 import { StyledSearchInput } from '../../components/reusable/StyledSearchInput';
@@ -18,6 +18,7 @@ const UsersPage = () => {
     const [order, setOrder] = useState<string>('newest');
     const [search, setSearch] = useState<string>('');
     const usersData = useAppSelector(getUsersList);
+    const userStatus = useAppSelector(getUsersStatus);
 
     const dispatch = useAppDispatch();
 
@@ -65,6 +66,12 @@ const UsersPage = () => {
     useEffect(() => {
         initialFetch();
     }, []);
+
+    useEffect(() => {
+        if (userStatus === 'idle') {
+            initialFetch();
+        }
+    }, [userStatus])
 
     const handleOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         event.preventDefault();

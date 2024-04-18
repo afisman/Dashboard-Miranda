@@ -23,16 +23,13 @@ const BookingPage = () => {
     const dispatch = useAppDispatch();
     const singleRoom: RoomInterface = useAppSelector(getSingleRoom);
 
-
-
     const initialFetch = async () => {
-        await dispatch(fetchSingleBooking(id!)).unwrap()
+        await dispatch(fetchSingleBooking(id!)).unwrap();
     }
 
     const secondFetch = async () => {
-        await dispatch(fetchSingleRoom(singleBooking.room._id!))
-        setSpinner(false)
-
+        await dispatch(fetchSingleRoom(singleBooking.room._id!));
+        setSpinner(false);
     }
     useEffect(() => {
         initialFetch();

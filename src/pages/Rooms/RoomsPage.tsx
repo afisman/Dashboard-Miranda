@@ -4,10 +4,11 @@ import RoomsPageTable from './RoomsPageTable';
 import { StyledMenu, StyledMenuText, StyledMenuWrapper, StyledSelect, StyledMenuButtons } from '../../components/reusable/StyledMenu';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { Link } from 'react-router-dom';
-import { getRoomsList } from '../../features/rooms/roomsSlice';
-import { fetchRooms } from '../../features/rooms/roomsThunk';
+import { getRoomStatus, getRoomsList } from '../../features/rooms/roomsSlice';
+import { fetchDeleteRoom, fetchRooms } from '../../features/rooms/roomsThunk';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 import { StyledSearchInput } from '../../components/reusable/StyledSearchInput';
+import { fetchDeleteBooking } from '../../features/bookings/bookingsThunk';
 
 
 const RoomsPage = () => {
@@ -16,7 +17,7 @@ const RoomsPage = () => {
     const [selection, setSelection] = useState<string>('all');
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [search, setSearch] = useState<string>('');
-
+    const roomStatus = useAppSelector(getRoomStatus)
 
     const dispatch = useAppDispatch();
     const roomsData = useAppSelector(getRoomsList);
@@ -59,12 +60,22 @@ const RoomsPage = () => {
         initialFetch();
     }, []);
 
+    useEffect(() => {
+        if (roomStatus === 'idle') {
+            initialFetch();
+        }
+    }, [roomStatus])
+
     const handlePageChange = (newPage: number) => {
         setCurrentPage(newPage);
     }
 
     const handleMenuClick = (option: string) => {
         setSelection(option);
+    }
+
+    const deleteRoom = async (id: string): Promise<any> => {
+        await dispatch(fetchDeleteRoom(id))
     }
 
     const handleOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -122,7 +133,8 @@ const RoomsPage = () => {
                 <tbody>
                     <RoomsPageTable
                         data={displayedRooms}
-                        dispatch={dispatch}
+                        // dispatch={dispatch}
+                        deleteRoom={deleteRoom}
                     />
                 </tbody>
             </StyledTable>

@@ -22,6 +22,9 @@ import EditBookingPage from './pages/NewBooking/EditBookingPage';
 import EditRoomPage from './pages/NewRoom/EditRoomPage';
 import EditUserPage from './pages/NewUser/EditUserPage';
 import RoomDetailsPage from './pages/Room/RoomDetailsPage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -58,6 +61,7 @@ function App() {
             </Route>
             <Route path='/*' element={<Navigate to='/' />}></Route>
           </Routes>
+          <ToastContainer />
           {/* </ThemeProvider> */}
         </AuthProvider>
       </Provider>
