@@ -30,7 +30,7 @@ export const callApi = async (path: string, method = 'GET', data: any = null) =>
 }
 
 export const loginApi = async (email: string, password: string) => {
-    const url = `${baseUrl}/login`;
+    const url = `${baseUrl}login`;
     try {
         const loginData = await fetch(url, {
             method: 'POST',
@@ -46,12 +46,10 @@ export const loginApi = async (email: string, password: string) => {
 
         if (loginData.status === 200) {
             return json;
-        } else if (loginData.status === 404) {
-            throw new Error('User not found')
-        } else {
-            throw new Error('Bad request')
         }
     } catch (error) {
+        swal('Cannot connect to the server');
+
         console.error(error);
     }
 
