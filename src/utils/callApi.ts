@@ -10,7 +10,6 @@ export const callApi = async (path: string, method = 'GET', data: any = null) =>
     const url = `${baseUrl}${path}`;
     const user = useLocalStorage({ key: 'user', action: 'get' });
     const { token } = user ? JSON.parse(user) : null;
-    console.log('en el call api', url)
     try {
         const response = await fetch(url, {
             method: method,

@@ -23,7 +23,6 @@ const RoomsPageTable = ({ data, deleteRoom }: RoomsTableProps) => {
     }
 
     const handleClick = (e: React.MouseEvent, id: string) => {
-        console.log(id)
         navigate(`/rooms/${id}`);
     }
 

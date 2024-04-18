@@ -44,8 +44,6 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
     const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         e.preventDefault()
         const { name, value } = e.target;
-        console.log(formData)
-
         setFormData((prevData) => ({ ...prevData, [name]: value }))
     }
 

@@ -11,7 +11,6 @@ export const fetchBookings = createAsyncThunk(
 export const fetchSingleBooking = createAsyncThunk(
     'bookings/fetchSingleBooking',
     async (id: string) => {
-        console.log(id)
         return await callApi(`/bookings/${id}`)
     })
 export const fetchCreateBooking = createAsyncThunk(

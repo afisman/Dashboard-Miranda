@@ -6,6 +6,7 @@ import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/Styl
 import { BookingInterface } from '../../interfaces/booking/bookingInterface';
 import swal from 'sweetalert';
 import { toast } from 'react-toastify';
+import { StyledSpinner } from '../../components/reusable/StyledSpinner';
 
 
 interface BookingsTableProps {
@@ -56,10 +57,14 @@ const BookingsTable = ({ data, setSpecialRequest, handleOpen, deleteBooking }: B
         setSpecialRequest(el.special_request || '')
         handleOpen();
     }
+    if (data.length === 0) {
+        return <StyledSpinner />
+    }
+
+
 
     return (
         <>
-
             {data?.map((el) => (
                 <StyledTableRow key={el._id} onClick={(e) => handleClick(e, el._id!)}>
                     <StyledTableCell $name='flexCell'>
