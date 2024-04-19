@@ -1,11 +1,9 @@
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import swal from 'sweetalert';
+import { GET, POST, baseUrl } from './constants';
+import { toast } from 'react-toastify';
 
-
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
-
-
-export const callApi = async (path: string, method = 'GET', data: any = null) => {
+export const callApi = async (path: string, method = GET, data: any = null) => {
     const url = `${baseUrl}${path}`;
     const user = useLocalStorage({ key: 'user', action: 'get' });
     const { token } = user ? JSON.parse(user) : null;
@@ -19,8 +17,10 @@ export const callApi = async (path: string, method = 'GET', data: any = null) =>
             body: data != null ? JSON.stringify(data) : null
         })
         const json = await response.json();
-        if (response.status === 200) {
+        if (response.ok) {
             return json;
+        } else {
+            toast(`Error while trying to connect to server ${json.statusCode}, error: ${json.message}`)
         }
     } catch (error) {
         swal('Cannot connect to the server');
@@ -32,7 +32,7 @@ export const loginApi = async (email: string, password: string) => {
     const url = `${baseUrl}login`;
     try {
         const loginData = await fetch(url, {
-            method: 'POST',
+            method: POST,
             headers: {
                 'Content-type': 'application/json'
             },
@@ -43,8 +43,10 @@ export const loginApi = async (email: string, password: string) => {
         });
         const json = await loginData.json();
 
-        if (loginData.status === 200) {
+        if (loginData.ok) {
             return json;
+        } else {
+            toast(`Error while trying to connect to server ${json.statusCode}, error: ${json.message}`)
         }
     } catch (error) {
         swal('Cannot connect to the server');
