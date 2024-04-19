@@ -42,15 +42,12 @@ export const loginApi = async (email: string, password: string) => {
             })
         });
         const json = await loginData.json();
-
         if (loginData.ok) {
             return json;
         } else {
             toast(`Error while trying to connect to server ${json.statusCode}, error: ${json.message}`)
         }
     } catch (error) {
-        swal('Cannot connect to the server');
-
         console.error(error);
     }
 

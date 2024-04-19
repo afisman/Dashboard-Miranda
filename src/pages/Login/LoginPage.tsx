@@ -60,14 +60,14 @@ const LoginPage = () => {
                             type='email'
                             name='email'
                             defaultValue={'Madonna5@hotmail.com'}
-                            onChange={handleEmailChange}
+                            onChange={(e) => handleEmailChange(e)}
                         ></StyledFormInput>
                         <StyledFormInput
                             placeholder='Password'
                             type='password'
                             name='password'
                             defaultValue={'dipawapaze'}
-                            onChange={handlePasswordChange}
+                            onChange={(e) => handlePasswordChange(e)}
                         ></StyledFormInput>
                         <StyledButton $name='login' type='submit'>
                             LOGIN
