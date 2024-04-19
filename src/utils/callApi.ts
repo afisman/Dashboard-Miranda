@@ -29,7 +29,7 @@ export const callApi = async (path: string, method = GET, data: any = null) => {
 }
 
 export const loginApi = async (email: string, password: string) => {
-    const url = `${baseUrl}login`;
+    const url = `${baseUrl}/login`;
     try {
         const loginData = await fetch(url, {
             method: POST,

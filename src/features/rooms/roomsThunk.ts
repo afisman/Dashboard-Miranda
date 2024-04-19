@@ -21,7 +21,7 @@ export const fetchCreateRoom = createAsyncThunk(
 export const fetchUpdateRoom = createAsyncThunk(
     'rooms/fetchUpdateRoom',
     async (updatedRoom: RoomInterface) => {
-        return await callApi(`/bookings/${updatedRoom._id}`, PUT, updatedRoom);
+        return await callApi(`/rooms/${updatedRoom._id}`, PUT, updatedRoom);
     })
 export const fetchDeleteRoom = createAsyncThunk(
     'rooms/fetchDeleteRoom',

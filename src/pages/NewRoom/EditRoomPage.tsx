@@ -3,9 +3,10 @@ import { useParams } from 'react-router-dom';
 import RoomForm from './RoomForm';
 import { getSingleRoom } from '../../features/rooms/roomsSlice';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner';
-import { fetchSingleRoom } from '../../features/rooms/roomsThunk';
+import { fetchSingleRoom, fetchUpdateRoom } from '../../features/rooms/roomsThunk';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 import { RoomInterface } from '../../interfaces/room/roomInterface';
+import { toast } from 'react-toastify';
 
 
 const EditRoomPage = () => {
@@ -21,15 +22,26 @@ const EditRoomPage = () => {
 
     useEffect(() => {
         initialFetch();
-    }, [])
+    }, []);
+
+
+
+    const dispatchEditRoom = async (formData: RoomInterface, amenities: string[]) => {
+        try {
+            await dispatch(fetchUpdateRoom({ ...formData, amenities: amenities }));
+            toast('Room edited successfully!!');
+        } catch (error) {
+            console.log(error);
+            toast(`Error while editing, please try again.`);
+        }
+    }
 
     if (spinner === true) {
         return <StyledSpinner />
-
     }
 
     return (<>
-        <RoomForm singleRoom={singleRoom} type={'Edit'} />
+        <RoomForm singleRoom={singleRoom} type={'Edit'} submitFormFunction={dispatchEditRoom} />
     </>
     )
 }

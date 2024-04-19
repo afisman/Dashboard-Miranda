@@ -30,9 +30,11 @@ const RoomsPage = () => {
                     return a.rate - b.rate;
             }
         })
-
+        if (roomStatus === 'idle') {
+            orderedRooms = roomsData.filter(room => (selection === 'all' ? true : room.status === selection))
+        }
         return orderedRooms
-    }, [roomsData, order, selection, currentPage])
+    }, [roomsData, order, selection, currentPage, roomStatus])
 
     const totalPages = Math.ceil(roomsList.length / roomsPerPage);
     const firstRoom = (currentPage - 1) * roomsPerPage;
@@ -51,12 +53,6 @@ const RoomsPage = () => {
     useEffect(() => {
         initialFetch();
     }, []);
-
-    useEffect(() => {
-        if (roomStatus === 'idle') {
-            initialFetch();
-        }
-    }, [roomStatus])
 
     const handlePageChange = (newPage: number) => {
         setCurrentPage(newPage);

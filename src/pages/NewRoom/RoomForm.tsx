@@ -7,36 +7,21 @@ import { RoomInterface } from '../../interfaces/room/roomInterface';
 import { useAppDispatch } from '../../hooks/useStore';
 import Select from 'react-select';
 import { toast } from 'react-toastify';
+import { amenities_list } from '../../utils/constants';
 
 interface RoomFormProps {
     singleRoom: RoomInterface
     type: string
+    submitFormFunction: any
 }
 
-const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
+const RoomForm = ({ singleRoom, type, submitFormFunction }: RoomFormProps) => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     const [formData, setFormData] = useState({ ...singleRoom });
     const [roomAmenities, setRoomAmenities] = useState<any[]>([])
 
-    const amenities_list = [
-        { value: 'Breakfast', label: 'Breakfast' },
-        { value: 'Smart Security', label: 'Smart Security' },
-        { value: 'Locker', label: 'Locker' },
-        { value: 'Shower', label: 'Shower' },
-        { value: '24/7 Online Support', label: '24/7 Online Support' },
-        { value: 'Kitchen', label: 'Kitchen' },
-        { value: 'Cleaning', label: 'Cleaning' },
-        { value: 'High Speed Wifi', label: 'High Speed Wifi' },
-        { value: 'Air Conditioner', label: 'Air Conditioner' },
-        { value: 'Towels', label: 'Towels' },
-        { value: 'Grocery', label: 'Grocery' },
-        { value: 'Shop Near', label: 'Shop Near' },
-        { value: 'Grocery', label: 'Grocery' },
-        { value: 'Terrace', label: 'Terrace' },
-        { value: 'Room Service', label: 'Room Service' },
-    ];
     const initialFetch = async () => {
         await dispatch(fetchRooms()).unwrap();
         let amenitiesArray = [];
@@ -55,7 +40,6 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
 
     const handleAmenitiesChange = (e: any) => {
         setRoomAmenities(e)
-
     }
 
     const handleFormChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
@@ -100,28 +84,28 @@ const RoomForm = ({ singleRoom, type }: RoomFormProps) => {
             }
         }
 
+        submitFormFunction(formData, amenitiesToUpdate);
 
-        if (type === 'Edit') {
-            try {
-                await dispatch(fetchUpdateRoom({ ...formData, amenities: amenitiesToUpdate }));
-            } catch (error) {
-                console.log(error);
-                toast(`Error while editing, please try again.`);
-            }
-        }
+        // if (type === 'Edit') {
+        //     try {
+        //         await dispatch(fetchUpdateRoom({ ...formData, amenities: amenitiesToUpdate }));
+        //     } catch (error) {
+        //         console.log(error);
+        //         toast(`Error while editing, please try again.`);
+        //     }
+        // }
 
-        if (type === 'New') {
-            try {
-                await dispatch(fetchCreateRoom({ ...formData, amenities: amenitiesToUpdate }));
+        // if (type === 'New') {
+        //     try {
+        //         await dispatch(fetchCreateRoom({ ...formData, amenities: amenitiesToUpdate }));
 
-            } catch (error) {
-                console.log(error);
-                toast(`Error while creating, please try again.`);
+        //     } catch (error) {
+        //         console.log(error);
+        //         toast(`Error while creating, please try again.`);
 
-            }
-        }
+        //     }
+        // }
 
-        toast(`Room ${type === 'New' ? 'created' : 'edited'} succesfully!!`);
         navigate('/rooms');
     }
 
