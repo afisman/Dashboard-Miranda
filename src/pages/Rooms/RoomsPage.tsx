@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import { getRoomStatus, getRoomsList } from '../../features/rooms/roomsSlice';
 import { fetchDeleteRoom, fetchRooms } from '../../features/rooms/roomsThunk';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
-import { StyledSearchInput } from '../../components/reusable/StyledSearchInput';
 
 const RoomsPage = () => {
     const roomsPerPage = 10;

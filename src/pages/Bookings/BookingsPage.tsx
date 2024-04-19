@@ -31,7 +31,7 @@ const BookingsPage = () => {
     const handleClose = (): void => setModalOpen(false);
 
     const bookingsList = useMemo(() => {
-        let orderedBookings = bookingsData.filter((booking: BookingInterface) => (selection === 'all' ? true : booking.status === selection))
+        let orderedBookings = bookingsData.filter((booking: BookingInterface) => (selection === 'all' ? true : booking.status === selection));
 
         orderedBookings.sort((a: BookingInterface, b: BookingInterface) => {
             switch (order) {
@@ -54,14 +54,18 @@ const BookingsPage = () => {
             }
         }
         )
+        if (bookingsStatus === 'idle') {
+            orderedBookings = bookingsData.filter((booking: BookingInterface) => (selection === 'all' ? true : booking.status === selection));
+        }
         if (search) {
             const lowercaseSearch = search.toLowerCase();
-            orderedBookings = orderedBookings.filter((bookings) => bookings.name.toLowerCase().includes(lowercaseSearch));
+            orderedBookings = orderedBookings.filter((booking: BookingInterface) => booking.name.toLowerCase().includes(lowercaseSearch));
         }
+
 
         return orderedBookings
     }
-        , [bookingsData, order, selection, currentPage, search])
+        , [bookingsData, order, selection, currentPage, search, bookingsStatus])
 
     const totalPages = Math.ceil(bookingsList.length / bookingsPerPage);
     const firstBooking = (currentPage - 1) * bookingsPerPage;
@@ -97,11 +101,6 @@ const BookingsPage = () => {
         initialFetch();
     }, []);
 
-    useEffect(() => {
-        if (bookingsStatus === 'idle') {
-            initialFetch();
-        }
-    }, [bookingsStatus])
 
     if (!bookingsData) {
         return <StyledSpinner />

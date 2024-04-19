@@ -12,7 +12,7 @@ import { amenities_list } from '../../utils/constants';
 interface RoomFormProps {
     singleRoom: RoomInterface
     type: string
-    submitFormFunction: any
+    submitFormFunction: (formData: RoomInterface, amenities: string[]) => Promise<void>
 }
 
 const RoomForm = ({ singleRoom, type, submitFormFunction }: RoomFormProps) => {
@@ -85,27 +85,6 @@ const RoomForm = ({ singleRoom, type, submitFormFunction }: RoomFormProps) => {
         }
 
         submitFormFunction(formData, amenitiesToUpdate);
-
-        // if (type === 'Edit') {
-        //     try {
-        //         await dispatch(fetchUpdateRoom({ ...formData, amenities: amenitiesToUpdate }));
-        //     } catch (error) {
-        //         console.log(error);
-        //         toast(`Error while editing, please try again.`);
-        //     }
-        // }
-
-        // if (type === 'New') {
-        //     try {
-        //         await dispatch(fetchCreateRoom({ ...formData, amenities: amenitiesToUpdate }));
-
-        //     } catch (error) {
-        //         console.log(error);
-        //         toast(`Error while creating, please try again.`);
-
-        //     }
-        // }
-
         navigate('/rooms');
     }
 

@@ -6,9 +6,6 @@ import { fetchCreateRoom } from '../../features/rooms/roomsThunk';
 
 const NewRoomPage = () => {
     const dispatch = useAppDispatch()
-
-
-
     const singleRoom: RoomInterface = {
         photos: [],
         room_type: "",

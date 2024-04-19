@@ -18,10 +18,11 @@ import { toast } from 'react-toastify';
 interface BookingFormProps {
     singleBooking: BookingInterface
     type: string
+    submitBookingForm: (formData: BookingInterface) => Promise<void>
 }
 
 
-const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
+const BookingForm = ({ singleBooking, type, submitBookingForm }: BookingFormProps) => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
@@ -49,25 +50,7 @@ const BookingForm = ({ singleBooking, type }: BookingFormProps) => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (type === 'Edit') {
-            try {
-                await dispatch(fetchUpdateBooking(formData));
-                toast('Booking edited successfully!!')
-
-            } catch (error) {
-                console.log(error);
-                toast(`Error while editing, please try again.`);
-            }
-        }
-        try {
-            if (type === 'New') {
-                dispatch(fetchCreateBooking(formData));
-                toast('Booking created successfully!!')
-            }
-        } catch (error) {
-            console.log(error);
-            toast(`Error while creating, please try again.`);
-        }
+        submitBookingForm(formData);
         navigate('/bookings');
     }
 

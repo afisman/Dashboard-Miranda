@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchBookings } from '../../features/bookings/bookingsThunk.js';
+import { fetchBookings, fetchCreateBooking } from '../../features/bookings/bookingsThunk.js';
 import { getBookingsList } from '../../features/bookings/bookingsSlice.js';
 import BookingForm from './BookingForm.js';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore.js';
@@ -8,6 +8,7 @@ import { RoomInterface } from '../../interfaces/room/roomInterface.js';
 import { getRoomsList } from '../../features/rooms/roomsSlice.js';
 import { fetchRooms } from '../../features/rooms/roomsThunk.js';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner.js';
+import { toast } from 'react-toastify';
 
 
 const NewBookingPage = () => {
@@ -42,6 +43,17 @@ const NewBookingPage = () => {
         discount: 0,
         room: roomsList[0],
         status: "Check In"
+    };
+
+    const submitNewForm = async (formData: BookingInterface) => {
+        try {
+            await dispatch(fetchCreateBooking(formData));
+            toast('Booking created successfully!!')
+
+        } catch (error) {
+            console.log(error);
+            toast(`Error while creating, please try again.`);
+        }
     }
     if (spinner) {
         return <StyledSpinner />
@@ -49,7 +61,7 @@ const NewBookingPage = () => {
 
     return (
         <>
-            <BookingForm singleBooking={singleBooking} type={'New'} />
+            <BookingForm singleBooking={singleBooking} type={'New'} submitBookingForm={submitNewForm} />
         </>
     )
 }
