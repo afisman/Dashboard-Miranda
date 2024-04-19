@@ -9,9 +9,6 @@ interface BookingCardInterface {
     booking: BookingInterface
     room: RoomInterface
 }
-
-
-
 const BookingPageCard = ({ booking, room }: BookingCardInterface) => {
     return (
         <>
@@ -97,4 +94,4 @@ const BookingPageCard = ({ booking, room }: BookingCardInterface) => {
     )
 }
 
-export default BookingPageCard
+export default BookingPageCard;

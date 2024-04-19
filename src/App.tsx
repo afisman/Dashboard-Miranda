@@ -8,8 +8,6 @@ import RoomsPage from './pages/Rooms/RoomsPage'
 import ContactPage from './pages/Contact/ContactPage';
 import UsersPage from './pages/Users/UsersPage';
 import { useState } from 'react';
-import { ThemeProvider } from 'styled-components';
-// import { GlobalStyles, darkTheme, lightTheme } from './themes.js';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './PrivateRoute';
 import BookingPage from './pages/Booking/BookingPage';
@@ -40,8 +38,6 @@ function App() {
     <>
       <Provider store={store}>
         <AuthProvider>
-          {/* <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}> */}
-          {/* <GlobalStyles /> */}
           <Routes>
             <Route path='/login' element={<LoginPage />} />
             <Route path='/' element={<PrivateRoute ><Layout /></PrivateRoute>}>
@@ -60,10 +56,8 @@ function App() {
               <Route path='users/edituser/:id' element={<EditUserPage />} />
             </Route>
             <Route path='/*' element={<Navigate to='/' />}></Route>
-
           </Routes>
           <ToastContainer />
-          {/* </ThemeProvider> */}
         </AuthProvider>
       </Provider>
     </>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyledCardWrapper } from '../../components/reusable/StyledDataCard';
 import BookingPageCard from './BookingPageCard';
 import BookingPageSwiper from './BookingPageSwiper';
@@ -25,23 +25,23 @@ const BookingPage = () => {
 
     const initialFetch = async () => {
         await dispatch(fetchSingleBooking(id!)).unwrap();
-    }
+    };
 
     const secondFetch = async () => {
         await dispatch(fetchSingleRoom(singleBooking.room._id!));
         setSpinner(false);
-    }
+    };
     useEffect(() => {
         initialFetch();
-    }, [])
+    }, []);
 
     useEffect(() => {
         secondFetch();
-    }, [singleBooking])
+    }, [singleBooking]);
 
     if (spinner) {
         return <StyledSpinner />
-    }
+    };
 
     return (
         <StyledCardWrapper>
@@ -49,6 +49,6 @@ const BookingPage = () => {
             <BookingPageSwiper images={singleRoom?.photos as string[]} />
         </StyledCardWrapper>
     )
-}
+};
 
-export default BookingPage
+export default BookingPage;

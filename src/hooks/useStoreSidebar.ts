@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-
 export default function useStoreSidebar(key: string, initialValue: string) {
     const [value, setValue] = useState<string>(() => {
         let currentValue;

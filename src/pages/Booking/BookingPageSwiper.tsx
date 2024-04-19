@@ -29,4 +29,4 @@ const BookingPageSwiper = ({ images }: BookingSwiperProps) => {
     )
 }
 
-export default BookingPageSwiper
+export default BookingPageSwiper;
