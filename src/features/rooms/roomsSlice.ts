@@ -37,17 +37,13 @@ export const roomsSlice = createSlice({
             .addCase(fetchUpdateRoom.fulfilled, (state, action) => {
                 const updateRoom = action.payload;
                 state.status = 'fulfilled';
-                state.data.map((room) => {
-                    return room._id == updateRoom.id ? updateRoom : room
-                });
+                state.data.map((room) => room._id == updateRoom.id ? updateRoom : room);
                 state.status = 'idle';
             })
             .addCase(fetchDeleteRoom.fulfilled, (state, action) => {
                 const id = action.payload;
                 state.status = 'fulfilled';
-                state.data.filter((room) => (
-                    room._id !== id
-                ));
+                state.data = state.data.filter((room) => room._id !== id);
                 state.status = 'idle';
             })
             .addMatcher(isAnyOf(
@@ -67,7 +63,7 @@ export const roomsSlice = createSlice({
                 fetchUpdateRoom.rejected
             ), (state, action) => {
                 state.status = 'rejected';
-                state.error = action.error.message || null;
+                state.error = action.error.message || 'Application error';
             })
     }
 })

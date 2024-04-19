@@ -38,17 +38,13 @@ export const usersSlice = createSlice({
             .addCase(fetchUpdateUser.fulfilled, (state, action) => {
                 const updatedUser = action.payload;
                 state.status = 'fulfilled';
-                state.data.map((user) => {
-                    return user._id == updatedUser.id ? updatedUser : user
-                });
+                state.data.map((user) => user._id == updatedUser.id ? updatedUser : user);
                 state.status = 'idle';
             })
             .addCase(fetchDeleteUser.fulfilled, (state, action) => {
                 const id = action.payload;
                 state.status = 'fulfilled';
-                state.data.filter((user) => (
-                    user._id !== id
-                ));
+                state.data = state.data.filter((user) => user._id !== id);
                 state.status = 'idle';
             })
             .addMatcher(isAnyOf(
@@ -68,7 +64,7 @@ export const usersSlice = createSlice({
                 fetchUpdateUser.rejected
             ), (state, action) => {
                 state.status = 'rejected';
-                state.error = action.error.message || null;
+                state.error = action.error.message || 'Application error';
             })
     }
 })

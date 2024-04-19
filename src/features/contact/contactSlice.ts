@@ -35,18 +35,14 @@ export const contactSlice = createSlice({
             .addCase(fetchUpdateContact.fulfilled, (state, action) => {
                 const updateContact = action.payload;
                 state.status = 'fulfilled';
-                state.data.map((contact) => {
-                    return contact._id == updateContact.id ? updateContact : contact
-                });
+                state.data.map((contact) => contact._id == updateContact.id ? updateContact : contact);
                 state.status = 'idle';
 
             })
             .addCase(fetchDeleteContact.fulfilled, (state, action) => {
                 const id = action.payload;
                 state.status = 'fulfilled';
-                state.data.filter((contact) => (
-                    contact._id !== id
-                ));
+                state.data = state.data.filter((contact) => contact._id !== id);
                 state.status = 'idle';
             })
             .addMatcher(isAnyOf(
@@ -64,7 +60,7 @@ export const contactSlice = createSlice({
                 fetchUpdateContact.rejected
             ), (state, action) => {
                 state.status = 'rejected';
-                state.error = action.error.message || null;
+                state.error = action.error.message || 'Application error';
             })
     }
 })

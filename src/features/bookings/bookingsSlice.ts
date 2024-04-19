@@ -39,18 +39,14 @@ export const bookingsSlice = createSlice({
             .addCase(fetchUpdateBooking.fulfilled, (state, action) => {
                 const updatedBooking = action.payload;
                 state.status = 'fulfilled';
-                state.data.map((booking) => (
-                    booking._id == updatedBooking._id ? updatedBooking : booking
-                ));
+                state.data.map((booking) => booking._id == updatedBooking._id ? updatedBooking : booking);
                 state.status = 'idle';
 
             })
             .addCase(fetchDeleteBooking.fulfilled, (state, action) => {
                 const id = action.payload;
                 state.status = 'fulfilled';
-                state.data.filter((booking) => (
-                    booking._id !== id
-                ));
+                state.data = state.data.filter((booking) => booking._id !== id);
                 state.status = 'idle';
             })
             .addMatcher(isAnyOf(
@@ -70,7 +66,7 @@ export const bookingsSlice = createSlice({
                 fetchUpdateBooking.rejected
             ), (state, action) => {
                 state.status = 'rejected';
-                state.error = action.error.message || null;
+                state.error = action.error.message || 'Application error';
             })
     }
 })
