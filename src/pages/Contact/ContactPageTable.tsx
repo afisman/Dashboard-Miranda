@@ -1,28 +1,25 @@
 import React from 'react';
 import { StyledTableCell, StyledTableRow, StyledTableCellText } from '../../components/reusable/StyledTable';
-import { fetchUpdateContact } from '../../features/contact/contactThunk';
-import { ThunkDispatch } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
 import { ContactInterface } from '../../interfaces/contact/contactInterface';
 
 interface ContactTableProps {
     data: ContactInterface[]
     setMessage: React.Dispatch<React.SetStateAction<string>>
     handleOpen: () => void
-    dispatch: ThunkDispatch<RootState, any, any>
+    updateContact: (contact: ContactInterface, status: boolean) => Promise<any>;
 }
 
-const ContactPageTable = ({ data, setMessage, handleOpen, dispatch }: ContactTableProps) => {
+const ContactPageTable = ({ data, setMessage, handleOpen, updateContact }: ContactTableProps) => {
 
     const handleClick = (el: ContactInterface) => {
         setMessage(el.message);
         handleOpen()
     }
 
-    const handleUpdateClick = (e: React.MouseEvent, el: ContactInterface, boolean: boolean) => {
+    const handleUpdateClick = (e: React.MouseEvent, el: ContactInterface, status: boolean) => {
         e.stopPropagation();
 
-        dispatch(fetchUpdateContact({ ...el, read: boolean }))
+        updateContact(el, status)
     }
 
     return (

@@ -41,13 +41,17 @@ const UsersPage = () => {
             }
         })
 
+        if (userStatus === 'idle') {
+            orderedUsers = usersData.filter(user => (selection === 'all' ? true : user.status === selection))
+        }
+
         if (search) {
             const lowercaseSearch = search.toLowerCase();
             orderedUsers = orderedUsers.filter((user) => user.full_name.toLowerCase().includes(lowercaseSearch));
         }
 
-        return orderedUsers
-    }, [usersData, order, selection, currentPage])
+        return orderedUsers;
+    }, [usersData, order, selection, currentPage, userStatus]);
 
     const totalPages = Math.ceil(usersList.length / usersPerPage);
     const firstuser = (currentPage - 1) * usersPerPage;
@@ -67,15 +71,8 @@ const UsersPage = () => {
         initialFetch();
     }, []);
 
-    useEffect(() => {
-        if (userStatus === 'idle') {
-            initialFetch();
-        }
-    }, [userStatus])
-
     const handleOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         event.preventDefault();
-
         setOrder(event.target.value)
     }
 

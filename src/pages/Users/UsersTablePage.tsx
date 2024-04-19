@@ -3,8 +3,6 @@ import { StyledTableCell, StyledTableRow, StyledTableCellText, StyledTableCellIm
 import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
 import { useNavigate } from 'react-router';
 import { UserInterface } from '../../interfaces/user/userInterface';
-import { ThunkDispatch } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
 import swal from 'sweetalert';
 import { toast } from 'react-toastify';
 

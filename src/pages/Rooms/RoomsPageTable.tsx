@@ -4,7 +4,6 @@ import { StyledButton } from '../../components/reusable/StyledButton';
 import { StyledDeleteIcon, StyledEditIcon } from '../../components/reusable/StyledIcons';
 import { useNavigate } from 'react-router';
 import { RoomInterface } from '../../interfaces/room/roomInterface';
-
 import swal from 'sweetalert';
 import { toast } from 'react-toastify';
 

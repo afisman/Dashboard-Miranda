@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getSingleUser } from '../../features/users/usersSlice.js';
-import { fetchSingleUser } from '../../features/users/usersThunk.js';
+import { fetchSingleUser, fetchUpdateUser } from '../../features/users/usersThunk.js';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner.js';
 import UserForm from './UserForm.jsx';
 import { useParams } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore.js';
+import { UserInterface } from '../../interfaces/user/userInterface.js';
+import { toast } from 'react-toastify';
 
 const EditUserPage = () => {
     const { id } = useParams();
@@ -19,7 +21,17 @@ const EditUserPage = () => {
 
     useEffect(() => {
         initialFetch();
-    }, [])
+    }, []);
+
+    const submitEditUser = async (formData: UserInterface) => {
+        try {
+            dispatch(fetchUpdateUser(formData));
+            toast('User created successfully!!');
+        } catch (error) {
+            toast('Error while editing user, please try again.');
+            console.error(error);
+        }
+    }
 
     if (spinner === true) {
         return <StyledSpinner />
@@ -27,7 +39,7 @@ const EditUserPage = () => {
 
     return (
         <>
-            <UserForm singleUser={singleUser} type={'Edit'} />
+            <UserForm singleUser={singleUser} type={'Edit'} submitUserForm={submitEditUser} />
         </>
     )
 }

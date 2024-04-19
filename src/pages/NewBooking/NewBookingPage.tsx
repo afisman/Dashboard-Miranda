@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { fetchBookings, fetchCreateBooking } from '../../features/bookings/bookingsThunk.js';
-import { getBookingsList } from '../../features/bookings/bookingsSlice.js';
+import { useEffect, useState } from 'react';
+import { fetchCreateBooking } from '../../features/bookings/bookingsThunk.js';
 import BookingForm from './BookingForm.js';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore.js';
 import { BookingInterface } from '../../interfaces/booking/bookingInterface.js';
@@ -9,6 +8,7 @@ import { getRoomsList } from '../../features/rooms/roomsSlice.js';
 import { fetchRooms } from '../../features/rooms/roomsThunk.js';
 import { StyledSpinner } from '../../components/reusable/StyledSpinner.js';
 import { toast } from 'react-toastify';
+import { dayInMs } from '../../utils/constants.js';
 
 
 const NewBookingPage = () => {
@@ -16,21 +16,16 @@ const NewBookingPage = () => {
     const roomsList: RoomInterface[] = useAppSelector(getRoomsList);
     const [spinner, setSpinner] = useState<boolean>(true)
 
-
-
-
     const initialFetch = async () => {
         await dispatch(fetchRooms())
         setSpinner(false)
     }
 
     useEffect(() => {
-        initialFetch()
+        initialFetch();
     }, []);
 
-    const currentDate = Date.now()
-    const dayInMs = 86400000
-
+    const currentDate = Date.now();
 
     const singleBooking = {
         name: "",

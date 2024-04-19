@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyledFormContainer, StyledFormInput, StyledFormWrapper, StyledTextArea } from '../../components/reusable/StyledForm';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useNavigate } from 'react-router-dom';
-import { fetchCreateRoom, fetchRooms, fetchUpdateRoom } from '../../features/rooms/roomsThunk';
+import { fetchRooms } from '../../features/rooms/roomsThunk';
 import { RoomInterface } from '../../interfaces/room/roomInterface';
 import { useAppDispatch } from '../../hooks/useStore';
 import Select from 'react-select';
-import { toast } from 'react-toastify';
 import { amenities_list } from '../../utils/constants';
 
 interface RoomFormProps {

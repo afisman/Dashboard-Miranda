@@ -1,14 +1,15 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import ContactSwiper from '../../components/contactSwiper/ContactSwiper';
 import ContactPageTable from './ContactPageTable';
 import { StyledMenu, StyledMenuText, StyledSelect, StyledMenuButtons, StyledMenuWrapper } from '../../components/reusable/StyledMenu';
 import { StyledTable, StyledTableHeader } from '../../components/reusable/StyledTable';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { getContactList, getContactStatus } from '../../features/contact/contactSlice';
-import { fetchContacts } from '../../features/contact/contactThunk';
+import { fetchContacts, fetchUpdateContact } from '../../features/contact/contactThunk';
 import ModalComponent from '../../components/modal/Modal';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 import { StyledSearchInput } from '../../components/reusable/StyledSearchInput';
+import { ContactInterface } from '../../interfaces/contact/contactInterface';
 
 
 const ContactPage = () => {
@@ -19,7 +20,7 @@ const ContactPage = () => {
     const [message, setMessage] = useState<string>('');
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const [search, setSearch] = useState<string>('');
-    const contactStatus = useAppSelector(getContactStatus)
+    const contactStatus = useAppSelector(getContactStatus);
 
 
     const dispatch = useAppDispatch();
@@ -29,24 +30,27 @@ const ContactPage = () => {
     const handleClose = (): void => setModalOpen(false);
 
     const contactsList = useMemo(() => {
-        let orderedContacts = contactsData.filter(contact => (selection === 'all' ? true : contact.read.toString() === selection))
+        let orderedContacts = contactsData.filter(contact => (selection === 'all' ? true : contact.read.toString() === selection));
         orderedContacts.sort((a, b) => {
             return new Date(a.date).getTime() - new Date(b.date).getTime();
         }
-        )
+        );
+        if (contactStatus === 'idle') {
+            orderedContacts = contactsData.filter(contact => (selection === 'all' ? true : contact.read.toString() === selection));
+        };
 
         if (search) {
             const lowercaseSearch = search.toLowerCase();
             orderedContacts = orderedContacts.filter((contact) => contact.full_name.toLowerCase().includes(lowercaseSearch));
-        }
+        };
 
         return orderedContacts;
     }
-        , [contactsData, order, selection, currentPage])
+        , [contactsData, order, selection, currentPage, contactStatus])
 
     const handleMenuClick = (option: string): void => {
         setSelection(option);
-    }
+    };
 
     const totalPages = Math.ceil(contactsData.length / contactsPerPage);
     const firstContact = (currentPage - 1) * contactsPerPage;
@@ -64,15 +68,13 @@ const ContactPage = () => {
     useEffect(() => {
         initialFetch();
     }, []);
-    useEffect(() => {
-        if (contactStatus === 'idle') {
-            initialFetch()
-        }
-    }, [contactStatus])
 
     const handlePageChange = (newPage: number): void => {
-        setCurrentPage(newPage)
-    }
+        setCurrentPage(newPage);
+    };
+
+    const updateContact = async (contact: ContactInterface, status: boolean): Promise<any> => await dispatch(fetchUpdateContact({ ...contact, read: status }));
+
 
 
     return (
@@ -121,7 +123,7 @@ const ContactPage = () => {
                         data={displayedContacts}
                         setMessage={setMessage}
                         handleOpen={handleOpen}
-                        dispatch={dispatch}
+                        updateContact={updateContact}
                     />
                 </tbody>
             </StyledTable>

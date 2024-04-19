@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { StyledFormContainer, StyledFormInput, StyledFormWrapper, StyledTextArea, StyledFormSelect, StyledRadio } from '../../components/reusable/StyledForm';
 import { StyledButton } from '../../components/reusable/StyledButton';
 import { useNavigate } from 'react-router';
-import { fetchCreateUser, fetchUpdateUser } from '../../features/users/usersThunk';
 import { useAppDispatch } from '../../hooks/useStore';
 import { UserInterface } from '../../interfaces/user/userInterface';
-import { toast } from 'react-toastify';
 
 interface UserFormProps {
     singleUser: UserInterface
     type: string
+    submitUserForm: (formData: UserInterface) => Promise<void>
 }
 
-const UserForm = ({ singleUser, type }: UserFormProps) => {
+const UserForm = ({ singleUser, type, submitUserForm }: UserFormProps) => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState<UserInterface>({ ...singleUser, password: '' });
     const dispatch = useAppDispatch();
@@ -34,23 +33,8 @@ const UserForm = ({ singleUser, type }: UserFormProps) => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        try {
-            if (type === 'Edit') {
-                await dispatch(fetchUpdateUser(formData));
-                toast('User edited successfully!!');
-            }
-
-            if (type === 'New') {
-                await dispatch(fetchCreateUser(formData));
-                toast('User created successfully!!');
-            }
-
-        } catch (error) {
-            toast(`Error while ${type === 'New' ? 'creating' : 'editing'}, please try again.`);
-            console.error(error)
-        }
-        navigate('/users')
+        submitUserForm(formData);
+        navigate('/users');
     }
 
     return (

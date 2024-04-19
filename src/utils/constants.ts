@@ -22,3 +22,5 @@ export const amenities_list = [
     { value: 'Terrace', label: 'Terrace' },
     { value: 'Room Service', label: 'Room Service' },
 ];
+
+export const dayInMs = 86400000;
