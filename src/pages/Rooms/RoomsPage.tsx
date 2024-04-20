@@ -7,19 +7,20 @@ import { Link } from 'react-router-dom';
 import { getRoomStatus, getRoomsList } from '../../features/rooms/roomsSlice';
 import { fetchDeleteRoom, fetchRooms } from '../../features/rooms/roomsThunk';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
+import { RoomInterface } from '../../interfaces/room/roomInterface';
 
 const RoomsPage = () => {
     const roomsPerPage = 10;
     const [order, setOrder] = useState<string>('newest');
     const [selection, setSelection] = useState<string>('all');
     const [currentPage, setCurrentPage] = useState<number>(1);
-    const roomStatus = useAppSelector(getRoomStatus)
+    const roomStatus: string = useAppSelector(getRoomStatus)
 
     const dispatch = useAppDispatch();
     const roomsData = useAppSelector(getRoomsList);
 
     const roomsList = useMemo(() => {
-        let orderedRooms = roomsData.filter(room => (selection === 'all' ? true : room.status === selection))
+        let orderedRooms = roomsData.filter((room: RoomInterface) => (selection === 'all' ? true : room.status === selection))
 
         orderedRooms.sort((a, b) => {
             switch (order) {

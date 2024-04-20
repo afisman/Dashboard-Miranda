@@ -26,19 +26,16 @@ const RoomForm = ({ singleRoom, type, submitFormFunction }: RoomFormProps) => {
         let amenitiesArray = [];
         for (let i = 0; i < formData.amenities.length; i++) {
             amenitiesArray.push({ value: formData.amenities[i], label: formData.amenities[i] });
-
         }
         setRoomAmenities(amenitiesArray);
-
     }
 
     useEffect(() => {
         initialFetch();
     }, []);
 
-
     const handleAmenitiesChange = (e: any) => {
-        setRoomAmenities(e)
+        setRoomAmenities(e);
     }
 
     const handleFormChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
@@ -72,12 +69,12 @@ const RoomForm = ({ singleRoom, type, submitFormFunction }: RoomFormProps) => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        let amenitiesToUpdate = []
+        let amenitiesToUpdate = [];
 
         for (let amenity of roomAmenities) {
-            let amenityExists = amenitiesToUpdate.indexOf(amenity.value)
+            let amenityExists = amenitiesToUpdate.indexOf(amenity.value);
             if (amenityExists === -1) {
-                amenitiesToUpdate.push(amenity.value)
+                amenitiesToUpdate.push(amenity.value);
             } else {
                 amenitiesToUpdate.splice(amenityExists, 1)
             }
@@ -86,8 +83,6 @@ const RoomForm = ({ singleRoom, type, submitFormFunction }: RoomFormProps) => {
         submitFormFunction(formData, amenitiesToUpdate);
         navigate('/rooms');
     }
-
-
 
     return (
         <>

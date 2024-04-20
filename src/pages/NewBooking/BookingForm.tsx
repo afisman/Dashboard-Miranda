@@ -43,7 +43,15 @@ const BookingForm = ({ singleBooking, type, submitBookingForm }: BookingFormProp
     const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         e.preventDefault()
         const { name, value } = e.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }))
+        if (name === 'room') {
+            const roomToUpdate: RoomInterface = roomsList.find(room => room._id === value)!
+            if (roomToUpdate) {
+                setFormData((prevData) => ({ ...prevData, room: roomToUpdate }))
+            }
+
+        } else {
+            setFormData((prevData) => ({ ...prevData, [name]: value }))
+        }
     }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -116,7 +124,7 @@ const BookingForm = ({ singleBooking, type, submitBookingForm }: BookingFormProp
                         onChange={(e) => handleFormChange(e)}
                         required
                     ></StyledTextArea>
-                    <StyledSelect name="room" id="room" onChange={(e) => handleFormChange(e)}>
+                    <StyledSelect name="room" id="room" onChange={(e) => handleFormChange(e)} value={formData.room._id}>
                         {availableRooms?.map((room) => (
                             <option value={room._id} key={room._id}>{room.room_number}</option>
                         ))}

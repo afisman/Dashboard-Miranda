@@ -8,7 +8,6 @@ import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 import { RoomInterface } from '../../interfaces/room/roomInterface';
 import { toast } from 'react-toastify';
 
-
 const EditRoomPage = () => {
     const { id } = useParams();
     const singleRoom: RoomInterface = useAppSelector(getSingleRoom);
@@ -24,14 +23,12 @@ const EditRoomPage = () => {
         initialFetch();
     }, []);
 
-
-
     const dispatchEditRoom = async (formData: RoomInterface, amenities: string[]) => {
         try {
             await dispatch(fetchUpdateRoom({ ...formData, amenities: amenities }));
             toast('Room edited successfully!!');
         } catch (error) {
-            console.log(error);
+            console.error(error)
             toast(`Error while editing, please try again.`);
         }
     }

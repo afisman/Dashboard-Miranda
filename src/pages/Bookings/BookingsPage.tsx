@@ -22,7 +22,7 @@ const BookingsPage = () => {
     const [specialRequest, setSpecialRequest] = useState<string>('');
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const [search, setSearch] = useState<string>('');
-    const bookingsStatus = useAppSelector(getBookingsStatus)
+    const bookingsStatus: string = useAppSelector(getBookingsStatus)
 
     const dispatch = useAppDispatch();
     const bookingsData = useAppSelector(getBookingsList);
@@ -62,7 +62,6 @@ const BookingsPage = () => {
             orderedBookings = orderedBookings.filter((booking: BookingInterface) => booking.name.toLowerCase().includes(lowercaseSearch));
         }
 
-
         return orderedBookings
     }
         , [bookingsData, order, selection, currentPage, search, bookingsStatus])
@@ -96,11 +95,9 @@ const BookingsPage = () => {
     };
     const deleteBooking = async (id: string): Promise<any> => await dispatch(fetchDeleteBooking(id));
 
-
     useEffect(() => {
         initialFetch();
     }, []);
-
 
     if (!bookingsData) {
         return <StyledSpinner />

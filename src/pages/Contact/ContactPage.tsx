@@ -20,7 +20,7 @@ const ContactPage = () => {
     const [message, setMessage] = useState<string>('');
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const [search, setSearch] = useState<string>('');
-    const contactStatus = useAppSelector(getContactStatus);
+    const contactStatus: string = useAppSelector(getContactStatus);
 
 
     const dispatch = useAppDispatch();

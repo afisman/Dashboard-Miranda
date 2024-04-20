@@ -18,7 +18,7 @@ const UsersPage = () => {
     const [order, setOrder] = useState<string>('newest');
     const [search, setSearch] = useState<string>('');
     const usersData = useAppSelector(getUsersList);
-    const userStatus = useAppSelector(getUsersStatus);
+    const userStatus: string = useAppSelector(getUsersStatus);
 
     const dispatch = useAppDispatch();
 
