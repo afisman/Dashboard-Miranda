@@ -53,7 +53,7 @@ const LoginPage = () => {
             state.auth ? (
                 <Navigate to='/' />
             ) : (
-                <StyledFormWrapper>
+                <StyledFormWrapper $type={'login'}>
                     <StyledFormContainer onSubmit={(e) => handleSubmit(e)}>
                         <StyledFormInput
                             placeholder='Email'

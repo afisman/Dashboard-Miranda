@@ -7,5 +7,5 @@ export interface ContactInterface {
     date: number;
     message: string;
     rating: number;
-    read: boolean;
+    is_read: boolean;
 }

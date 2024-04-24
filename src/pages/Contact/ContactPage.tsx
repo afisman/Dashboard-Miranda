@@ -30,13 +30,13 @@ const ContactPage = () => {
     const handleClose = (): void => setModalOpen(false);
 
     const contactsList = useMemo(() => {
-        let orderedContacts = contactsData.filter(contact => (selection === 'all' ? true : contact.read.toString() === selection));
+        let orderedContacts = contactsData.filter(contact => (selection === 'all' ? true : contact.is_read.toString() === selection));
         orderedContacts.sort((a, b) => {
             return new Date(a.date).getTime() - new Date(b.date).getTime();
         }
         );
         if (contactStatus === 'idle') {
-            orderedContacts = contactsData.filter(contact => (selection === 'all' ? true : contact.read.toString() === selection));
+            orderedContacts = contactsData.filter(contact => (selection === 'all' ? true : contact.is_read.toString() === selection));
         };
 
         if (search) {
@@ -73,7 +73,7 @@ const ContactPage = () => {
         setCurrentPage(newPage);
     };
 
-    const updateContact = async (contact: ContactInterface, status: boolean): Promise<any> => await dispatch(fetchUpdateContact({ ...contact, read: status }));
+    const updateContact = async (contact: ContactInterface, status: boolean): Promise<any> => await dispatch(fetchUpdateContact({ ...contact, is_read: status }));
 
 
 

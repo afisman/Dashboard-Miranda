@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 
 
-export const StyledFormWrapper = styled.div`
+export const StyledFormWrapper = styled.div<{ $type?: string }>`
     margin: 2em auto;
     width: 28em;
     text-align: center;
     box-shadow: 0px 20px 30px #00000014;
-    padding: 2em;
+    padding: 3em;
+
+    ${(props) =>
+        props.$type === "login" &&
+        `
+            margin-top:20em;
+    `
+    }
 `;
 
 export const StyledFormContainer = styled.form`
