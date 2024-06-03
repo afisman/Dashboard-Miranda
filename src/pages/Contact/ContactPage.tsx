@@ -43,6 +43,7 @@ const ContactPage = () => {
             const lowercaseSearch = search.toLowerCase();
             orderedContacts = orderedContacts.filter((contact) => contact.full_name.toLowerCase().includes(lowercaseSearch));
         };
+        console.log(orderedContacts)
 
         return orderedContacts;
     }

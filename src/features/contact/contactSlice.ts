@@ -34,8 +34,9 @@ export const contactSlice = createSlice({
             })
             .addCase(fetchUpdateContact.fulfilled, (state, action) => {
                 const updateContact = action.payload;
+                console.log(action.payload)
                 state.status = 'fulfilled';
-                state.data.map((contact) => contact._id == updateContact.id ? updateContact : contact);
+                state.data.map((contact) => contact._id == updateContact._id ? updateContact : contact);
                 state.status = 'idle';
 
             })

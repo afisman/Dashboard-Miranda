@@ -18,6 +18,7 @@ export const fetchSingleContact = createAsyncThunk(
 export const fetchUpdateContact = createAsyncThunk(
     "contacts/fetchUpdateContact",
     async (updateContact: ContactInterface) => {
+        console.log(updateContact)
         return await callApi(`/contact/${updateContact._id}`, PUT, updateContact);
 
     })

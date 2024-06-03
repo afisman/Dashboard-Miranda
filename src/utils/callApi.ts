@@ -17,7 +17,9 @@ export const callApi = async (path: string, method = GET, data: any = null) => {
             body: data != null ? JSON.stringify(data) : null
         })
         const json = await response.json();
+        console.log(response)
         if (response.ok) {
+            console.log(json)
             return json;
         } else {
             toast(`Error while trying to connect to server ${json.statusCode}, error: ${json.message}`)

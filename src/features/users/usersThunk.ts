@@ -27,6 +27,7 @@ export const fetchUpdateUser = createAsyncThunk(
 export const fetchDeleteUser = createAsyncThunk(
     'users/fetchDeleteUser',
     async (id: string) => {
+        console.log(id)
         return await callApi(`/users/${id}`, DELETE);
     })
 

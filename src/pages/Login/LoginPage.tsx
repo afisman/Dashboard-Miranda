@@ -12,8 +12,8 @@ import { toast } from 'react-toastify';
 const LoginPage = () => {
 
     const { state, dispatch } = useAuth()
-    const [email, setEmail] = useState<string>('Madonna5@hotmail.com');
-    const [password, setPassword] = useState<string>('dipawapaze');
+    const [email, setEmail] = useState<string>('Trever62@gmail.com');
+    const [password, setPassword] = useState<string>('gamiracusa');
     const [error, setError] = useState<boolean>(false)
     const navigate = useNavigate();
 
@@ -59,21 +59,21 @@ const LoginPage = () => {
                             placeholder='Email'
                             type='email'
                             name='email'
-                            defaultValue={'Madonna5@hotmail.com'}
+                            defaultValue={'Trever62@gmail.com'}
                             onChange={(e) => handleEmailChange(e)}
                         ></StyledFormInput>
                         <StyledFormInput
                             placeholder='Password'
                             type='password'
                             name='password'
-                            defaultValue={'dipawapaze'}
+                            defaultValue={'gamiracusa'}
                             onChange={(e) => handlePasswordChange(e)}
                         ></StyledFormInput>
                         <StyledButton $name='login' type='submit'>
                             LOGIN
                         </StyledButton>
-                        <p>Madonna5@hotmail.com</p>
-                        <p>dipawapaze</p>
+                        <p>Trever62@gmail.com</p>
+                        <p>gamiracusa</p>
                         {error &&
                             <p>Incorrect email or password</p>
                         }

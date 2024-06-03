@@ -49,7 +49,7 @@ const UsersPage = () => {
             const lowercaseSearch = search.toLowerCase();
             orderedUsers = orderedUsers.filter((user) => user.full_name.toLowerCase().includes(lowercaseSearch));
         }
-
+        console.log(orderedUsers)
         return orderedUsers;
     }, [usersData, order, selection, currentPage, userStatus]);
 
