@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { LuBuilding2 } from "react-icons/lu";
 
-
 const LogoWrapper = styled.div`
 width: 100%;
 padding: 0 20px;
@@ -26,25 +25,24 @@ align-items: center;
         display: flex;
         flex-direction: column;
         justify-content: center;
-       
-       > h4 {
-           color: #000;
-           margin: 0;
-           font-family: 'Poppins', sans-serif;
-           font-weight: 900;
-           font-size: 1.8rem;
-           line-height: 2rem;
-           letter-spacing: -0.0625rem;
 
-       }
-       >h5 {
-           text-align: left;
-           font: normal normal 300 12px/18px 'Poppins';
-           letter-spacing: 0px;
-           color: #5D5449;
-           opacity: 1;
-           margin: 0;
-       }
+        > h4 {
+            color: #000;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            line-height: 2rem;
+            letter-spacing: -0.0625rem;
+        }
+        >h5 {
+            text-align: left;
+            font: normal normal 300 12px/18px 'Poppins';
+            letter-spacing: 0px;
+            color: #5D5449;
+            opacity: 1;
+            margin: 0;
+        }
     }
 }
 `;
