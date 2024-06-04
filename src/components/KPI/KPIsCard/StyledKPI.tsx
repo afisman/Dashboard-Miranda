@@ -10,7 +10,6 @@ export const StyledKPIWrapper = styled.div`
     background-color: transparent;
     padding: 0 2rem;    
     margin: 2em 1em 2em 1em;
-    
 `;
 
 export const StyledKPIcard = styled.div`
