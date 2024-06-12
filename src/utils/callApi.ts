@@ -7,6 +7,7 @@ export const callApi = async (path: string, method = GET, data: any = null) => {
     const url = `${baseUrl}${path}`;
     const user = useLocalStorage({ key: 'user', action: 'get' });
     const { token } = user ? JSON.parse(user) : null;
+
     try {
         const response = await fetch(url, {
             method: method,
@@ -14,12 +15,12 @@ export const callApi = async (path: string, method = GET, data: any = null) => {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: data != null ? JSON.stringify(data) : null
+            body: data != null ? JSON.stringify(data) : null,
+            mode: 'cors'
         })
         const json = await response.json();
         console.log(response)
         if (response.ok) {
-            console.log(json)
             return json;
         } else {
             toast(`Error while trying to connect to server ${json.statusCode}, error: ${json.message}`)

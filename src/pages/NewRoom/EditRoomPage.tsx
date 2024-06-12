@@ -25,7 +25,7 @@ const EditRoomPage = () => {
 
     const dispatchEditRoom = async (formData: RoomInterface, amenities: string[]) => {
         try {
-            await dispatch(fetchUpdateRoom({ ...formData, amenities: amenities }));
+            await dispatch(fetchUpdateRoom({ _id: id, ...formData, amenities: amenities }));
             toast('Room edited successfully!!');
         } catch (error) {
             console.error(error)

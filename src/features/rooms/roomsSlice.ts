@@ -36,8 +36,9 @@ export const roomsSlice = createSlice({
             })
             .addCase(fetchUpdateRoom.fulfilled, (state, action) => {
                 const updateRoom = action.payload;
+                console.log(updateRoom)
                 state.status = 'fulfilled';
-                state.data.map((room) => room._id == updateRoom.id ? updateRoom : room);
+                state.data.map((room) => room._id == updateRoom._id ? updateRoom : room);
                 state.status = 'idle';
             })
             .addCase(fetchDeleteRoom.fulfilled, (state, action) => {

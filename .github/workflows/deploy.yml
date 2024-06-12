@@ -1,3 +1,5 @@
+
+name: Deploy miranda-dashboard
 on:
   push:
     branches:

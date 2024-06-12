@@ -62,8 +62,10 @@ const RoomsPage = () => {
         setSelection(option);
     }
 
-    const deleteRoom = async (id: string): Promise<any> => {
-        await dispatch(fetchDeleteRoom(id))
+    const deleteRoom = async (id: string | undefined): Promise<any> => {
+        if (id) {
+            await dispatch(fetchDeleteRoom(id))
+        }
     }
 
     const handleOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -120,7 +122,6 @@ const RoomsPage = () => {
                 <tbody>
                     <RoomsPageTable
                         data={displayedRooms}
-                        // dispatch={dispatch}
                         deleteRoom={deleteRoom}
                     />
                 </tbody>

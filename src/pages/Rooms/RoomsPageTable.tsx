@@ -6,26 +6,27 @@ import { useNavigate } from 'react-router';
 import { RoomInterface } from '../../interfaces/room/roomInterface';
 import swal from 'sweetalert';
 import { toast } from 'react-toastify';
+import { StyledSpinner } from '../../components/reusable/StyledSpinner';
 
 
 interface RoomsTableProps {
     data: RoomInterface[]
-    deleteRoom: (id: string) => Promise<any>
+    deleteRoom: (id: string | undefined) => Promise<any>
 }
 
 const RoomsPageTable = ({ data, deleteRoom }: RoomsTableProps) => {
     const navigate = useNavigate();
 
-    const handleEditClick = (e: React.MouseEvent, id: string) => {
+    const handleEditClick = (e: React.MouseEvent, el: RoomInterface) => {
         e.stopPropagation();
-        navigate(`/rooms/editroom/${id}`);
+        navigate(`/rooms/editroom/${el._id}`);
     }
 
     const handleClick = (e: React.MouseEvent, id: string) => {
         navigate(`/rooms/${id}`);
     }
 
-    const handleDeleteClick = (e: React.MouseEvent, id: string) => {
+    const handleDeleteClick = (e: React.MouseEvent, el: RoomInterface) => {
         e.stopPropagation();
         swal({
             title: "Are you sure you want to delete the room?",
@@ -39,7 +40,7 @@ const RoomsPageTable = ({ data, deleteRoom }: RoomsTableProps) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    deleteRoom(id)
+                    deleteRoom(el._id)
                     toast('Room deleted successfully!!');
                 } else {
                     toast('Your room is safe!');
@@ -47,9 +48,13 @@ const RoomsPageTable = ({ data, deleteRoom }: RoomsTableProps) => {
             });
     }
 
+    if (!data) {
+        return <StyledSpinner />
+    }
+
     return (
         <>
-            {data.map((el) => (
+            {data?.map((el) => (
                 <StyledTableRow key={el._id} onClick={(e) => handleClick(e, el._id!)}>
                     <StyledTableCell $name='flexCell'>
                         <StyledTableCellImg $imgtype='room'>
@@ -94,8 +99,8 @@ const RoomsPageTable = ({ data, deleteRoom }: RoomsTableProps) => {
                     </StyledTableCell>
                     <StyledTableCell>
                         <StyledTableCellText style={{ display: 'flex' }} >
-                            <StyledEditIcon onClick={(e) => { handleEditClick(e, el._id!) }}></StyledEditIcon>
-                            <StyledDeleteIcon onClick={(e) => { handleDeleteClick(e, el._id!) }}></StyledDeleteIcon>
+                            <StyledEditIcon onClick={(e) => { handleEditClick(e, el) }}></StyledEditIcon>
+                            <StyledDeleteIcon onClick={(e) => { handleDeleteClick(e, el) }}></StyledDeleteIcon>
                         </StyledTableCellText>
                     </StyledTableCell>
                 </StyledTableRow>

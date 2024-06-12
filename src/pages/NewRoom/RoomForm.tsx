@@ -80,6 +80,8 @@ const RoomForm = ({ singleRoom, type, submitFormFunction }: RoomFormProps) => {
             }
         }
 
+        console.log(formData);
+
         submitFormFunction(formData, amenitiesToUpdate);
         navigate('/rooms');
     }
