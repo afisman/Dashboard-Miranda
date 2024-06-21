@@ -164,13 +164,6 @@ const RoomForm = ({ singleRoom, type, submitFormFunction }: RoomFormProps) => {
                             onChange={(e) => handleFormChange(e)}
                             required
                         ></StyledFormInput>
-                        {/* <StyledFormInput
-                                placeholder='Cancelation'
-                                name='cancelation'
-                                type='text'
-                                value={formData.cancelation}
-                                onChange={(e) => handleFormChange(e)}
-                            ></StyledFormInput> */}
                         <label htmlFor='amenities'>Amenities</label>
                         <Select
                             openMenuOnFocus={true}

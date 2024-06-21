@@ -67,15 +67,13 @@ const BookingsTable = ({ data, setSpecialRequest, handleOpen, deleteBooking }: B
         <>
             {data?.map((el) => (
                 <StyledTableRow key={el._id} onClick={(e) => handleClick(e, el._id!)}>
-                    <StyledTableCell $name='flexCell'>
-                        <div>
-                            <StyledTableCellText $letterstyle='title'>
-                                {el.name}
-                            </StyledTableCellText>
-                            <StyledTableCellText $letterstyle='id'>
-                                #{el._id}
-                            </StyledTableCellText>
-                        </div>
+                    <StyledTableCell >
+                        <StyledTableCellText $letterstyle='title'>
+                            {el.name}
+                        </StyledTableCellText>
+                        <StyledTableCellText $letterstyle='id'>
+                            #{el._id}
+                        </StyledTableCellText>
                     </StyledTableCell>
                     <StyledTableCell>
                         {new Date(el.check_out).toISOString().slice(0, 10)}
